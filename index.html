@@ -3,256 +3,285 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tea X - Jiannan Xiong 的个人主页">
-  <title>Tea X · Jiannan Xiong</title>
+  <meta name="description" content="Tea X 工具箱 — 一组实用的在线小工具">
+  <title>Tea X · 工具箱</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍵</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo">
-        <span class="nav-logo-icon">茶</span>
-        <span class="nav-logo-text">Tea X</span>
-      </a>
-      <div class="nav-links">
-        <a href="#about" class="nav-link">关于</a>
-        <a href="#projects" class="nav-link">项目</a>
-        <a href="#tea-timer" class="nav-link">茶歇</a>
-        <a href="#contact" class="nav-link">联系</a>
-        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
-          <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-          </svg>
-          <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        </button>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-icon">🍵</span>
+        <span class="brand-name">Tea X</span>
+        <span class="brand-sep">·</span>
+        <span class="brand-sub">工具箱</span>
       </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero" id="hero">
-    <div class="hero-bg">
-      <div class="hero-gradient"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-tea">
-        <svg class="tea-cup" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <g class="steam">
-            <path class="steam-path steam-1" d="M85 80 Q80 60 85 40 Q90 20 85 0" fill="none" stroke-width="2" stroke-linecap="round"/>
-            <path class="steam-path steam-2" d="M100 75 Q95 55 100 35 Q105 15 100 -5" fill="none" stroke-width="2" stroke-linecap="round"/>
-            <path class="steam-path steam-3" d="M115 80 Q120 60 115 40 Q110 20 115 0" fill="none" stroke-width="2" stroke-linecap="round"/>
-          </g>
-          <path class="cup-body" d="M60 90 L65 155 Q65 170 80 170 L120 170 Q135 170 135 155 L140 90 Z" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path class="cup-handle" d="M140 100 Q170 100 170 125 Q170 150 140 145" fill="none" stroke-width="3" stroke-linecap="round"/>
-          <ellipse class="cup-tea" cx="100" cy="95" rx="38" ry="6" opacity="0.3"/>
-          <line class="cup-saucer" x1="50" y1="172" x2="150" y2="172" stroke-width="3" stroke-linecap="round"/>
+      <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
         </svg>
-      </div>
-      <div class="hero-text">
-        <p class="hero-greeting" id="heroGreeting">你好</p>
-        <h1 class="hero-name">Jiannan Xiong</h1>
-        <p class="hero-tagline">
-          <span class="tagline-static">Software Engineer</span>
-          <span class="tagline-divider">·</span>
-          <span class="tagline-typed" id="typedText"></span>
-          <span class="cursor-blink">|</span>
-        </p>
-      </div>
-      <div class="hero-scroll">
-        <span>向下探索</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5v14M5 12l7 7 7-7"/>
+        <svg class="theme-icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
-      </div>
+      </button>
     </div>
-  </section>
+  </header>
 
-  <!-- About Section -->
-  <section class="section about" id="about">
-    <div class="container">
-      <h2 class="section-title">
-        <span class="section-title-text">关于我</span>
-        <span class="section-title-line"></span>
-      </h2>
-      <div class="about-grid">
-        <div class="about-card about-intro">
-          <div class="about-card-icon">👨‍💻</div>
-          <h3>工程与创造</h3>
-          <p>热衷于用代码构建有意义的工具和产品。从移动端到后端，从脚本到系统，享受技术带来的无限可能。</p>
-        </div>
-        <div class="about-card about-philosophy">
-          <div class="about-card-icon">🍵</div>
-          <h3>茶与思考</h3>
-          <p>一杯茶，一段代码。在快节奏的技术世界里，保持慢思考的习惯——这也是 Tea X 名字的由来。</p>
-        </div>
-        <div class="about-card about-explore">
-          <div class="about-card-icon">🔭</div>
-          <h3>探索与分享</h3>
-          <p>对新技术保持好奇心，乐于深入研究并分享所得。相信开源精神，相信知识分享的力量。</p>
-        </div>
-      </div>
-      <div class="tech-stack">
-        <h3 class="tech-stack-title">技术栈</h3>
-        <div class="tech-tags">
-          <span class="tech-tag">Java</span>
-          <span class="tech-tag">Android</span>
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">JavaScript</span>
-          <span class="tech-tag">Shell</span>
-          <span class="tech-tag">Git</span>
-          <span class="tech-tag">Vim</span>
-          <span class="tech-tag">Linux</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Tools Grid -->
+  <main class="main">
 
-  <!-- Projects Section -->
-  <section class="section projects" id="projects">
-    <div class="container">
-      <h2 class="section-title">
-        <span class="section-title-text">开源项目</span>
-        <span class="section-title-line"></span>
-      </h2>
-      <p class="section-desc">来自 GitHub 的项目，点击可查看详情</p>
-      <div class="projects-grid" id="projectsGrid">
-        <div class="project-skeleton" aria-hidden="true">
-          <div class="skeleton-line w60"></div>
-          <div class="skeleton-line w80"></div>
-          <div class="skeleton-line w40"></div>
-        </div>
-        <div class="project-skeleton" aria-hidden="true">
-          <div class="skeleton-line w60"></div>
-          <div class="skeleton-line w80"></div>
-          <div class="skeleton-line w40"></div>
-        </div>
-        <div class="project-skeleton" aria-hidden="true">
-          <div class="skeleton-line w60"></div>
-          <div class="skeleton-line w80"></div>
-          <div class="skeleton-line w40"></div>
-        </div>
+    <!-- Clock -->
+    <section class="tool-card tool-clock" id="toolClock">
+      <div class="tool-head">
+        <span class="tool-icon">🕐</span>
+        <h2 class="tool-title">时钟</h2>
       </div>
-    </div>
-  </section>
+      <div class="clock-display">
+        <span class="clock-time" id="clockTime">--:--:--</span>
+        <span class="clock-date" id="clockDate">----年--月--日</span>
+      </div>
+    </section>
 
-  <!-- Tea Timer Section -->
-  <section class="section tea-timer" id="tea-timer">
-    <div class="container">
-      <h2 class="section-title">
-        <span class="section-title-text">茶歇时钟</span>
-        <span class="section-title-line"></span>
-      </h2>
-      <p class="section-desc">泡一杯茶，专注片刻。选择你的茶歇时间</p>
-      <div class="timer-wrapper">
-        <div class="timer-presets">
-          <button class="timer-preset active" data-minutes="5">
-            <span class="preset-icon">🍃</span>
-            <span class="preset-name">绿茶</span>
-            <span class="preset-time">5 分钟</span>
-          </button>
-          <button class="timer-preset" data-minutes="10">
-            <span class="preset-icon">🫖</span>
-            <span class="preset-name">红茶</span>
-            <span class="preset-time">10 分钟</span>
-          </button>
-          <button class="timer-preset" data-minutes="25">
-            <span class="preset-icon">☕</span>
-            <span class="preset-name">专注</span>
-            <span class="preset-time">25 分钟</span>
-          </button>
-          <button class="timer-preset" data-minutes="45">
-            <span class="preset-icon">🧘</span>
-            <span class="preset-name">深度</span>
-            <span class="preset-time">45 分钟</span>
-          </button>
-        </div>
-        <div class="timer-display">
-          <svg class="timer-ring" viewBox="0 0 260 260">
-            <circle class="timer-ring-bg" cx="130" cy="130" r="120" fill="none" stroke-width="4"/>
-            <circle class="timer-ring-progress" cx="130" cy="130" r="120" fill="none" stroke-width="4" stroke-dasharray="753.98" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 130 130)"/>
-          </svg>
-          <div class="timer-face">
-            <span class="timer-time" id="timerTime">05:00</span>
-            <span class="timer-label" id="timerLabel">绿茶时间</span>
-          </div>
-        </div>
-        <div class="timer-controls">
-          <button class="timer-btn timer-btn-start" id="timerStart">
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
-            <span>开始</span>
-          </button>
-          <button class="timer-btn timer-btn-pause hidden" id="timerPause">
-            <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-            <span>暂停</span>
-          </button>
-          <button class="timer-btn timer-btn-reset" id="timerReset">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
-            <span>重置</span>
-          </button>
+    <!-- Tea Timer -->
+    <section class="tool-card tool-timer" id="toolTimer">
+      <div class="tool-head">
+        <span class="tool-icon">⏱️</span>
+        <h2 class="tool-title">茶歇计时</h2>
+      </div>
+      <div class="timer-presets">
+        <button class="preset active" data-seconds="300"><span>🍃</span>5分</button>
+        <button class="preset" data-seconds="600"><span>🫖</span>10分</button>
+        <button class="preset" data-seconds="1500"><span>☕</span>25分</button>
+        <button class="preset" data-seconds="2700"><span>🧘</span>45分</button>
+      </div>
+      <div class="timer-ring-wrap">
+        <svg class="timer-ring" viewBox="0 0 200 200">
+          <circle class="ring-bg" cx="100" cy="100" r="90" fill="none" stroke-width="4"/>
+          <circle class="ring-progress" cx="100" cy="100" r="90" fill="none" stroke-width="4"
+            stroke-linecap="round" transform="rotate(-90 100 100)"/>
+        </svg>
+        <div class="timer-face">
+          <span class="timer-time" id="timerTime">05:00</span>
         </div>
       </div>
-    </div>
-  </section>
+      <div class="timer-btns">
+        <button class="btn btn-accent" id="timerStart">▶ 开始</button>
+        <button class="btn btn-accent hidden" id="timerPause">⏸ 暂停</button>
+        <button class="btn btn-ghost" id="timerReset">↺ 重置</button>
+      </div>
+    </section>
 
-  <!-- Contact Section -->
-  <section class="section contact" id="contact">
-    <div class="container">
-      <h2 class="section-title">
-        <span class="section-title-text">找到我</span>
-        <span class="section-title-line"></span>
-      </h2>
-      <div class="contact-links">
-        <a href="https://github.com/mrteax" target="_blank" rel="noopener noreferrer" class="contact-card">
-          <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-          </svg>
-          <div class="contact-info">
-            <span class="contact-label">GitHub</span>
-            <span class="contact-value">@mrteax</span>
-          </div>
-          <svg class="contact-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="https://mrteax.github.io" class="contact-card">
-          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-          <div class="contact-info">
-            <span class="contact-label">网站</span>
-            <span class="contact-value">mrteax.github.io</span>
-          </div>
-          <svg class="contact-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+    <!-- Quick Notes -->
+    <section class="tool-card tool-notes" id="toolNotes">
+      <div class="tool-head">
+        <span class="tool-icon">📝</span>
+        <h2 class="tool-title">快捷记事</h2>
+        <span class="tool-badge" id="noteStatus">已保存</span>
       </div>
-    </div>
-  </section>
+      <textarea class="notes-area" id="notesArea" placeholder="在这里记录想法...&#10;&#10;内容自动保存到浏览器本地存储"></textarea>
+      <div class="notes-footer">
+        <span class="notes-count" id="notesCount">0 字</span>
+        <button class="btn btn-sm btn-ghost" id="notesClear">清空</button>
+      </div>
+    </section>
+
+    <!-- JSON Formatter -->
+    <section class="tool-card tool-json" id="toolJson">
+      <div class="tool-head">
+        <span class="tool-icon">{ }</span>
+        <h2 class="tool-title">JSON 格式化</h2>
+      </div>
+      <textarea class="json-input" id="jsonInput" placeholder="粘贴 JSON 到这里..."></textarea>
+      <div class="json-actions">
+        <button class="btn btn-accent" id="jsonFormat">格式化</button>
+        <button class="btn btn-ghost" id="jsonMinify">压缩</button>
+        <button class="btn btn-ghost" id="jsonCopy">复制</button>
+        <span class="json-msg" id="jsonMsg"></span>
+      </div>
+      <pre class="json-output" id="jsonOutput"></pre>
+    </section>
+
+    <!-- Base64 -->
+    <section class="tool-card tool-base64" id="toolBase64">
+      <div class="tool-head">
+        <span class="tool-icon">🔤</span>
+        <h2 class="tool-title">Base64 编解码</h2>
+      </div>
+      <textarea class="b64-input" id="b64Input" placeholder="输入文本..."></textarea>
+      <div class="b64-actions">
+        <button class="btn btn-accent" id="b64Encode">编码 →</button>
+        <button class="btn btn-accent" id="b64Decode">← 解码</button>
+        <button class="btn btn-ghost" id="b64Copy">复制结果</button>
+      </div>
+      <textarea class="b64-output" id="b64Output" placeholder="结果..." readonly></textarea>
+    </section>
+
+    <!-- Timestamp Converter -->
+    <section class="tool-card tool-timestamp" id="toolTimestamp">
+      <div class="tool-head">
+        <span class="tool-icon">📅</span>
+        <h2 class="tool-title">时间戳转换</h2>
+      </div>
+      <div class="ts-row">
+        <label class="ts-label">当前时间戳</label>
+        <div class="ts-live">
+          <span class="mono" id="tsNow">---</span>
+          <button class="btn btn-sm btn-ghost" id="tsCopyNow">复制</button>
+        </div>
+      </div>
+      <div class="ts-row">
+        <label class="ts-label">时间戳 → 日期</label>
+        <div class="ts-pair">
+          <input class="input mono" id="tsToDateInput" placeholder="输入时间戳 (秒/毫秒)">
+          <span class="ts-result" id="tsToDateResult">—</span>
+        </div>
+      </div>
+      <div class="ts-row">
+        <label class="ts-label">日期 → 时间戳</label>
+        <div class="ts-pair">
+          <input class="input" id="tsFromDateInput" type="datetime-local">
+          <span class="ts-result mono" id="tsFromDateResult">—</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Color Converter -->
+    <section class="tool-card tool-color" id="toolColor">
+      <div class="tool-head">
+        <span class="tool-icon">🎨</span>
+        <h2 class="tool-title">颜色转换</h2>
+      </div>
+      <div class="color-preview-row">
+        <input type="color" class="color-picker" id="colorPicker" value="#b07d4f">
+        <div class="color-swatch" id="colorSwatch"></div>
+      </div>
+      <div class="color-fields">
+        <div class="color-field">
+          <label>HEX</label>
+          <input class="input mono" id="colorHex" value="#b07d4f" spellcheck="false">
+        </div>
+        <div class="color-field">
+          <label>RGB</label>
+          <input class="input mono" id="colorRgb" value="176, 125, 79" spellcheck="false">
+        </div>
+        <div class="color-field">
+          <label>HSL</label>
+          <input class="input mono" id="colorHsl" value="28, 40%, 50%" spellcheck="false">
+        </div>
+      </div>
+    </section>
+
+    <!-- Password Generator -->
+    <section class="tool-card tool-password" id="toolPassword">
+      <div class="tool-head">
+        <span class="tool-icon">🔑</span>
+        <h2 class="tool-title">密码生成</h2>
+      </div>
+      <div class="pw-display">
+        <input class="pw-output mono" id="pwOutput" value="" readonly>
+        <button class="btn btn-sm btn-ghost" id="pwCopy" title="复制">📋</button>
+      </div>
+      <div class="pw-options">
+        <div class="pw-opt">
+          <label>长度: <span id="pwLenVal">16</span></label>
+          <input type="range" id="pwLen" min="6" max="64" value="16">
+        </div>
+        <label class="pw-check"><input type="checkbox" id="pwUpper" checked> 大写 A-Z</label>
+        <label class="pw-check"><input type="checkbox" id="pwLower" checked> 小写 a-z</label>
+        <label class="pw-check"><input type="checkbox" id="pwDigit" checked> 数字 0-9</label>
+        <label class="pw-check"><input type="checkbox" id="pwSymbol" checked> 符号 !@#…</label>
+      </div>
+      <button class="btn btn-accent pw-gen-btn" id="pwGenerate">生成密码</button>
+      <div class="pw-strength" id="pwStrength"></div>
+    </section>
+
+    <!-- Text Tools -->
+    <section class="tool-card tool-text" id="toolText">
+      <div class="tool-head">
+        <span class="tool-icon">📊</span>
+        <h2 class="tool-title">文本工具</h2>
+      </div>
+      <textarea class="text-input" id="textInput" placeholder="粘贴或输入文本..."></textarea>
+      <div class="text-stats" id="textStats">
+        <span>字符: <strong>0</strong></span>
+        <span>字数: <strong>0</strong></span>
+        <span>行数: <strong>0</strong></span>
+        <span>字节: <strong>0</strong></span>
+      </div>
+      <div class="text-actions">
+        <button class="btn btn-sm btn-ghost" data-action="uppercase">大写</button>
+        <button class="btn btn-sm btn-ghost" data-action="lowercase">小写</button>
+        <button class="btn btn-sm btn-ghost" data-action="trim">去空白</button>
+        <button class="btn btn-sm btn-ghost" data-action="dedupe">去重行</button>
+        <button class="btn btn-sm btn-ghost" data-action="sort">排序行</button>
+        <button class="btn btn-sm btn-ghost" data-action="reverse">反转</button>
+      </div>
+    </section>
+
+    <!-- URL Encode/Decode -->
+    <section class="tool-card tool-url" id="toolUrl">
+      <div class="tool-head">
+        <span class="tool-icon">🔗</span>
+        <h2 class="tool-title">URL 编解码</h2>
+      </div>
+      <textarea class="url-input" id="urlInput" placeholder="输入文本或 URL..."></textarea>
+      <div class="url-actions">
+        <button class="btn btn-accent" id="urlEncode">编码 →</button>
+        <button class="btn btn-accent" id="urlDecode">← 解码</button>
+        <button class="btn btn-ghost" id="urlCopy">复制结果</button>
+      </div>
+      <textarea class="url-output" id="urlOutput" placeholder="结果..." readonly></textarea>
+    </section>
+
+    <!-- Hash Generator -->
+    <section class="tool-card tool-hash" id="toolHash">
+      <div class="tool-head">
+        <span class="tool-icon">#️⃣</span>
+        <h2 class="tool-title">哈希计算</h2>
+      </div>
+      <textarea class="hash-input" id="hashInput" placeholder="输入要计算哈希的文本..."></textarea>
+      <div class="hash-results" id="hashResults">
+        <div class="hash-row"><label>MD5</label><span class="mono" id="hashMd5">—</span></div>
+        <div class="hash-row"><label>SHA-1</label><span class="mono" id="hashSha1">—</span></div>
+        <div class="hash-row"><label>SHA-256</label><span class="mono" id="hashSha256">—</span></div>
+      </div>
+    </section>
+
+    <!-- Regex Tester -->
+    <section class="tool-card tool-regex" id="toolRegex">
+      <div class="tool-head">
+        <span class="tool-icon">.*</span>
+        <h2 class="tool-title">正则测试</h2>
+      </div>
+      <div class="regex-inputs">
+        <div class="regex-pattern-row">
+          <span class="regex-slash">/</span>
+          <input class="input mono regex-pattern" id="regexPattern" placeholder="正则表达式" spellcheck="false">
+          <span class="regex-slash">/</span>
+          <input class="input mono regex-flags" id="regexFlags" value="g" placeholder="flags" spellcheck="false">
+        </div>
+        <textarea class="regex-text" id="regexText" placeholder="输入测试文本..." spellcheck="false"></textarea>
+      </div>
+      <div class="regex-result" id="regexResult">
+        <span class="regex-match-count">0 个匹配</span>
+      </div>
+      <div class="regex-matches" id="regexMatches"></div>
+    </section>
+
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <p class="footer-brand">
-          <span class="footer-logo">茶</span> Tea X
-        </p>
-        <p class="footer-copy">© 2015 – <span id="currentYear">2026</span> Jiannan Xiong</p>
-        <p class="footer-note">用 ❤️ 和 🍵 制作</p>
-      </div>
-    </div>
+    <span>🍵 Tea X 工具箱</span>
+    <span class="footer-sep">·</span>
+    <span>数据仅存储在你的浏览器中</span>
   </footer>
-
-  <!-- Back to Top -->
-  <button class="back-to-top" id="backToTop" aria-label="回到顶部">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M12 19V5M5 12l7-7 7 7"/>
-    </svg>
-  </button>
 
   <script src="/js/main.js"></script>
 </body>
