@@ -660,6 +660,31 @@ textarea { min-height: 80px; }
   margin-right: 6px;
 }
 
+
+/* ===== Travel Banner ===== */
+.travel-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 1200px;
+  margin: 16px auto 0;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, var(--accent-bg), rgba(176,125,79,.15));
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+.travel-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(176,125,79,.15);
+  text-decoration: none;
+}
+.travel-banner-icon { font-size: 1.3rem; }
+.travel-banner-text { flex: 1; font-weight: 600; font-size: .95rem; }
+.travel-banner-arrow { color: var(--accent); font-size: 1.2rem; font-weight: 500; }
+
 /* ===== Footer ===== */
 .footer {
   text-align: center;
