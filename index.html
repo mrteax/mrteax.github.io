@@ -1,483 +1,259 @@
-<!doctype html>
-<html class="theme-next use-motion theme-next-mist">
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
 <head>
-  
-
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-
-
-
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
-
-
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
-
-
-
-
-  <meta name="keywords" content="Hexo,next" />
-
-
-
-
-
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
-
-
-
-
-  <title> Tea X </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tea X - Jiannan Xiong 的个人主页">
+  <title>Tea X · Jiannan Xiong</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍵</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-
 <body>
-<!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
-  <div class="container one-column 
-   page-home 
-">
-    <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
-      <span class="logo">
-        <i class="icon-logo"></i>
-      </span>
-      <span class="site-title">Tea X</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
-
-
-  <ul id="menu" class="menu">
-     
-    
-      
-      <li class="menu-item menu-item-home">
-        <a href="/">
-          <i class="menu-item-icon icon-home"></i> <br />
-          首页
-        </a>
-      </li>
-    
-      
-      <li class="menu-item menu-item-archives">
-        <a href="/archives">
-          <i class="menu-item-icon icon-archives"></i> <br />
-          归档
-        </a>
-      </li>
-    
-      
-      <li class="menu-item menu-item-tags">
-        <a href="/tags">
-          <i class="menu-item-icon icon-tags"></i> <br />
-          标签
-        </a>
-      </li>
-    
-  </ul>
-
-
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="nav-logo-icon">茶</span>
+        <span class="nav-logo-text">Tea X</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about" class="nav-link">关于</a>
+        <a href="#projects" class="nav-link">项目</a>
+        <a href="#tea-timer" class="nav-link">茶歇</a>
+        <a href="#contact" class="nav-link">联系</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+          <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
       </div>
     </div>
+  </nav>
 
-    <div id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content">
-          
-  <div id="posts" class="posts-expand">
-    
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/05/19/hello-world/">
-                建站首语
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 2015-05-19
-        </span>
-
-        
-
-        
-          
-        
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-tea">
+        <svg class="tea-cup" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <g class="steam">
+            <path class="steam-path steam-1" d="M85 80 Q80 60 85 40 Q90 20 85 0" fill="none" stroke-width="2" stroke-linecap="round"/>
+            <path class="steam-path steam-2" d="M100 75 Q95 55 100 35 Q105 15 100 -5" fill="none" stroke-width="2" stroke-linecap="round"/>
+            <path class="steam-path steam-3" d="M115 80 Q120 60 115 40 Q110 20 115 0" fill="none" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          <path class="cup-body" d="M60 90 L65 155 Q65 170 80 170 L120 170 Q135 170 135 155 L140 90 Z" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="cup-handle" d="M140 100 Q170 100 170 125 Q170 150 140 145" fill="none" stroke-width="3" stroke-linecap="round"/>
+          <ellipse class="cup-tea" cx="100" cy="95" rx="38" ry="6" opacity="0.3"/>
+          <line class="cup-saucer" x1="50" y1="172" x2="150" y2="172" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="hero-text">
+        <p class="hero-greeting" id="heroGreeting">你好</p>
+        <h1 class="hero-name">Jiannan Xiong</h1>
+        <p class="hero-tagline">
+          <span class="tagline-static">Software Engineer</span>
+          <span class="tagline-divider">·</span>
+          <span class="tagline-typed" id="typedText"></span>
+          <span class="cursor-blink">|</span>
+        </p>
+      </div>
+      <div class="hero-scroll">
+        <span>向下探索</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
       </div>
     </div>
+  </section>
 
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>在工作生活之余，敲敲键盘，记录一些所得所想。<br>建设阶段，敬请期待…</p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-  </div>
-
-  
-
+  <!-- About Section -->
+  <section class="section about" id="about">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="section-title-text">关于我</span>
+        <span class="section-title-line"></span>
+      </h2>
+      <div class="about-grid">
+        <div class="about-card about-intro">
+          <div class="about-card-icon">👨‍💻</div>
+          <h3>工程与创造</h3>
+          <p>热衷于用代码构建有意义的工具和产品。从移动端到后端，从脚本到系统，享受技术带来的无限可能。</p>
         </div>
-
-        
-      </div>
-
-
-      
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="http://photo.yupoo.com/mrteax/EFckFd1h/medish.jpg" alt="Jiannan Xiong" />
-          <p class="site-author-name">Jiannan Xiong</p>
+        <div class="about-card about-philosophy">
+          <div class="about-card-icon">🍵</div>
+          <h3>茶与思考</h3>
+          <p>一杯茶，一段代码。在快节奏的技术世界里，保持慢思考的习惯——这也是 Tea X 名字的由来。</p>
         </div>
-        <p class="site-description motion-element"></p>
-        <div class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">1</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
+        <div class="about-card about-explore">
+          <div class="about-card-icon">🔭</div>
+          <h3>探索与分享</h3>
+          <p>对新技术保持好奇心，乐于深入研究并分享所得。相信开源精神，相信知识分享的力量。</p>
+        </div>
+      </div>
+      <div class="tech-stack">
+        <h3 class="tech-stack-title">技术栈</h3>
+        <div class="tech-tags">
+          <span class="tech-tag">Java</span>
+          <span class="tech-tag">Android</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">Shell</span>
+          <span class="tech-tag">Git</span>
+          <span class="tech-tag">Vim</span>
+          <span class="tech-tag">Linux</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="section-title-text">开源项目</span>
+        <span class="section-title-line"></span>
+      </h2>
+      <p class="section-desc">来自 GitHub 的项目，点击可查看详情</p>
+      <div class="projects-grid" id="projectsGrid">
+        <div class="project-skeleton" aria-hidden="true">
+          <div class="skeleton-line w60"></div>
+          <div class="skeleton-line w80"></div>
+          <div class="skeleton-line w40"></div>
+        </div>
+        <div class="project-skeleton" aria-hidden="true">
+          <div class="skeleton-line w60"></div>
+          <div class="skeleton-line w80"></div>
+          <div class="skeleton-line w40"></div>
+        </div>
+        <div class="project-skeleton" aria-hidden="true">
+          <div class="skeleton-line w60"></div>
+          <div class="skeleton-line w80"></div>
+          <div class="skeleton-line w40"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tea Timer Section -->
+  <section class="section tea-timer" id="tea-timer">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="section-title-text">茶歇时钟</span>
+        <span class="section-title-line"></span>
+      </h2>
+      <p class="section-desc">泡一杯茶，专注片刻。选择你的茶歇时间</p>
+      <div class="timer-wrapper">
+        <div class="timer-presets">
+          <button class="timer-preset active" data-minutes="5">
+            <span class="preset-icon">🍃</span>
+            <span class="preset-name">绿茶</span>
+            <span class="preset-time">5 分钟</span>
+          </button>
+          <button class="timer-preset" data-minutes="10">
+            <span class="preset-icon">🫖</span>
+            <span class="preset-name">红茶</span>
+            <span class="preset-time">10 分钟</span>
+          </button>
+          <button class="timer-preset" data-minutes="25">
+            <span class="preset-icon">☕</span>
+            <span class="preset-name">专注</span>
+            <span class="preset-time">25 分钟</span>
+          </button>
+          <button class="timer-preset" data-minutes="45">
+            <span class="preset-icon">🧘</span>
+            <span class="preset-name">深度</span>
+            <span class="preset-time">45 分钟</span>
+          </button>
+        </div>
+        <div class="timer-display">
+          <svg class="timer-ring" viewBox="0 0 260 260">
+            <circle class="timer-ring-bg" cx="130" cy="130" r="120" fill="none" stroke-width="4"/>
+            <circle class="timer-ring-progress" cx="130" cy="130" r="120" fill="none" stroke-width="4" stroke-dasharray="753.98" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 130 130)"/>
+          </svg>
+          <div class="timer-face">
+            <span class="timer-time" id="timerTime">05:00</span>
+            <span class="timer-label" id="timerLabel">绿茶时间</span>
           </div>
-
-          <div class="site-state-item site-state-categories">
-            
-              <span class="site-state-item-count">0</span>
-              <span class="site-state-item-name">分类</span>
-              
-          </div>
-
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">0</span>
-              <span class="site-state-item-name">标签</span>
-              </a>
-          </div>
-
         </div>
-
-        
-
-        <div class="links-of-author motion-element">
-          
+        <div class="timer-controls">
+          <button class="timer-btn timer-btn-start" id="timerStart">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+            <span>开始</span>
+          </button>
+          <button class="timer-btn timer-btn-pause hidden" id="timerPause">
+            <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            <span>暂停</span>
+          </button>
+          <button class="timer-btn timer-btn-reset" id="timerReset">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            <span>重置</span>
+          </button>
         </div>
-
-        
-        
-
-      </div>
-
-      
-
-    </div>
-  </div>
-
-
-    </div>
-
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy; &nbsp; 
-  2015
-  <span class="with-love">
-    <i class="icon-heart"></i>
-  </span>
-  <span class="author">Jiannan Xiong</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-
-
       </div>
     </div>
+  </section>
 
-    <div class="back-to-top"></div>
-  </div>
+  <!-- Contact Section -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="section-title-text">找到我</span>
+        <span class="section-title-line"></span>
+      </h2>
+      <div class="contact-links">
+        <a href="https://github.com/mrteax" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          <div class="contact-info">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value">@mrteax</span>
+          </div>
+          <svg class="contact-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://mrteax.github.io" class="contact-card">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <div class="contact-info">
+            <span class="contact-label">网站</span>
+            <span class="contact-value">mrteax.github.io</span>
+          </div>
+          <svg class="contact-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p class="footer-brand">
+          <span class="footer-logo">茶</span> Tea X
+        </p>
+        <p class="footer-copy">© 2015 – <span id="currentYear">2026</span> Jiannan Xiong</p>
+        <p class="footer-note">用 ❤️ 和 🍵 制作</p>
+      </div>
+    </div>
+  </footer>
 
-  
-  
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
 
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.content img').each(function () {
-        var $image = $(this);
-        var $imageWrapLink = $image.parent('a');
-
-        if ($imageWrapLink.size() < 1) {
-          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
-        }
-        $imageWrapLink.addClass('fancybox');
-      });
-    });
-    $('.fancybox').fancybox({
-      helpers: {
-        overlay: {
-          locked: false
-        }
-      }
-    });
-  </script>
-
-
-  <script type="text/javascript">
-  function hasMobileUA () {
-    var nav = window.navigator;
-    var ua = nav.userAgent;
-    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
-
-    return pa.test(ua);
-  }
-
-  function isDesktop () {
-    return screen.width > 991 && !hasMobileUA();
-  }
-
-  function isTablet () {
-    return screen.width < 992 && screen.width > 767 && hasMobileUA();
-  }
-
-  function isMobile () {
-    return screen.width < 767 && hasMobileUA();
-  }
-
-  function escapeSelector (selector) {
-    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
-  }
-
-  function displaySidebar () {
-    setTimeout(function () {
-      $('.sidebar-toggle').trigger('click');
-    }, 800);
-  }
-</script>
-
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" id="motion.global">
-  $(document).ready(function () {
-    var body = $('body');
-    var isSidebarVisible = false;
-    var sidebarToggle = $('.sidebar-toggle');
-    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
-    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
-    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
-    var sidebar = $('.sidebar');
-
-    var SIDEBAR_WIDTH = '320px';
-    var SIDEBAR_DISPLAY_DURATION = 300;
-
-    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
-
-    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
-    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
-    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
-
-    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
-    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
-    var sidebarToogleLine2ndStatusClose = {opacity: 0};
-
-    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
-    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
-    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
-
-    LogoAndMenuMotion();
-    sidebarToggleMotion();
-    postsListMotion();
-    backToTopMotion();
-
-
-    $(document)
-      .on('sidebar.isShowing', function () {
-        isDesktop() && body.velocity(
-          {paddingRight: SIDEBAR_WIDTH},
-          SIDEBAR_DISPLAY_DURATION
-        );
-        sidebarContentMotion();
-      })
-      .on('sidebar.isHiding', function () {});
-
-    function LogoAndMenuMotion() {
-      $.Velocity.RunSequence([
-        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
-        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
-        
-        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
-        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
-        
-        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
-      ]);
-      $('.menu-item').velocity('transition.slideDownIn', {display: null});
-    }
-
-
-    function backToTopMotion () {
-      var b2top = $('.back-to-top');
-      b2top.on('click', function () {
-        body.velocity('scroll');
-      });
-    }
-
-    function sidebarShowMotion () {
-
-      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
-      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
-      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
-
-      sidebar.velocity({width: SIDEBAR_WIDTH}, {
-        display: 'block',
-        duration: SIDEBAR_DISPLAY_DURATION,
-        complete: function () {
-          sidebar.addClass('sidebar-active');
-          sidebar.trigger('sidebar.didShow');
-        }
-      });
-      sidebar.trigger('sidebar.isShowing');
-    }
-
-    function sidebarHideMotion () {
-      isDesktop() && body.velocity({paddingRight: 0});
-      sidebar.velocity('reverse');
-
-      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
-      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
-      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
-
-      sidebar.removeClass('sidebar-active');
-      sidebar.trigger('sidebar.isHiding');
-    };
-
-    function sidebarContentMotion () {
-      $('.sidebar .motion-element').velocity(
-        'transition.slideRightIn',
-        {stagger: 50, drag: true}
-      );
-    }
-
-    function postsListMotion () {
-      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
-      $('.post').velocity('transition.slideDownIn', postMotionOptions);
-    }
-
-    function sidebarToggleMotion () {
-      sidebarToggle.on('click', function () {
-        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
-        isSidebarVisible = !isSidebarVisible;
-      });
-
-      sidebarToggle.hover(function () {
-        if (isSidebarVisible) {return}
-        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
-        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
-        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
-      }, function () {
-        if (isSidebarVisible) {return}
-        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
-        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
-        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
-      });
-    }
-  });
-
-</script>
-
-
-
-
-
-  
-
-  <script type="text/javascript">
-    var HEXO_SIDEBAR_CONFIGURATION = 'post';
-    $(document).ready(function () {
-      if (HEXO_SIDEBAR_CONFIGURATION === 'always') {
-        displaySidebar();
-      }
-    });
-  </script>
-
-  
-
-  
-  
-  
-
-  
-
-
-
-
-  
-  
+  <script src="/js/main.js"></script>
 </body>
 </html>
