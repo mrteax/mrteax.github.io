@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>酒桌游戏 · Tea X</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍻</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/games.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav-home">🍵 Tea X</a>
+    <span class="nav-title">酒桌游戏</span>
+  </nav>
+
+  <!-- Game Selector -->
+  <div class="game-tabs" id="gameTabs">
+    <button class="tab active" data-game="dice">🎲 骰子</button>
+    <button class="tab" data-game="picker">👆 谁喝</button>
+    <button class="tab" data-game="bomb">💣 炸弹</button>
+    <button class="tab" data-game="king">🃏 国王</button>
+    <button class="tab" data-game="truth">🤔 真大</button>
+  </div>
+
+  <main class="main">
+
+    <!-- 🎲 Dice Game -->
+    <section class="game" id="game-dice">
+      <h2>🎲 摇骰子</h2>
+      <p class="game-desc">选择骰子数量，点击摇一摇</p>
+      <div class="dice-count-selector">
+        <button class="dice-num active" data-count="1">1</button>
+        <button class="dice-num" data-count="2">2</button>
+        <button class="dice-num" data-count="3">3</button>
+        <button class="dice-num" data-count="5">5</button>
+        <button class="dice-num" data-count="6">6</button>
+      </div>
+      <div class="dice-result" id="diceResult">
+        <span class="die">⚀</span>
+      </div>
+      <div class="dice-total" id="diceTotal"></div>
+      <button class="big-btn" id="rollDice">摇一摇！</button>
+    </section>
+
+    <!-- 👆 Who Drinks -->
+    <section class="game hidden" id="game-picker">
+      <h2>👆 谁来喝</h2>
+      <p class="game-desc">输入玩家名字，随机选中一个</p>
+      <div class="picker-players" id="pickerPlayers">
+        <div class="player-input-row">
+          <input class="player-input" placeholder="玩家 1" value="">
+          <input class="player-input" placeholder="玩家 2" value="">
+          <input class="player-input" placeholder="玩家 3" value="">
+        </div>
+        <button class="add-player-btn" id="addPlayer">+ 加人</button>
+      </div>
+      <div class="picker-result" id="pickerResult">
+        <span class="picker-name">?</span>
+      </div>
+      <button class="big-btn" id="pickPlayer">开转！</button>
+    </section>
+
+    <!-- 💣 Number Bomb -->
+    <section class="game hidden" id="game-bomb">
+      <h2>💣 数字炸弹</h2>
+      <p class="game-desc">轮流猜数字，踩中炸弹的人喝酒！</p>
+      <div class="bomb-range" id="bombRange">
+        <span class="bomb-min">1</span>
+        <span class="bomb-sep">—</span>
+        <span class="bomb-max">100</span>
+      </div>
+      <div class="bomb-input-row">
+        <input type="number" class="bomb-input" id="bombInput" placeholder="猜一个数" min="1" max="100">
+        <button class="big-btn bomb-guess-btn" id="bombGuess">猜！</button>
+      </div>
+      <div class="bomb-msg" id="bombMsg"></div>
+      <button class="small-btn" id="bombReset">🔄 新一局</button>
+    </section>
+
+    <!-- 🃏 King's Game -->
+    <section class="game hidden" id="game-king">
+      <h2>🃏 国王游戏</h2>
+      <p class="game-desc">点击抽取一条惩罚/指令</p>
+      <div class="king-card" id="kingCard">
+        <span class="king-text">点击下方按钮开始</span>
+      </div>
+      <button class="big-btn" id="drawKing">抽一张！</button>
+    </section>
+
+    <!-- 🤔 Truth or Dare -->
+    <section class="game hidden" id="game-truth">
+      <h2>🤔 真心话大冒险</h2>
+      <p class="game-desc">选择真心话或大冒险</p>
+      <div class="tod-choice">
+        <button class="tod-btn tod-truth active" id="todTruth">真心话</button>
+        <button class="tod-btn tod-dare" id="todDare">大冒险</button>
+      </div>
+      <div class="tod-card" id="todCard">
+        <span class="tod-text">选择类型后点击下方按钮</span>
+      </div>
+      <button class="big-btn" id="drawTod">来一题！</button>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>🍻 适度饮酒，快乐游戏</span>
+  </footer>
+
+  <script src="/js/games.js"></script>
+</body>
+</html>

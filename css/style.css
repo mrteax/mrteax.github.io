@@ -662,6 +662,14 @@ textarea { min-height: 80px; }
 
 
 /* ===== Travel Banner ===== */
+.banners-row {
+  display: flex;
+  gap: 12px;
+  max-width: 1200px;
+  margin: 16px auto 0;
+  padding: 0 20px;
+}
+
 .travel-banner {
   display: flex;
   align-items: center;
@@ -684,6 +692,8 @@ textarea { min-height: 80px; }
 .travel-banner-icon { font-size: 1.3rem; }
 .travel-banner-text { flex: 1; font-weight: 600; font-size: .95rem; }
 .travel-banner-arrow { color: var(--accent); font-size: 1.2rem; font-weight: 500; }
+.games-banner { background: linear-gradient(135deg, rgba(255,107,53,.08), rgba(255,107,53,.15)); border-color: #ff6b35; }
+.games-banner .travel-banner-arrow { color: #ff6b35; }
 
 /* ===== Footer ===== */
 .footer {
