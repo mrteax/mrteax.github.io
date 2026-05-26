@@ -62,6 +62,18 @@
   }
   tickClock(); setInterval(tickClock, 1000);
 
+  // ===== World Clock =====
+  function tickWorldClocks() {
+    document.querySelectorAll('.wc-time').forEach(el => {
+      const tz = el.dataset.tz;
+      try {
+        const t = new Date().toLocaleTimeString('en-GB', { timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: false });
+        el.textContent = t;
+      } catch(e) { el.textContent = '--:--'; }
+    });
+  }
+  tickWorldClocks(); setInterval(tickWorldClocks, 1000);
+
   // ===== Greeting =====
   const h = new Date().getHours();
   const greets = [[6,'早上好 ☀️','☀️'],[9,'上午好','🌤️'],[12,'中午好','🌞'],[14,'下午好','☕'],[18,'傍晚好','🌅'],[22,'晚上好','🌙'],[24,'夜深了','🌙']];
