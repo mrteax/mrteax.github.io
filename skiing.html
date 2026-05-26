@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>滑雪胜地 · Tea X</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛷️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/themes.css">
+</head>
+<body>
+  <nav class="nav"><a href="/" class="nav-home">🍵 Tea X</a><span class="nav-title">⛷️ 滑雪胜地</span><button class="theme-btn" id="themeToggle">🌙</button></nav>
+  <div class="filter-bar">
+    <input class="search-input" id="searchInput" placeholder="🔍 搜索滑雪场名称、地区…" spellcheck="false">
+    <div class="cat-filters" id="catFilters"><button class="cat-tag active" data-cat="all">全部</button></div>
+  </div>
+  <div class="count-bar"><span id="resultCount">0</span> 个滑雪场</div>
+  <main class="grid" id="grid"></main>
+  <div class="modal-overlay hidden" id="modal">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-color" id="modalColor"></div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+  <footer class="footer">安全滑行 · 注意天气</footer>
+  <script src="/js/skiing-data.js"></script>
+  <script>
+  (() => {
+    const html = document.documentElement;
+    const saved = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+    html.dataset.theme = saved;
+    const tb = document.getElementById('themeToggle');
+    tb.textContent = saved==='dark'?'☀️':'🌙';
+    tb.addEventListener('click', () => { const n = html.dataset.theme==='dark'?'light':'dark'; html.dataset.theme=n; localStorage.setItem('theme',n); tb.textContent=n==='dark'?'☀️':'🌙'; });
+
+    const DATA = SKI_RESORTS;
+    const EMOJI = typeof SKI_REGION_EMOJI !== 'undefined' ? SKI_REGION_EMOJI : {};
+    const LABELS = typeof SKI_DIFFICULTY_LABELS !== 'undefined' ? SKI_DIFFICULTY_LABELS : {};
+    const catField = 'region';
+
+    const filters = document.getElementById('catFilters');
+    const cats = [...new Set(DATA.map(t=>t[catField]))];
+    cats.forEach(c => { const b=document.createElement('button'); b.className='cat-tag'; b.dataset.cat=c; b.textContent=`${EMOJI[c]||'📌'} ${LABELS[c]||c}`; filters.appendChild(b); });
+
+    let activeCat='all', query='';
+    const grid=document.getElementById('grid'), countEl=document.getElementById('resultCount');
+
+    function getFiltered() {
+      return DATA.filter(t => {
+        if (activeCat!=='all' && t[catField]!==activeCat) return false;
+        if (query) { const q=query.toLowerCase(); const hay=JSON.stringify(t).toLowerCase(); if(!hay.includes(q)) return false; }
+        return true;
+      });
+    }
+
+    function render() {
+      const res=getFiltered(); countEl.textContent=res.length;
+      if(!res.length){grid.innerHTML='<div class="no-results">没有找到匹配的滑雪场 ⛷️</div>';return}
+      grid.innerHTML=res.map((t,i)=>`<div class="item-card" data-id="${t.id}" style="animation-delay:${Math.min(i*.03,.5)}s"><div class="card-color" style="background:${t.color}"></div><div class="card-body"><div class="card-emoji">${EMOJI[t[catField]]||'⛷️'}</div><div class="card-name">${t.nameZh||t.name}</div><div class="card-zh">${t.name}</div><p class="card-desc">${t.highlights||t.description||''}</p><div class="card-footer"><span class="card-badge">\${SKI_DIFFICULTY_LABELS[t.difficulty]}</span><span class="card-badge">\${t.trails}</span><span class="card-badge">\${t.season}</span></div></div></div>`).join('');
+      grid.querySelectorAll('.item-card').forEach(c=>c.addEventListener('click',()=>openModal(c.dataset.id)));
+    }
+
+    filters.addEventListener('click',e=>{const b=e.target.closest('.cat-tag');if(!b)return;activeCat=b.dataset.cat;filters.querySelectorAll('.cat-tag').forEach(x=>x.classList.toggle('active',x.dataset.cat===activeCat));render()});
+    let st; document.getElementById('searchInput').addEventListener('input',e=>{clearTimeout(st);st=setTimeout(()=>{query=e.target.value.trim();render()},200)});
+
+    const modal=document.getElementById('modal');
+    function openModal(id){const t=DATA.find(x=>String(x.id)===String(id));if(!t)return;document.getElementById('modalColor').style.background=t.color;document.getElementById('modalBody').innerHTML=`<h2 class="modal-name">${t.nameZh||t.name}</h2><p class="modal-zh">${t.name} ${t.country?'· '+t.country:''}</p><div class="modal-meta"><span>\${SKI_REGION_EMOJI[t.region]||'🌍'} \${t.region}</span><span>🎿 \${t.trails}</span><span>⛰️ \${t.vertical}</span><span>❄️ \${t.snowfall}</span><span>📅 \${t.season}</span></div><p class="modal-desc">${t.highlights||t.description||''}</p><div class="modal-section"><h3>难度</h3><p>\${SKI_DIFFICULTY_LABELS[t.difficulty]}</p></div><div class="modal-section"><h3>💡 实用建议</h3><p class="highlight">\${t.tips}</p></div>`;modal.classList.remove('hidden');document.body.style.overflow='hidden'}
+    document.getElementById('modalClose').addEventListener('click',()=>{modal.classList.add('hidden');document.body.style.overflow=''});
+    modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.add('hidden');document.body.style.overflow=''}});
+    render();
+  })();
+  </script>
+</body>
+</html>

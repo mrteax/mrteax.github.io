@@ -3,227 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tea X — 每日一杯鸡尾酒 + 实用工具箱">
+  <meta name="description" content="Tea X — 发现生活的好内容">
   <title>Tea X</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍵</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
 
-  <!-- Particle Canvas -->
   <canvas id="particles"></canvas>
 
-  <!-- Header -->
   <header class="header">
     <div class="header-inner">
-      <div class="brand">
-        <span class="brand-icon">🍵</span>
-        <span class="brand-name">Tea X</span>
+      <div class="brand"><span class="brand-icon">🍵</span><span class="brand-name">Tea X</span></div>
+      <div class="header-links">
+        <a href="/tools.html" class="header-link">🛠️ 工具箱</a>
+        <a href="/games.html" class="header-link">🎮 小游戏</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <svg class="ti sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="ti moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
       </div>
-      <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
-        <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-        </svg>
-        <svg class="theme-icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-        </svg>
-      </button>
     </div>
   </header>
 
-  <!-- Bento Grid -->
-  <main class="bento">
+  <main class="content">
 
-    <!-- Daily Cocktail (large) -->
-    <section class="bento-card bento-cocktail" id="dailyCocktail">
-      <div class="cocktail-color" id="cocktailColor"></div>
-      <div class="cocktail-body">
-        <span class="cocktail-label">🍸 每日一杯</span>
-        <h2 class="cocktail-name" id="cocktailName">—</h2>
-        <p class="cocktail-zh" id="cocktailZh"></p>
-        <p class="cocktail-desc" id="cocktailDesc"></p>
-        <div class="cocktail-recipe" id="cocktailRecipe"></div>
-        <div class="cocktail-tags" id="cocktailTags"></div>
-        <a href="/cocktails.html" class="cocktail-more">查看全部鸡尾酒 →</a>
-      </div>
-    </section>
-
-    <!-- Clock (medium) -->
-    <section class="bento-card bento-clock">
-      <div class="clock-time" id="clockTime">--:--</div>
-      <div class="clock-seconds" id="clockSeconds">--</div>
-      <div class="clock-date" id="clockDate">----</div>
-    </section>
-
-    <!-- World Clock -->
-    <section class="bento-card bento-world-clock">
-      <div class="tool-head"><span class="tool-icon">🌍</span><h3>世界时钟</h3></div>
-      <div class="world-clocks" id="worldClocks">
-        <div class="wc" data-tz="Asia/Tokyo"><span class="wc-city">东京</span><span class="wc-flag">🇯🇵</span><span class="wc-time" data-tz="Asia/Tokyo">--:--</span></div>
-        <div class="wc" data-tz="Asia/Shanghai"><span class="wc-city">上海</span><span class="wc-flag">🇨🇳</span><span class="wc-time" data-tz="Asia/Shanghai">--:--</span></div>
-        <div class="wc" data-tz="Europe/London"><span class="wc-city">伦敦</span><span class="wc-flag">🇬🇧</span><span class="wc-time" data-tz="Europe/London">--:--</span></div>
-        <div class="wc" data-tz="America/New_York"><span class="wc-city">纽约</span><span class="wc-flag">🇺🇸</span><span class="wc-time" data-tz="America/New_York">--:--</span></div>
-        <div class="wc" data-tz="America/Los_Angeles"><span class="wc-city">洛杉矶</span><span class="wc-flag">🇺🇸</span><span class="wc-time" data-tz="America/Los_Angeles">--:--</span></div>
-        <div class="wc" data-tz="Europe/Paris"><span class="wc-city">巴黎</span><span class="wc-flag">🇫🇷</span><span class="wc-time" data-tz="Europe/Paris">--:--</span></div>
-      </div>
-    </section>
-
-    <!-- Quick tools row -->
-    <a href="/cocktails.html" class="bento-card bento-mini bento-cocktails-link">
-      <span class="mini-icon">🍸</span>
-      <span class="mini-label">鸡尾酒百科</span>
-      <span class="mini-count" id="cocktailCount">50+</span>
-    </a>
-
-    <a href="/games.html" class="bento-card bento-mini bento-games-link">
-      <span class="mini-icon">🎮</span>
-      <span class="mini-label">小游戏</span>
-      <span class="mini-arrow">→</span>
-    </a>
-
-    <section class="bento-card bento-mini bento-greeting">
-      <span class="mini-icon" id="greetIcon">☀️</span>
-      <span class="mini-label" id="greetText">你好</span>
-    </section>
-
-    <!-- AI News -->
-    <section class="bento-card bento-ai-news" id="aiNews">
-      <div class="tool-head"><span class="tool-icon">🤖</span><h3>每日 AI 大事件</h3></div>
-      <div class="ai-news-body" id="aiNewsBody">
-        <div class="ai-loading">加载中…</div>
-      </div>
-    </section>
-
-    <!-- Theme Cards -->
-    <a href="/hiking.html" class="bento-card bento-theme" id="themeHiking">
-      <div class="theme-icon">🥾</div>
-      <div class="theme-info">
-        <div class="theme-name">徒步路线</div>
-        <div class="theme-daily" id="dailyTrail">30 条经典路线</div>
-      </div>
-      <span class="theme-arrow">→</span>
-    </a>
-
-    <a href="/fitness.html" class="bento-card bento-theme" id="themeFitness">
-      <div class="theme-icon">💪</div>
-      <div class="theme-info">
-        <div class="theme-name">功能性训练</div>
-        <div class="theme-daily" id="dailyExercise">30 个训练动作</div>
-      </div>
-      <span class="theme-arrow">→</span>
-    </a>
-
-    <a href="/tennis.html" class="bento-card bento-theme" id="themeTennis">
-      <div class="theme-icon">🎾</div>
-      <div class="theme-info">
-        <div class="theme-name">网球技术</div>
-        <div class="theme-daily" id="dailyTennis">30 个技术要点</div>
-      </div>
-      <span class="theme-arrow">→</span>
-    </a>
-
-    <!-- Tools (compact) -->
-    <section class="bento-card bento-tool" id="toolTimer">
-      <div class="tool-head"><span class="tool-icon">⏱️</span><h3>茶歇计时</h3></div>
-      <div class="timer-compact">
-        <div class="timer-presets-row">
-          <button class="tp active" data-s="300">5m</button>
-          <button class="tp" data-s="600">10m</button>
-          <button class="tp" data-s="1500">25m</button>
+    <!-- Row 1: Clock + AI News -->
+    <div class="row row-top">
+      <section class="card card-clock">
+        <div class="clock-time" id="clockTime">--:--</div>
+        <div class="clock-sec" id="clockSec">--</div>
+        <div class="clock-date" id="clockDate">----</div>
+        <div class="world-clocks" id="worldClocks">
+          <span class="wc"><em>🇯🇵</em><b data-tz="Asia/Tokyo">--:--</b></span>
+          <span class="wc"><em>🇨🇳</em><b data-tz="Asia/Shanghai">--:--</b></span>
+          <span class="wc"><em>🇬🇧</em><b data-tz="Europe/London">--:--</b></span>
+          <span class="wc"><em>🇺🇸</em><b data-tz="America/New_York">--:--</b></span>
         </div>
-        <div class="timer-display"><span class="timer-num" id="timerNum">05:00</span></div>
-        <div class="timer-btns-row">
-          <button class="tb tb-play" id="tmStart">▶</button>
-          <button class="tb tb-play hidden" id="tmPause">⏸</button>
-          <button class="tb" id="tmReset">↺</button>
+      </section>
+      <section class="card card-ai">
+        <div class="card-label">🤖 AI 动态</div>
+        <div class="ai-body" id="aiBody"><span class="ai-loading">加载中…</span></div>
+      </section>
+    </div>
+
+    <!-- Row 2: Daily Cocktail + Daily Tea -->
+    <div class="row row-featured">
+      <a class="card card-daily card-cocktail" id="dailyCocktail" href="/cocktails.html">
+        <div class="daily-color" id="cColor"></div>
+        <div class="daily-body">
+          <span class="daily-label">🍸 每日一杯</span>
+          <h2 class="daily-name" id="cName">—</h2>
+          <p class="daily-zh" id="cZh"></p>
+          <p class="daily-desc" id="cDesc"></p>
+          <span class="daily-more">查看全部鸡尾酒 →</span>
         </div>
-      </div>
-    </section>
+      </a>
+      <a class="card card-daily card-tea" id="dailyTea" href="/tea.html">
+        <div class="daily-color" id="tColor"></div>
+        <div class="daily-body">
+          <span class="daily-label">🍵 每日一茶</span>
+          <h2 class="daily-name" id="tName">—</h2>
+          <p class="daily-zh" id="tZh"></p>
+          <p class="daily-desc" id="tDesc"></p>
+          <span class="daily-more">查看全部茶百科 →</span>
+        </div>
+      </a>
+    </div>
 
-    <section class="bento-card bento-tool" id="toolNotes">
-      <div class="tool-head"><span class="tool-icon">📝</span><h3>快捷记事</h3></div>
-      <textarea class="notes-mini" id="notesArea" placeholder="随手记点什么…"></textarea>
-    </section>
+    <!-- Row 3: Lifestyle Themes -->
+    <h3 class="section-label">探索</h3>
+    <div class="row row-themes">
+      <a href="/hiking.html" class="card card-theme">
+        <span class="theme-emoji">🥾</span>
+        <div><div class="theme-name">徒步</div><div class="theme-sub" id="dTrail">30 条经典路线</div></div>
+        <span class="theme-go">→</span>
+      </a>
+      <a href="/fitness.html" class="card card-theme">
+        <span class="theme-emoji">💪</span>
+        <div><div class="theme-name">功能性训练</div><div class="theme-sub" id="dExercise">30 个训练动作</div></div>
+        <span class="theme-go">→</span>
+      </a>
+      <a href="/tennis.html" class="card card-theme">
+        <span class="theme-emoji">🎾</span>
+        <div><div class="theme-name">网球</div><div class="theme-sub" id="dTennis">30 个技术要点</div></div>
+        <span class="theme-go">→</span>
+      </a>
+      <a href="/skiing.html" class="card card-theme">
+        <span class="theme-emoji">⛷️</span>
+        <div><div class="theme-name">滑雪</div><div class="theme-sub" id="dSki">25 个滑雪胜地</div></div>
+        <span class="theme-go">→</span>
+      </a>
+      <a href="/surfing.html" class="card card-theme">
+        <span class="theme-emoji">🏄</span>
+        <div><div class="theme-name">冲浪</div><div class="theme-sub" id="dSurf">26 个冲浪圣地</div></div>
+        <span class="theme-go">→</span>
+      </a>
+      <a href="/cocktails.html" class="card card-theme">
+        <span class="theme-emoji">🍸</span>
+        <div><div class="theme-name">鸡尾酒</div><div class="theme-sub">46 款经典配方</div></div>
+        <span class="theme-go">→</span>
+      </a>
+      <a href="/tea.html" class="card card-theme">
+        <span class="theme-emoji">🍵</span>
+        <div><div class="theme-name">茶</div><div class="theme-sub">30 款名茶百科</div></div>
+        <span class="theme-go">→</span>
+      </a>
+    </div>
 
-    <section class="bento-card bento-tool" id="toolJson">
-      <div class="tool-head"><span class="tool-icon">{ }</span><h3>JSON 格式化</h3></div>
-      <textarea class="tool-input" id="jsonInput" placeholder="粘贴 JSON…"></textarea>
-      <div class="tool-btns"><button class="tb tb-accent" id="jsonFmt">格式化</button><button class="tb" id="jsonMin">压缩</button></div>
-    </section>
-
-    <section class="bento-card bento-tool" id="toolBase64">
-      <div class="tool-head"><span class="tool-icon">🔤</span><h3>Base64</h3></div>
-      <textarea class="tool-input" id="b64In" placeholder="输入文本…"></textarea>
-      <div class="tool-btns"><button class="tb tb-accent" id="b64Enc">编码</button><button class="tb tb-accent" id="b64Dec">解码</button></div>
-      <textarea class="tool-input tool-output" id="b64Out" placeholder="结果…" readonly></textarea>
-    </section>
-
-    <section class="bento-card bento-tool" id="toolColor">
-      <div class="tool-head"><span class="tool-icon">🎨</span><h3>颜色转换</h3></div>
-      <div class="color-row">
-        <input type="color" class="color-pick" id="colorPick" value="#b07d4f">
-        <div class="color-swatch" id="colorSw"></div>
-      </div>
-      <input class="tool-input-sm mono" id="cHex" value="#b07d4f" spellcheck="false" placeholder="HEX">
-      <input class="tool-input-sm mono" id="cRgb" value="176, 125, 79" spellcheck="false" placeholder="RGB">
-    </section>
-
-    <section class="bento-card bento-tool" id="toolPassword">
-      <div class="tool-head"><span class="tool-icon">🔑</span><h3>密码生成</h3></div>
-      <div class="pw-row"><input class="pw-out mono" id="pwOut" readonly><button class="tb" id="pwCopy">📋</button></div>
-      <div class="pw-len-row"><span id="pwLenV">16</span>位 <input type="range" id="pwLen" min="8" max="64" value="16"></div>
-      <button class="tb tb-accent pw-gen" id="pwGen">生成</button>
-    </section>
-
-    <section class="bento-card bento-tool" id="toolTimestamp">
-      <div class="tool-head"><span class="tool-icon">📅</span><h3>时间戳</h3></div>
-      <div class="ts-now"><span class="mono" id="tsNow">—</span><button class="tb tb-sm" id="tsCp">复制</button></div>
-      <input class="tool-input-sm mono" id="tsIn" placeholder="输入时间戳…">
-      <div class="ts-result" id="tsOut">—</div>
-    </section>
-
-    <section class="bento-card bento-tool" id="toolHash">
-      <div class="tool-head"><span class="tool-icon">#️⃣</span><h3>哈希</h3></div>
-      <textarea class="tool-input" id="hashIn" placeholder="输入文本…"></textarea>
-      <div class="hash-results"><div class="hr"><span class="hl">SHA-256</span><span class="mono hv" id="hSha256">—</span></div></div>
-    </section>
-
-    <section class="bento-card bento-tool" id="toolRegex">
-      <div class="tool-head"><span class="tool-icon">.*</span><h3>正则测试</h3></div>
-      <div class="regex-row"><span class="rx-s">/</span><input class="tool-input-sm mono rx-p" id="rxPat" placeholder="正则" spellcheck="false"><span class="rx-s">/</span><input class="tool-input-sm mono rx-f" id="rxFlg" value="g" spellcheck="false"></div>
-      <textarea class="tool-input" id="rxText" placeholder="测试文本…" spellcheck="false"></textarea>
-      <div class="rx-result" id="rxResult">0 个匹配</div>
-    </section>
-
-    <section class="bento-card bento-tool" id="toolUrl">
-      <div class="tool-head"><span class="tool-icon">🔗</span><h3>URL 编解码</h3></div>
-      <textarea class="tool-input" id="urlIn" placeholder="输入文本或 URL…"></textarea>
-      <div class="tool-btns"><button class="tb tb-accent" id="urlEnc">编码</button><button class="tb tb-accent" id="urlDec">解码</button></div>
-      <textarea class="tool-input tool-output" id="urlOut" placeholder="结果…" readonly></textarea>
-    </section>
-
-    <section class="bento-card bento-tool" id="toolText">
-      <div class="tool-head"><span class="tool-icon">📊</span><h3>文本工具</h3></div>
-      <textarea class="tool-input" id="textIn" placeholder="输入文本…"></textarea>
-      <div class="text-stat" id="textStat">0字 · 0词 · 0行</div>
-      <div class="tool-btns"><button class="tb" data-act="upper">大写</button><button class="tb" data-act="lower">小写</button><button class="tb" data-act="dedupe">去重</button><button class="tb" data-act="sort">排序</button></div>
-    </section>
+    <!-- Row 4: Quick Links -->
+    <div class="row row-links">
+      <a href="/tools.html" class="card card-link">🛠️ 工具箱 <small>JSON · Base64 · 颜色 · 密码 · 时间戳 · 哈希 · 正则 …</small></a>
+      <a href="/games.html" class="card card-link">🎮 小游戏 <small>骰子 · 数字炸弹 · 国王 · 真心话大冒险</small></a>
+    </div>
 
   </main>
 
-  <footer class="footer">
-    <span>🍵 Tea X</span>
-    <span class="footer-sep">·</span>
-    <span>数据仅存储在你的浏览器中</span>
-  </footer>
+  <footer class="footer">🍵 Tea X · 发现生活的好内容</footer>
 
   <script src="/js/cocktails-data.js"></script>
+  <script src="/js/tea-data.js"></script>
   <script src="/js/hiking-data.js"></script>
   <script src="/js/fitness-data.js"></script>
   <script src="/js/tennis-data.js"></script>
-  <script src="/js/main.js"></script>
+  <script src="/js/skiing-data.js"></script>
+  <script src="/js/surfing-data.js"></script>
+  <script src="/js/home.js"></script>
 </body>
 </html>

@@ -17,6 +17,16 @@
     <div class="cat-filters" id="catFilters"><button class="cat-tag active" data-cat="all">全部</button></div>
   </div>
   <div class="count-bar"><span id="resultCount">0</span> 条路线</div>
+    <div class="map-section" id="mapSection">
+    <div class="map-toggle" onclick="this.parentElement.classList.toggle('open')">🗺️ 世界地图索引 <span class="map-arrow">▶</span></div>
+    <div class="map-body">
+      <svg class="world-map" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+        <rect width="800" height="400" fill="var(--bg-input)" rx="8"/>
+        <text x="400" y="395" text-anchor="middle" fill="var(--t3,#999)" font-size="10" font-family="var(--font)">点击圆点查看路线</text>
+      </svg>
+      <div class="map-dots" id="mapDots"></div>
+    </div>
+  </div>
   <main class="grid" id="grid"></main>
   <div class="modal-overlay hidden" id="modal">
     <div class="modal-card">
@@ -65,6 +75,45 @@
     function openModal(id){const t=TRAILS.find(x=>String(x.id)===String(id));if(!t)return;document.getElementById('modalColor').style.background=t.color;document.getElementById('modalBody').innerHTML=`<h2 class="modal-name">${t.nameZh}</h2><p class="modal-zh">${t.name} · ${t.country}</p><div class="modal-meta"><span>${REGION_EMOJI[t.region]} ${t.region}</span><span>📏 ${t.distance}</span><span>⏱️ ${t.duration}</span><span>⛰️ ${t.elevation}</span><span>📅 ${t.season}</span></div><p class="modal-desc">${t.highlights}</p><div class="modal-section"><h3>难度</h3><p>${DIFFICULTY_LABELS[t.difficulty]}</p></div><div class="modal-section"><h3>💡 实用建议</h3><p class="highlight">${t.tips}</p></div>`;modal.classList.remove('hidden');document.body.style.overflow='hidden'}
     document.getElementById('modalClose').addEventListener('click',()=>{modal.classList.add('hidden');document.body.style.overflow=''});
     modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.add('hidden');document.body.style.overflow=''}});
+
+    // Map dots
+    const TRAIL_COORDS = {
+      1:[730,175],2:[700,160],3:[710,155],4:[715,158],5:[705,155],
+      6:[530,180],7:[525,178],
+      8:[155,160],9:[140,155],10:[210,155],11:[135,155],12:[138,158],
+      13:[410,150],14:[385,155],15:[415,148],16:[410,158],17:[370,100],
+      18:[745,330],19:[755,325],
+      20:[215,290],21:[230,350],
+      22:[600,180],23:[640,170],24:[625,175],
+      25:[640,225],
+      26:[475,255],
+      27:[720,320],28:[410,145],29:[395,153],30:[415,152]
+    };
+
+    const mapSvg = document.querySelector('.world-map');
+    if (mapSvg) {
+      Object.entries(TRAIL_COORDS).forEach(([id, [x, y]]) => {
+        const trail = TRAILS.find(t => t.id === Number(id));
+        if (!trail) return;
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', x);
+        circle.setAttribute('cy', y);
+        circle.setAttribute('r', '6');
+        circle.setAttribute('fill', trail.color);
+        circle.setAttribute('stroke', 'var(--bg-card,#fff)');
+        circle.setAttribute('stroke-width', '2');
+        circle.style.cursor = 'pointer';
+        circle.style.transition = 'r 0.2s';
+        circle.addEventListener('mouseenter', () => circle.setAttribute('r', '9'));
+        circle.addEventListener('mouseleave', () => circle.setAttribute('r', '6'));
+        circle.addEventListener('click', () => openModal(id));
+
+        const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+        title.textContent = trail.nameZh;
+        circle.appendChild(title);
+        mapSvg.appendChild(circle);
+      });
+    }
     render();
   })();
   </script>
