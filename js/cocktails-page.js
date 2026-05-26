@@ -58,7 +58,7 @@
 
     grid.innerHTML = results.map((c, i) => `
       <div class="cocktail-card" data-id="${c.id}" style="animation-delay:${Math.min(i * 0.03, 0.5)}s">
-        <div class="card-color" style="background:${c.color}"></div>
+        ${c.img ? `<img class="card-img" src="${c.img}" alt="${c.name}" loading="lazy">` : `<div class="card-color" style="background:${c.color}"></div>`}
         <div class="card-body">
           <div class="card-emoji">${BASE_EMOJI[c.base] || '🍹'}</div>
           <div class="card-name">${c.name}</div>
@@ -113,7 +113,13 @@
   function openModal(id) {
     const c = COCKTAILS.find(x => x.id === id);
     if (!c) return;
-    document.getElementById('modalColor').style.background = c.color;
+    if (c.img) {
+      document.getElementById('modalColor').style.background = `url(${c.img}) center/cover`;
+      document.getElementById('modalColor').style.height = '200px';
+    } else {
+      document.getElementById('modalColor').style.background = c.color;
+      document.getElementById('modalColor').style.height = '80px';
+    }
     document.getElementById('modalName').textContent = c.name;
     document.getElementById('modalZh').textContent = c.zh;
     document.getElementById('modalMeta').innerHTML = `

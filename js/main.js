@@ -73,7 +73,12 @@
   if (typeof COCKTAILS !== 'undefined') {
     const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(),0,0)) / 86400000);
     const c = COCKTAILS[dayOfYear % COCKTAILS.length];
-    $('#cocktailColor').style.background = c.color;
+    if (c.img) {
+      $('#cocktailColor').style.background = `url(${c.img}) center/cover`;
+      $('#cocktailColor').style.height = '140px';
+    } else {
+      $('#cocktailColor').style.background = c.color;
+    }
     $('#cocktailName').textContent = c.name;
     $('#cocktailZh').textContent = c.zh;
     $('#cocktailDesc').textContent = c.desc;
