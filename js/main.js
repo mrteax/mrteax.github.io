@@ -174,4 +174,48 @@
   $('#textIn').addEventListener('input',()=>{const t=$('#textIn').value;$('#textStat').textContent=`${t.length}字 · ${t.trim()?t.trim().split(/\s+/).length:0}词 · ${t?t.split('\n').length:0}行`});
   $$('#toolText .tb').forEach(b=>b.addEventListener('click',()=>{let t=$('#textIn').value;switch(b.dataset.act){case'upper':t=t.toUpperCase();break;case'lower':t=t.toLowerCase();break;case'dedupe':t=[...new Set(t.split('\n'))].join('\n');break;case'sort':t=t.split('\n').sort((a,b)=>a.localeCompare(b,'zh')).join('\n');break}$('#textIn').value=t;$('#textIn').dispatchEvent(new Event('input'))}));
 
+
+  // ===== AI News (HackerNews Algolia API) =====
+  async function fetchAINews() {
+    const body = document.getElementById('aiNewsBody');
+    try {
+      const res = await fetch('https://hn.algolia.com/api/v1/search_by_date?query=AI+LLM+GPT+OpenAI+Claude+Gemini&tags=story&hitsPerPage=20');
+      const data = await res.json();
+      const stories = (data.hits || []).filter(h => h.title && (h.points || 0) > 2).sort((a, b) => (b.points||0) - (a.points||0));
+      if (stories.length > 0) {
+        const top = stories[0];
+        const url = top.url || `https://news.ycombinator.com/item?id=${top.objectID}`;
+        const hrs = Math.floor((Date.now() / 1000 - top.created_at_i) / 3600);
+        const ago = hrs < 24 ? `${hrs}h ago` : `${Math.floor(hrs/24)}d ago`;
+        body.innerHTML = `<div class="ai-headline"><a href="${url}" target="_blank" rel="noopener">${top.title}</a></div><div class="ai-meta"><span>🔥 ${top.points} points</span><span>💬 ${top.num_comments} comments</span><span>${ago}</span><a class="ai-source" href="https://news.ycombinator.com/item?id=${top.objectID}" target="_blank">HN →</a></div>`;
+      } else {
+        body.innerHTML = '<div class="ai-loading">暂无最新 AI 动态</div>';
+      }
+    } catch (e) {
+      body.innerHTML = '<div class="ai-loading">加载失败，请稍后刷新</div>';
+    }
+  }
+  fetchAINews();
+
+  // ===== Daily Theme Tips =====
+  const dayIdx = Math.floor((Date.now() - new Date(new Date().getFullYear(),0,0)) / 86400000);
+
+  if (typeof TRAILS !== 'undefined' && TRAILS.length) {
+    const t = TRAILS[dayIdx % TRAILS.length];
+    const el = document.getElementById('dailyTrail');
+    if (el) el.textContent = `今日: ${t.nameZh}`;
+  }
+
+  if (typeof EXERCISES !== 'undefined' && EXERCISES.length) {
+    const e = EXERCISES[dayIdx % EXERCISES.length];
+    const el = document.getElementById('dailyExercise');
+    if (el) el.textContent = `今日: ${e.nameZh}`;
+  }
+
+  if (typeof TENNIS_TIPS !== 'undefined' && TENNIS_TIPS.length) {
+    const t = TENNIS_TIPS[dayIdx % TENNIS_TIPS.length];
+    const el = document.getElementById('dailyTennis');
+    if (el) el.textContent = `今日: ${t.nameZh}`;
+  }
+
 })();

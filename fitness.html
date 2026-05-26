@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>功能性训练 · Tea X</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/themes.css">
+</head>
+<body>
+  <nav class="nav"><a href="/" class="nav-home">🍵 Tea X</a><span class="nav-title">💪 功能性训练</span><button class="theme-btn" id="themeToggle">🌙</button></nav>
+  <div class="filter-bar">
+    <input class="search-input" id="searchInput" placeholder="🔍 搜索动作名称、肌群…" spellcheck="false">
+    <div class="cat-filters" id="catFilters"><button class="cat-tag active" data-cat="all">全部</button></div>
+  </div>
+  <div class="count-bar"><span id="resultCount">0</span> 个动作</div>
+  <main class="grid" id="grid"></main>
+  <div class="modal-overlay hidden" id="modal">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-color" id="modalColor"></div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+  <footer class="footer">训练前充分热身 · 注意动作质量</footer>
+  <script src="/js/fitness-data.js"></script>
+  <script>
+  (() => {
+    const html = document.documentElement;
+    const saved = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+    html.dataset.theme = saved;
+    const tb = document.getElementById('themeToggle');
+    tb.textContent = saved==='dark'?'☀️':'🌙';
+    tb.addEventListener('click', () => { const n = html.dataset.theme==='dark'?'light':'dark'; html.dataset.theme=n; localStorage.setItem('theme',n); tb.textContent=n==='dark'?'☀️':'🌙'; });
+
+    const filters = document.getElementById('catFilters');
+    const cats = [...new Set(EXERCISES.map(e=>e.category))];
+    cats.forEach(c => { const b=document.createElement('button'); b.className='cat-tag'; b.dataset.cat=c; b.textContent=`${CATEGORY_EMOJI[c]||'💪'} ${CATEGORY_LABELS[c]||c}`; filters.appendChild(b); });
+
+    let activeCat='all', query='';
+    const grid=document.getElementById('grid'), countEl=document.getElementById('resultCount');
+
+    function getFiltered() {
+      return EXERCISES.filter(e => {
+        if (activeCat!=='all' && e.category!==activeCat) return false;
+        if (query) { const q=query.toLowerCase(); if (!`${e.name} ${e.nameZh} ${e.category} ${e.muscles} ${e.equipment} ${e.description}`.toLowerCase().includes(q)) return false; }
+        return true;
+      });
+    }
+
+    function render() {
+      const res=getFiltered(); countEl.textContent=res.length;
+      if(!res.length){grid.innerHTML='<div class="no-results">没有找到匹配的动作 💪</div>';return}
+      grid.innerHTML=res.map((e,i)=>`<div class="item-card" data-id="${e.id}" style="animation-delay:${Math.min(i*.03,.5)}s"><div class="card-color" style="background:${e.color}"></div><div class="card-body"><div class="card-emoji">${CATEGORY_EMOJI[e.category]||'💪'}</div><div class="card-name">${e.nameZh}</div><div class="card-zh">${e.name}</div><p class="card-desc">${e.description}</p><div class="card-footer"><span class="card-badge">${CATEGORY_LABELS[e.category]}</span><span class="card-badge">${e.equipment}</span><span class="card-badge">${e.sets} × ${e.reps}</span></div></div></div>`).join('');
+      grid.querySelectorAll('.item-card').forEach(c=>c.addEventListener('click',()=>openModal(c.dataset.id)));
+    }
+
+    filters.addEventListener('click',e=>{const b=e.target.closest('.cat-tag');if(!b)return;activeCat=b.dataset.cat;filters.querySelectorAll('.cat-tag').forEach(x=>x.classList.toggle('active',x.dataset.cat===activeCat));render()});
+    let st; document.getElementById('searchInput').addEventListener('input',e=>{clearTimeout(st);st=setTimeout(()=>{query=e.target.value.trim();render()},200)});
+
+    const modal=document.getElementById('modal');
+    function openModal(id){const e=EXERCISES.find(x=>String(x.id)===String(id));if(!e)return;document.getElementById('modalColor').style.background=e.color;document.getElementById('modalBody').innerHTML=`<h2 class="modal-name">${e.nameZh}</h2><p class="modal-zh">${e.name}</p><div class="modal-meta"><span>${CATEGORY_EMOJI[e.category]} ${CATEGORY_LABELS[e.category]}</span><span>🏋️ ${e.equipment}</span><span>🎯 ${e.muscles}</span><span>📊 ${e.difficulty==='beginner'?'入门':e.difficulty==='intermediate'?'中级':'高级'}</span></div><p class="modal-desc">${e.description}</p><div class="modal-section"><h3>📋 推荐方案</h3><p>${e.sets} × ${e.reps}</p></div><div class="modal-section"><h3>💡 核心要点</h3><p class="highlight">${e.tips}</p></div>`;modal.classList.remove('hidden');document.body.style.overflow='hidden'}
+    document.getElementById('modalClose').addEventListener('click',()=>{modal.classList.add('hidden');document.body.style.overflow=''});
+    modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.add('hidden');document.body.style.overflow=''}});
+    render();
+  })();
+  </script>
+</body>
+</html>

@@ -118,6 +118,27 @@ a.bento-mini:hover{text-decoration:none}
 .wc-flag{font-size:.9rem}
 .wc-time{font-family:var(--mono);font-size:.88rem;font-weight:500;margin-left:auto}
 
+
+/* ===== AI News Card ===== */
+.bento-ai-news{grid-column:span 3;padding:14px}
+.ai-news-body{min-height:40px}
+.ai-loading{font-size:.82rem;color:var(--text-3)}
+.ai-headline{font-size:.95rem;font-weight:600;line-height:1.5;margin-bottom:6px}
+.ai-headline a{color:var(--text);transition:color var(--t)}
+.ai-headline a:hover{color:var(--accent)}
+.ai-meta{font-size:.75rem;color:var(--text-3);display:flex;gap:12px;flex-wrap:wrap}
+.ai-source{color:var(--accent)}
+
+/* ===== Theme Cards ===== */
+.bento-theme{grid-column:span 2;padding:16px;display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer}
+.bento-theme:hover{text-decoration:none}
+.theme-icon{font-size:1.8rem;flex-shrink:0}
+.theme-info{flex:1;min-width:0}
+.theme-name{font-size:.9rem;font-weight:700;margin-bottom:2px}
+.theme-daily{font-size:.78rem;color:var(--text-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.theme-arrow{color:var(--text-3);font-size:1.1rem;transition:transform var(--t),color var(--t);flex-shrink:0}
+.bento-theme:hover .theme-arrow{transform:translateX(3px);color:var(--accent)}
+
 /* ===== Tool Cards ===== */
 .bento-tool{padding:14px;grid-column:span 2}
 .tool-head{display:flex;align-items:center;gap:8px;margin-bottom:10px}
@@ -195,6 +216,8 @@ a.bento-mini:hover{text-decoration:none}
   .bento-cocktail{grid-column:span 2}
   .bento-clock{grid-column:span 2}
   .bento-world-clock{grid-column:span 2}
+  .bento-ai-news{grid-column:span 2}
+  .bento-theme{grid-column:span 2}
   .bento-tool{grid-column:span 2}
 }
 @media(max-width:768px){
@@ -202,6 +225,8 @@ a.bento-mini:hover{text-decoration:none}
   .bento-cocktail{grid-column:span 2}
   .bento-clock{grid-column:span 2}
   .bento-world-clock{grid-column:span 2}
+  .bento-ai-news{grid-column:span 2}
+  .bento-theme{grid-column:span 1}
   .world-clocks{grid-template-columns:repeat(2,1fr)}
   .clock-time{font-size:2.6rem}
   .bento-tool{grid-column:span 2}
@@ -217,3 +242,4 @@ a.bento-mini:hover{text-decoration:none}
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+/* built 1779795593 */
