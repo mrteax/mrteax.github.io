@@ -22,3 +22,4 @@ python3 -m http.server 8080
 - All data stays in the user's browser (localStorage for notes, no external APIs)
 - Google Fonts loaded via CDN (Noto Sans SC, JetBrains Mono)
 - `crypto.subtle` used for SHA hashing (requires HTTPS or localhost)
+
