@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tea X 工具箱 — 一组实用的在线小工具">
-  <title>Tea X · 工具箱</title>
+  <meta name="description" content="Tea X — 每日一杯鸡尾酒 + 实用工具箱">
+  <title>Tea X</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍵</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+
+  <!-- Particle Canvas -->
+  <canvas id="particles"></canvas>
 
   <!-- Header -->
   <header class="header">
@@ -19,8 +22,6 @@
       <div class="brand">
         <span class="brand-icon">🍵</span>
         <span class="brand-name">Tea X</span>
-        <span class="brand-sep">·</span>
-        <span class="brand-sub">工具箱</span>
       </div>
       <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
         <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -33,266 +34,144 @@
     </div>
   </header>
 
-  <!-- Tools Grid -->
-  <main class="main">
+  <!-- Bento Grid -->
+  <main class="bento">
 
-    <!-- Clock -->
-    <section class="tool-card tool-clock" id="toolClock">
-      <div class="tool-head">
-        <span class="tool-icon">🕐</span>
-        <h2 class="tool-title">时钟</h2>
-      </div>
-      <div class="clock-display">
-        <span class="clock-time" id="clockTime">--:--:--</span>
-        <span class="clock-date" id="clockDate">----年--月--日</span>
+    <!-- Daily Cocktail (large) -->
+    <section class="bento-card bento-cocktail" id="dailyCocktail">
+      <div class="cocktail-color" id="cocktailColor"></div>
+      <div class="cocktail-body">
+        <span class="cocktail-label">🍸 每日一杯</span>
+        <h2 class="cocktail-name" id="cocktailName">—</h2>
+        <p class="cocktail-zh" id="cocktailZh"></p>
+        <p class="cocktail-desc" id="cocktailDesc"></p>
+        <div class="cocktail-recipe" id="cocktailRecipe"></div>
+        <div class="cocktail-tags" id="cocktailTags"></div>
+        <a href="/cocktails.html" class="cocktail-more">查看全部鸡尾酒 →</a>
       </div>
     </section>
 
-    <!-- Tea Timer -->
-    <section class="tool-card tool-timer" id="toolTimer">
-      <div class="tool-head">
-        <span class="tool-icon">⏱️</span>
-        <h2 class="tool-title">茶歇计时</h2>
-      </div>
-      <div class="timer-presets">
-        <button class="preset active" data-seconds="300"><span>🍃</span>5分</button>
-        <button class="preset" data-seconds="600"><span>🫖</span>10分</button>
-        <button class="preset" data-seconds="1500"><span>☕</span>25分</button>
-        <button class="preset" data-seconds="2700"><span>🧘</span>45分</button>
-      </div>
-      <div class="timer-ring-wrap">
-        <svg class="timer-ring" viewBox="0 0 200 200">
-          <circle class="ring-bg" cx="100" cy="100" r="90" fill="none" stroke-width="4"/>
-          <circle class="ring-progress" cx="100" cy="100" r="90" fill="none" stroke-width="4"
-            stroke-linecap="round" transform="rotate(-90 100 100)"/>
-        </svg>
-        <div class="timer-face">
-          <span class="timer-time" id="timerTime">05:00</span>
-        </div>
-      </div>
-      <div class="timer-btns">
-        <button class="btn btn-accent" id="timerStart">▶ 开始</button>
-        <button class="btn btn-accent hidden" id="timerPause">⏸ 暂停</button>
-        <button class="btn btn-ghost" id="timerReset">↺ 重置</button>
-      </div>
+    <!-- Clock (medium) -->
+    <section class="bento-card bento-clock">
+      <div class="clock-time" id="clockTime">--:--</div>
+      <div class="clock-seconds" id="clockSeconds">--</div>
+      <div class="clock-date" id="clockDate">----</div>
     </section>
 
-    <!-- Quick Notes -->
-    <section class="tool-card tool-notes" id="toolNotes">
-      <div class="tool-head">
-        <span class="tool-icon">📝</span>
-        <h2 class="tool-title">快捷记事</h2>
-        <span class="tool-badge" id="noteStatus">已保存</span>
-      </div>
-      <textarea class="notes-area" id="notesArea" placeholder="在这里记录想法...&#10;&#10;内容自动保存到浏览器本地存储"></textarea>
-      <div class="notes-footer">
-        <span class="notes-count" id="notesCount">0 字</span>
-        <button class="btn btn-sm btn-ghost" id="notesClear">清空</button>
-      </div>
-    </section>
-
-    <!-- JSON Formatter -->
-    <section class="tool-card tool-json" id="toolJson">
-      <div class="tool-head">
-        <span class="tool-icon">{ }</span>
-        <h2 class="tool-title">JSON 格式化</h2>
-      </div>
-      <textarea class="json-input" id="jsonInput" placeholder="粘贴 JSON 到这里..."></textarea>
-      <div class="json-actions">
-        <button class="btn btn-accent" id="jsonFormat">格式化</button>
-        <button class="btn btn-ghost" id="jsonMinify">压缩</button>
-        <button class="btn btn-ghost" id="jsonCopy">复制</button>
-        <span class="json-msg" id="jsonMsg"></span>
-      </div>
-      <pre class="json-output" id="jsonOutput"></pre>
-    </section>
-
-    <!-- Base64 -->
-    <section class="tool-card tool-base64" id="toolBase64">
-      <div class="tool-head">
-        <span class="tool-icon">🔤</span>
-        <h2 class="tool-title">Base64 编解码</h2>
-      </div>
-      <textarea class="b64-input" id="b64Input" placeholder="输入文本..."></textarea>
-      <div class="b64-actions">
-        <button class="btn btn-accent" id="b64Encode">编码 →</button>
-        <button class="btn btn-accent" id="b64Decode">← 解码</button>
-        <button class="btn btn-ghost" id="b64Copy">复制结果</button>
-      </div>
-      <textarea class="b64-output" id="b64Output" placeholder="结果..." readonly></textarea>
-    </section>
-
-    <!-- Timestamp Converter -->
-    <section class="tool-card tool-timestamp" id="toolTimestamp">
-      <div class="tool-head">
-        <span class="tool-icon">📅</span>
-        <h2 class="tool-title">时间戳转换</h2>
-      </div>
-      <div class="ts-row">
-        <label class="ts-label">当前时间戳</label>
-        <div class="ts-live">
-          <span class="mono" id="tsNow">---</span>
-          <button class="btn btn-sm btn-ghost" id="tsCopyNow">复制</button>
-        </div>
-      </div>
-      <div class="ts-row">
-        <label class="ts-label">时间戳 → 日期</label>
-        <div class="ts-pair">
-          <input class="input mono" id="tsToDateInput" placeholder="输入时间戳 (秒/毫秒)">
-          <span class="ts-result" id="tsToDateResult">—</span>
-        </div>
-      </div>
-      <div class="ts-row">
-        <label class="ts-label">日期 → 时间戳</label>
-        <div class="ts-pair">
-          <input class="input" id="tsFromDateInput" type="datetime-local">
-          <span class="ts-result mono" id="tsFromDateResult">—</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Color Converter -->
-    <section class="tool-card tool-color" id="toolColor">
-      <div class="tool-head">
-        <span class="tool-icon">🎨</span>
-        <h2 class="tool-title">颜色转换</h2>
-      </div>
-      <div class="color-preview-row">
-        <input type="color" class="color-picker" id="colorPicker" value="#b07d4f">
-        <div class="color-swatch" id="colorSwatch"></div>
-      </div>
-      <div class="color-fields">
-        <div class="color-field">
-          <label>HEX</label>
-          <input class="input mono" id="colorHex" value="#b07d4f" spellcheck="false">
-        </div>
-        <div class="color-field">
-          <label>RGB</label>
-          <input class="input mono" id="colorRgb" value="176, 125, 79" spellcheck="false">
-        </div>
-        <div class="color-field">
-          <label>HSL</label>
-          <input class="input mono" id="colorHsl" value="28, 40%, 50%" spellcheck="false">
-        </div>
-      </div>
-    </section>
-
-    <!-- Password Generator -->
-    <section class="tool-card tool-password" id="toolPassword">
-      <div class="tool-head">
-        <span class="tool-icon">🔑</span>
-        <h2 class="tool-title">密码生成</h2>
-      </div>
-      <div class="pw-display">
-        <input class="pw-output mono" id="pwOutput" value="" readonly>
-        <button class="btn btn-sm btn-ghost" id="pwCopy" title="复制">📋</button>
-      </div>
-      <div class="pw-options">
-        <div class="pw-opt">
-          <label>长度: <span id="pwLenVal">16</span></label>
-          <input type="range" id="pwLen" min="6" max="64" value="16">
-        </div>
-        <label class="pw-check"><input type="checkbox" id="pwUpper" checked> 大写 A-Z</label>
-        <label class="pw-check"><input type="checkbox" id="pwLower" checked> 小写 a-z</label>
-        <label class="pw-check"><input type="checkbox" id="pwDigit" checked> 数字 0-9</label>
-        <label class="pw-check"><input type="checkbox" id="pwSymbol" checked> 符号 !@#…</label>
-      </div>
-      <button class="btn btn-accent pw-gen-btn" id="pwGenerate">生成密码</button>
-      <div class="pw-strength" id="pwStrength"></div>
-    </section>
-
-    <!-- Text Tools -->
-    <section class="tool-card tool-text" id="toolText">
-      <div class="tool-head">
-        <span class="tool-icon">📊</span>
-        <h2 class="tool-title">文本工具</h2>
-      </div>
-      <textarea class="text-input" id="textInput" placeholder="粘贴或输入文本..."></textarea>
-      <div class="text-stats" id="textStats">
-        <span>字符: <strong>0</strong></span>
-        <span>字数: <strong>0</strong></span>
-        <span>行数: <strong>0</strong></span>
-        <span>字节: <strong>0</strong></span>
-      </div>
-      <div class="text-actions">
-        <button class="btn btn-sm btn-ghost" data-action="uppercase">大写</button>
-        <button class="btn btn-sm btn-ghost" data-action="lowercase">小写</button>
-        <button class="btn btn-sm btn-ghost" data-action="trim">去空白</button>
-        <button class="btn btn-sm btn-ghost" data-action="dedupe">去重行</button>
-        <button class="btn btn-sm btn-ghost" data-action="sort">排序行</button>
-        <button class="btn btn-sm btn-ghost" data-action="reverse">反转</button>
-      </div>
-    </section>
-
-    <!-- URL Encode/Decode -->
-    <section class="tool-card tool-url" id="toolUrl">
-      <div class="tool-head">
-        <span class="tool-icon">🔗</span>
-        <h2 class="tool-title">URL 编解码</h2>
-      </div>
-      <textarea class="url-input" id="urlInput" placeholder="输入文本或 URL..."></textarea>
-      <div class="url-actions">
-        <button class="btn btn-accent" id="urlEncode">编码 →</button>
-        <button class="btn btn-accent" id="urlDecode">← 解码</button>
-        <button class="btn btn-ghost" id="urlCopy">复制结果</button>
-      </div>
-      <textarea class="url-output" id="urlOutput" placeholder="结果..." readonly></textarea>
-    </section>
-
-    <!-- Hash Generator -->
-    <section class="tool-card tool-hash" id="toolHash">
-      <div class="tool-head">
-        <span class="tool-icon">#️⃣</span>
-        <h2 class="tool-title">哈希计算</h2>
-      </div>
-      <textarea class="hash-input" id="hashInput" placeholder="输入要计算哈希的文本..."></textarea>
-      <div class="hash-results" id="hashResults">
-        <div class="hash-row"><label>MD5</label><span class="mono" id="hashMd5">—</span></div>
-        <div class="hash-row"><label>SHA-1</label><span class="mono" id="hashSha1">—</span></div>
-        <div class="hash-row"><label>SHA-256</label><span class="mono" id="hashSha256">—</span></div>
-      </div>
-    </section>
-
-    <!-- Regex Tester -->
-    <section class="tool-card tool-regex" id="toolRegex">
-      <div class="tool-head">
-        <span class="tool-icon">.*</span>
-        <h2 class="tool-title">正则测试</h2>
-      </div>
-      <div class="regex-inputs">
-        <div class="regex-pattern-row">
-          <span class="regex-slash">/</span>
-          <input class="input mono regex-pattern" id="regexPattern" placeholder="正则表达式" spellcheck="false">
-          <span class="regex-slash">/</span>
-          <input class="input mono regex-flags" id="regexFlags" value="g" placeholder="flags" spellcheck="false">
-        </div>
-        <textarea class="regex-text" id="regexText" placeholder="输入测试文本..." spellcheck="false"></textarea>
-      </div>
-      <div class="regex-result" id="regexResult">
-        <span class="regex-match-count">0 个匹配</span>
-      </div>
-      <div class="regex-matches" id="regexMatches"></div>
-    </section>
-
-    <!-- Mini Games Link -->
-    <a href="/games.html" class="tool-card tool-link tool-games" id="toolGames">
-      <div class="tool-head">
-        <span class="tool-icon">🎮</span>
-        <h2 class="tool-title">小游戏</h2>
-        <span class="tool-arrow">→</span>
-      </div>
-      <p class="tool-link-desc">骰子 · 数字炸弹 · 国王游戏 · 真心话大冒险</p>
+    <!-- Quick tools row -->
+    <a href="/cocktails.html" class="bento-card bento-mini bento-cocktails-link">
+      <span class="mini-icon">🍸</span>
+      <span class="mini-label">鸡尾酒百科</span>
+      <span class="mini-count" id="cocktailCount">50+</span>
     </a>
+
+    <a href="/games.html" class="bento-card bento-mini bento-games-link">
+      <span class="mini-icon">🎮</span>
+      <span class="mini-label">小游戏</span>
+      <span class="mini-arrow">→</span>
+    </a>
+
+    <section class="bento-card bento-mini bento-greeting">
+      <span class="mini-icon" id="greetIcon">☀️</span>
+      <span class="mini-label" id="greetText">你好</span>
+    </section>
+
+    <!-- Tools (compact) -->
+    <section class="bento-card bento-tool" id="toolTimer">
+      <div class="tool-head"><span class="tool-icon">⏱️</span><h3>茶歇计时</h3></div>
+      <div class="timer-compact">
+        <div class="timer-presets-row">
+          <button class="tp active" data-s="300">5m</button>
+          <button class="tp" data-s="600">10m</button>
+          <button class="tp" data-s="1500">25m</button>
+        </div>
+        <div class="timer-display"><span class="timer-num" id="timerNum">05:00</span></div>
+        <div class="timer-btns-row">
+          <button class="tb tb-play" id="tmStart">▶</button>
+          <button class="tb tb-play hidden" id="tmPause">⏸</button>
+          <button class="tb" id="tmReset">↺</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="bento-card bento-tool" id="toolNotes">
+      <div class="tool-head"><span class="tool-icon">📝</span><h3>快捷记事</h3></div>
+      <textarea class="notes-mini" id="notesArea" placeholder="随手记点什么…"></textarea>
+    </section>
+
+    <section class="bento-card bento-tool" id="toolJson">
+      <div class="tool-head"><span class="tool-icon">{ }</span><h3>JSON 格式化</h3></div>
+      <textarea class="tool-input" id="jsonInput" placeholder="粘贴 JSON…"></textarea>
+      <div class="tool-btns"><button class="tb tb-accent" id="jsonFmt">格式化</button><button class="tb" id="jsonMin">压缩</button></div>
+    </section>
+
+    <section class="bento-card bento-tool" id="toolBase64">
+      <div class="tool-head"><span class="tool-icon">🔤</span><h3>Base64</h3></div>
+      <textarea class="tool-input" id="b64In" placeholder="输入文本…"></textarea>
+      <div class="tool-btns"><button class="tb tb-accent" id="b64Enc">编码</button><button class="tb tb-accent" id="b64Dec">解码</button></div>
+      <textarea class="tool-input tool-output" id="b64Out" placeholder="结果…" readonly></textarea>
+    </section>
+
+    <section class="bento-card bento-tool" id="toolColor">
+      <div class="tool-head"><span class="tool-icon">🎨</span><h3>颜色转换</h3></div>
+      <div class="color-row">
+        <input type="color" class="color-pick" id="colorPick" value="#b07d4f">
+        <div class="color-swatch" id="colorSw"></div>
+      </div>
+      <input class="tool-input-sm mono" id="cHex" value="#b07d4f" spellcheck="false" placeholder="HEX">
+      <input class="tool-input-sm mono" id="cRgb" value="176, 125, 79" spellcheck="false" placeholder="RGB">
+    </section>
+
+    <section class="bento-card bento-tool" id="toolPassword">
+      <div class="tool-head"><span class="tool-icon">🔑</span><h3>密码生成</h3></div>
+      <div class="pw-row"><input class="pw-out mono" id="pwOut" readonly><button class="tb" id="pwCopy">📋</button></div>
+      <div class="pw-len-row"><span id="pwLenV">16</span>位 <input type="range" id="pwLen" min="8" max="64" value="16"></div>
+      <button class="tb tb-accent pw-gen" id="pwGen">生成</button>
+    </section>
+
+    <section class="bento-card bento-tool" id="toolTimestamp">
+      <div class="tool-head"><span class="tool-icon">📅</span><h3>时间戳</h3></div>
+      <div class="ts-now"><span class="mono" id="tsNow">—</span><button class="tb tb-sm" id="tsCp">复制</button></div>
+      <input class="tool-input-sm mono" id="tsIn" placeholder="输入时间戳…">
+      <div class="ts-result" id="tsOut">—</div>
+    </section>
+
+    <section class="bento-card bento-tool" id="toolHash">
+      <div class="tool-head"><span class="tool-icon">#️⃣</span><h3>哈希</h3></div>
+      <textarea class="tool-input" id="hashIn" placeholder="输入文本…"></textarea>
+      <div class="hash-results"><div class="hr"><span class="hl">SHA-256</span><span class="mono hv" id="hSha256">—</span></div></div>
+    </section>
+
+    <section class="bento-card bento-tool" id="toolRegex">
+      <div class="tool-head"><span class="tool-icon">.*</span><h3>正则测试</h3></div>
+      <div class="regex-row"><span class="rx-s">/</span><input class="tool-input-sm mono rx-p" id="rxPat" placeholder="正则" spellcheck="false"><span class="rx-s">/</span><input class="tool-input-sm mono rx-f" id="rxFlg" value="g" spellcheck="false"></div>
+      <textarea class="tool-input" id="rxText" placeholder="测试文本…" spellcheck="false"></textarea>
+      <div class="rx-result" id="rxResult">0 个匹配</div>
+    </section>
+
+    <section class="bento-card bento-tool" id="toolUrl">
+      <div class="tool-head"><span class="tool-icon">🔗</span><h3>URL 编解码</h3></div>
+      <textarea class="tool-input" id="urlIn" placeholder="输入文本或 URL…"></textarea>
+      <div class="tool-btns"><button class="tb tb-accent" id="urlEnc">编码</button><button class="tb tb-accent" id="urlDec">解码</button></div>
+      <textarea class="tool-input tool-output" id="urlOut" placeholder="结果…" readonly></textarea>
+    </section>
+
+    <section class="bento-card bento-tool" id="toolText">
+      <div class="tool-head"><span class="tool-icon">📊</span><h3>文本工具</h3></div>
+      <textarea class="tool-input" id="textIn" placeholder="输入文本…"></textarea>
+      <div class="text-stat" id="textStat">0字 · 0词 · 0行</div>
+      <div class="tool-btns"><button class="tb" data-act="upper">大写</button><button class="tb" data-act="lower">小写</button><button class="tb" data-act="dedupe">去重</button><button class="tb" data-act="sort">排序</button></div>
+    </section>
 
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
-    <span>🍵 Tea X 工具箱</span>
+    <span>🍵 Tea X</span>
     <span class="footer-sep">·</span>
     <span>数据仅存储在你的浏览器中</span>
   </footer>
 
+  <script src="/js/cocktails-data.js"></script>
   <script src="/js/main.js"></script>
 </body>
 </html>

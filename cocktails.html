@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>鸡尾酒百科 · Tea X</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍸</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/cocktails.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav-home">🍵 Tea X</a>
+    <span class="nav-title">🍸 鸡尾酒百科</span>
+    <button class="theme-btn" id="themeToggle">🌙</button>
+  </nav>
+
+  <!-- Search & Filter -->
+  <div class="filter-bar">
+    <input class="search-input" id="searchInput" placeholder="🔍 搜索鸡尾酒名称、原料…" spellcheck="false">
+    <div class="base-filters" id="baseFilters">
+      <button class="base-tag active" data-base="all">全部</button>
+    </div>
+    <div class="flavor-filters" id="flavorFilters">
+      <button class="flav-tag" data-flavor="清爽">清爽</button>
+      <button class="flav-tag" data-flavor="经典">经典</button>
+      <button class="flav-tag" data-flavor="苦">苦味</button>
+      <button class="flav-tag" data-flavor="甜">甜</button>
+      <button class="flav-tag" data-flavor="酸">酸</button>
+      <button class="flav-tag" data-flavor="烈">烈</button>
+      <button class="flav-tag" data-flavor="果味">果味</button>
+      <button class="flav-tag" data-flavor="热带">热带</button>
+    </div>
+  </div>
+
+  <div class="count-bar"><span id="resultCount">0</span> 款鸡尾酒</div>
+
+  <!-- Cards -->
+  <main class="grid" id="grid"></main>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay hidden" id="modal">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-color" id="modalColor"></div>
+      <div class="modal-body">
+        <h2 class="modal-name" id="modalName"></h2>
+        <p class="modal-zh" id="modalZh"></p>
+        <div class="modal-meta" id="modalMeta"></div>
+        <p class="modal-desc" id="modalDesc"></p>
+        <h3>配方</h3>
+        <ul class="modal-ingredients" id="modalIngredients"></ul>
+        <div class="modal-tags" id="modalTags"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">适度饮酒 · 数据仅供参考</footer>
+
+  <script src="/js/cocktails-data.js"></script>
+  <script src="/js/cocktails-page.js"></script>
+</body>
+</html>
