@@ -662,14 +662,6 @@ textarea { min-height: 80px; }
 
 
 /* ===== Travel Banner ===== */
-.banners-row {
-  display: flex;
-  gap: 12px;
-  max-width: 1200px;
-  margin: 16px auto 0;
-  padding: 0 20px;
-}
-
 .travel-banner {
   display: flex;
   align-items: center;
@@ -694,6 +686,115 @@ textarea { min-height: 80px; }
 .travel-banner-arrow { color: var(--accent); font-size: 1.2rem; font-weight: 500; }
 .games-banner { background: linear-gradient(135deg, rgba(255,107,53,.08), rgba(255,107,53,.15)); border-color: #ff6b35; }
 .games-banner .travel-banner-arrow { color: #ff6b35; }
+
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes shimmerGlow {
+  0%, 100% { opacity: .6; }
+  50% { opacity: 1; }
+}
+
+/* Header brand animation */
+.brand-icon {
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+.header-inner {
+  animation: fadeInUp .6s ease both;
+}
+
+/* Tool cards staggered entrance */
+.tool-card {
+  opacity: 0;
+  animation: fadeInUp .5s ease both;
+}
+
+.tool-card:nth-child(1) { animation-delay: .05s; }
+.tool-card:nth-child(2) { animation-delay: .1s; }
+.tool-card:nth-child(3) { animation-delay: .15s; }
+.tool-card:nth-child(4) { animation-delay: .2s; }
+.tool-card:nth-child(5) { animation-delay: .25s; }
+.tool-card:nth-child(6) { animation-delay: .3s; }
+.tool-card:nth-child(7) { animation-delay: .35s; }
+.tool-card:nth-child(8) { animation-delay: .4s; }
+.tool-card:nth-child(9) { animation-delay: .45s; }
+.tool-card:nth-child(10) { animation-delay: .5s; }
+.tool-card:nth-child(11) { animation-delay: .55s; }
+.tool-card:nth-child(12) { animation-delay: .6s; }
+.tool-card:nth-child(13) { animation-delay: .65s; }
+
+/* Tool card hover lift */
+.tool-card {
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Tool icon pulse on card hover */
+.tool-card:hover .tool-icon {
+  animation: shimmerGlow 1s ease infinite;
+}
+
+/* Clock number glow */
+.clock-time {
+  transition: color var(--transition);
+}
+
+.tool-clock:hover .clock-time {
+  color: var(--accent);
+}
+
+/* ===== Games Link Card ===== */
+.tool-link {
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.tool-link .tool-head {
+  margin-bottom: 6px;
+}
+
+.tool-arrow {
+  margin-left: auto;
+  font-size: 1.1rem;
+  color: var(--text-3);
+  transition: transform var(--transition), color var(--transition);
+}
+
+.tool-link:hover .tool-arrow {
+  transform: translateX(4px);
+  color: var(--accent);
+}
+
+.tool-link-desc {
+  font-size: .8rem;
+  color: var(--text-3);
+  line-height: 1.5;
+}
+
+.tool-games {
+  background: linear-gradient(135deg, var(--bg-card), var(--accent-bg));
+  border-color: rgba(176,125,79,.15);
+}
+
+[data-theme="dark"] .tool-games {
+  border-color: rgba(212,165,116,.12);
+}
 
 /* ===== Footer ===== */
 .footer {
