@@ -37,7 +37,7 @@ a{color:inherit;text-decoration:none}
 
 /* Rows */
 .row{display:grid;gap:12px;margin-bottom:12px}
-.row-top{grid-template-columns:1fr 2fr}
+.row-clock{grid-template-columns:1fr}
 .row-featured{grid-template-columns:1fr 1fr}
 .row-themes{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
 .row-links{grid-template-columns:1fr 1fr}
@@ -65,16 +65,9 @@ a{color:inherit;text-decoration:none}
 .wc em{font-style:normal}
 .wc b{font-family:var(--mono);font-weight:500}
 
-/* AI News */
-.card-ai{padding:16px;display:flex;flex-direction:column;justify-content:center}
-.card-label{font-size:.72rem;color:var(--accent);font-weight:600;letter-spacing:.5px;margin-bottom:8px}
-.ai-body{min-height:40px}
-.ai-loading{font-size:.82rem;color:var(--t3)}
-.ai-title{font-size:.95rem;font-weight:600;line-height:1.5;margin-bottom:6px}
-.ai-title a{color:var(--text);transition:color var(--t)}
-.ai-title a:hover{color:var(--accent)}
-.ai-meta{font-size:.72rem;color:var(--t3);display:flex;gap:10px;flex-wrap:wrap}
-.ai-source{color:var(--accent)}
+/* AI Theme Card */
+.card-ai-theme{background:linear-gradient(135deg,var(--card),var(--abg))}
+.ai-live{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
 /* Daily Featured Cards */
 .card-daily{display:flex;flex-direction:column;overflow:hidden;cursor:pointer}
@@ -104,15 +97,17 @@ a{color:inherit;text-decoration:none}
 
 /* Daily Quote */
 .daily-quote{position:relative;z-index:1;max-width:640px;margin:20px auto 0;padding:24px 28px;text-align:center}
-.quote-text{font-size:.9rem;line-height:2;color:var(--t2);font-style:italic;letter-spacing:.3px}
-.quote-from{font-size:.75rem;color:var(--t3);margin-top:10px}
+.daily-quote{cursor:pointer;user-select:none;transition:opacity .2s}
+.daily-quote:hover{opacity:.8}
+.quote-text{font-size:.9rem;transition:opacity .2s;line-height:2;color:var(--t2);font-style:italic;letter-spacing:.3px}
+.quote-from{font-size:.75rem;transition:opacity .2s;color:var(--t3);margin-top:10px}
 
 /* Footer */
 .footer{position:relative;z-index:1;text-align:center;padding:20px;font-size:.78rem;color:var(--t3)}
 
 /* Responsive */
 @media(max-width:768px){
-  .row-top{grid-template-columns:1fr}
+  .row-clock{grid-template-columns:1fr}
   .row-featured{grid-template-columns:1fr}
   .row-themes{grid-template-columns:1fr 1fr}
   .row-links{grid-template-columns:1fr}
