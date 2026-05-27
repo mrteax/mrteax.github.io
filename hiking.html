@@ -14,7 +14,20 @@
   <nav class="nav"><a href="/" class="nav-home">🍵 Tea X</a><span class="nav-title">🥾 徒步路线百科</span><button class="theme-btn" id="themeToggle">🌙</button></nav>
   <div class="filter-bar">
     <input class="search-input" id="searchInput" placeholder="🔍 搜索路线名称、地区…" spellcheck="false">
-    <div class="cat-filters" id="catFilters"><button class="cat-tag active" data-cat="all">全部</button></div>
+    <div class="cat-filters" id="catFilters"><button class="cat-tag active" data-cat="all">全部地区</button></div>
+    <div class="cat-filters" id="diffFilters">
+      <button class="cat-tag active" data-diff="all">全部难度</button>
+      <button class="cat-tag" data-diff="easy">🟢 轻松</button>
+      <button class="cat-tag" data-diff="moderate">🟡 中等</button>
+      <button class="cat-tag" data-diff="hard">🟠 困难</button>
+      <button class="cat-tag" data-diff="expert">🔴 专家</button>
+    </div>
+    <div class="cat-filters" id="durFilters">
+      <button class="cat-tag active" data-dur="all">全部天数</button>
+      <button class="cat-tag" data-dur="day">当天往返</button>
+      <button class="cat-tag" data-dur="short">2-4天</button>
+      <button class="cat-tag" data-dur="long">5天以上</button>
+    </div>
   </div>
   <div class="count-bar"><span id="resultCount">0</span> 条路线</div>
     <div class="map-section open" id="mapSection">
@@ -94,12 +107,24 @@
     const regions = [...new Set(TRAILS.map(t=>t.region))];
     regions.forEach(r => { const b=document.createElement('button'); b.className='cat-tag'; b.dataset.cat=r; b.textContent=`${REGION_EMOJI[r]||'🌍'} ${r}`; filters.appendChild(b); });
 
-    let activeCat='all', query='';
+    let activeCat='all', activeDiff='all', activeDur='all', query='';
+
+    function getDurCategory(dur) {
+      if (!dur) return 'day';
+      const match = dur.match(/(\d+)/);
+      if (!match) return 'day';
+      const num = parseInt(match[1]);
+      if (dur.includes('小时') || (dur.includes('天') && num <= 1)) return 'day';
+      if (num <= 4 && dur.includes('天')) return 'short';
+      return 'long';
+    }
     const grid=document.getElementById('grid'), countEl=document.getElementById('resultCount');
 
     function getFiltered() {
       return TRAILS.filter(t => {
         if (activeCat!=='all' && t.region!==activeCat) return false;
+        if (activeDiff!=='all' && t.difficulty!==activeDiff) return false;
+        if (activeDur!=='all' && getDurCategory(t.duration)!==activeDur) return false;
         if (query) { const q=query.toLowerCase(); if (!`${t.name} ${t.nameZh} ${t.region} ${t.country} ${t.highlights} ${t.difficulty}`.toLowerCase().includes(q)) return false; }
         return true;
       });
@@ -113,6 +138,10 @@
     }
 
     filters.addEventListener('click',e=>{const b=e.target.closest('.cat-tag');if(!b)return;activeCat=b.dataset.cat;filters.querySelectorAll('.cat-tag').forEach(x=>x.classList.toggle('active',x.dataset.cat===activeCat));render()});
+
+    document.getElementById('diffFilters').addEventListener('click',e=>{const b=e.target.closest('.cat-tag');if(!b)return;activeDiff=b.dataset.diff;document.getElementById('diffFilters').querySelectorAll('.cat-tag').forEach(x=>x.classList.toggle('active',x.dataset.diff===activeDiff));render()});
+
+    document.getElementById('durFilters').addEventListener('click',e=>{const b=e.target.closest('.cat-tag');if(!b)return;activeDur=b.dataset.dur;document.getElementById('durFilters').querySelectorAll('.cat-tag').forEach(x=>x.classList.toggle('active',x.dataset.dur===activeDur));render()});
     let st; document.getElementById('searchInput').addEventListener('input',e=>{clearTimeout(st);st=setTimeout(()=>{query=e.target.value.trim();render()},200)});
 
     const modal=document.getElementById('modal');
