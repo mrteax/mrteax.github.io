@@ -28,6 +28,34 @@
       <button class="cat-tag" data-dur="short">2-4天</button>
       <button class="cat-tag" data-dur="long">5天以上</button>
     </div>
+    <div class="cat-filters" id="monthFilters">
+      <button class="cat-tag active" data-month="0">全部月份</button>
+      <button class="cat-tag" data-month="1">1月</button>
+      <button class="cat-tag" data-month="2">2月</button>
+      <button class="cat-tag" data-month="3">3月</button>
+      <button class="cat-tag" data-month="4">4月</button>
+      <button class="cat-tag" data-month="5">5月</button>
+      <button class="cat-tag" data-month="6">6月</button>
+      <button class="cat-tag" data-month="7">7月</button>
+      <button class="cat-tag" data-month="8">8月</button>
+      <button class="cat-tag" data-month="9">9月</button>
+      <button class="cat-tag" data-month="10">10月</button>
+      <button class="cat-tag" data-month="11">11月</button>
+      <button class="cat-tag" data-month="12">12月</button>
+    </div>
+    <div class="cat-filters" id="sceneFilters">
+      <button class="cat-tag scene-tag" data-scene="雪山">🏔️ 雪山</button>
+      <button class="cat-tag scene-tag" data-scene="冰川">🧊 冰川</button>
+      <button class="cat-tag scene-tag" data-scene="草甸">🌿 草甸</button>
+      <button class="cat-tag scene-tag" data-scene="湖泊">💧 湖泊</button>
+      <button class="cat-tag scene-tag" data-scene="森林">🌲 森林</button>
+      <button class="cat-tag scene-tag" data-scene="峡谷">🏜️ 峡谷</button>
+      <button class="cat-tag scene-tag" data-scene="云海">☁️ 云海</button>
+      <button class="cat-tag scene-tag" data-scene="日出">🌅 日出</button>
+      <button class="cat-tag scene-tag" data-scene="花">🌸 花海</button>
+      <button class="cat-tag scene-tag" data-scene="温泉">♨️ 温泉</button>
+      <button class="cat-tag scene-tag" data-scene="火山">🌋 火山</button>
+    </div>
   </div>
   <div class="count-bar"><span id="resultCount">0</span> 条路线</div>
     <div class="map-section open" id="mapSection">
@@ -107,7 +135,25 @@
     const regions = [...new Set(TRAILS.map(t=>t.region))];
     regions.forEach(r => { const b=document.createElement('button'); b.className='cat-tag'; b.dataset.cat=r; b.textContent=`${REGION_EMOJI[r]||'🌍'} ${r}`; filters.appendChild(b); });
 
-    let activeCat='all', activeDiff='all', activeDur='all', query='';
+    let activeCat='all', activeDiff='all', activeDur='all', activeMonth=0, activeScenes=new Set(), query='';
+
+    function parseSeasonMonths(season) {
+      if (!season) return [];
+      const months = new Set();
+      const ranges = season.replace(/下旬|上旬|中旬/g, '').split(/[,，]/);
+      for (const range of ranges) {
+        const nums = range.match(/\d+/g);
+        if (!nums) continue;
+        if (nums.length >= 2) {
+          let start = parseInt(nums[0]), end = parseInt(nums[1]);
+          if (start <= end) { for (let m = start; m <= end; m++) months.add(m); }
+          else { for (let m = start; m <= 12; m++) months.add(m); for (let m = 1; m <= end; m++) months.add(m); }
+        } else {
+          months.add(parseInt(nums[0]));
+        }
+      }
+      return [...months];
+    }
 
     function getDurCategory(dur) {
       if (!dur) return 'day';
@@ -125,6 +171,8 @@
         if (activeCat!=='all' && t.region!==activeCat) return false;
         if (activeDiff!=='all' && t.difficulty!==activeDiff) return false;
         if (activeDur!=='all' && getDurCategory(t.duration)!==activeDur) return false;
+        if (activeMonth > 0 && !parseSeasonMonths(t.season).includes(activeMonth)) return false;
+        if (activeScenes.size > 0 && ![...activeScenes].every(s => (t.highlights||'').includes(s))) return false;
         if (query) { const q=query.toLowerCase(); if (!`${t.name} ${t.nameZh} ${t.region} ${t.country} ${t.highlights} ${t.difficulty}`.toLowerCase().includes(q)) return false; }
         return true;
       });
@@ -142,6 +190,10 @@
     document.getElementById('diffFilters').addEventListener('click',e=>{const b=e.target.closest('.cat-tag');if(!b)return;activeDiff=b.dataset.diff;document.getElementById('diffFilters').querySelectorAll('.cat-tag').forEach(x=>x.classList.toggle('active',x.dataset.diff===activeDiff));render()});
 
     document.getElementById('durFilters').addEventListener('click',e=>{const b=e.target.closest('.cat-tag');if(!b)return;activeDur=b.dataset.dur;document.getElementById('durFilters').querySelectorAll('.cat-tag').forEach(x=>x.classList.toggle('active',x.dataset.dur===activeDur));render()});
+    document.getElementById('monthFilters').addEventListener('click',e=>{const b=e.target.closest('.cat-tag');if(!b)return;activeMonth=parseInt(b.dataset.month);document.getElementById('monthFilters').querySelectorAll('.cat-tag').forEach(x=>x.classList.toggle('active',parseInt(x.dataset.month)===activeMonth));render()});
+
+    document.getElementById('sceneFilters').addEventListener('click',e=>{const b=e.target.closest('.scene-tag');if(!b)return;const s=b.dataset.scene;if(activeScenes.has(s)){activeScenes.delete(s);b.classList.remove('active')}else{activeScenes.add(s);b.classList.add('active')}render()});
+
     let st; document.getElementById('searchInput').addEventListener('input',e=>{clearTimeout(st);st=setTimeout(()=>{query=e.target.value.trim();render()},200)});
 
     const modal=document.getElementById('modal');
