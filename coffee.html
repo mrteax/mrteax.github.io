@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>咖啡百科 · Tea X</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/themes.css">
+</head>
+<body>
+  <nav class="nav"><a href="/" class="nav-home">🍵 Tea X</a><span class="nav-title">☕ 咖啡百科</span><button class="theme-btn" id="themeToggle">🌙</button></nav>
+  <div class="filter-bar">
+    <input class="search-input" id="searchInput" placeholder="🔍 搜索咖啡名称、原料、产地…" spellcheck="false">
+    <div class="cat-filters" id="catFilters"><button class="cat-tag active" data-cat="all">全部</button></div>
+  </div>
+  <div class="count-bar"><span id="resultCount">0</span> 款咖啡</div>
+  <main class="grid" id="grid"></main>
+  <div class="modal-overlay hidden" id="modal">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-color" id="modalColor"></div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+  <footer class="footer">生活需要一杯好咖啡</footer>
+  <script src="/js/coffee-data.js"></script>
+  <script>
+  (() => {
+    const html = document.documentElement;
+    const saved = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+    html.dataset.theme = saved;
+    const tb = document.getElementById('themeToggle');
+    tb.textContent = saved==='dark'?'☀️':'🌙';
+    tb.addEventListener('click', () => { const n = html.dataset.theme==='dark'?'light':'dark'; html.dataset.theme=n; localStorage.setItem('theme',n); tb.textContent=n==='dark'?'☀️':'🌙'; });
+
+    const DATA = COFFEES;
+    const EMOJI = COFFEE_CATEGORY_EMOJI;
+    const LABELS = COFFEE_CATEGORY_LABELS;
+
+    const filters = document.getElementById('catFilters');
+    const cats = [...new Set(DATA.map(t=>t.category))];
+    cats.forEach(c => { const b=document.createElement('button'); b.className='cat-tag'; b.dataset.cat=c; b.textContent=`${EMOJI[c]||'☕'} ${LABELS[c]||c}`; filters.appendChild(b); });
+
+    let activeCat='all', query='';
+    const grid=document.getElementById('grid'), countEl=document.getElementById('resultCount');
+
+    function getFiltered() {
+      return DATA.filter(t => {
+        if (activeCat!=='all' && t.category!==activeCat) return false;
+        if (query) { const q=query.toLowerCase(); if(!JSON.stringify(t).toLowerCase().includes(q)) return false; }
+        return true;
+      });
+    }
+
+    function render() {
+      const res=getFiltered(); countEl.textContent=res.length;
+      if(!res.length){grid.innerHTML='<div class="no-results">没有找到匹配的咖啡 ☕</div>';return}
+      grid.innerHTML=res.map((t,i)=>`<div class="item-card" data-id="${t.id}" style="animation-delay:${Math.min(i*.03,.5)}s"><div class="card-color" style="background:${t.color}"></div><div class="card-body"><div class="card-emoji">${EMOJI[t.category]||'☕'}</div><div class="card-name">${t.nameZh}</div><div class="card-zh">${t.name}</div><p class="card-desc">${t.desc}</p><div class="card-footer"><span class="card-badge">${LABELS[t.category]}</span><span class="card-badge">${t.method}</span><span class="card-badge">${t.strength==='strong'?'🔥 浓':t.strength==='light'?'🌿 淡':'⚖️ 中'}</span></div></div></div>`).join('');
+      grid.querySelectorAll('.item-card').forEach(c=>c.addEventListener('click',()=>openModal(c.dataset.id)));
+    }
+
+    filters.addEventListener('click',e=>{const b=e.target.closest('.cat-tag');if(!b)return;activeCat=b.dataset.cat;filters.querySelectorAll('.cat-tag').forEach(x=>x.classList.toggle('active',x.dataset.cat===activeCat));render()});
+    let st; document.getElementById('searchInput').addEventListener('input',e=>{clearTimeout(st);st=setTimeout(()=>{query=e.target.value.trim();render()},200)});
+
+    const modal=document.getElementById('modal');
+    function openModal(id){
+      const t=DATA.find(x=>String(x.id)===String(id));if(!t)return;
+      document.getElementById('modalColor').style.background=t.color;
+      document.getElementById('modalBody').innerHTML=`
+        <h2 class="modal-name">${t.nameZh}</h2>
+        <p class="modal-zh">${t.name}</p>
+        <div class="modal-meta">
+          <span>${EMOJI[t.category]} ${LABELS[t.category]}</span>
+          <span>🔧 ${t.method}</span>
+          <span>☕ ${t.caffeine==='high'?'高咖啡因':t.caffeine==='medium'?'中咖啡因':'低咖啡因'}</span>
+          <span>💪 ${t.strength==='strong'?'浓郁':t.strength==='light'?'清淡':'中等'}</span>
+        </div>
+        <p class="modal-desc">${t.desc}</p>
+        <div class="modal-section"><h3>📋 配方</h3><ul style="padding-left:16px;font-size:.88rem;line-height:1.8;color:var(--text-2)">${t.ingredients.map(i=>'<li>'+i+'</li>').join('')}</ul></div>
+        <div class="modal-section"><h3>💡 建议</h3><p class="highlight">${t.tips}</p></div>
+        <div class="modal-tags">${t.flavor.map(f=>'<span>'+f+'</span>').join('')}</div>
+      `;
+      modal.classList.remove('hidden');document.body.style.overflow='hidden';
+    }
+    document.getElementById('modalClose').addEventListener('click',()=>{modal.classList.add('hidden');document.body.style.overflow=''});
+    modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.add('hidden');document.body.style.overflow=''}});
+    render();
+  })();
+  </script>
+</body>
+</html>
