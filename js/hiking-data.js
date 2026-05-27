@@ -1,21 +1,5 @@
 const TRAILS = [
-  {
-    id: 1,
-    name: "Jomon Sugi Trail",
-    nameZh: "屋久島縄文杉",
-    region: "日本",
-    country: "Japan",
-    difficulty: "moderate",
-    distance: "22km",
-    duration: "8-10小时",
-    elevation: "700m",
-    season: "3月-11月",
-    highlights: "穿越屋久島原始森林，探访树龄超过7000年的縄文杉。沿途苔藓覆盖的古树与溪流交织，宛如走入宫崎骏的幻想世界。",
-    tips: "务必早晨5点前出发以确保天黑前返回，山中天气多变，防水装备必不可少。",
-    color: "#2D5A27"
-  },
-  {
-    id: 2,
+  {id: 2,
     name: "Kumano Kodo",
     nameZh: "熊野古道",
     region: "日本",
@@ -27,25 +11,8 @@ const TRAILS = [
     season: "4月-11月",
     highlights: "日本最古老的朝圣之路，穿越纪伊半岛茂密的杉树林。沿途散布着古老的神社和温泉旅馆，是身心疗愈之旅。",
     tips: "推荐走中辺路路线，沿途温泉旅馆需提前预约，可利用行李运送服务轻装上阵。",
-    color: "#8B4513"
-  },
-  {
-    id: 3,
-    name: "Kamikochi",
-    nameZh: "上高地",
-    region: "日本",
-    country: "Japan",
-    difficulty: "easy",
-    distance: "11km",
-    duration: "4-6小时",
-    elevation: "1,500m",
-    season: "4月下旬-11月中旬",
-    highlights: "北阿尔卑斯山脉中的绝美山谷，河童桥下清澈的梓川倒映着�的穗高连峰。秋季红叶层林尽染，美不胜收。",
-    tips: "私家车禁止进入，需从�的�的沢或平汤乘坐巴士前往，建议避开黄金周等高峰期。",
-    color: "#4A90D9"
-  },
-  {
-    id: 4,
+    color: "#8B4513"},
+  {id: 4,
     name: "Mount Fuji",
     nameZh: "富士山",
     region: "日本",
@@ -57,25 +24,8 @@ const TRAILS = [
     season: "7月-9月",
     highlights: "日本最高峰，登顶可观赏壮丽的云海日出'御来光'。火山地貌层次分明，从森林到荒原再到火山岩，景观变化极为震撼。",
     tips: "推荐吉田路线，建议在八合目山小屋过夜后凌晨登顶看日出，务必注意高山反应。",
-    color: "#6B7B8D"
-  },
-  {
-    id: 5,
-    name: "Tateyama Kurobe Alpine Route",
-    nameZh: "立山黒部",
-    region: "日本",
-    country: "Japan",
-    difficulty: "easy",
-    distance: "25km",
-    duration: "6-8小时",
-    elevation: "3,015m",
-    season: "4月-11月",
-    highlights: "横穿北阿尔卑斯山脉的壮观山岳路线，春季高达20米的雪之大谷令人叹为观止。室堂平的翡翠色火山湖如镜面般映照群山。",
-    tips: "利用多种交通工具（缆车、巴士、索道）穿越全程，建议购买通票，春季雪墙开放时最为壮观。",
-    color: "#E8E8E8"
-  },
-  {
-    id: 6,
+    color: "#6B7B8D"},
+  {id: 6,
     name: "Everest Base Camp Trek",
     nameZh: "珠峰大本营",
     region: "尼泊尔",
@@ -87,10 +37,8 @@ const TRAILS = [
     season: "3月-5月, 9月-11月",
     highlights: "徒步至世界最高峰脚下，沿途经过夏尔巴村庄和壮丽的冰川。站在大本营仰望珠穆朗玛峰，是毕生难忘的震撼体验。",
     tips: "必须安排充足的高海拔适应日，建议雇佣当地向导和背夫，卢卡拉机场航班常因天气取消需预留弹性时间。",
-    color: "#1C3D5A"
-  },
-  {
-    id: 7,
+    color: "#1C3D5A"},
+  {id: 7,
     name: "Annapurna Circuit",
     nameZh: "安纳普尔纳环线",
     region: "尼泊尔",
@@ -102,10 +50,8 @@ const TRAILS = [
     season: "10月-11月, 3月-4月",
     highlights: "被誉为世界最经典的长距离徒步路线，翻越5416米的陀龙垭口。沿途从亚热带丛林到高原荒漠，地貌变化令人惊叹。",
     tips: "逆时针方向行走有利于高海拔适应，Manang是重要的休整点，翻越垭口当天需凌晨出发。",
-    color: "#D4A574"
-  },
-  {
-    id: 8,
+    color: "#D4A574"},
+  {id: 8,
     name: "Grand Canyon Rim to Rim",
     nameZh: "大峡谷穿越",
     region: "美国",
@@ -117,10 +63,8 @@ const TRAILS = [
     season: "5月, 9月-10月",
     highlights: "纵穿科罗拉多大峡谷，从北缘到南缘下降再攀升，20亿年的地质层次如同翻开地球的历史书页。",
     tips: "夏季谷底温度可超50°C极其危险，务必携带充足饮水（每人每天至少4升），提前申请野外露营许可。",
-    color: "#C1440E"
-  },
-  {
-    id: 9,
+    color: "#C1440E"},
+  {id: 9,
     name: "Half Dome",
     nameZh: "半穹顶",
     region: "美国",
@@ -132,10 +76,8 @@ const TRAILS = [
     season: "5月下旬-10月",
     highlights: "优胜美地国家公园的标志性巨岩，最后120米需攀爬钢缆才能登顶。山顶360度俯瞰优胜美地山谷，视野震撼。",
     tips: "攀登钢缆段需抽签获得许可证，手套必备，雷暴天气严禁登顶，建议天亮前出发。",
-    color: "#808080"
-  },
-  {
-    id: 10,
+    color: "#808080"},
+  {id: 10,
     name: "Appalachian Trail",
     nameZh: "阿巴拉契亚小径",
     region: "美国",
@@ -147,10 +89,8 @@ const TRAILS = [
     season: "3月-10月",
     highlights: "纵贯美国东部14个州的超长距离步道，穿越古老的阿巴拉契亚山脉。从佐治亚到缅因，体验美国东部最壮阔的荒野。",
     tips: "全程徒步（Thru-hike）需充分体能准备和后勤规划，沿途有大量庇护所和补给点，建议北向行走从春季出发。",
-    color: "#3A5F0B"
-  },
-  {
-    id: 11,
+    color: "#3A5F0B"},
+  {id: 11,
     name: "Pacific Crest Trail",
     nameZh: "太平洋山脊步道",
     region: "美国",
@@ -162,10 +102,8 @@ const TRAILS = [
     season: "4月-10月",
     highlights: "沿美国西海岸从墨西哥到加拿大纵贯三州，穿越沙漠、雪山和原始森林。被誉为世界上风景最多样化的长距离步道。",
     tips: "需提前申请长距离许可证，沙漠段水源稀少需仔细规划取水点，雪山段需冰爪和冰斧。",
-    color: "#5B9BD5"
-  },
-  {
-    id: 12,
+    color: "#5B9BD5"},
+  {id: 12,
     name: "John Muir Trail",
     nameZh: "约翰·缪尔步道",
     region: "美国",
@@ -177,10 +115,8 @@ const TRAILS = [
     season: "7月-9月",
     highlights: "纵贯内华达山脉最精华段，途经优胜美地、国王峡谷和红杉国家公园。湖光山色与花岗岩峰峦交相辉映，美不胜收。",
     tips: "荒野许可证竞争激烈需提前半年申请，全程需背负熊罐存放食物，惠特尼山顶段需注意高反。",
-    color: "#2E86C1"
-  },
-  {
-    id: 13,
+    color: "#2E86C1"},
+  {id: 13,
     name: "Tour du Mont Blanc",
     nameZh: "环勃朗峰徒步",
     region: "欧洲",
@@ -192,10 +128,8 @@ const TRAILS = [
     season: "6月下旬-9月",
     highlights: "环绕西欧最高峰勃朗峰行走，途经法国、意大利和瑞士三国。阿尔卑斯山最经典的徒步路线，冰川、草甸和欧洲小镇风情交织。",
     tips: "沿途山间小屋需提前预订，建议逆时针方向行走，可根据体力选择缆车跳过部分爬升段。",
-    color: "#F0C27F"
-  },
-  {
-    id: 14,
+    color: "#F0C27F"},
+  {id: 14,
     name: "Camino de Santiago",
     nameZh: "圣地亚哥朝圣之路",
     region: "欧洲",
@@ -207,10 +141,8 @@ const TRAILS = [
     season: "4月-10月",
     highlights: "千年历史的朝圣之路，从法国边境横穿西班牙北部至圣地亚哥。沿途中世纪教堂、葡萄园和热情的朝圣者文化令人感动。",
     tips: "推荐法国之路（Camino Francés），朝圣者护照可在沿途盖章留念，公立庇护所先到先得建议早出发。",
-    color: "#DAA520"
-  },
-  {
-    id: 15,
+    color: "#DAA520"},
+  {id: 15,
     name: "Dolomites Alta Via 1",
     nameZh: "多洛米蒂高路1号",
     region: "欧洲",
@@ -222,10 +154,8 @@ const TRAILS = [
     season: "7月-9月",
     highlights: "穿越意大利多洛米蒂山脉最壮观的石灰岩尖峰群。粉红色的日照金山和翡翠色的高山湖泊构成超现实般的美景。",
     tips: "沿途Rifugio山间小屋提供餐食和住宿需预订，部分路段有铁索栈道（Via Ferrata）需注意安全。",
-    color: "#E67E22"
-  },
-  {
-    id: 16,
+    color: "#E67E22"},
+  {id: 16,
     name: "GR20",
     nameZh: "GR20科西嘉",
     region: "欧洲",
@@ -237,10 +167,8 @@ const TRAILS = [
     season: "6月中旬-10月",
     highlights: "被誉为欧洲最艰难的长距离步道，纵穿科西嘉岛花岗岩山脊。险峻的岩壁攀爬与地中海碧蓝海景的组合独一无二。",
     tips: "北段远比南段困难，建议有充足的岩石地形经验再挑战，山间小屋简陋需携带睡袋。",
-    color: "#922B21"
-  },
-  {
-    id: 17,
+    color: "#922B21"},
+  {id: 17,
     name: "Laugavegur Trail",
     nameZh: "冰岛彩虹步道",
     region: "欧洲",
@@ -252,10 +180,8 @@ const TRAILS = [
     season: "6月下旬-9月",
     highlights: "冰岛高地最著名的徒步路线，流纹岩彩色山脉、黑沙沙漠、冰川和地热温泉构成外星般的奇幻地貌。",
     tips: "渡河路段水位随天气变化大需穿涉水鞋，山间小屋需提前在线预订，天气极端多变务必全套防水装备。",
-    color: "#7D3C98"
-  },
-  {
-    id: 18,
+    color: "#7D3C98"},
+  {id: 18,
     name: "Milford Track",
     nameZh: "米尔福德步道",
     region: "大洋洲",
@@ -267,10 +193,8 @@ const TRAILS = [
     season: "10月下旬-4月",
     highlights: "新西兰峡湾国家公园中'世界最美步道'，瀑布从千米高的绝壁倾泻而下。原始温带雨林和镜面般的湖泊美得令人窒息。",
     tips: "每日限制人数需提前数月预订DOC小屋，雨季萨瑟兰瀑布水量最壮观，沙蝇多需备驱虫喷雾。",
-    color: "#1E8449"
-  },
-  {
-    id: 19,
+    color: "#1E8449"},
+  {id: 19,
     name: "Tongariro Alpine Crossing",
     nameZh: "汤加里罗高山穿越",
     region: "大洋洲",
@@ -282,10 +206,8 @@ const TRAILS = [
     season: "11月-4月",
     highlights: "穿越活火山地带，翡翠湖和蓝湖的色彩如宝石般耀眼。《指环王》末日山的原型就在眼前，火山口蒸汽缭绕如入魔境。",
     tips: "单程穿越需安排接驳交通，天气恶劣时步道关闭需查看DOC公告，冬季需冰爪和冰斧。",
-    color: "#D35400"
-  },
-  {
-    id: 20,
+    color: "#D35400"},
+  {id: 20,
     name: "Inca Trail",
     nameZh: "印加古道",
     region: "南美洲",
@@ -297,10 +219,8 @@ const TRAILS = [
     season: "5月-9月",
     highlights: "沿着古印加帝国的石板路徒步至马丘比丘，第四天黎明从太阳门俯瞰云雾中的失落之城，此刻终生难忘。",
     tips: "每日限500人（含向导背夫）需提前数月预订，第二天翻越死女垭口是最艰难路段，注意高原反应。",
-    color: "#B7950B"
-  },
-  {
-    id: 21,
+    color: "#B7950B"},
+  {id: 21,
     name: "Torres del Paine W Trek",
     nameZh: "百内W线",
     region: "南美洲",
@@ -312,10 +232,8 @@ const TRAILS = [
     season: "10月-3月",
     highlights: "巴塔哥尼亚最壮观的徒步路线，三座花岗岩塔峰直插云霄。冰川、碧绿湖泊和原始山毛榉森林构成南美最震撼的山岳风景。",
     tips: "营地和山间小屋必须提前在线预订，风力极强需携带防风装备，建议从东向西走W路线。",
-    color: "#2980B9"
-  },
-  {
-    id: 22,
+    color: "#2980B9"},
+  {id: 22,
     name: "Tiger Leaping Gorge",
     nameZh: "虎跳峡",
     region: "中国",
@@ -327,10 +245,8 @@ const TRAILS = [
     season: "3月-6月, 9月-11月",
     highlights: "世界最深的峡谷之一，金沙江在玉龙雪山和哈巴雪山间奔腾咆哮。高路徒步道悬于峡谷之上，气势磅礴令人心潮澎湃。",
     tips: "走高路（High Trail）风景更佳，28拐是最辛苦的爬升段，沿途客栈可休整补给不必露营。",
-    color: "#1A5276"
-  },
-  {
-    id: 23,
+    color: "#1A5276"},
+  {id: 23,
     name: "Huangshan",
     nameZh: "黄山",
     region: "中国",
@@ -342,10 +258,8 @@ const TRAILS = [
     season: "4月-11月",
     highlights: "奇松、怪石、云海、温泉构成中国最经典的山岳风景。日出时云海翻涌在奇峰之间，恍若仙境，是中国山水画的灵感源泉。",
     tips: "建议在山顶住一晚看日出，西海大峡谷栈道是精华路段，缆车可节省体力但旺季排队时间长。",
-    color: "#F39C12"
-  },
-  {
-    id: 24,
+    color: "#F39C12"},
+  {id: 24,
     name: "Mount Kinabalu",
     nameZh: "京那巴鲁山",
     region: "东南亚",
@@ -357,10 +271,8 @@ const TRAILS = [
     season: "2月-4月",
     highlights: "东南亚最高峰，凌晨登顶可俯瞰壮丽的云海日出。Low's Peak花岗岩裸露的峰顶地貌独特，Via Ferrata攀岩路线刺激非凡。",
     tips: "必须由认证向导陪同，Laban Rata山间小屋名额有限需提前预订，凌晨2点出发登顶看日出。",
-    color: "#16A085"
-  },
-  {
-    id: 25,
+    color: "#16A085"},
+  {id: 25,
     name: "Zhangjiajie Grand Canyon",
     nameZh: "张家界",
     region: "中国",
@@ -372,10 +284,8 @@ const TRAILS = [
     season: "4月-10月",
     highlights: "数千座砂岩石柱如森林般矗立在云雾之中，是电影《阿凡达》悬浮山的灵感来源。玻璃桥和天门山栈道惊险刺激。",
     tips: "景区面积大建议安排2-3天，百龙天梯和玻璃栈桥节假日排队极长需错峰游览。",
-    color: "#27AE60"
-  },
-  {
-    id: 26,
+    color: "#27AE60"},
+  {id: 26,
     name: "Mount Kilimanjaro",
     nameZh: "乞力马扎罗山",
     region: "非洲",
@@ -387,10 +297,8 @@ const TRAILS = [
     season: "1月-3月, 6月-10月",
     highlights: "非洲最高峰，从热带雨林到高山冰川，垂直穿越五个气候带。乌呼鲁峰顶端的冰川与非洲大草原同框的画面无比震撼。",
     tips: "推荐Machame或Lemosho路线（成功率更高），高海拔适应是关键，不要选择太短的行程安排。",
-    color: "#784212"
-  },
-  {
-    id: 27,
+    color: "#784212"},
+  {id: 27,
     name: "Overland Track",
     nameZh: "摇篮山徒步道",
     region: "大洋洲",
@@ -402,10 +310,8 @@ const TRAILS = [
     season: "11月-4月",
     highlights: "塔斯马尼亚荒野世界遗产区的标志性步道，从摇篮山到圣克莱尔湖。古老的温带雨林、高山草甸和瀑布构成原始纯净的自然画卷。",
     tips: "旺季每日限额需提前预订并支付步道费，建议从北向南行走，做好应对四季天气变化的准备。",
-    color: "#6C3483"
-  },
-  {
-    id: 28,
+    color: "#6C3483"},
+  {id: 28,
     name: "Kungsleden",
     nameZh: "国王步道",
     region: "欧洲",
@@ -417,10 +323,8 @@ const TRAILS = [
     season: "6月中旬-9月",
     highlights: "瑞典拉普兰地区的极地荒野步道，夏季午夜太阳永不落下。冰川U型谷、驯鹿群和萨米人帐篷构成北极圈独有的风景线。",
     tips: "最热门的阿比斯库至尼卡卡克塔段约110km可在一周内完成，部分渡河段需乘坐STF运营的小船。",
-    color: "#5DADE2"
-  },
-  {
-    id: 29,
+    color: "#5DADE2"},
+  {id: 29,
     name: "Haute Route",
     nameZh: "高路步道",
     region: "欧洲",
@@ -432,10 +336,8 @@ const TRAILS = [
     season: "7月-9月",
     highlights: "从勃朗峰到马特洪峰，纵穿阿尔卑斯最壮观的冰川地带。连续翻越多个高山垭口，瑞士最震撼的雪山全景尽收眼底。",
     tips: "需要良好的体能和山地经验，部分路段跨越冰川需基本的冰川行走技能，山间小屋需提前预订。",
-    color: "#AED6F1"
-  },
-  {
-    id: 30,
+    color: "#AED6F1"},
+  {id: 30,
     name: "Routeburn Track",
     nameZh: "路特本步道",
     region: "大洋洲",
@@ -448,6 +350,111 @@ const TRAILS = [
     highlights: "新西兰南岛的九大步道之一，穿越峡湾和阿斯帕林山国家公园。高山草甸、瀑布和壮阔的山谷全景让每一步都值得驻足。",
     tips: "DOC小屋需提前预订（旺季名额紧张），哈里斯鞍部天气多变需防风防雨装备，两端需安排交通接驳。",
     color: "#117A65"
+  },
+  {
+    id: 31,
+    name: "Mount Siguniang",
+    nameZh: "四姑娘山",
+    region: "中国",
+    country: "中国四川",
+    difficulty: "hard",
+    distance: "40-70km",
+    duration: "3-5天",
+    elevation: "6,250m",
+    season: "6月-10月",
+    highlights: "蜀山之后，四座金字塔形雪峰并列耸立。大峰适合入门级登山，二峰和三峰难度递增，幺妹峰则是顶级技术型山峰。双桥沟和长坪沟的徒步线路风景绝美，高山草甸、冰川湖泊一路相随。",
+    tips: "海拔较高，务必提前适应。大峰攀登需要向导，幺妹峰需要专业装备和经验。",
+    color: "#5DADE2"
+  },
+  {
+    id: 32,
+    name: "Yading Nature Reserve",
+    nameZh: "稻城亚丁",
+    region: "中国",
+    country: "中国四川",
+    difficulty: "hard",
+    distance: "25-35km",
+    duration: "2-3天",
+    elevation: "4,700m",
+    season: "5月-10月",
+    highlights: "被誉为'最后的香格里拉'。三座神山——仙乃日、央迈勇、夏诺多吉环绕，牛奶海和五色海是必到的高海拔冰川湖泊。秋季（10月）是最佳拍摄季节，金黄与雪白交织。",
+    tips: "海拔4000m以上，高反风险大。建议在稻城镇适应一天再进景区。牛奶海最后一段很陡，量力而行。",
+    color: "#48C9B0"
+  },
+  {
+    id: 33,
+    name: "Meili Snow Mountain Yubeng Trek",
+    nameZh: "梅里雪山·雨崩",
+    region: "中国",
+    country: "中国云南",
+    difficulty: "hard",
+    distance: "45km",
+    duration: "4-5天",
+    elevation: "3,900m",
+    season: "4月-6月/9月-11月",
+    highlights: "梅里雪山主峰卡瓦格博是藏区八大神山之首，至今未被登顶。雨崩村藏在雪山深处，被称为'世外桃源'。徒步翻越3700m的南宗垭口，到达神瀑和冰湖，是国内最经典的徒步线路之一。",
+    tips: "需要翻垭口，体力要求较高。雨崩村住宿条件简单但有客栈。飞来寺是观赏日照金山的最佳地点。",
+    color: "#AED6F1"
+  },
+  {
+    id: 34,
+    name: "Mount Wugong",
+    nameZh: "武功山",
+    region: "中国",
+    country: "中国江西",
+    difficulty: "moderate",
+    distance: "20-40km",
+    duration: "2-3天",
+    elevation: "1,918m",
+    season: "4月-11月",
+    highlights: "华东地区最壮观的高山草甸，绵延十万亩云中草原。每年秋季漫山芒草金黄如浪，是国内最受欢迎的入门级重装徒步线路。日出云海堪称一绝。",
+    tips: "反穿（从沈子村出发）比正穿轻松。山顶风大温差大，即使夏天也要带保暖层。五一和十一人非常多。",
+    color: "#82E0AA"
+  },
+  {
+    id: 35,
+    name: "Mount Gongga Trek",
+    nameZh: "贡嘎山转山",
+    region: "中国",
+    country: "中国四川",
+    difficulty: "expert",
+    distance: "60-70km",
+    duration: "5-7天",
+    elevation: "4,800m",
+    season: "6月-10月",
+    highlights: "蜀山之王，海拔7,556m的贡嘎主峰是四川最高峰。经典转山路线翻越多个4000m+垭口，沿途贡嘎寺、子梅垭口、里说海等景色震撼。被National Geographic评为世界最美雪山之一。",
+    tips: "高海拔长线，必须请向导和马匹。天气多变，需做好防雨准备。子梅垭口是观赏贡嘎主峰最佳位置。",
+    color: "#D7BDE2"
+  },
+  {
+    id: 36,
+    name: "Aotai Traverse",
+    nameZh: "鳌太穿越",
+    region: "中国",
+    country: "中国陕西",
+    difficulty: "expert",
+    distance: "80km",
+    duration: "5-7天",
+    elevation: "3,767m",
+    season: "6月-9月",
+    highlights: "从鳌山到太白山的秦岭主脊穿越，被称为'中国最难的徒步线路之一'。跨越多个3500m+山峰，大爷海是秦岭最高的高山湖泊。沿途跑马梁和药王庙一带的高山杜鹃花海令人难忘。",
+    tips: "气候变化极端，雷暴频繁，每年都有事故发生。务必结伴、带GPS、关注天气。非专业户外人士不建议尝试。",
+    color: "#F1948A"
+  },
+  {
+    id: 37,
+    name: "Niubei Mountain",
+    nameZh: "牛背山",
+    region: "中国",
+    country: "中国四川",
+    difficulty: "moderate",
+    distance: "12km",
+    duration: "1-2天",
+    elevation: "3,666m",
+    season: "4月-5月/9月-11月",
+    highlights: "被誉为'中国最大的观景平台'，360度无遮挡观赏贡嘎、峨眉、四姑娘山等蜀中名山。云海、日出、星空、佛光——四大奇观汇聚一处。近年修建了公路，可以选择徒步或自驾。",
+    tips: "新公路通车后可驾车到山顶附近。如徒步建议从鱼进沟出发。山顶住宿条件改善中，建议带睡袋。",
+    color: "#FAD7A0"
   }
 ];
 

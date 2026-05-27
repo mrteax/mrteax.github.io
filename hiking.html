@@ -17,7 +17,7 @@
     <div class="cat-filters" id="catFilters"><button class="cat-tag active" data-cat="all">全部</button></div>
   </div>
   <div class="count-bar"><span id="resultCount">0</span> 条路线</div>
-    <div class="map-section" id="mapSection">
+    <div class="map-section open" id="mapSection">
     <div class="map-toggle" onclick="this.parentElement.classList.toggle('open')">🗺️ 世界地图索引 <span class="map-arrow">▶</span></div>
     <div class="map-body">
       <svg class="world-map" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +78,7 @@
 
     // Map dots
     const TRAIL_COORDS = {
-      1:[730,175],2:[700,160],3:[710,155],4:[715,158],5:[705,155],
+      2:[700,160],4:[715,158],
       6:[530,180],7:[525,178],
       8:[155,160],9:[140,155],10:[210,155],11:[135,155],12:[138,158],
       13:[410,150],14:[385,155],15:[415,148],16:[410,158],17:[370,100],
@@ -87,7 +87,9 @@
       22:[600,180],23:[640,170],24:[625,175],
       25:[640,225],
       26:[475,255],
-      27:[720,320],28:[410,145],29:[395,153],30:[415,152]
+      27:[720,320],28:[410,145],29:[395,153],30:[415,152],
+      31:[610,170],32:[605,175],33:[598,178],34:[635,173],
+      35:[608,172],36:[620,162],37:[610,174]
     };
 
     const mapSvg = document.querySelector('.world-map');
