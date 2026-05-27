@@ -101,6 +101,12 @@ a{color:inherit;text-decoration:none}
 .card-link:hover{text-decoration:none}
 .card-link small{font-size:.75rem;font-weight:400;color:var(--t3);margin-left:4px}
 
+
+/* Daily Quote */
+.daily-quote{position:relative;z-index:1;max-width:640px;margin:20px auto 0;padding:24px 28px;text-align:center}
+.quote-text{font-size:.9rem;line-height:2;color:var(--t2);font-style:italic;letter-spacing:.3px}
+.quote-from{font-size:.75rem;color:var(--t3);margin-top:10px}
+
 /* Footer */
 .footer{position:relative;z-index:1;text-align:center;padding:20px;font-size:.78rem;color:var(--t3)}
 
