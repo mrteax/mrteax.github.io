@@ -110,24 +110,52 @@
       <div class="result-plan" id="rPlan"></div>
     </div>
 
-    <!-- Shortcut Guide -->
-    <details class="shortcut-section">
-      <summary style="cursor:pointer;font-weight:600;font-size:1rem">📱 iPhone 快捷指令设置</summary>
-      <p style="font-size:.82rem;color:var(--text-2);margin:10px 0">在 iPhone「快捷指令」App 中创建一个自动化，每天早上自动获取健康数据：</p>
-      <ol class="shortcut-steps">
-        <li>打开「快捷指令」App → 点 <code>+</code> 新建</li>
-        <li>添加操作：<code>查找健康样本</code> → 类型选「心率」→ 排序「最新」→ 限制 1</li>
-        <li>再添加：<code>查找健康样本</code> → 类型「心率变异性 (HRV)」→ 排序「最新」→ 限制 1</li>
-        <li>再添加：<code>查找健康样本</code> → 类型「睡眠分析」→ 开始日期「今天」</li>
-        <li>添加 <code>文本</code> 操作，格式化：<br>
-          <code>静息心率: [心率] bpm</code><br>
-          <code>HRV: [HRV] ms</code><br>
-          <code>睡眠: [睡眠时长] 小时</code>
-        </li>
-        <li>添加 <code>拷贝到剪贴板</code> 或 <code>显示结果</code></li>
-        <li>（可选）在「自动化」中设置每天早上 8:00 自动运行</li>
-      </ol>
-      <p style="font-size:.78rem;color:var(--text-3);margin-top:10px">获取数据后，把数字填入上方表单即可评估。也可以直接把文本发给 AI 助手（如 ChatGPT/Claude）获取更详细的建议。</p>
+    <!-- Getting Your Data -->
+    <details class="shortcut-section" open>
+      <summary style="cursor:pointer;font-weight:600;font-size:1rem">📱 怎么拿到数据</summary>
+
+      <div style="margin:14px 0">
+        <h3 style="font-size:.9rem;margin-bottom:8px">方案一：最简单 — 直接看 iPhone</h3>
+        <p style="font-size:.82rem;color:var(--text-2);line-height:1.8;margin-bottom:10px">
+          打开 iPhone <strong>健康 App</strong>，首页「摘要」就能看到：<br>
+          · 睡眠 → 时长和质量<br>
+          · 心脏 → 静息心率、HRV<br>
+          把数字手动填到上面的表单就行。
+        </p>
+      </div>
+
+      <div style="margin:14px 0">
+        <h3 style="font-size:.9rem;margin-bottom:8px">方案二：一键导出 — Health Auto Export</h3>
+        <p style="font-size:.82rem;color:var(--text-2);line-height:1.8;margin-bottom:8px">
+          App Store 搜索 <a href="https://apps.apple.com/app/health-auto-export-json-csv/id1115567069" target="_blank" style="color:var(--accent);font-weight:600">Health Auto Export</a>（免费版就够用）：
+        </p>
+        <ol class="shortcut-steps">
+          <li>下载安装，授权 Apple Health 读取权限</li>
+          <li>选择你要导出的指标（Sleep、Heart Rate、HRV）</li>
+          <li>点 <strong>Quick Export</strong> → 生成文本/CSV</li>
+          <li>复制数据，粘贴到 AI 对话中让它分析</li>
+        </ol>
+      </div>
+
+      <div style="margin:14px 0;background:var(--bg-input);padding:14px;border-radius:var(--radius-sm)">
+        <h3 style="font-size:.9rem;margin-bottom:8px">📋 发给 AI 的模板（直接复制）</h3>
+        <div style="font-size:.8rem;color:var(--text-2);line-height:1.8;background:var(--bg-card);padding:12px;border-radius:8px;border:1px solid var(--border);white-space:pre-wrap;font-family:var(--mono)" id="promptTemplate">我的今日健康数据：
+- 睡眠：__小时，质量：好/一般/差
+- 静息心率：__bpm
+- HRV：__ms
+- 主观精力：__/10
+- 肌肉酸痛：无/轻微/中度/严重
+
+我的运动习惯：网球 + 功能性训练 + 徒步
+我的问题：膝盖有时会内扣
+
+请根据以上数据：
+1. 评估我今天的恢复状态
+2. 推荐今天应该做什么（休息/轻度/中度/高强度）
+3. 给出具体的训练方案
+4. 如果需要做康复训练，列出具体动作</div>
+        <button onclick="navigator.clipboard.writeText(document.getElementById('promptTemplate').textContent);this.textContent='✅ 已复制'" style="margin-top:8px;padding:6px 16px;border:1px solid var(--border);border-radius:100px;background:var(--accent);color:#fff;font-size:.78rem;cursor:pointer;border:none">📋 复制模板</button>
+      </div>
     </details>
 
     <!-- History -->
