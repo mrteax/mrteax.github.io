@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>今日状态 · Tea X</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/themes.css">
+  <style>
+    .health-wrap{max-width:520px;margin:20px auto;padding:0 16px}
+    .health-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px}
+    .health-card h2{font-size:1.1rem;margin-bottom:14px}
+    .input-group{margin-bottom:14px}
+    .input-group label{display:block;font-size:.82rem;color:var(--text-2);margin-bottom:4px;font-weight:500}
+    .input-group input,.input-group select{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-input);color:var(--text);font-family:var(--font);font-size:.9rem;outline:none}
+    .input-group input:focus,.input-group select:focus{border-color:var(--accent)}
+    .input-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .assess-btn{width:100%;padding:14px;border:none;border-radius:var(--radius);background:var(--accent);color:#fff;font-family:var(--font);font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s}
+    .assess-btn:hover{opacity:.9;transform:scale(1.01)}
+    .result-card{display:none;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:14px;text-align:center}
+    .result-card.show{display:block;animation:fadeIn .4s ease}
+    .result-emoji{font-size:3rem;margin-bottom:8px}
+    .result-level{font-size:1.4rem;font-weight:900;margin-bottom:4px}
+    .result-desc{font-size:.88rem;color:var(--text-2);line-height:1.7;margin-bottom:16px}
+    .result-plan{text-align:left;background:var(--bg-input);border-radius:var(--radius-sm);padding:16px;margin-bottom:14px}
+    .result-plan h3{font-size:.88rem;margin-bottom:8px;color:var(--accent)}
+    .result-plan ul{padding-left:18px;font-size:.85rem;line-height:1.8;color:var(--text-2)}
+    .result-scores{display:flex;gap:8px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
+    .score-tag{padding:4px 12px;border-radius:100px;font-size:.75rem;font-weight:500}
+    .score-green{background:rgba(39,174,96,.1);color:#27ae60}
+    .score-yellow{background:rgba(243,156,18,.1);color:#f39c12}
+    .score-red{background:rgba(231,76,60,.1);color:#e74c3c}
+    .shortcut-section{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px}
+    .shortcut-section h2{font-size:1rem;margin-bottom:12px}
+    .shortcut-steps{font-size:.82rem;color:var(--text-2);line-height:1.9}
+    .shortcut-steps li{margin-bottom:6px}
+    .shortcut-steps code{background:var(--bg-input);padding:1px 6px;border-radius:4px;font-size:.78rem}
+    .history-section{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+    .history-section h2{font-size:1rem;margin-bottom:10px}
+    .history-list{font-size:.82rem;color:var(--text-2)}
+    .history-item{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)}
+    .history-item:last-child{border-bottom:none}
+    .hi-date{color:var(--text-3);font-family:var(--mono)}
+    .clear-btn{margin-top:10px;padding:6px 14px;border:1px solid var(--border);border-radius:100px;background:none;color:var(--text-3);font-size:.75rem;cursor:pointer}
+  </style>
+</head>
+<body>
+  <nav class="nav"><a href="/" class="nav-home">✨ Tea X</a><span class="nav-title">❤️ 今日状态评估</span><button class="theme-btn" id="themeToggle">🌙</button></nav>
+
+  <div class="health-wrap">
+
+    <!-- Input -->
+    <div class="health-card">
+      <h2>📊 输入今日数据</h2>
+      <div class="input-row">
+        <div class="input-group">
+          <label>😴 睡眠时长（小时）</label>
+          <input type="number" id="inSleep" placeholder="7.5" step="0.5" min="0" max="16">
+        </div>
+        <div class="input-group">
+          <label>💤 睡眠质量</label>
+          <select id="inSleepQ">
+            <option value="">选择…</option>
+            <option value="5">很好，一觉到天亮</option>
+            <option value="4">不错，醒了1次</option>
+            <option value="3">一般，醒了几次</option>
+            <option value="2">差，翻来覆去</option>
+            <option value="1">很差，几乎没睡</option>
+          </select>
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-group">
+          <label>❤️ 静息心率（bpm）</label>
+          <input type="number" id="inHR" placeholder="62" min="30" max="150">
+        </div>
+        <div class="input-group">
+          <label>📈 HRV（ms）</label>
+          <input type="number" id="inHRV" placeholder="45" min="5" max="200">
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-group">
+          <label>⚡ 主观精力（1-10）</label>
+          <input type="number" id="inEnergy" placeholder="7" min="1" max="10">
+        </div>
+        <div class="input-group">
+          <label>🦵 肌肉酸痛</label>
+          <select id="inSore">
+            <option value="">选择…</option>
+            <option value="0">完全不酸</option>
+            <option value="1">轻微</option>
+            <option value="2">中度</option>
+            <option value="3">严重</option>
+          </select>
+        </div>
+      </div>
+      <button class="assess-btn" id="assessBtn">评估今日状态</button>
+    </div>
+
+    <!-- Result -->
+    <div class="result-card" id="resultCard">
+      <div class="result-emoji" id="rEmoji">🟢</div>
+      <div class="result-level" id="rLevel">—</div>
+      <div class="result-scores" id="rScores"></div>
+      <p class="result-desc" id="rDesc"></p>
+      <div class="result-plan" id="rPlan"></div>
+    </div>
+
+    <!-- Shortcut Guide -->
+    <details class="shortcut-section">
+      <summary style="cursor:pointer;font-weight:600;font-size:1rem">📱 iPhone 快捷指令设置</summary>
+      <p style="font-size:.82rem;color:var(--text-2);margin:10px 0">在 iPhone「快捷指令」App 中创建一个自动化，每天早上自动获取健康数据：</p>
+      <ol class="shortcut-steps">
+        <li>打开「快捷指令」App → 点 <code>+</code> 新建</li>
+        <li>添加操作：<code>查找健康样本</code> → 类型选「心率」→ 排序「最新」→ 限制 1</li>
+        <li>再添加：<code>查找健康样本</code> → 类型「心率变异性 (HRV)」→ 排序「最新」→ 限制 1</li>
+        <li>再添加：<code>查找健康样本</code> → 类型「睡眠分析」→ 开始日期「今天」</li>
+        <li>添加 <code>文本</code> 操作，格式化：<br>
+          <code>静息心率: [心率] bpm</code><br>
+          <code>HRV: [HRV] ms</code><br>
+          <code>睡眠: [睡眠时长] 小时</code>
+        </li>
+        <li>添加 <code>拷贝到剪贴板</code> 或 <code>显示结果</code></li>
+        <li>（可选）在「自动化」中设置每天早上 8:00 自动运行</li>
+      </ol>
+      <p style="font-size:.78rem;color:var(--text-3);margin-top:10px">获取数据后，把数字填入上方表单即可评估。也可以直接把文本发给 AI 助手（如 ChatGPT/Claude）获取更详细的建议。</p>
+    </details>
+
+    <!-- History -->
+    <div class="history-section">
+      <h2>📅 历史记录</h2>
+      <div class="history-list" id="historyList"><p style="color:var(--text-3);font-size:.82rem">暂无记录</p></div>
+      <button class="clear-btn" id="clearHistory">清空记录</button>
+    </div>
+
+  </div>
+
+  <footer class="footer">数据仅存储在你的浏览器中</footer>
+
+  <script>
+  (() => {
+    // Theme
+    const html = document.documentElement;
+    const saved = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+    html.dataset.theme = saved;
+    const tb = document.getElementById('themeToggle');
+    tb.textContent = saved==='dark'?'☀️':'🌙';
+    tb.addEventListener('click', () => { const n = html.dataset.theme==='dark'?'light':'dark'; html.dataset.theme=n; localStorage.setItem('theme',n); tb.textContent=n==='dark'?'☀️':'🌙'; });
+
+    const $ = s => document.getElementById(s);
+
+    function assess() {
+      const sleep = parseFloat($('inSleep').value) || 0;
+      const sleepQ = parseInt($('inSleepQ').value) || 3;
+      const hr = parseInt($('inHR').value) || 0;
+      const hrv = parseInt($('inHRV').value) || 0;
+      const energy = parseInt($('inEnergy').value) || 5;
+      const sore = parseInt($('inSore').value) || 0;
+
+      if (!sleep && !hr && !hrv) { alert('请至少填写一项数据'); return; }
+
+      // Score each dimension (0-100)
+      let scores = {};
+
+      // Sleep score
+      if (sleep > 0) {
+        let ss = 0;
+        if (sleep >= 7 && sleep <= 9) ss = 90 + sleepQ * 2;
+        else if (sleep >= 6) ss = 60 + sleepQ * 4;
+        else if (sleep >= 5) ss = 40 + sleepQ * 3;
+        else ss = 20 + sleepQ * 2;
+        scores.sleep = Math.min(100, ss);
+      }
+
+      // HR score (lower resting HR = better recovery, baseline ~60)
+      if (hr > 0) {
+        if (hr <= 55) scores.hr = 95;
+        else if (hr <= 62) scores.hr = 85;
+        else if (hr <= 70) scores.hr = 70;
+        else if (hr <= 80) scores.hr = 50;
+        else scores.hr = 30;
+      }
+
+      // HRV score (higher = better recovery)
+      if (hrv > 0) {
+        if (hrv >= 60) scores.hrv = 95;
+        else if (hrv >= 45) scores.hrv = 80;
+        else if (hrv >= 30) scores.hrv = 60;
+        else if (hrv >= 20) scores.hrv = 40;
+        else scores.hrv = 20;
+      }
+
+      // Energy + soreness
+      scores.energy = energy * 10;
+      scores.soreness = (3 - sore) / 3 * 100;
+
+      // Weighted average
+      const weights = { sleep: 25, hr: 20, hrv: 25, energy: 20, soreness: 10 };
+      let totalWeight = 0, totalScore = 0;
+      for (const [k, v] of Object.entries(scores)) {
+        if (weights[k]) { totalScore += v * weights[k]; totalWeight += weights[k]; }
+      }
+      const overall = totalWeight > 0 ? Math.round(totalScore / totalWeight) : 50;
+
+      // Determine recommendation
+      let level, emoji, desc, plan;
+
+      if (overall >= 80) {
+        level = '🟢 状态极佳 — 全力训练日';
+        emoji = '💪';
+        desc = '你的身体恢复充分，今天适合高强度训练。可以挑战力量、爆发力或长时间有氧。';
+        plan = {
+          title: '推荐训练方案',
+          items: [
+            '力量训练：大肌群复合动作（深蹲/硬拉/卧推），4-5组 × 5-8次',
+            '或 高强度间歇（HIIT）：30秒全力 + 30秒休息 × 8-10轮',
+            '或 长距离有氧：跑步/骑行 45-60 分钟',
+            '网球：可以打高强度比赛或发球训练',
+            '训练后补充蛋白质和碳水',
+          ]
+        };
+      } else if (overall >= 60) {
+        level = '🟡 状态不错 — 中等强度';
+        emoji = '🏃';
+        desc = '身体恢复尚可，适合中等强度训练。避免极限重量和高冲击动作。';
+        plan = {
+          title: '推荐训练方案',
+          items: [
+            '功能性训练：中等重量复合动作，3-4组 × 8-12次',
+            '或 稳态有氧：慢跑/快走/骑行 30-40 分钟',
+            '网球：技术练习或轻松对打',
+            '加入 15 分钟灵活性/拉伸训练',
+            '膝盖有问题可做康复动作（TKE、蚌式开合等）',
+          ]
+        };
+      } else if (overall >= 40) {
+        level = '🟠 需要恢复 — 轻度活动';
+        emoji = '🧘';
+        desc = '身体信号显示恢复不足。今天以恢复为主，避免加重疲劳。';
+        plan = {
+          title: '推荐恢复方案',
+          items: [
+            '轻度瑜伽或拉伸 20-30 分钟',
+            '散步 30 分钟（不要跑）',
+            '泡沫轴放松紧张肌群',
+            '膝盖康复：靠墙静蹲、直腿抬高等低强度动作',
+            '关注补水和营养，早睡',
+          ]
+        };
+      } else {
+        level = '🔴 身体疲劳 — 休息日';
+        emoji = '😴';
+        desc = '身体明确需要休息。今天不要训练，专注恢复。';
+        plan = {
+          title: '今日重点：恢复',
+          items: [
+            '完全休息，不做任何训练',
+            '轻度散步（15分钟以内）可以促进血液循环',
+            '充足睡眠（目标 8+ 小时）',
+            '补充水分、蛋白质、蔬菜',
+            '如果连续多天在红区，考虑调整训练计划或就医',
+          ]
+        };
+      }
+
+      // Display
+      const card = $('resultCard');
+      $('rEmoji').textContent = emoji;
+      $('rLevel').textContent = level;
+      $('rDesc').textContent = desc;
+
+      const scoreLabels = { sleep:'睡眠', hr:'心率', hrv:'HRV', energy:'精力', soreness:'酸痛' };
+      $('rScores').innerHTML = Object.entries(scores).map(([k,v]) => {
+        const cls = v >= 70 ? 'score-green' : v >= 40 ? 'score-yellow' : 'score-red';
+        return `<span class="score-tag ${cls}">${scoreLabels[k]||k} ${Math.round(v)}</span>`;
+      }).join('') + `<span class="score-tag ${overall>=70?'score-green':overall>=40?'score-yellow':'score-red'}">综合 ${overall}</span>`;
+
+      $('rPlan').innerHTML = `<h3>${plan.title}</h3><ul>${plan.items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+      card.classList.add('show');
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // Save to history
+      const history = JSON.parse(localStorage.getItem('teax_health_history') || '[]');
+      history.unshift({
+        date: new Date().toLocaleDateString('zh-CN'),
+        score: overall,
+        level: level.split('—')[0].trim(),
+        sleep, hr, hrv, energy
+      });
+      if (history.length > 30) history.pop();
+      localStorage.setItem('teax_health_history', JSON.stringify(history));
+      renderHistory();
+    }
+
+    function renderHistory() {
+      const history = JSON.parse(localStorage.getItem('teax_health_history') || '[]');
+      const el = $('historyList');
+      if (!history.length) { el.innerHTML = '<p style="color:var(--text-3);font-size:.82rem">暂无记录</p>'; return; }
+      el.innerHTML = history.slice(0, 10).map(h =>
+        `<div class="history-item"><span class="hi-date">${h.date}</span><span>${h.level}</span><span>综合 ${h.score}</span></div>`
+      ).join('');
+    }
+
+    $('assessBtn').addEventListener('click', assess);
+    $('clearHistory').addEventListener('click', () => {
+      if (confirm('确定清空所有历史记录？')) {
+        localStorage.removeItem('teax_health_history');
+        renderHistory();
+      }
+    });
+    renderHistory();
+  })();
+  </script>
+</body>
+</html>
