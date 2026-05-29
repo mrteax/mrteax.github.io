@@ -52,26 +52,26 @@
 
     <!-- Row 2: Daily Cocktail + Daily Tea -->
     <div class="row row-featured">
-      <a class="card card-daily card-cocktail" id="dailyCocktail" href="/cocktails.html">
+      <div class="card card-daily card-cocktail" id="dailyCocktail" role="button" tabindex="0" title="点击查看这杯详情">
         <div class="daily-color" id="cColor"></div>
         <div class="daily-body">
           <span class="daily-label">🍸 每日一杯</span>
           <h2 class="daily-name" id="cName">—</h2>
           <p class="daily-zh" id="cZh"></p>
           <p class="daily-desc" id="cDesc"></p>
-          <span class="daily-more">查看全部鸡尾酒 →</span>
+          <a class="daily-more" id="cMore" href="/cocktails.html">查看全部鸡尾酒 →</a>
         </div>
-      </a>
-      <a class="card card-daily card-tea" id="dailyTea" href="/tea.html">
+      </div>
+      <div class="card card-daily card-tea" id="dailyTea" role="button" tabindex="0" title="点击查看这款茶详情">
         <div class="daily-color" id="tColor"></div>
         <div class="daily-body">
           <span class="daily-label">🍵 每日一茶</span>
           <h2 class="daily-name" id="tName">—</h2>
           <p class="daily-zh" id="tZh"></p>
           <p class="daily-desc" id="tDesc"></p>
-          <span class="daily-more">查看全部茶百科 →</span>
+          <a class="daily-more" id="tMore" href="/tea.html">查看全部茶百科 →</a>
         </div>
-      </a>
+      </div>
     </div>
 
     <!-- Row 3: Lifestyle Themes -->
@@ -141,6 +141,24 @@
   <div class="daily-quote" id="quoteBox" role="button" tabindex="0" title="点击换一条">
     <p class="quote-text" id="dailyQuote"></p>
     <p class="quote-from" id="quoteFrom"></p>
+  </div>
+
+  <!-- Daily item detail modal -->
+  <div class="dmodal hidden" id="dModal" role="dialog" aria-modal="true">
+    <div class="dmodal-card">
+      <button class="dmodal-close" id="dModalClose" aria-label="关闭">✕</button>
+      <div class="dmodal-color" id="dmColor"></div>
+      <div class="dmodal-body">
+        <span class="dmodal-label" id="dmLabel"></span>
+        <h2 class="dmodal-name" id="dmName"></h2>
+        <p class="dmodal-zh" id="dmZh"></p>
+        <div class="dmodal-meta" id="dmMeta"></div>
+        <p class="dmodal-desc" id="dmDesc"></p>
+        <ul class="dmodal-list" id="dmList"></ul>
+        <div class="dmodal-tags" id="dmTags"></div>
+        <a class="dmodal-more" id="dmMore"></a>
+      </div>
+    </div>
   </div>
 
   <footer class="footer"><a href="/visitors.html" class="footer-brand" title="✨">✨ Tea X</a></footer>

@@ -152,6 +152,58 @@
     window.addEventListener('teax:geo', e => fetchWeather(e.detail));
   }
 
+  // ===== Daily item detail modal =====
+  const dModal = document.getElementById('dModal');
+  function fill(id, html) { const el = document.getElementById(id); if (el) el.innerHTML = html; }
+  function fillText(id, txt) { const el = document.getElementById(id); if (el) el.textContent = txt; }
+  function openDModal() {
+    if (!dModal) return;
+    dModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDModal() {
+    if (!dModal) return;
+    dModal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+  if (dModal) {
+    document.getElementById('dModalClose').addEventListener('click', closeDModal);
+    dModal.addEventListener('click', e => { if (e.target === dModal) closeDModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDModal(); });
+  }
+
+  function showCocktail(c) {
+    const col = document.getElementById('dmColor');
+    if (c.img) { col.style.background = `url(${c.img}) center/cover`; col.style.height = '180px'; }
+    else { col.style.background = c.color; col.style.height = '90px'; }
+    fillText('dmLabel', '🍸 每日一杯');
+    fillText('dmName', c.name);
+    fillText('dmZh', c.zh);
+    fill('dmMeta', `<span>🥃 ${c.glass}</span><span>🔧 ${c.method}</span><span>${c.strength === 'strong' ? '🔥 高酒精' : c.strength === 'light' ? '🌿 低酒精' : '⚖️ 中等'}</span>`);
+    fillText('dmDesc', c.desc);
+    fill('dmList', (c.ingredients || []).map(i => `<li>${i}</li>`).join(''));
+    document.getElementById('dmList').style.display = (c.ingredients && c.ingredients.length) ? '' : 'none';
+    fill('dmTags', (c.flavor || []).map(f => `<span>${f}</span>`).join(''));
+    const more = document.getElementById('dmMore');
+    more.textContent = '查看全部鸡尾酒 →'; more.href = `/cocktails.html#${c.id}`;
+    openDModal();
+  }
+
+  function showTea(t) {
+    const col = document.getElementById('dmColor');
+    col.style.background = t.color; col.style.height = '90px';
+    fillText('dmLabel', '🍵 每日一茶');
+    fillText('dmName', t.nameZh);
+    fillText('dmZh', t.name);
+    fill('dmMeta', [t.origin && `<span>📍 ${t.origin}</span>`, t.brewTemp && `<span>🌡️ ${t.brewTemp}</span>`, t.brewTime && `<span>⏱️ ${t.brewTime}</span>`].filter(Boolean).join(''));
+    fillText('dmDesc', t.highlights);
+    document.getElementById('dmList').style.display = 'none';
+    fill('dmTags', (t.flavor || []).map(f => `<span>${f}</span>`).join(''));
+    const more = document.getElementById('dmMore');
+    more.textContent = '查看全部茶百科 →'; more.href = '/tea.html';
+    openDModal();
+  }
+
   // Daily cocktail
   const dayIdx = Math.floor((Date.now() - new Date(new Date().getFullYear(),0,0)) / 86400000);
   if (typeof COCKTAILS !== 'undefined') {
@@ -161,7 +213,12 @@
     $('#cName').textContent = c.name;
     $('#cZh').textContent = c.zh;
     $('#cDesc').textContent = c.desc;
-    $('#dailyCocktail').href = `/cocktails.html#${c.id}`;
+    const cm = $('#cMore'); if (cm) cm.href = `/cocktails.html#${c.id}`;
+    const card = $('#dailyCocktail');
+    if (card) {
+      card.addEventListener('click', e => { if (!e.target.closest('.daily-more')) showCocktail(c); });
+      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showCocktail(c); } });
+    }
   }
 
   // Daily tea
@@ -171,7 +228,11 @@
     $('#tName').textContent = t.nameZh;
     $('#tZh').textContent = t.name;
     $('#tDesc').textContent = t.highlights;
-    $('#dailyTea').href = `/tea.html`;
+    const card = $('#dailyTea');
+    if (card) {
+      card.addEventListener('click', e => { if (!e.target.closest('.daily-more')) showTea(t); });
+      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showTea(t); } });
+    }
   }
 
   // Daily tips
