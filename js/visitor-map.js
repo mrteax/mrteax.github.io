@@ -39,12 +39,15 @@
   };
   const useRemote = !!(SUPABASE.url && SUPABASE.key);
 
+  // On most pages we only *record* the visit silently. The map + stats are
+  // rendered only where the SVG exists (the private /visitors.html page).
   const svg = document.getElementById('vmap');
   const pinsG = document.getElementById('vmapPins');
   const greetEl = document.getElementById('visitorGreet');
   const statEl = document.getElementById('mapStat');
   const noteEl = document.getElementById('visitorNote');
-  if (!svg || !pinsG) return;
+  const listEl = document.getElementById('visitorList');
+  const showMap = !!(svg && pinsG);
 
   const SVGNS = 'http://www.w3.org/2000/svg';
 
@@ -165,8 +168,7 @@
 
   async function render(you) {
     const stored = await loadVisitors();
-    const all = you ? stored.concat([you]) : stored;
-    const cities = aggregate(all);
+    const cities = aggregate(stored);
 
     pinsG.innerHTML = '';
     cities.forEach(c => {
@@ -176,26 +178,32 @@
       addPin(x, y, { r: Math.min(8, 3 + Math.log2(c.count + 1) * 1.6), you: isYou, label });
     });
 
-    const visits = all.length;
-    const countries = new Set(all.map(v => v.country).filter(Boolean)).size;
+    const visits = stored.length;
+    const countries = new Set(stored.map(v => v.country).filter(Boolean)).size;
     if (statEl) statEl.textContent = `${visits} 次到访 · ${countries} 个国家/地区`;
+    if (greetEl) {
+      greetEl.textContent = useRemote ? '全站访客足迹（仅你可见）' : '本机访客足迹';
+    }
     if (noteEl) {
       noteEl.textContent = useRemote
-        ? '地图上是来自世界各地访客的真实落点'
-        : '当前仅记录你本机的足迹，配置后即可显示全球访客（见 js/visitor-map.js）';
+        ? '所有访客的真实落点，圆点越大到访越多'
+        : '当前仅记录本机足迹，配置 Supabase 后显示全站访客（见 js/visitor-map.js）';
+    }
+    if (listEl) {
+      const top = cities.slice().sort((a, b) => b.count - a.count).slice(0, 20);
+      listEl.innerHTML = top.map(c => {
+        const flag = flagFromCode(c.code);
+        const place = [c.city, c.country].filter(Boolean).join(', ') || '未知';
+        return `<li><span>${flag ? flag + ' ' : ''}${place}</span><b>${c.count}</b></li>`;
+      }).join('') || '<li><span>还没有访客记录</span><b>0</b></li>';
     }
   }
 
   (async () => {
     const you = await geolocate();
-    if (you && you.lat != null) {
-      const flag = you.flag || flagFromCode(you.code);
-      const place = [you.city, you.country].filter(Boolean).join(', ') || '某个角落';
-      if (greetEl) greetEl.innerHTML = `👋 你好，来自 <b>${flag ? flag + ' ' : ''}${place}</b> 的朋友`;
-      await saveVisitor(you);
-    } else if (greetEl) {
-      greetEl.textContent = '👋 你好，欢迎来到 Tea X';
-    }
-    await render(you);
+    // Record real visits everywhere except the private stats page itself
+    // (so the owner viewing their own dashboard doesn't pollute the data).
+    if (you && you.lat != null && !showMap) await saveVisitor(you);
+    if (showMap) await render(you);
   })();
 })();
