@@ -65,30 +65,91 @@
     const h = new Date().getHours();
     const day = new Date().getDay();
     const dn = ['周日','周一','周二','周三','周四','周五','周六'];
-    const we = day===0||day===6;
+    const we = day === 0 || day === 6;
+    const rnd = a => a[Math.floor(Math.random() * a.length)];
+
     const G = {
-      0:['夜深了，早点休息','晚安，明天见','深夜还在逛？注意身体'],
-      6:['这么早就醒了？','清晨的空气最好','早起的人运气好'],
-      8:[`${dn[day]}早，今天有什么计划？`,'早上好，新的一天','阳光正好，适合出门'],
-      11:['离午饭不远了','上午好，效率最高的时段',`${dn[day]}上午，状态怎么样？`],
-      12:['午饭时间到了','中午了，吃点好的','午休一下也不错'],
-      14:['下午好，来杯咖啡吧 ☕',`${dn[day]}下午，继续加油`,'下午的阳光很温柔'],
-      17:[we?'周末的傍晚最惬意':'快下班了，再坚持一下','夕阳很美的时候','晚饭想吃什么？'],
-      19:[we?'周末夜晚，放松一下':'下班了，做点喜欢的事','适合喝一杯的时间 🍸','晚上好，辛苦一天了'],
-      22:['夜深了，早点休息','晚安，明天见','深夜还在逛？注意身体'],
+      0:['这个点还不睡，是和周公有仇吗 🌙','夜猫子集合！熬夜使我快乐，明天使我后悔','失眠的尽头是逛网页，欢迎对号入座','别刷了，再刷天就亮了'],
+      6:['天还没亮就起，是要去抢菜吗','早起的鸟儿有虫吃，早起的我只想再睡五分钟','这么早醒，是梦想叫醒了你，还是膀胱'],
+      8:[we?'周末还起这么早，时间管理大师本师 👏':`${dn[day]}早，又到了和闹钟搏斗的回合`,'早上好，今天也是被生活温柔摩擦的一天','咖啡已就位，灵魂还在路上 ☕'],
+      11:['马上午饭了，“今天吃什么”世纪难题准时上线','上午的 KPI 完成了吗（指摸鱼进度）','越临近饭点，工作效率越高，这很科学'],
+      12:['干饭时间到！碳水才是人类挚友 🍚','中午了，是干饭人就站起来','吃饱了才有力气继续发呆'],
+      14:['下午犯困很正常，别自责，再续一杯 ☕',we?'周末下午，最适合什么正事都不干':'下午三点，离下班还有亿点点时间','困意来袭，建议假装在深度思考'],
+      17:[we?'周末傍晚，岁月静好（指无所事事）':'下班倒计时，灵魂已经先溜出门了','夕阳无限好，可惜人还在工位','晚饭吃啥？比工作更难的题来了'],
+      19:[we?'周末的夜晚，请尽情挥霍 ✨':'下班啦！这条命终于又支棱起来了','辛苦一天，给自己倒一杯，干了 🍸','晚上好，今天的班上得值不值？灵魂拷问'],
+      22:['该睡了，再刷手机眼睛要罢工了','夜深了，明天还得早起当社畜呢','睡前立个flag：早点睡（然后逛到两点）'],
     };
-    const keys = Object.keys(G).map(Number).sort((a,b)=>a-b);
+    const keys = Object.keys(G).map(Number).sort((a, b) => a - b);
     let period = keys[0];
     for (const k of keys) { if (h >= k) period = k; }
     const pool = G[period];
-    greetMsg.textContent = pool[Math.floor(Math.random()*pool.length)];
 
-    let visits = parseInt(localStorage.getItem('teax_visits')||'0')+1;
+    // Typewriter, like someone actually typing to you
+    let typeTimer = null, lastIdx = -1;
+    function typeOut(text) {
+      clearTimeout(typeTimer);
+      greetMsg.classList.add('typing');
+      let i = 0;
+      (function step() {
+        greetMsg.textContent = text.slice(0, i);
+        if (i++ <= text.length) typeTimer = setTimeout(step, 42 + Math.random() * 48);
+        else greetMsg.classList.remove('typing');
+      })();
+    }
+    function roll() {
+      let i; do { i = Math.floor(Math.random() * pool.length); } while (pool.length > 1 && i === lastIdx);
+      lastIdx = i;
+      typeOut(pool[i]);
+    }
+    roll();
+    greetMsg.style.cursor = 'pointer';
+    greetMsg.title = '点我换一句';
+    greetMsg.addEventListener('click', roll);
+
+    const visits = parseInt(localStorage.getItem('teax_visits') || '0') + 1;
     localStorage.setItem('teax_visits', String(visits));
-    greetSub.textContent = `第 ${visits} 次来到 Tea X`;
+    greetSub.textContent = visits === 1
+      ? '第一次来？欢迎欢迎，随便逛逛 🎉'
+      : rnd([`这是你第 ${visits} 次来，缘分不浅啊`, `第 ${visits} 次光临，再来真要发会员卡了 😎`, `又来啦，第 ${visits} 次，这儿都快是你家了`]);
 
-    const ambient = h<6?'night':h<12?'morning':h<18?'afternoon':h<22?'evening':'night';
+    const ambient = h < 6 ? 'night' : h < 12 ? 'morning' : h < 18 ? 'afternoon' : h < 22 ? 'evening' : 'night';
     document.body.classList.add(ambient);
+
+    // ---- Weather-aware quip (reuses the visitor-map IP geolocation) ----
+    let weatherDone = false;
+    function weatherQuip(t, code, city) {
+      t = Math.round(t);
+      const C = city ? city + ' ' : '';
+      let cond;
+      if (code <= 1) cond = '大晴天 ☀️';
+      else if (code <= 3) cond = '阴天 ☁️';
+      else if (code === 45 || code === 48) cond = '有雾 🌫️';
+      else if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) cond = '在下雨 🌧️';
+      else if ((code >= 71 && code <= 77) || code === 85 || code === 86) cond = '在下雪 ❄️';
+      else if (code >= 95) cond = '打雷下雨 ⛈️';
+      else cond = '天气一般';
+      let tail;
+      if (t >= 33) tail = '，热到融化，空调和西瓜走起 🥵';
+      else if (t >= 28) tail = '，有点热，短袖安排上';
+      else if (t <= 3) tail = '，冷到原地结冰，秋裤别省 🥶';
+      else if (t <= 12) tail = '，降温了，多穿件别硬撑';
+      else tail = rnd(['，体感刚刚好', '，适合出门浪一圈', '，温度还算给面子']);
+      return `${C}现在 ${t}°，${cond}${tail}`;
+    }
+    async function fetchWeather(geo) {
+      if (weatherDone || !geo || geo.lat == null) return;
+      weatherDone = true;
+      try {
+        const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${geo.lat}&longitude=${geo.lon}&current=temperature_2m,weather_code&timezone=auto`);
+        const d = await r.json();
+        const cur = d && d.current;
+        if (cur && cur.temperature_2m != null && greetSub) {
+          greetSub.textContent = weatherQuip(cur.temperature_2m, cur.weather_code, geo.city);
+        }
+      } catch (e) { weatherDone = false; }
+    }
+    try { const g = sessionStorage.getItem('teax_geo'); if (g) fetchWeather(JSON.parse(g)); } catch (e) {}
+    window.addEventListener('teax:geo', e => fetchWeather(e.detail));
   }
 
   // Daily cocktail
@@ -210,5 +271,11 @@
       showQuote(quoteIdx);
     });
   }
+
+  // ===== Console easter egg =====
+  try {
+    console.log('%c✨ Tea X', 'color:#b07d4f;font-size:22px;font-weight:900');
+    console.log('%c嘿，被你抓到啦 👀 既然都打开控制台了，说明你也是同道中人。摸鱼愉快，别被老板发现～', 'color:#999;font-size:13px');
+  } catch (e) {}
 
 })();

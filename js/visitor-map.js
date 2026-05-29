@@ -61,6 +61,10 @@
   // ---- IP geolocation (free, no key). Try a couple of providers. ----
   async function geolocate() {
     try {
+      const cached = sessionStorage.getItem('teax_geo');
+      if (cached) return JSON.parse(cached);
+    } catch (e) {}
+    try {
       const r = await fetch('https://ipwho.is/');
       const d = await r.json();
       if (d && d.success !== false && d.latitude != null) {
@@ -195,12 +199,18 @@
         const flag = flagFromCode(c.code);
         const place = [c.city, c.country].filter(Boolean).join(', ') || '未知';
         return `<li><span>${flag ? flag + ' ' : ''}${place}</span><b>${c.count}</b></li>`;
-      }).join('') || '<li><span>还没有访客记录</span><b>0</b></li>';
+      }).join('') || '<li><span>还没人来过，可能大家都在忙着上班 🫠</span><b>0</b></li>';
     }
   }
 
   (async () => {
     const you = await geolocate();
+    if (you && you.lat != null) {
+      // Share the location so other scripts (e.g. the weather greeting) can
+      // reuse it without making another IP lookup.
+      try { sessionStorage.setItem('teax_geo', JSON.stringify(you)); } catch (e) {}
+      window.dispatchEvent(new CustomEvent('teax:geo', { detail: you }));
+    }
     // Record real visits everywhere except the private stats page itself
     // (so the owner viewing their own dashboard doesn't pollute the data).
     if (you && you.lat != null && !showMap) await saveVisitor(you);
