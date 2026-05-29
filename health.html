@@ -161,25 +161,6 @@
         </ol>
       </div>
 
-      <div style="margin:14px 0;background:var(--bg-input);padding:14px;border-radius:var(--radius-sm)">
-        <h3 style="font-size:.9rem;margin-bottom:8px">📋 发给 AI 的模板（直接复制）</h3>
-        <div style="font-size:.8rem;color:var(--text-2);line-height:1.8;background:var(--bg-card);padding:12px;border-radius:8px;border:1px solid var(--border);white-space:pre-wrap;font-family:var(--mono)" id="promptTemplate">我的今日健康数据：
-- 睡眠：__小时，质量：好/一般/差
-- 静息心率：__bpm
-- HRV：__ms
-- 主观精力：__/10
-- 肌肉酸痛：无/轻微/中度/严重
-
-我的运动习惯：网球 + 功能性训练 + 徒步
-我的问题：膝盖有时会内扣
-
-请根据以上数据：
-1. 评估我今天的恢复状态
-2. 推荐今天应该做什么（休息/轻度/中度/高强度）
-3. 给出具体的训练方案
-4. 如果需要做康复训练，列出具体动作</div>
-        <button onclick="navigator.clipboard.writeText(document.getElementById('promptTemplate').textContent);this.textContent='✅ 已复制'" style="margin-top:8px;padding:6px 16px;border:1px solid var(--border);border-radius:100px;background:var(--accent);color:#fff;font-size:.78rem;cursor:pointer;border:none">📋 复制模板</button>
-      </div>
     </details>
 
     <!-- History -->
