@@ -69,6 +69,8 @@
       <h2>🔄 每日自动同步</h2>
       <p class="parse-msg" id="syncHint" style="margin-top:0">正在从云端读取最新数据…</p>
       <button class="assess-btn" id="syncBtn" style="margin-top:6px;font-size:.9rem;padding:11px">↻ 立即从云端同步</button>
+      <a class="assess-btn" id="haeDeepLink" style="display:block;text-align:center;text-decoration:none;margin-top:8px;font-size:.88rem;padding:11px;background:var(--bg-input);color:var(--accent);border:1px solid var(--border)">📲 一键把上传配置导入 Health Auto Export</a>
+      <p class="hint" style="margin:8px 0 0">在 <strong>iPhone</strong> 上点上面的按钮（需已装 Health Auto Export）：它会自动打开 App 并填好上传地址和鉴权，你只要勾选要同步的指标、把频率设为每天即可。</p>
       <details class="setup-help" style="margin-top:12px">
         <summary style="cursor:pointer;font-size:.84rem;color:var(--text-2);font-weight:600">⚙️ 怎么开启「每天自动上传」（一次性设置）</summary>
         <div style="font-size:.82rem;color:var(--text-2);line-height:1.85;margin-top:10px">
@@ -422,8 +424,8 @@ create policy "insert" on health_imports for insert with check (true);</pre>
       const rhrVals = rhr.map(p => num(p.qty)).filter(x => x != null);
       if (rhrVals.length) { out.restingHR = Math.round(avg(rhrVals)); out.found++; }
       const hr = latestDayPoints('heart_rate');
-      const mins = hr.map(p => num(p.Min)).filter(x => x != null);
-      const avgs = hr.map(p => num(p.Avg)).filter(x => x != null);
+      const mins = hr.map(p => num(p.Min != null ? p.Min : p.min)).filter(x => x != null);
+      const avgs = hr.map(p => num(p.Avg != null ? p.Avg : p.avg)).filter(x => x != null);
       if (mins.length) out.minHR = Math.round(Math.min(...mins));
       if (avgs.length) out.avgHR = Math.round(avg(avgs));
       if (out.restingHR == null && out.minHR != null) { out.restingHR = out.minHR; out.found++; }
@@ -521,6 +523,16 @@ create policy "insert" on health_imports for insert with check (true);</pre>
     };
     const syncUrlEl = $('syncUrl');
     if (syncUrlEl) syncUrlEl.textContent = `${SUPA.url}/rest/v1/${SUPA.table}`;
+
+    // One-tap deep link that pre-fills Health Auto Export's REST automation
+    const dl = $('haeDeepLink');
+    if (dl) {
+      const headers = `apikey,${SUPA.key},Authorization,Bearer ${SUPA.key}`;
+      dl.href = 'com.HealthExport://automation?url=' + encodeURIComponent(`${SUPA.url}/rest/v1/${SUPA.table}`) +
+        '&headers=' + encodeURIComponent(headers) +
+        '&name=' + encodeURIComponent('Tea X 健康同步') +
+        '&format=json&enabled=true';
+    }
 
     function normalizeExport(d) {
       if (!d) return null;
