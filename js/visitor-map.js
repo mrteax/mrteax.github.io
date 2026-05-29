@@ -34,7 +34,7 @@
 
   const SUPABASE = {
     url: 'https://trcetesyexopngcfrgck.supabase.co',
-    key: '',   // ← 待填：Supabase 控制台 Project Settings → API → anon public key
+    key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRyY2V0ZXN5ZXhvcG5nY2ZyZ2NrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMjIxNDYsImV4cCI6MjA5NTU5ODE0Nn0.ezCv2WcvJe7UjcLogSw96KTtL1HsBdnSytrbTuhDF2c',
     table: 'visitors',
   };
   const useRemote = !!(SUPABASE.url && SUPABASE.key);
