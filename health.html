@@ -164,7 +164,7 @@
     tb.addEventListener('click', () => { const n = html.dataset.theme==='dark'?'light':'dark'; html.dataset.theme=n; localStorage.setItem('theme',n); tb.textContent=n==='dark'?'☀️':'🌙'; });
 
     const $ = s => document.getElementById(s);
-    let lastParsed = null;
+    let lastParsed = null, lastRaw = null;
 
     function assess() {
       const sleep = parseFloat($('inSleep').value) || 0;
@@ -452,6 +452,7 @@
         }
         msg.className = 'parse-msg ok';
         msg.textContent = `✅ 已解析${p.date ? '（' + p.date + '）' : ''}，识别到 ${p.found} 项核心指标，已自动填表并评估 👇`;
+        lastRaw = normalizeExport(json);
         applyParsed(p);
       };
       reader.readAsText(file);
@@ -499,12 +500,14 @@
             : '云端暂无数据，请先按下方说明开启自动上传。';
           return;
         }
-        const p = parseHealthExport(normalizeExport(rows[0].data));
+        const norm = normalizeExport(rows[0].data);
+        const p = parseHealthExport(norm);
         if (!p || !p.found) {
           hint.className = 'parse-msg err';
           hint.textContent = '读到了云端数据，但没识别到睡眠/心率/HRV 指标。';
           return;
         }
+        lastRaw = norm;
         const when = rows[0].created_at ? new Date(rows[0].created_at).toLocaleString('zh-CN') : '';
         hint.className = 'parse-msg ok';
         hint.textContent = `✅ 已从云端同步${p.date ? '（数据日期 ' + p.date + '）' : ''}${when ? '，上传于 ' + when : ''}`;
@@ -517,38 +520,15 @@
     $('syncBtn').addEventListener('click', () => cloudSync(false));
     cloudSync(true);
 
-    // ===== Export latest data to share with an AI app =====
-    function buildShareData() {
-      const p = lastParsed;
-      if (!p) return null;
-      const o = {
-        date: p.date,
-        sleepHours: p.sleep,
-        deepSleepHours: p.deep,
-        remSleepHours: p.rem,
-        awakeHours: p.awake,
-        restingHeartRate: p.restingHR,
-        minHeartRate: p.minHR,
-        avgHeartRate: p.avgHR,
-        hrvMs: p.hrv,
-        steps: p.steps,
-        activeEnergyKcal: p.activeEnergy,
-        exerciseMinutes: p.exerciseMin,
-        spo2Percent: p.spo2,
-        respiratoryRate: p.respRate,
-        vo2max: p.vo2max,
-      };
-      Object.keys(o).forEach(k => (o[k] == null) && delete o[k]);
-      return o;
-    }
+    // ===== Export the full raw latest record to share with an AI app =====
     const SHARE_LABEL = '📤 导出最新数据分享给 AI';
     async function shareToAI() {
-      const o = buildShareData();
       const sb = $('shareBtn');
-      if (!o) { return; }
-      const json = JSON.stringify(o, null, 2);
-      const text = '这是我最新的健康数据（JSON），请帮我分析今天的恢复状态并给出训练建议：\n' + json;
-      const fname = `health-${o.date || 'latest'}.json`;
+      if (!lastRaw) { return; }
+      const json = JSON.stringify(lastRaw, null, 2);
+      const date = (lastParsed && lastParsed.date) || 'latest';
+      const text = '这是我最新的健康数据（完整原始 JSON），请帮我分析今天的恢复状态并给出训练建议：\n' + json;
+      const fname = `health-${date}.json`;
       try {
         if (navigator.canShare) {
           const file = new File([json], fname, { type: 'application/json' });
