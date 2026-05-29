@@ -153,6 +153,21 @@ a.m-text:hover{color:var(--accent)}
 .m-like.pop .m-heart{animation:heartpop .4s ease}
 @keyframes heartpop{0%{transform:scale(1)}40%{transform:scale(1.4)}100%{transform:scale(1)}}
 
+/* Visitor map */
+.map-stat{font-size:.72rem;color:var(--t3);font-family:var(--mono)}
+.visitor-card{padding:18px;margin-bottom:16px;opacity:1;animation:none}
+.visitor-greet{font-size:.92rem;color:var(--text);margin-bottom:14px}
+.visitor-greet b{color:var(--accent);font-weight:700}
+.visitor-map-wrap{width:100%;border-radius:12px;overflow:hidden}
+.vmap{display:block;width:100%;height:auto}
+.visitor-note{font-size:.72rem;color:var(--t3);margin-top:12px;text-align:center}
+.vpin-dot{fill:var(--accent)}
+.vpin-ring{fill:var(--accent);opacity:.25;transform-box:fill-box;transform-origin:center;animation:vping 2.4s ease-out infinite}
+@keyframes vping{0%{transform:scale(.6);opacity:.45}70%{transform:scale(1.8);opacity:0}100%{transform:scale(1.8);opacity:0}}
+.vpin-you .vpin-dot{fill:#3fb950}
+.vpin-you .vpin-ring{fill:#3fb950;opacity:.35}
+.vpin:hover .vpin-dot{r:6}
+
 
 
 
