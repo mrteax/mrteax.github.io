@@ -31,9 +31,13 @@
 
   <main class="content">
 
-    <!-- Row 1: Clock -->
-    <div class="row row-clock">
-      <section class="card card-clock">
+    <!-- Hero: Greeting + Clock -->
+    <section class="card card-hero">
+      <div class="hero-left">
+        <div class="greeting-msg" id="greetMsg">你好</div>
+        <div class="greeting-sub" id="greetSub"></div>
+      </div>
+      <div class="hero-right">
         <div class="clock-time" id="clockTime">--:--</div>
         <div class="clock-sec" id="clockSec">--</div>
         <div class="clock-date" id="clockDate">----</div>
@@ -43,13 +47,7 @@
           <span class="wc"><em>🇬🇧</em><b data-tz="Europe/London">--:--</b></span>
           <span class="wc"><em>🇺🇸</em><b data-tz="America/New_York">--:--</b></span>
         </div>
-      </section>
-    </div>
-
-    <!-- Greeting -->
-    <section class="card card-greeting" id="greetingCard" style="margin-bottom:16px">
-      <div class="greeting-msg" id="greetMsg">你好</div>
-      <div class="greeting-sub" id="greetSub"></div>
+      </div>
     </section>
 
     <!-- Row 2: Daily Cocktail + Daily Tea -->

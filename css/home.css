@@ -31,6 +31,21 @@ a{color:inherit;text-decoration:none}
 /* Section Label */
 .section-label{font-size:.82rem;color:var(--t3);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin:32px 0 14px 4px}
 
+
+/* Hero Card: Greeting + Clock */
+.card-hero{display:flex;align-items:center;justify-content:space-between;padding:24px 28px;margin-bottom:16px;gap:20px}
+.hero-left{flex:1}
+.greeting-msg{font-size:1.3rem;font-weight:700;line-height:1.4}
+.greeting-sub{font-size:.78rem;color:var(--t3);margin-top:4px}
+.hero-right{text-align:right;flex-shrink:0}
+.clock-time{font-family:var(--mono);font-size:2.4rem;font-weight:500;letter-spacing:2px;line-height:1}
+.clock-sec{font-family:var(--mono);font-size:.9rem;color:var(--accent);margin-top:2px}
+.clock-date{font-size:.78rem;color:var(--t3);margin-top:4px}
+.world-clocks{display:flex;gap:10px;justify-content:flex-end;margin-top:8px;flex-wrap:wrap}
+.wc{display:flex;align-items:center;gap:3px;font-size:.72rem;color:var(--t2)}
+.wc em{font-style:normal}
+.wc b{font-family:var(--mono);font-weight:500}
+
 /* Card */
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);transition:transform var(--t),box-shadow var(--t);opacity:0;animation:cardIn .5s ease both}
 .card:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
@@ -38,7 +53,7 @@ a{color:inherit;text-decoration:none}
 
 /* Rows */
 .row{display:grid;gap:12px;margin-bottom:16px}
-.row-clock{grid-template-columns:1fr}
+
 .row-featured{grid-template-columns:1fr 1fr}
 .row-themes{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
 .row-links{grid-template-columns:1fr 1fr}
@@ -56,8 +71,6 @@ a{color:inherit;text-decoration:none}
 .row-themes .card:nth-child(6){animation-delay:.4s}
 .row-themes .card:nth-child(7){animation-delay:.43s}
 
-/* Clock */
-.card-clock{padding:20px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .clock-time{font-family:var(--mono);font-size:2.6rem;font-weight:500;letter-spacing:2px;line-height:1}
 .clock-sec{font-family:var(--mono);font-size:1rem;color:var(--accent);margin:4px 0}
 .clock-date{font-size:.78rem;color:var(--t3);margin-bottom:10px}
@@ -106,9 +119,9 @@ a{color:inherit;text-decoration:none}
 
 /* Living Section */
 
-.card-greeting{padding:20px;display:flex;flex-direction:column;justify-content:center}
-.greeting-msg{font-size:1.2rem;font-weight:700;line-height:1.5}
-.greeting-sub{font-size:.78rem;color:var(--t3);margin-top:4px}
+
+
+
 
 
 
@@ -130,7 +143,11 @@ body.night{--particle:rgba(80,120,200,.1)}
 
 /* Responsive */
 @media(max-width:768px){
-  .row-clock{grid-template-columns:1fr}
+  
+  .card-hero{flex-direction:column;text-align:center;padding:20px}
+  .hero-right{text-align:center}
+  .world-clocks{justify-content:center}
+  .clock-time{font-size:2rem}
   .row-featured{grid-template-columns:1fr}
   .row-themes{grid-template-columns:1fr 1fr}
   .row-links{grid-template-columns:1fr}
