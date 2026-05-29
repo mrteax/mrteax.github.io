@@ -117,10 +117,41 @@ a{color:inherit;text-decoration:none}
 .quote-from{font-size:.75rem;transition:opacity .2s;color:var(--t3);margin-top:10px}
 
 
-/* Living Section */
+/* Hero status badge */
+.hero-status{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:4px 12px;border-radius:100px;background:var(--abg);border:1px solid var(--border);font-size:.76rem;color:var(--t2);max-width:100%}
+.hero-status:empty{display:none}
+.hero-status i{width:7px;height:7px;border-radius:50%;background:#3fb950;flex-shrink:0;box-shadow:0 0 0 0 rgba(63,185,80,.5);animation:pulse 2s infinite}
+.hero-status em{font-style:normal;color:var(--t3)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,185,80,.5)}70%{box-shadow:0 0 0 6px rgba(63,185,80,0)}100%{box-shadow:0 0 0 0 rgba(63,185,80,0)}}
 
-
-
+/* Moments feed */
+.feed-head{display:flex;align-items:center;justify-content:space-between;margin:32px 0 14px}
+.feed-label{margin:0 0 0 4px}
+.feed-live{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;color:#3fb950;font-weight:600}
+.feed-live i{width:6px;height:6px;border-radius:50%;background:#3fb950;box-shadow:0 0 0 0 rgba(63,185,80,.5);animation:pulse 2s infinite}
+.feed{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.moment{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);padding:16px 18px;display:flex;gap:12px;opacity:0;animation:cardIn .5s ease both;transition:transform var(--t),box-shadow var(--t)}
+.moment:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.m-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.m-main{flex:1;min-width:0}
+.m-head{display:flex;align-items:baseline;gap:6px;font-size:.86rem}
+.m-name{font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.m-time{color:var(--t3);font-size:.74rem}
+.m-text{display:block;font-size:.9rem;line-height:1.7;color:var(--text);margin-top:5px}
+a.m-text{transition:color var(--t)}
+a.m-text:hover{color:var(--accent)}
+.m-media{height:120px;border-radius:var(--rs);margin-top:10px}
+.m-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px;font-size:.74rem}
+.m-mood{color:var(--t2);font-weight:600}
+.m-place{color:var(--t3)}
+.m-tag{color:var(--accent);font-weight:500}
+.m-actions{margin-top:10px}
+.m-like{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--border);background:none;cursor:pointer;border-radius:100px;padding:4px 12px;font-size:.76rem;color:var(--t3);font-family:var(--font);transition:all var(--t)}
+.m-like:hover{border-color:var(--accent);color:var(--accent)}
+.m-like .m-heart{transition:transform var(--t)}
+.m-like.liked{color:#e0556b;border-color:rgba(224,85,107,.4);background:rgba(224,85,107,.06)}
+.m-like.pop .m-heart{animation:heartpop .4s ease}
+@keyframes heartpop{0%{transform:scale(1)}40%{transform:scale(1.4)}100%{transform:scale(1)}}
 
 
 
