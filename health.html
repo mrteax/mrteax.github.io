@@ -94,6 +94,15 @@ create policy "insert" on health_imports for insert with check (true);</pre>
               <code>Content-Type</code> = application/json</li>
             <li>保存。之后每天自动上传，打开本页就能看到 ✅</li>
           </ul>
+          <p style="margin:10px 0 6px"><strong>⚠️ 报 timeout / 超时？</strong>说明单次导出的数据太大。把它调小就好：</p>
+          <ul class="shortcut-steps" style="padding-left:18px">
+            <li><strong>Aggregate Data</strong> 打开（按时段聚合，而不是导出每个采样点）</li>
+            <li><strong>Period</strong> 选 <strong>Today</strong> 或最近 1 天，不要选 All / 全部历史</li>
+            <li><strong>Aggregation Interval</strong> 选 <strong>Hours / Days</strong>（颗粒度越粗、数据越小）</li>
+            <li><strong>Batch Requests</strong> 保持 <strong>关闭</strong></li>
+            <li>若仍超时，把 <strong>Request Timeout</strong> 调大到 60 秒</li>
+          </ul>
+          <p style="margin-top:6px;color:var(--text-3)">（上面的一键按钮已默认设成 Today + 按小时聚合，正常不会超时。）</p>
           <p style="margin-top:8px;color:var(--text-3)">没有 Automation 功能？也可以用 iOS「快捷指令」做一个每日自动化，读取健康数据后 POST 到同一个 URL，效果一样（免费）。</p>
         </div>
       </details>
@@ -477,10 +486,10 @@ create policy "insert" on health_imports for insert with check (true);</pre>
 
     function applyParsed(p) {
       if (p.sleep != null) $('inSleep').value = p.sleep;
-      if (p.sleep && p.inBed) {
-        const eff = p.sleep / p.inBed;
-        $('inSleepQ').value = eff >= 0.9 ? '5' : eff >= 0.85 ? '4' : eff >= 0.8 ? '3' : '2';
-      }
+      let eff = null;
+      if (p.sleep && p.inBed) eff = p.sleep / p.inBed;
+      else if (p.sleep && p.awake != null) eff = p.sleep / (p.sleep + p.awake);
+      if (eff != null) $('inSleepQ').value = eff >= 0.9 ? '5' : eff >= 0.85 ? '4' : eff >= 0.8 ? '3' : '2';
       if (p.restingHR != null) $('inHR').value = p.restingHR;
       if (p.hrv != null) $('inHRV').value = p.hrv;
       renderParsed(p);
@@ -531,7 +540,7 @@ create policy "insert" on health_imports for insert with check (true);</pre>
       dl.href = 'com.HealthExport://automation?url=' + encodeURIComponent(`${SUPA.url}/rest/v1/${SUPA.table}`) +
         '&headers=' + encodeURIComponent(headers) +
         '&name=' + encodeURIComponent('Tea X 健康同步') +
-        '&format=json&enabled=true';
+        '&format=json&enabled=true&aggregatedata=true&period=today&interval=hours';
     }
 
     function normalizeExport(d) {
