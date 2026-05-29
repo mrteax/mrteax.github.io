@@ -45,6 +45,18 @@
     .history-item:last-child{border-bottom:none}
     .hi-date{color:var(--text-3);font-family:var(--mono)}
     .clear-btn{margin-top:10px;padding:6px 14px;border:1px solid var(--border);border-radius:100px;background:none;color:var(--text-3);font-size:.75rem;cursor:pointer}
+    .hint{font-size:.8rem;color:var(--text-3);line-height:1.6;margin-bottom:12px}
+    .dropzone{display:flex;align-items:center;justify-content:center;text-align:center;padding:24px 16px;border:1.5px dashed var(--border);border-radius:var(--radius);background:var(--bg-input);color:var(--text-2);font-size:.88rem;cursor:pointer;transition:all .2s}
+    .dropzone:hover,.dropzone.drag{border-color:var(--accent);color:var(--accent);background:rgba(176,125,79,.06)}
+    .parse-msg{font-size:.8rem;margin-top:10px;line-height:1.6}
+    .parse-msg.err{color:#e74c3c}
+    .parse-msg.ok{color:#27ae60}
+    .parsed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;margin-top:14px}
+    .parsed-grid:empty{display:none}
+    .metric-cell{background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 8px;text-align:center}
+    .metric-cell .mv{font-size:1.02rem;font-weight:700;font-family:var(--mono);line-height:1.2}
+    .metric-cell .mu{font-size:.6rem;color:var(--text-3);font-family:var(--mono)}
+    .metric-cell .ml{font-size:.68rem;color:var(--text-3);margin-top:3px}
   </style>
 </head>
 <body>
@@ -52,9 +64,21 @@
 
   <div class="health-wrap">
 
+    <!-- Import Health Auto Export JSON -->
+    <div class="health-card">
+      <h2>📥 导入 Health Auto Export</h2>
+      <p class="hint">把 Health Auto Export 导出的 <code>.json</code> 文件拖进来，或点击选择。文件只在你的浏览器本地解析，<strong>不会上传</strong>到任何服务器。</p>
+      <label class="dropzone" id="dropzone">
+        <input type="file" id="fileInput" accept=".json,application/json" hidden>
+        <span id="dzText">📄 点击选择，或把 JSON 文件拖到这里</span>
+      </label>
+      <p class="parse-msg" id="parseMsg"></p>
+      <div class="parsed-grid" id="parsedGrid"></div>
+    </div>
+
     <!-- Input -->
     <div class="health-card">
-      <h2>📊 输入今日数据</h2>
+      <h2>📊 输入今日数据 <span style="font-size:.72rem;font-weight:400;color:var(--text-3)">（导入后会自动填好，可手动微调）</span></h2>
       <div class="input-row">
         <div class="input-group">
           <label>😴 睡眠时长（小时）</label>
@@ -131,9 +155,9 @@
         </p>
         <ol class="shortcut-steps">
           <li>下载安装，授权 Apple Health 读取权限</li>
-          <li>选择你要导出的指标（Sleep、Heart Rate、HRV）</li>
-          <li>点 <strong>Quick Export</strong> → 生成文本/CSV</li>
-          <li>复制数据，粘贴到 AI 对话中让它分析</li>
+          <li>选择要导出的指标：<strong>Sleep Analysis、Resting Heart Rate、Heart Rate Variability</strong>（可选加 Steps、Active Energy、VO₂ Max 等）</li>
+          <li>导出格式选 <strong>JSON</strong>，点 <strong>Export</strong> 保存 <code>.json</code> 文件</li>
+          <li>把文件传到这台设备，<strong>拖到本页顶部的导入框</strong>即可自动分析</li>
         </ol>
       </div>
 
@@ -186,10 +210,12 @@
       const sleepQ = parseInt($('inSleepQ').value) || 3;
       const hr = parseInt($('inHR').value) || 0;
       const hrv = parseInt($('inHRV').value) || 0;
-      const energy = parseInt($('inEnergy').value) || 5;
-      const sore = parseInt($('inSore').value) || 0;
+      const energyRaw = $('inEnergy').value;
+      const soreRaw = $('inSore').value;
+      const energy = parseInt(energyRaw) || 0;
+      const sore = parseInt(soreRaw) || 0;
 
-      if (!sleep && !hr && !hrv) { alert('请至少填写一项数据'); return; }
+      if (!sleep && !hr && !hrv) { alert('请至少填写一项数据，或导入 Health Auto Export 文件'); return; }
 
       // Score each dimension (0-100)
       let scores = {};
@@ -222,9 +248,9 @@
         else scores.hrv = 20;
       }
 
-      // Energy + soreness
-      scores.energy = energy * 10;
-      scores.soreness = (3 - sore) / 3 * 100;
+      // Energy + soreness (only count if the user actually provided them)
+      if (energyRaw !== '') scores.energy = energy * 10;
+      if (soreRaw !== '') scores.soreness = (3 - sore) / 3 * 100;
 
       // Weighted average
       const weights = { sleep: 25, hr: 20, hrv: 25, energy: 20, soreness: 10 };
@@ -332,6 +358,146 @@
         `<div class="history-item"><span class="hi-date">${h.date}</span><span>${h.level}</span><span>综合 ${h.score}</span></div>`
       ).join('');
     }
+
+    // ===== Health Auto Export JSON import =====
+    const sum = a => a.reduce((x, y) => x + y, 0);
+    const avg = a => a.length ? sum(a) / a.length : null;
+    const num = v => { const n = Number(v); return isFinite(n) ? n : null; };
+    const dayKey = d => String(d || '').slice(0, 10);
+
+    function parseHealthExport(json) {
+      const metrics = (json && json.data && json.data.metrics) || json.metrics || [];
+      if (!Array.isArray(metrics) || !metrics.length) return null;
+      const byName = {};
+      metrics.forEach(m => { if (m && m.name) byName[m.name] = m; });
+
+      function latestDayPoints(name) {
+        const m = byName[name];
+        if (!m || !Array.isArray(m.data) || !m.data.length) return [];
+        let latest = '';
+        m.data.forEach(p => { const k = dayKey(p.date); if (k > latest) latest = k; });
+        return m.data.filter(p => dayKey(p.date) === latest);
+      }
+
+      const out = { date: null, found: 0 };
+
+      // Sleep
+      const sp = latestDayPoints('sleep_analysis');
+      if (sp.length) {
+        out.date = dayKey(sp[0].date);
+        let asleep = 0, inBed = 0, deep = 0, rem = 0, core = 0, awake = 0;
+        sp.forEach(p => {
+          asleep += num(p.asleep) || num(p.totalSleep) || 0;
+          inBed += num(p.inBed) || 0;
+          deep += num(p.deep) || 0;
+          rem += num(p.rem) || 0;
+          core += num(p.core) || 0;
+          awake += num(p.awake) || 0;
+        });
+        if (!asleep && (deep || rem || core)) asleep = deep + rem + core;
+        if (asleep) { out.sleep = Math.round(asleep * 10) / 10; out.found++; }
+        if (inBed) out.inBed = Math.round(inBed * 10) / 10;
+        if (deep) out.deep = Math.round(deep * 10) / 10;
+        if (rem) out.rem = Math.round(rem * 10) / 10;
+        if (core) out.core = Math.round(core * 10) / 10;
+        if (awake) out.awake = Math.round(awake * 10) / 10;
+      }
+
+      // Resting heart rate (fallback to min of heart_rate)
+      const rhr = latestDayPoints('resting_heart_rate');
+      const rhrVals = rhr.map(p => num(p.qty)).filter(x => x != null);
+      if (rhrVals.length) { out.restingHR = Math.round(avg(rhrVals)); out.found++; }
+      const hr = latestDayPoints('heart_rate');
+      const mins = hr.map(p => num(p.Min)).filter(x => x != null);
+      const avgs = hr.map(p => num(p.Avg)).filter(x => x != null);
+      if (mins.length) out.minHR = Math.round(Math.min(...mins));
+      if (avgs.length) out.avgHR = Math.round(avg(avgs));
+      if (out.restingHR == null && out.minHR != null) { out.restingHR = out.minHR; out.found++; }
+      if (!out.date && hr.length) out.date = dayKey(hr[0].date);
+
+      // HRV
+      const hrv = latestDayPoints('heart_rate_variability');
+      const hrvVals = hrv.map(p => num(p.qty)).filter(x => x != null);
+      if (hrvVals.length) { out.hrv = Math.round(avg(hrvVals)); out.found++; }
+
+      // Activity
+      const steps = latestDayPoints('step_count');
+      if (steps.length) out.steps = Math.round(sum(steps.map(p => num(p.qty) || 0)));
+      const ae = latestDayPoints('active_energy');
+      if (ae.length) out.activeEnergy = Math.round(sum(ae.map(p => num(p.qty) || 0)));
+      const ex = latestDayPoints('apple_exercise_time');
+      if (ex.length) out.exerciseMin = Math.round(sum(ex.map(p => num(p.qty) || 0)));
+
+      // Extras
+      const spo2 = latestDayPoints('blood_oxygen_saturation');
+      const spo2Vals = spo2.map(p => num(p.qty)).filter(x => x != null);
+      if (spo2Vals.length) { let v = avg(spo2Vals); if (v <= 1) v *= 100; out.spo2 = Math.round(v); }
+      const rr = latestDayPoints('respiratory_rate');
+      const rrVals = rr.map(p => num(p.qty)).filter(x => x != null);
+      if (rrVals.length) out.respRate = Math.round(avg(rrVals) * 10) / 10;
+      const vo2 = latestDayPoints('vo2_max');
+      const vo2Vals = vo2.map(p => num(p.qty)).filter(x => x != null);
+      if (vo2Vals.length) out.vo2max = Math.round(avg(vo2Vals) * 10) / 10;
+
+      return out;
+    }
+
+    function renderParsed(p) {
+      const cells = [];
+      const push = (v, u, l) => cells.push(`<div class="metric-cell"><div class="mv">${v}<span class="mu">${u || ''}</span></div><div class="ml">${l}</div></div>`);
+      if (p.sleep != null) push(p.sleep, 'h', '😴 睡眠');
+      if (p.deep != null) push(p.deep, 'h', '🌊 深睡');
+      if (p.rem != null) push(p.rem, 'h', '💭 REM');
+      if (p.restingHR != null) push(p.restingHR, '', '❤️ 静息心率');
+      if (p.hrv != null) push(p.hrv, 'ms', '📈 HRV');
+      if (p.steps != null) push(p.steps.toLocaleString(), '', '👣 步数');
+      if (p.activeEnergy != null) push(p.activeEnergy, 'kcal', '🔥 活动能量');
+      if (p.exerciseMin != null) push(p.exerciseMin, 'min', '🏃 锻炼');
+      if (p.spo2 != null) push(p.spo2, '%', '🫁 血氧');
+      if (p.respRate != null) push(p.respRate, '', '🌬️ 呼吸率');
+      if (p.vo2max != null) push(p.vo2max, '', '🫀 VO₂max');
+      $('parsedGrid').innerHTML = cells.join('');
+    }
+
+    function applyParsed(p) {
+      if (p.sleep != null) $('inSleep').value = p.sleep;
+      if (p.sleep && p.inBed) {
+        const eff = p.sleep / p.inBed;
+        $('inSleepQ').value = eff >= 0.9 ? '5' : eff >= 0.85 ? '4' : eff >= 0.8 ? '3' : '2';
+      }
+      if (p.restingHR != null) $('inHR').value = p.restingHR;
+      if (p.hrv != null) $('inHRV').value = p.hrv;
+      renderParsed(p);
+      assess();
+    }
+
+    function handleFile(file) {
+      const msg = $('parseMsg');
+      if (!file) return;
+      $('dzText').textContent = '📄 ' + file.name;
+      const reader = new FileReader();
+      reader.onload = () => {
+        let json;
+        try { json = JSON.parse(reader.result); }
+        catch (e) { msg.className = 'parse-msg err'; msg.textContent = '❌ 解析失败：这不是有效的 JSON 文件'; return; }
+        const p = parseHealthExport(json);
+        if (!p || !p.found) {
+          msg.className = 'parse-msg err';
+          msg.textContent = '❌ 没找到睡眠/心率/HRV 数据。导出时请勾选 Sleep、Resting Heart Rate、Heart Rate Variability，并选择 JSON 格式。';
+          return;
+        }
+        msg.className = 'parse-msg ok';
+        msg.textContent = `✅ 已解析${p.date ? '（' + p.date + '）' : ''}，识别到 ${p.found} 项核心指标，已自动填表并评估 👇`;
+        applyParsed(p);
+      };
+      reader.readAsText(file);
+    }
+
+    const dz = $('dropzone');
+    $('fileInput').addEventListener('change', e => handleFile(e.target.files[0]));
+    ['dragenter', 'dragover'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add('drag'); }));
+    ['dragleave', 'drop'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove('drag'); }));
+    dz.addEventListener('drop', e => { if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]); });
 
     $('assessBtn').addEventListener('click', assess);
     $('clearHistory').addEventListener('click', () => {
