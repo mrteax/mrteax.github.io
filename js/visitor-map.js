@@ -33,8 +33,8 @@
   'use strict';
 
   const SUPABASE = {
-    url: '',   // 例：'https://abcd1234.supabase.co'
-    key: '',   // anon public key
+    url: 'https://trcetesyexopngcfrgck.supabase.co',
+    key: '',   // ← 待填：Supabase 控制台 Project Settings → API → anon public key
     table: 'visitors',
   };
   const useRemote = !!(SUPABASE.url && SUPABASE.key);

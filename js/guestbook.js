@@ -19,9 +19,9 @@
 
   const GISCUS = {
     repo: 'mrteax/mrteax.github.io',
-    repoId: '',         // 从 giscus.app 复制
-    category: 'Guestbook',
-    categoryId: '',     // 从 giscus.app 复制
+    repoId: 'R_kgDOAhl6og',
+    category: 'Announcements',
+    categoryId: 'DIC_kwDOAhl6os4C-EEk',
     mapping: 'pathname',
     lang: 'zh-CN',
   };
