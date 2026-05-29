@@ -46,17 +46,11 @@
       </section>
     </div>
 
-    <!-- Living Section -->
-    <div class="row row-living">
-      <section class="card card-greeting" id="greetingCard">
-        <div class="greeting-msg" id="greetMsg">你好</div>
-        <div class="greeting-sub" id="greetSub"></div>
-      </section>
-      <section class="card card-now" id="nowCard">
-        <div class="now-label">✏️ 此刻</div>
-        <div class="now-text" id="nowText" contenteditable="true" data-placeholder="写点什么…最近在忙什么、在听什么歌、在想什么"></div>
-      </section>
-    </div>
+    <!-- Greeting -->
+    <section class="card card-greeting" id="greetingCard" style="margin-bottom:16px">
+      <div class="greeting-msg" id="greetMsg">你好</div>
+      <div class="greeting-sub" id="greetSub"></div>
+    </section>
 
     <!-- Row 2: Daily Cocktail + Daily Tea -->
     <div class="row row-featured">
@@ -115,6 +109,11 @@
         <div><div class="theme-name">台球</div><div class="theme-sub">30 个技术要点</div></div>
         <span class="theme-go">→</span>
       </a>
+      <a href="/health.html" class="card card-theme">
+        <span class="theme-emoji">❤️</span>
+        <div><div class="theme-name">今日状态</div><div class="theme-sub">睡眠·心率·HRV → 训练建议</div></div>
+        <span class="theme-go">→</span>
+      </a>
       <a href="/cocktails.html" class="card card-theme">
         <span class="theme-emoji">🍸</span>
         <div><div class="theme-name">鸡尾酒</div><div class="theme-sub">46 款经典配方</div></div>
@@ -131,23 +130,6 @@
         <span class="theme-go">→</span>
       </a>
     </div>
-
-    <!-- Health Assessment -->
-    <a href="/health.html" class="card card-theme">
-      <span class="theme-emoji">❤️</span>
-      <div><div class="theme-name">今日状态</div><div class="theme-sub">睡眠·心率·HRV → 训练建议</div></div>
-      <span class="theme-go">→</span>
-    </a>
-
-    <!-- AI Theme Card -->
-    <a href="https://hn.algolia.com/api/v1/search_by_date?query=AI+LLM+GPT+OpenAI+Claude&tags=story" class="card card-theme card-ai-theme" id="aiTheme" target="_blank" rel="noopener">
-      <span class="theme-emoji">🤖</span>
-      <div>
-        <div class="theme-name">AI 动态</div>
-        <div class="theme-sub ai-live" id="aiLive">加载最新…</div>
-      </div>
-      <span class="theme-go">→</span>
-    </a>
 
     <!-- Row 4: Quick Links -->
     <div class="row row-links">

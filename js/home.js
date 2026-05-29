@@ -58,107 +58,37 @@
   }
   tick(); setInterval(tick, 1000);
 
-  // AI News (latest story in theme card)
-  (async () => {
-    const el = $('#aiLive');
-    if (!el) return;
-    try {
-      const res = await fetch('https://hn.algolia.com/api/v1/search_by_date?query=AI+LLM+GPT+OpenAI+Claude+Gemini&tags=story&hitsPerPage=5');
-      const data = await res.json();
-      const stories = (data.hits||[]).filter(h=>h.title && (h.points||0) >= 1);
-      if (stories.length) {
-        const s = stories[0];
-        const url = s.url || 'https://news.ycombinator.com/item?id='+s.objectID;
-        el.textContent = s.title.length > 50 ? s.title.substring(0,50)+'\u2026' : s.title;
-        const link = $('#aiTheme');
-        if (link) link.href = url;
-      } else {
-        el.textContent = 'HN \u6700\u65b0 AI \u8d44\u8baf \u2192';
-      }
-    } catch(e) {
-      el.textContent = 'HN \u6700\u65b0 AI \u8d44\u8baf \u2192';
-    }
-  })();
-
-  // ===== Conversational Greeting =====
+  // ===== Greeting =====
   const greetMsg = document.getElementById('greetMsg');
   const greetSub = document.getElementById('greetSub');
   if (greetMsg) {
     const h = new Date().getHours();
     const day = new Date().getDay();
-    const dayNames = ['周日','周一','周二','周三','周四','周五','周六'];
-    const isWeekend = day === 0 || day === 6;
-
-    const greetings = {
-      earlyMorning: [
-        '这么早就醒了？',
-        '清晨的空气最好',
-        '早起的人运气好',
-      ],
-      morning: [
-        '早上好，新的一天开始了',
-        `${dayNames[day]}早，今天有什么计划？`,
-        '阳光正好，适合出门',
-      ],
-      lateMorning: [
-        '上午好，效率最高的时段',
-        '离午饭还有一会儿',
-        `${dayNames[day]}上午，状态怎么样？`,
-      ],
-      lunch: [
-        '午饭时间到了',
-        '中午了，吃点好的',
-        '午休一下也不错',
-      ],
-      afternoon: [
-        '下午好，来杯咖啡吧 ☕',
-        `${dayNames[day]}下午，继续加油`,
-        '下午的阳光很温柔',
-      ],
-      lateAfternoon: [
-        isWeekend ? '周末的傍晚最惬意' : '快下班了，再坚持一下',
-        '夕阳很美的时候',
-        '晚饭想吃什么？',
-      ],
-      evening: [
-        '晚上好，辛苦一天了',
-        isWeekend ? '周末夜晚，放松一下' : '下班了，做点喜欢的事',
-        '适合喝一杯的时间 🍸',
-      ],
-      night: [
-        '夜深了，早点休息',
-        '晚安，明天见',
-        '深夜还在逛？注意身体',
-      ],
+    const dn = ['周日','周一','周二','周三','周四','周五','周六'];
+    const we = day===0||day===6;
+    const G = {
+      0:['夜深了，早点休息','晚安，明天见','深夜还在逛？注意身体'],
+      6:['这么早就醒了？','清晨的空气最好','早起的人运气好'],
+      8:[`${dn[day]}早，今天有什么计划？`,'早上好，新的一天','阳光正好，适合出门'],
+      11:['离午饭不远了','上午好，效率最高的时段',`${dn[day]}上午，状态怎么样？`],
+      12:['午饭时间到了','中午了，吃点好的','午休一下也不错'],
+      14:['下午好，来杯咖啡吧 ☕',`${dn[day]}下午，继续加油`,'下午的阳光很温柔'],
+      17:[we?'周末的傍晚最惬意':'快下班了，再坚持一下','夕阳很美的时候','晚饭想吃什么？'],
+      19:[we?'周末夜晚，放松一下':'下班了，做点喜欢的事','适合喝一杯的时间 🍸','晚上好，辛苦一天了'],
+      22:['夜深了，早点休息','晚安，明天见','深夜还在逛？注意身体'],
     };
+    const keys = Object.keys(G).map(Number).sort((a,b)=>a-b);
+    let period = keys[0];
+    for (const k of keys) { if (h >= k) period = k; }
+    const pool = G[period];
+    greetMsg.textContent = pool[Math.floor(Math.random()*pool.length)];
 
-    let period, bodyClass;
-    if (h < 6) { period = 'night'; bodyClass = 'night'; }
-    else if (h < 9) { period = h < 7 ? 'earlyMorning' : 'morning'; bodyClass = 'morning'; }
-    else if (h < 11) { period = 'lateMorning'; bodyClass = 'morning'; }
-    else if (h < 13) { period = 'lunch'; bodyClass = 'afternoon'; }
-    else if (h < 16) { period = 'afternoon'; bodyClass = 'afternoon'; }
-    else if (h < 18) { period = 'lateAfternoon'; bodyClass = 'evening'; }
-    else if (h < 22) { period = 'evening'; bodyClass = 'evening'; }
-    else { period = 'night'; bodyClass = 'night'; }
-
-    document.body.classList.add(bodyClass);
-    const pool = greetings[period];
-    greetMsg.textContent = pool[Math.floor(Math.random() * pool.length)];
-
-    // Visit count
-    let visits = parseInt(localStorage.getItem('teax_visits') || '0') + 1;
-    localStorage.setItem('teax_visits', visits);
+    let visits = parseInt(localStorage.getItem('teax_visits')||'0')+1;
+    localStorage.setItem('teax_visits', String(visits));
     greetSub.textContent = `第 ${visits} 次来到 Tea X`;
-  }
 
-  // ===== "Now" Card =====
-  const nowText = document.getElementById('nowText');
-  if (nowText) {
-    nowText.textContent = localStorage.getItem('teax_now') || '';
-    nowText.addEventListener('input', () => {
-      localStorage.setItem('teax_now', nowText.textContent);
-    });
+    const ambient = h<6?'night':h<12?'morning':h<18?'afternoon':h<22?'evening':'night';
+    document.body.classList.add(ambient);
   }
 
   // Daily cocktail
