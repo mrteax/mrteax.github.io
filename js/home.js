@@ -22,11 +22,21 @@
       dx: (Math.random()-.5)*.25, dy: (Math.random()-.5)*.25, o: Math.random()*.4+.15
     }));
   }
+  let mouseX = W/2, mouseY = H/2;
+  document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+  document.addEventListener('touchmove', e => { mouseX = e.touches[0].clientX; mouseY = e.touches[0].clientY; }, {passive:true});
+
   function drawP() {
     ctx.clearRect(0,0,W,H);
     const c = getComputedStyle(html).getPropertyValue('--accent').trim();
     dots.forEach(d => {
-      d.x+=d.dx; d.y+=d.dy;
+      const dx = mouseX - d.x, dy = mouseY - d.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 150) {
+        d.x += dx * 0.003;
+        d.y += dy * 0.003;
+      }
+      d.x += d.dx; d.y += d.dy;
       if(d.x<0)d.x=W; if(d.x>W)d.x=0; if(d.y<0)d.y=H; if(d.y>H)d.y=0;
       ctx.beginPath(); ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
       ctx.fillStyle=c; ctx.globalAlpha=d.o; ctx.fill();
@@ -69,6 +79,87 @@
       el.textContent = 'HN \u6700\u65b0 AI \u8d44\u8baf \u2192';
     }
   })();
+
+  // ===== Conversational Greeting =====
+  const greetMsg = document.getElementById('greetMsg');
+  const greetSub = document.getElementById('greetSub');
+  if (greetMsg) {
+    const h = new Date().getHours();
+    const day = new Date().getDay();
+    const dayNames = ['周日','周一','周二','周三','周四','周五','周六'];
+    const isWeekend = day === 0 || day === 6;
+
+    const greetings = {
+      earlyMorning: [
+        '这么早就醒了？',
+        '清晨的空气最好',
+        '早起的人运气好',
+      ],
+      morning: [
+        '早上好，新的一天开始了',
+        `${dayNames[day]}早，今天有什么计划？`,
+        '阳光正好，适合出门',
+      ],
+      lateMorning: [
+        '上午好，效率最高的时段',
+        '离午饭还有一会儿',
+        `${dayNames[day]}上午，状态怎么样？`,
+      ],
+      lunch: [
+        '午饭时间到了',
+        '中午了，吃点好的',
+        '午休一下也不错',
+      ],
+      afternoon: [
+        '下午好，来杯咖啡吧 ☕',
+        `${dayNames[day]}下午，继续加油`,
+        '下午的阳光很温柔',
+      ],
+      lateAfternoon: [
+        isWeekend ? '周末的傍晚最惬意' : '快下班了，再坚持一下',
+        '夕阳很美的时候',
+        '晚饭想吃什么？',
+      ],
+      evening: [
+        '晚上好，辛苦一天了',
+        isWeekend ? '周末夜晚，放松一下' : '下班了，做点喜欢的事',
+        '适合喝一杯的时间 🍸',
+      ],
+      night: [
+        '夜深了，早点休息',
+        '晚安，明天见',
+        '深夜还在逛？注意身体',
+      ],
+    };
+
+    let period, bodyClass;
+    if (h < 6) { period = 'night'; bodyClass = 'night'; }
+    else if (h < 9) { period = h < 7 ? 'earlyMorning' : 'morning'; bodyClass = 'morning'; }
+    else if (h < 11) { period = 'lateMorning'; bodyClass = 'morning'; }
+    else if (h < 13) { period = 'lunch'; bodyClass = 'afternoon'; }
+    else if (h < 16) { period = 'afternoon'; bodyClass = 'afternoon'; }
+    else if (h < 18) { period = 'lateAfternoon'; bodyClass = 'evening'; }
+    else if (h < 22) { period = 'evening'; bodyClass = 'evening'; }
+    else { period = 'night'; bodyClass = 'night'; }
+
+    document.body.classList.add(bodyClass);
+    const pool = greetings[period];
+    greetMsg.textContent = pool[Math.floor(Math.random() * pool.length)];
+
+    // Visit count
+    let visits = parseInt(localStorage.getItem('teax_visits') || '0') + 1;
+    localStorage.setItem('teax_visits', visits);
+    greetSub.textContent = `第 ${visits} 次来到 Tea X`;
+  }
+
+  // ===== "Now" Card =====
+  const nowText = document.getElementById('nowText');
+  if (nowText) {
+    nowText.textContent = localStorage.getItem('teax_now') || '';
+    nowText.addEventListener('input', () => {
+      localStorage.setItem('teax_now', nowText.textContent);
+    });
+  }
 
   // Daily cocktail
   const dayIdx = Math.floor((Date.now() - new Date(new Date().getFullYear(),0,0)) / 86400000);
