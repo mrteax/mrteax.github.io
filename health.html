@@ -64,9 +64,42 @@
 
   <div class="health-wrap">
 
-    <!-- Import Health Auto Export JSON -->
+    <!-- Cloud auto-sync (Health Auto Export → Supabase) -->
     <div class="health-card">
-      <h2>📥 导入 Health Auto Export</h2>
+      <h2>🔄 每日自动同步</h2>
+      <p class="parse-msg" id="syncHint" style="margin-top:0">正在从云端读取最新数据…</p>
+      <button class="assess-btn" id="syncBtn" style="margin-top:6px;font-size:.9rem;padding:11px">↻ 立即从云端同步</button>
+      <details class="setup-help" style="margin-top:12px">
+        <summary style="cursor:pointer;font-size:.84rem;color:var(--text-2);font-weight:600">⚙️ 怎么开启「每天自动上传」（一次性设置）</summary>
+        <div style="font-size:.82rem;color:var(--text-2);line-height:1.85;margin-top:10px">
+          <p style="margin-bottom:8px"><strong>1）在 Supabase 建一张表</strong>（SQL Editor 里运行，仅一次）：</p>
+          <pre style="background:var(--bg-input);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:.72rem;overflow:auto;white-space:pre;font-family:var(--mono)">create table health_imports (
+  id bigint generated always as identity primary key,
+  data jsonb,
+  created_at timestamptz default now()
+);
+alter table health_imports enable row level security;
+create policy "read"   on health_imports for select using (true);
+create policy "insert" on health_imports for insert with check (true);</pre>
+          <p style="margin:10px 0 8px"><strong>2）在 Health Auto Export 里建一个自动化</strong>（需 App 内的 Automation 功能）：</p>
+          <ul class="shortcut-steps" style="padding-left:18px">
+            <li>新建 Automation，指标勾选 Sleep / Resting Heart Rate / HRV（可加 Steps、Active Energy 等）</li>
+            <li>频率选 <strong>Daily（每天）</strong>，格式 <strong>JSON</strong>，类型选 <strong>REST API</strong></li>
+            <li>URL 填：<br><code style="word-break:break-all" id="syncUrl">…</code></li>
+            <li>Method 选 <strong>POST</strong>，添加 Header：<br>
+              <code>apikey</code> = 你的 anon key<br>
+              <code>Authorization</code> = Bearer 你的 anon key<br>
+              <code>Content-Type</code> = application/json</li>
+            <li>保存。之后每天自动上传，打开本页就能看到 ✅</li>
+          </ul>
+          <p style="margin-top:8px;color:var(--text-3)">没有 Automation 功能？也可以用 iOS「快捷指令」做一个每日自动化，读取健康数据后 POST 到同一个 URL，效果一样（免费）。</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Import Health Auto Export JSON (fallback / one-off) -->
+    <div class="health-card">
+      <h2>📥 手动导入 <span style="font-size:.72rem;font-weight:400;color:var(--text-3)">（没设自动同步时用）</span></h2>
       <p class="hint">把 Health Auto Export 导出的 <code>.json</code> 文件拖进来，或点击选择。文件只在你的浏览器本地解析，<strong>不会上传</strong>到任何服务器。</p>
       <label class="dropzone" id="dropzone">
         <input type="file" id="fileInput" accept=".json,application/json" hidden>
@@ -479,6 +512,63 @@
     ['dragenter', 'dragover'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add('drag'); }));
     ['dragleave', 'drop'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove('drag'); }));
     dz.addEventListener('drop', e => { if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]); });
+
+    // ===== Cloud auto-sync from Supabase =====
+    const SUPA = {
+      url: 'https://trcetesyexopngcfrgck.supabase.co',
+      key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRyY2V0ZXN5ZXhvcG5nY2ZyZ2NrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMjIxNDYsImV4cCI6MjA5NTU5ODE0Nn0.ezCv2WcvJe7UjcLogSw96KTtL1HsBdnSytrbTuhDF2c',
+      table: 'health_imports',
+    };
+    const syncUrlEl = $('syncUrl');
+    if (syncUrlEl) syncUrlEl.textContent = `${SUPA.url}/rest/v1/${SUPA.table}`;
+
+    function normalizeExport(d) {
+      if (!d) return null;
+      if (d.data && d.data.metrics) return d;     // {data:{metrics}}
+      if (d.metrics) return { data: d };          // {metrics} -> wrap
+      return d;
+    }
+
+    async function cloudSync(auto) {
+      const hint = $('syncHint');
+      hint.className = 'parse-msg';
+      hint.textContent = '正在从云端读取最新数据…';
+      try {
+        const r = await fetch(
+          `${SUPA.url}/rest/v1/${SUPA.table}?select=data,created_at&order=created_at.desc&limit=1`,
+          { headers: { apikey: SUPA.key, Authorization: `Bearer ${SUPA.key}` } }
+        );
+        if (r.status === 404) {
+          hint.className = 'parse-msg';
+          hint.textContent = '尚未开启云端同步。展开下方「怎么开启每日自动上传」按一次性步骤设置即可。';
+          return;
+        }
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const rows = await r.json();
+        if (!rows.length) {
+          hint.className = 'parse-msg';
+          hint.textContent = auto
+            ? '云端暂无数据。展开下方说明开启每日自动上传后，数据会自动出现在这里。'
+            : '云端暂无数据，请先按下方说明开启自动上传。';
+          return;
+        }
+        const p = parseHealthExport(normalizeExport(rows[0].data));
+        if (!p || !p.found) {
+          hint.className = 'parse-msg err';
+          hint.textContent = '读到了云端数据，但没识别到睡眠/心率/HRV 指标。';
+          return;
+        }
+        const when = rows[0].created_at ? new Date(rows[0].created_at).toLocaleString('zh-CN') : '';
+        hint.className = 'parse-msg ok';
+        hint.textContent = `✅ 已从云端同步${p.date ? '（数据日期 ' + p.date + '）' : ''}${when ? '，上传于 ' + when : ''}`;
+        applyParsed(p);
+      } catch (e) {
+        hint.className = 'parse-msg err';
+        hint.textContent = '❌ 同步失败：' + (e.message || e) + '（先确认已建表并开启读写权限）';
+      }
+    }
+    $('syncBtn').addEventListener('click', () => cloudSync(false));
+    cloudSync(true);
 
     $('assessBtn').addEventListener('click', assess);
     $('clearHistory').addEventListener('click', () => {
