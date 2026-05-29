@@ -36,6 +36,7 @@
       <div class="hero-left">
         <div class="greeting-msg" id="greetMsg">你好</div>
         <div class="greeting-sub" id="greetSub"></div>
+        <div class="hero-status" id="heroStatus"></div>
       </div>
       <div class="hero-right">
         <div class="clock-time" id="clockTime">--:--</div>
@@ -73,6 +74,48 @@
         </div>
       </a>
     </div>
+
+    <!-- Moments: a curated "living" feed -->
+    <div class="feed-head">
+      <h3 class="section-label feed-label">动态 · 此刻在做什么</h3>
+      <span class="feed-live"><i></i>在线</span>
+    </div>
+    <div class="feed" id="feed"></div>
+
+    <!-- Visitor map: real-time-ish "where you all come from" -->
+    <div class="feed-head">
+      <h3 class="section-label feed-label">足迹 · 来自世界各地的你们</h3>
+      <span class="map-stat" id="mapStat"></span>
+    </div>
+    <section class="card visitor-card">
+      <div class="visitor-greet" id="visitorGreet">正在定位你的位置…</div>
+      <div class="visitor-map-wrap">
+        <svg class="vmap" id="vmap" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" aria-label="访客地图">
+          <rect width="800" height="400" rx="12" fill="var(--input)"/>
+          <g fill="var(--abg)" stroke="var(--border)" stroke-width=".6">
+            <path d="M50,55 L80,48 120,50 148,55 170,60 185,72 192,90 200,100 195,110 200,125 210,140 215,150 218,165 210,175 195,185 185,190 175,188 165,190 150,195 142,190 130,180 120,175 108,178 95,185 82,182 72,170 55,155 48,140 42,130 38,120 35,110 40,95 42,80 45,65 50,55Z"/>
+            <path d="M150,195 L160,200 168,208 172,218 178,225 185,230 182,235 175,232 168,228 160,225 155,215 148,205 150,195Z"/>
+            <path d="M185,230 L200,235 215,245 228,255 238,268 245,285 248,300 245,318 238,335 230,348 222,355 215,360 210,358 205,350 208,335 210,318 212,300 215,285 210,270 202,258 195,248 188,238 185,230Z"/>
+            <path d="M370,60 L385,55 400,58 415,60 425,65 430,72 435,80 440,90 445,100 440,110 435,118 428,125 420,130 415,140 408,148 398,152 390,150 382,145 378,138 375,128 378,118 380,108 375,98 370,88 368,78 370,60Z"/>
+            <path d="M365,80 L372,75 375,82 372,88 365,85Z"/>
+            <path d="M400,30 L410,28 418,35 415,48 410,58 405,52 398,45 395,38 400,30Z"/>
+            <path d="M350,48 L362,45 368,50 360,55 350,52Z"/>
+            <path d="M398,160 L410,155 425,158 440,162 455,165 470,170 478,178 482,190 485,205 488,220 485,235 480,250 475,265 468,278 458,288 448,295 438,298 428,295 420,288 415,278 412,265 408,250 402,235 398,220 395,205 392,190 395,175 398,160Z"/>
+            <path d="M445,50 L470,45 500,48 530,55 555,60 580,65 600,70 620,78 640,85 660,90 680,95 700,98 720,105 730,115 728,128 720,140 715,150 710,160 700,165 690,170 680,175 665,178 650,180 635,182 620,180 610,175 600,170 590,168 575,170 560,175 548,178 535,180 520,178 510,175 500,170 490,165 480,155 478,148 482,138 490,128 498,118 505,108 500,100 492,95 480,90 468,85 458,78 450,68 445,58Z"/>
+            <path d="M718,135 L722,130 725,138 720,145 715,148 718,135Z"/>
+            <path d="M535,180 L548,185 558,195 562,210 558,225 550,235 540,238 530,232 525,220 528,205 532,192Z"/>
+            <path d="M620,200 L635,195 648,200 655,210 650,218 640,222 630,220 622,212Z"/>
+            <path d="M625,230 L640,228 655,232 648,238 635,240 625,235Z"/>
+            <path d="M660,235 L675,232 685,238 678,242 665,240Z"/>
+            <path d="M680,285 L700,278 720,280 738,285 748,295 750,310 745,325 735,335 720,340 705,338 690,332 680,322 675,310 678,295Z"/>
+            <path d="M758,320 L762,315 765,325 760,332 755,328Z"/>
+            <path d="M280,20 L310,15 330,22 335,35 328,48 315,52 300,48 288,40 282,30Z"/>
+          </g>
+          <g id="vmapPins"></g>
+        </svg>
+      </div>
+      <p class="visitor-note" id="visitorNote"></p>
+    </section>
 
     <!-- Row 3: Lifestyle Themes -->
     <h3 class="section-label">探索</h3>
@@ -143,6 +186,18 @@
     <p class="quote-from" id="quoteFrom"></p>
   </div>
 
+  <!-- Guestbook: real two-way social via GitHub Discussions (giscus) -->
+  <section class="guestbook">
+    <div class="feed-head">
+      <h3 class="section-label feed-label">留言板 · 说点什么吧</h3>
+      <span class="map-stat">GitHub 登录 · 由 Discussions 驱动</span>
+    </div>
+    <div class="card guestbook-card">
+      <div id="giscus" class="giscus"></div>
+      <p class="gb-hint" id="gbHint"></p>
+    </div>
+  </section>
+
   <footer class="footer">✨ Tea X</footer>
 
   <script src="/js/cocktails-data.js"></script>
@@ -153,6 +208,9 @@
   <script src="/js/tennis-data.js"></script>
   <script src="/js/skiing-data.js"></script>
   <script src="/js/surfing-data.js"></script>
+  <script src="/js/moments-data.js"></script>
+  <script src="/js/visitor-map.js"></script>
+  <script src="/js/guestbook.js"></script>
   <script src="/js/home.js"></script>
 </body>
 </html>
