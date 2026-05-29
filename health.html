@@ -69,48 +69,11 @@
       <h2>🔄 每日自动同步</h2>
       <p class="parse-msg" id="syncHint" style="margin-top:0">正在从云端读取最新数据…</p>
       <button class="assess-btn" id="syncBtn" style="margin-top:6px;font-size:.9rem;padding:11px">↻ 立即从云端同步</button>
-      <a class="assess-btn" id="haeDeepLink" style="display:block;text-align:center;text-decoration:none;margin-top:8px;font-size:.88rem;padding:11px;background:var(--bg-input);color:var(--accent);border:1px solid var(--border)">📲 一键把上传配置导入 Health Auto Export</a>
-      <p class="hint" style="margin:8px 0 0">在 <strong>iPhone</strong> 上点上面的按钮（需已装 Health Auto Export）：它会自动打开 App 并填好上传地址和鉴权，你只要勾选要同步的指标、把频率设为每天即可。</p>
-      <details class="setup-help" style="margin-top:12px">
-        <summary style="cursor:pointer;font-size:.84rem;color:var(--text-2);font-weight:600">⚙️ 怎么开启「每天自动上传」（一次性设置）</summary>
-        <div style="font-size:.82rem;color:var(--text-2);line-height:1.85;margin-top:10px">
-          <p style="margin-bottom:8px"><strong>1）在 Supabase 建一张表</strong>（SQL Editor 里运行，仅一次）：</p>
-          <pre style="background:var(--bg-input);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:.72rem;overflow:auto;white-space:pre;font-family:var(--mono)">create table health_imports (
-  id bigint generated always as identity primary key,
-  data jsonb,
-  created_at timestamptz default now()
-);
-alter table health_imports enable row level security;
-create policy "read"   on health_imports for select using (true);
-create policy "insert" on health_imports for insert with check (true);</pre>
-          <p style="margin:10px 0 8px"><strong>2）在 Health Auto Export 里建一个自动化</strong>（需 App 内的 Automation 功能）：</p>
-          <ul class="shortcut-steps" style="padding-left:18px">
-            <li>新建 Automation，指标勾选 Sleep / Resting Heart Rate / HRV（可加 Steps、Active Energy 等）</li>
-            <li>频率选 <strong>Daily（每天）</strong>，格式 <strong>JSON</strong>，类型选 <strong>REST API</strong></li>
-            <li>URL 填：<br><code style="word-break:break-all" id="syncUrl">…</code></li>
-            <li>Method 选 <strong>POST</strong>，添加 Header：<br>
-              <code>apikey</code> = 你的 anon key<br>
-              <code>Authorization</code> = Bearer 你的 anon key<br>
-              <code>Content-Type</code> = application/json</li>
-            <li>保存。之后每天自动上传，打开本页就能看到 ✅</li>
-          </ul>
-          <p style="margin:10px 0 6px"><strong>⚠️ 报 timeout / 超时？</strong>说明单次导出的数据太大。把它调小就好：</p>
-          <ul class="shortcut-steps" style="padding-left:18px">
-            <li><strong>Aggregate Data</strong> 打开（按时段聚合，而不是导出每个采样点）</li>
-            <li><strong>Period</strong> 选 <strong>Today</strong> 或最近 1 天，不要选 All / 全部历史</li>
-            <li><strong>Aggregation Interval</strong> 选 <strong>Hours / Days</strong>（颗粒度越粗、数据越小）</li>
-            <li><strong>Batch Requests</strong> 保持 <strong>关闭</strong></li>
-            <li>若仍超时，把 <strong>Request Timeout</strong> 调大到 60 秒</li>
-          </ul>
-          <p style="margin-top:6px;color:var(--text-3)">（上面的一键按钮已默认设成 Today + 按小时聚合，正常不会超时。）</p>
-          <p style="margin-top:8px;color:var(--text-3)">没有 Automation 功能？也可以用 iOS「快捷指令」做一个每日自动化，读取健康数据后 POST 到同一个 URL，效果一样（免费）。</p>
-        </div>
-      </details>
     </div>
 
     <!-- Import Health Auto Export JSON (fallback / one-off) -->
     <div class="health-card">
-      <h2>📥 手动导入 <span style="font-size:.72rem;font-weight:400;color:var(--text-3)">（没设自动同步时用）</span></h2>
+      <h2>📥 手动导入 <span style="font-size:.72rem;font-weight:400;color:var(--text-3)">（临时用）</span></h2>
       <p class="hint">把 Health Auto Export 导出的 <code>.json</code> 文件拖进来，或点击选择。文件只在你的浏览器本地解析，<strong>不会上传</strong>到任何服务器。</p>
       <label class="dropzone" id="dropzone">
         <input type="file" id="fileInput" accept=".json,application/json" hidden>
@@ -177,35 +140,6 @@ create policy "insert" on health_imports for insert with check (true);</pre>
       <p class="result-desc" id="rDesc"></p>
       <div class="result-plan" id="rPlan"></div>
     </div>
-
-    <!-- Getting Your Data -->
-    <details class="shortcut-section" open>
-      <summary style="cursor:pointer;font-weight:600;font-size:1rem">📱 怎么拿到数据</summary>
-
-      <div style="margin:14px 0">
-        <h3 style="font-size:.9rem;margin-bottom:8px">方案一：最简单 — 直接看 iPhone</h3>
-        <p style="font-size:.82rem;color:var(--text-2);line-height:1.8;margin-bottom:10px">
-          打开 iPhone <strong>健康 App</strong>，首页「摘要」就能看到：<br>
-          · 睡眠 → 时长和质量<br>
-          · 心脏 → 静息心率、HRV<br>
-          把数字手动填到上面的表单就行。
-        </p>
-      </div>
-
-      <div style="margin:14px 0">
-        <h3 style="font-size:.9rem;margin-bottom:8px">方案二：一键导出 — Health Auto Export</h3>
-        <p style="font-size:.82rem;color:var(--text-2);line-height:1.8;margin-bottom:8px">
-          App Store 搜索 <a href="https://apps.apple.com/app/health-auto-export-json-csv/id1115567069" target="_blank" style="color:var(--accent);font-weight:600">Health Auto Export</a>（免费版就够用）：
-        </p>
-        <ol class="shortcut-steps">
-          <li>下载安装，授权 Apple Health 读取权限</li>
-          <li>选择要导出的指标：<strong>Sleep Analysis、Resting Heart Rate、Heart Rate Variability</strong>（可选加 Steps、Active Energy、VO₂ Max 等）</li>
-          <li>导出格式选 <strong>JSON</strong>，点 <strong>Export</strong> 保存 <code>.json</code> 文件</li>
-          <li>把文件传到这台设备，<strong>拖到本页顶部的导入框</strong>即可自动分析</li>
-        </ol>
-      </div>
-
-    </details>
 
     <!-- History -->
     <div class="history-section">
@@ -530,19 +464,6 @@ create policy "insert" on health_imports for insert with check (true);</pre>
       key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRyY2V0ZXN5ZXhvcG5nY2ZyZ2NrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMjIxNDYsImV4cCI6MjA5NTU5ODE0Nn0.ezCv2WcvJe7UjcLogSw96KTtL1HsBdnSytrbTuhDF2c',
       table: 'health_imports',
     };
-    const syncUrlEl = $('syncUrl');
-    if (syncUrlEl) syncUrlEl.textContent = `${SUPA.url}/rest/v1/${SUPA.table}`;
-
-    // One-tap deep link that pre-fills Health Auto Export's REST automation
-    const dl = $('haeDeepLink');
-    if (dl) {
-      const headers = `apikey,${SUPA.key},Authorization,Bearer ${SUPA.key}`;
-      dl.href = 'com.HealthExport://automation?url=' + encodeURIComponent(`${SUPA.url}/rest/v1/${SUPA.table}`) +
-        '&headers=' + encodeURIComponent(headers) +
-        '&name=' + encodeURIComponent('Tea X 健康同步') +
-        '&format=json&enabled=true&aggregatedata=true&period=today&interval=hours';
-    }
-
     function normalizeExport(d) {
       if (!d) return null;
       if (d.data && d.data.metrics) return d;     // {data:{metrics}}
