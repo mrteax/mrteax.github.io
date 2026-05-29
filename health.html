@@ -69,6 +69,7 @@
       <h2>🔄 每日自动同步</h2>
       <p class="parse-msg" id="syncHint" style="margin-top:0">正在从云端读取最新数据…</p>
       <button class="assess-btn" id="syncBtn" style="margin-top:6px;font-size:.9rem;padding:11px">↻ 立即从云端同步</button>
+      <button class="assess-btn" id="shareBtn" style="display:none;margin-top:8px;font-size:.9rem;padding:11px;background:var(--bg-input);color:var(--accent);border:1px solid var(--border)">📤 导出最新数据分享给 AI</button>
     </div>
 
     <!-- Import Health Auto Export JSON (fallback / one-off) -->
@@ -163,6 +164,7 @@
     tb.addEventListener('click', () => { const n = html.dataset.theme==='dark'?'light':'dark'; html.dataset.theme=n; localStorage.setItem('theme',n); tb.textContent=n==='dark'?'☀️':'🌙'; });
 
     const $ = s => document.getElementById(s);
+    let lastParsed = null;
 
     function assess() {
       const sleep = parseFloat($('inSleep').value) || 0;
@@ -428,6 +430,9 @@
       if (p.hrv != null) $('inHRV').value = p.hrv;
       renderParsed(p);
       assess();
+      lastParsed = p;
+      const sb = $('shareBtn');
+      if (sb) sb.style.display = 'block';
     }
 
     function handleFile(file) {
@@ -511,6 +516,61 @@
     }
     $('syncBtn').addEventListener('click', () => cloudSync(false));
     cloudSync(true);
+
+    // ===== Export latest data to share with an AI app =====
+    function buildShareData() {
+      const p = lastParsed;
+      if (!p) return null;
+      const o = {
+        date: p.date,
+        sleepHours: p.sleep,
+        deepSleepHours: p.deep,
+        remSleepHours: p.rem,
+        awakeHours: p.awake,
+        restingHeartRate: p.restingHR,
+        minHeartRate: p.minHR,
+        avgHeartRate: p.avgHR,
+        hrvMs: p.hrv,
+        steps: p.steps,
+        activeEnergyKcal: p.activeEnergy,
+        exerciseMinutes: p.exerciseMin,
+        spo2Percent: p.spo2,
+        respiratoryRate: p.respRate,
+        vo2max: p.vo2max,
+      };
+      Object.keys(o).forEach(k => (o[k] == null) && delete o[k]);
+      return o;
+    }
+    const SHARE_LABEL = '📤 导出最新数据分享给 AI';
+    async function shareToAI() {
+      const o = buildShareData();
+      const sb = $('shareBtn');
+      if (!o) { return; }
+      const json = JSON.stringify(o, null, 2);
+      const text = '这是我最新的健康数据（JSON），请帮我分析今天的恢复状态并给出训练建议：\n' + json;
+      const fname = `health-${o.date || 'latest'}.json`;
+      try {
+        if (navigator.canShare) {
+          const file = new File([json], fname, { type: 'application/json' });
+          if (navigator.canShare({ files: [file] })) {
+            await navigator.share({ files: [file], title: '健康数据', text: '我最新的健康数据' });
+            return;
+          }
+        }
+        if (navigator.share) { await navigator.share({ title: '健康数据', text }); return; }
+      } catch (e) { if (e && e.name === 'AbortError') return; }
+      try {
+        await navigator.clipboard.writeText(text);
+        sb.textContent = '✅ 已复制，去 AI 里粘贴吧';
+        setTimeout(() => { sb.textContent = SHARE_LABEL; }, 2200);
+        return;
+      } catch (e) {}
+      const url = URL.createObjectURL(new Blob([json], { type: 'application/json' }));
+      const a = document.createElement('a');
+      a.href = url; a.download = fname; a.click();
+      URL.revokeObjectURL(url);
+    }
+    $('shareBtn').addEventListener('click', shareToAI);
 
     $('assessBtn').addEventListener('click', assess);
     $('clearHistory').addEventListener('click', () => {
