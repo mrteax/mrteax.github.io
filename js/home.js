@@ -338,6 +338,23 @@
     {text:"Time you enjoy wasting is not wasted time.",from:"Marthe Troly-Curtin"},
   ];
 
+  // Interleave Chinese & English so they alternate instead of clustering
+  (() => {
+    const isCN = s => /[\u4e00-\u9fff]/.test(s);
+    const cn = QUOTES.filter(q => isCN(q.text));
+    const en = QUOTES.filter(q => !isCN(q.text));
+    if (!cn.length || !en.length) return;
+    const ratio = Math.max(1, Math.round(cn.length / en.length)); // ~CN per EN
+    const mixed = [];
+    let ci = 0, ei = 0, sinceEn = 0;
+    while (ci < cn.length || ei < en.length) {
+      if (ci < cn.length) { mixed.push(cn[ci++]); sinceEn++; }
+      if (ei < en.length && (sinceEn >= ratio || ci >= cn.length)) { mixed.push(en[ei++]); sinceEn = 0; }
+    }
+    QUOTES.length = 0;
+    QUOTES.push(...mixed);
+  })();
+
   const quoteEl = document.getElementById('dailyQuote');
   const quoteFrom = document.getElementById('quoteFrom');
   const quoteBox = document.getElementById('quoteBox');
