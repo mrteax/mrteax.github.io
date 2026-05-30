@@ -57,6 +57,21 @@
     .metric-cell .mv{font-size:1.02rem;font-weight:700;font-family:var(--mono);line-height:1.2}
     .metric-cell .mu{font-size:.6rem;color:var(--text-3);font-family:var(--mono)}
     .metric-cell .ml{font-size:.68rem;color:var(--text-3);margin-top:3px}
+    .trend-insights{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+    .trend-insight{display:flex;gap:8px;align-items:flex-start;font-size:.84rem;line-height:1.6;color:var(--text-2);background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px}
+    .trend-insight .ti-ico{flex-shrink:0}
+    .trend-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media(max-width:480px){.trend-grid{grid-template-columns:1fr}}
+    .trend-item{background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px}
+    .trend-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px}
+    .trend-label{font-size:.78rem;color:var(--text-2);font-weight:600}
+    .trend-now{font-size:1.05rem;font-weight:700;font-family:var(--mono)}
+    .trend-now small{font-size:.62rem;color:var(--text-3);font-weight:400}
+    .trend-sub{display:flex;justify-content:space-between;align-items:center;font-size:.68rem;color:var(--text-3);margin-top:4px}
+    .trend-delta.up{color:#27ae60}.trend-delta.down{color:#e74c3c}.trend-delta.flat{color:var(--text-3)}
+    .spark{display:block;width:100%;height:34px;margin-top:6px}
+    .spark polyline{fill:none;stroke:var(--accent);stroke-width:2;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
+    .spark circle{fill:var(--accent)}
   </style>
 </head>
 <body>
@@ -140,6 +155,13 @@
       <div class="result-scores" id="rScores"></div>
       <p class="result-desc" id="rDesc"></p>
       <div class="result-plan" id="rPlan"></div>
+    </div>
+
+    <!-- Trends -->
+    <div class="health-card" id="trendCard" style="display:none">
+      <h2>📈 近期趋势 <span id="trendRange" style="font-size:.72rem;font-weight:400;color:var(--text-3)"></span></h2>
+      <div class="trend-insights" id="trendInsights"></div>
+      <div class="trend-grid" id="trendGrid"></div>
     </div>
 
     <!-- History -->
@@ -477,13 +499,138 @@
       return d;
     }
 
+    // ===== Trend analysis across history =====
+    function rowToDays(norm) {
+      const metrics = (norm && norm.data && norm.data.metrics) || [];
+      const byName = {}; metrics.forEach(m => { if (m && m.name) byName[m.name] = m; });
+      const days = {}; const ensure = d => days[d] || (days[d] = {});
+      const sm = byName['sleep_analysis'];
+      if (sm && Array.isArray(sm.data)) sm.data.forEach(p => {
+        const d = dayKey(p.date); if (!d) return; const r = ensure(d);
+        const v = num(p.asleep) || num(p.totalSleep) || ((num(p.deep) || 0) + (num(p.rem) || 0) + (num(p.core) || 0)) || 0;
+        if (v) r.sleep = (r.sleep || 0) + v;
+        const deep = num(p.deep), rem = num(p.rem);
+        if (deep) r.deep = (r.deep || 0) + deep; if (rem) r.rem = (r.rem || 0) + rem;
+      });
+      const hm = byName['heart_rate'];
+      if (hm && Array.isArray(hm.data)) hm.data.forEach(p => {
+        const d = dayKey(p.date); if (!d) return; const r = ensure(d);
+        const mn = num(p.Min != null ? p.Min : p.min); if (mn != null) r.minHR = r.minHR == null ? mn : Math.min(r.minHR, mn);
+      });
+      const sumAdd = (name, f) => { const m = byName[name]; if (!m || !Array.isArray(m.data)) return; m.data.forEach(p => { const d = dayKey(p.date); const q = num(p.qty); if (d && q != null) { const r = ensure(d); r[f] = (r[f] || 0) + q; } }); };
+      const avgPush = (name, f) => { const m = byName[name]; if (!m || !Array.isArray(m.data)) return; m.data.forEach(p => { const d = dayKey(p.date); const q = num(p.qty); if (d && q != null) { const r = ensure(d); (r['_' + f] = r['_' + f] || []).push(q); } }); };
+      sumAdd('step_count', 'steps'); sumAdd('active_energy', 'activeEnergy'); sumAdd('apple_exercise_time', 'exerciseMin');
+      avgPush('resting_heart_rate', 'restingHR'); avgPush('heart_rate_variability', 'hrv'); avgPush('blood_oxygen_saturation', 'spo2'); avgPush('respiratory_rate', 'respRate'); avgPush('vo2_max', 'vo2max');
+      Object.values(days).forEach(r => {
+        ['restingHR', 'hrv', 'spo2', 'respRate', 'vo2max'].forEach(f => { const a = r['_' + f]; if (a && a.length) { let v = a.reduce((x, y) => x + y, 0) / a.length; if (f === 'spo2' && v <= 1) v *= 100; r[f] = v; } delete r['_' + f]; });
+        if (r.restingHR == null && r.minHR != null) r.restingHR = r.minHR;
+      });
+      return days;
+    }
+    const SUM_F = ['sleep', 'deep', 'rem', 'steps', 'activeEnergy', 'exerciseMin'];
+    const AVG_F = ['restingHR', 'hrv', 'spo2', 'respRate', 'vo2max', 'minHR'];
+    function buildSeries(rows) {
+      const g = {};
+      rows.forEach(row => {
+        const days = rowToDays(normalizeExport(row.data));
+        for (const [d, r] of Object.entries(days)) {
+          const x = g[d] || (g[d] = { _a: {} });
+          SUM_F.forEach(f => { if (r[f] != null) x[f] = Math.max(x[f] || 0, r[f]); });
+          AVG_F.forEach(f => { if (r[f] != null) (x._a[f] = x._a[f] || []).push(r[f]); });
+        }
+      });
+      Object.values(g).forEach(x => { for (const [f, a] of Object.entries(x._a)) x[f] = a.reduce((p, q) => p + q, 0) / a.length; delete x._a; });
+      return Object.entries(g).sort((a, b) => a[0] < b[0] ? -1 : 1).map(([date, v]) => ({ date, ...v }));
+    }
+
+    function sparkline(vals) {
+      const pts = vals.map((v, i) => ({ v, i })).filter(p => p.v != null);
+      if (pts.length < 2) return '';
+      const xs = pts.map(p => p.i), ys = pts.map(p => p.v);
+      const n = vals.length - 1 || 1;
+      const lo = Math.min(...ys), hi = Math.max(...ys), rng = hi - lo || 1;
+      const coords = pts.map(p => `${(p.i / n * 100).toFixed(1)},${(26 - (p.v - lo) / rng * 22 + 2).toFixed(1)}`);
+      const last = coords[coords.length - 1].split(',');
+      return `<svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="${coords.join(' ')}"/><circle cx="${last[0]}" cy="${last[1]}" r="2.5"/></svg>`;
+    }
+
+    function renderTrends(series) {
+      const card = $('trendCard');
+      if (!series || series.length < 2) { if (card) card.style.display = 'none'; return; }
+      const recent = series.slice(-14);
+      const colOf = f => recent.map(d => d[f] != null ? d[f] : null);
+      const lastVal = arr => { for (let i = arr.length - 1; i >= 0; i--) if (arr[i] != null) return arr[i]; return null; };
+      const meanOf = arr => { const a = arr.filter(x => x != null); return a.length ? a.reduce((x, y) => x + y, 0) / a.length : null; };
+      const baseline = arr => { const a = arr.filter(x => x != null); if (a.length < 2) return null; return meanOf(a.slice(0, -1)); };
+
+      const defs = [
+        { f: 'sleep', label: '😴 睡眠', unit: 'h', dp: 1, good: 'high' },
+        { f: 'restingHR', label: '❤️ 静息心率', unit: '', dp: 0, good: 'low' },
+        { f: 'hrv', label: '📈 HRV', unit: 'ms', dp: 0, good: 'high' },
+        { f: 'steps', label: '👣 步数', unit: '', dp: 0, good: 'none' },
+        { f: 'activeEnergy', label: '🔥 活动能量', unit: 'kcal', dp: 0, good: 'none' },
+        { f: 'spo2', label: '🫁 血氧', unit: '%', dp: 0, good: 'high' },
+        { f: 'vo2max', label: '🫀 VO₂max', unit: '', dp: 1, good: 'high' },
+      ];
+      const cells = [];
+      defs.forEach(def => {
+        const col = colOf(def.f);
+        const cur = lastVal(col);
+        if (cur == null) return;
+        const avg = meanOf(col);
+        const base = baseline(col);
+        let deltaHtml = '<span class="trend-delta flat">—</span>';
+        if (base != null && base !== 0) {
+          const pct = (cur - base) / Math.abs(base) * 100;
+          const better = def.good === 'high' ? pct > 0 : def.good === 'low' ? pct < 0 : null;
+          const cls = def.good === 'none' ? 'flat' : (Math.abs(pct) < 2 ? 'flat' : (better ? 'up' : 'down'));
+          const arrow = pct > 1 ? '↑' : pct < -1 ? '↓' : '→';
+          deltaHtml = `<span class="trend-delta ${cls}">${arrow} ${Math.abs(pct).toFixed(0)}% vs 基线</span>`;
+        }
+        const fmt = v => def.f === 'steps' ? Math.round(v).toLocaleString() : (Math.round(v * Math.pow(10, def.dp)) / Math.pow(10, def.dp));
+        cells.push(`<div class="trend-item">
+          <div class="trend-top"><span class="trend-label">${def.label}</span><span class="trend-now">${fmt(cur)}<small> ${def.unit}</small></span></div>
+          ${sparkline(col)}
+          <div class="trend-sub"><span>均值 ${fmt(avg)}</span>${deltaHtml}</div>
+        </div>`);
+      });
+      $('trendGrid').innerHTML = cells.join('');
+
+      // Recovery insights from rolling baselines
+      const ins = [];
+      const col = f => colOf(f);
+      const hrvCol = col('hrv'), rhrCol = col('restingHR'), sleepCol = col('sleep');
+      const hrvCur = lastVal(hrvCol), hrvBase = baseline(hrvCol);
+      const rhrCur = lastVal(rhrCol), rhrBase = baseline(rhrCol);
+      if (hrvCur != null && hrvBase) {
+        const p = (hrvCur - hrvBase) / hrvBase * 100;
+        if (p >= 8) ins.push(['💚', `HRV 比近期基线高 ${p.toFixed(0)}%，自主神经恢复良好，今天可以适当加量。`]);
+        else if (p <= -12) ins.push(['🟠', `HRV 比基线低 ${Math.abs(p).toFixed(0)}%，可能累积疲劳/压力/睡眠不足，建议今天降低强度。`]);
+        else ins.push(['🟢', `HRV 接近近期基线（${Math.round(hrvBase)}ms 上下），状态平稳。`]);
+      }
+      if (rhrCur != null && rhrBase) {
+        const diff = rhrCur - rhrBase;
+        if (diff >= 4) ins.push(['🟠', `静息心率比基线高 ${diff.toFixed(0)} bpm，常见于睡眠不足、脱水或将要生病，注意观察。`]);
+        else if (diff <= -3) ins.push(['💚', `静息心率低于基线，循环系统恢复得不错。`]);
+      }
+      const sleep7 = meanOf(sleepCol.slice(-7));
+      if (sleep7 != null) {
+        if (sleep7 < 6.5) ins.push(['😴', `近一周平均睡眠仅 ${sleep7.toFixed(1)} 小时，偏少，优先补觉对恢复影响最大。`]);
+        else if (sleep7 >= 7.5) ins.push(['💚', `近一周平均睡眠 ${sleep7.toFixed(1)} 小时，很充足，保持住。`]);
+      }
+      $('trendInsights').innerHTML = ins.map(([i, t]) => `<div class="trend-insight"><span class="ti-ico">${i}</span><span>${t}</span></div>`).join('');
+
+      $('trendRange').textContent = `${series[0].date} ～ ${series[series.length - 1].date} · ${series.length} 天`;
+      card.style.display = 'block';
+    }
+
     async function cloudSync(auto) {
       const hint = $('syncHint');
       hint.className = 'parse-msg';
       hint.textContent = '正在从云端读取最新数据…';
       try {
         const r = await fetch(
-          `${SUPA.url}/rest/v1/${SUPA.table}?select=data,created_at&order=created_at.desc&limit=1`,
+          `${SUPA.url}/rest/v1/${SUPA.table}?select=data,created_at&order=created_at.desc&limit=60`,
           { headers: { apikey: SUPA.key, Authorization: `Bearer ${SUPA.key}` } }
         );
         if (r.status === 404) {
@@ -511,6 +658,7 @@
         const when = rows[0].created_at ? new Date(rows[0].created_at).toLocaleString('zh-CN') : '';
         hint.className = 'parse-msg ok';
         hint.textContent = `✅ 已从云端同步${p.date ? '（数据日期 ' + p.date + '）' : ''}${when ? '，上传于 ' + when : ''}`;
+        renderTrends(buildSeries(rows));
         applyParsed(p);
       } catch (e) {
         hint.className = 'parse-msg err';
