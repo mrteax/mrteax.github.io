@@ -94,13 +94,24 @@
     return code.toUpperCase().replace(/./g, c => String.fromCodePoint(127397 + c.charCodeAt(0)));
   }
 
+  // Stable anonymous id per browser (for new vs returning stats)
+  function getVid() {
+    try {
+      let v = localStorage.getItem('teax_vid');
+      if (!v) { v = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : (Date.now().toString(36) + Math.random().toString(16).slice(2)); localStorage.setItem('teax_vid', v); }
+      return v;
+    } catch (e) { return null; }
+  }
+
   // ---- Storage adapters ----
   async function loadVisitors() {
     if (useRemote) {
+      const hdr = { apikey: SUPABASE.key, Authorization: `Bearer ${SUPABASE.key}` };
+      const url = c => `${SUPABASE.url}/rest/v1/${SUPABASE.table}?select=${c}&order=created_at.desc&limit=5000`;
       try {
-        const url = `${SUPABASE.url}/rest/v1/${SUPABASE.table}` +
-          `?select=lat,lon,city,country,code,created_at&order=created_at.desc&limit=5000`;
-        const r = await fetch(url, { headers: { apikey: SUPABASE.key, Authorization: `Bearer ${SUPABASE.key}` } });
+        // Try with vid; gracefully fall back if that column doesn't exist yet.
+        let r = await fetch(url('lat,lon,city,country,code,created_at,vid'), { headers: hdr });
+        if (!r.ok) r = await fetch(url('lat,lon,city,country,code,created_at'), { headers: hdr });
         if (r.ok) return await r.json();
       } catch (e) {}
       return [];
@@ -115,22 +126,23 @@
     if (localStorage.getItem('teax_geo_day') === today) return false;
     localStorage.setItem('teax_geo_day', today);
 
+    const vid = getVid();
     if (useRemote) {
+      const base = { lat: v.lat, lon: v.lon, city: v.city, country: v.country, code: v.code };
+      const post = body => fetch(`${SUPABASE.url}/rest/v1/${SUPABASE.table}`, {
+        method: 'POST',
+        headers: { apikey: SUPABASE.key, Authorization: `Bearer ${SUPABASE.key}`, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        body: JSON.stringify(body),
+      }).then(r => r.ok).catch(() => false);
       try {
-        await fetch(`${SUPABASE.url}/rest/v1/${SUPABASE.table}`, {
-          method: 'POST',
-          headers: {
-            apikey: SUPABASE.key, Authorization: `Bearer ${SUPABASE.key}`,
-            'Content-Type': 'application/json', Prefer: 'return=minimal',
-          },
-          body: JSON.stringify({ lat: v.lat, lon: v.lon, city: v.city, country: v.country, code: v.code }),
-        });
+        const ok = vid ? await post({ ...base, vid }) : await post(base);
+        if (!ok && vid) await post(base); // retry without vid if column missing
       } catch (e) {}
       return true;
     }
     try {
       const list = JSON.parse(localStorage.getItem('teax_visitors') || '[]');
-      list.push({ lat: v.lat, lon: v.lon, city: v.city, country: v.country, code: v.code, created_at: new Date().toISOString() });
+      list.push({ lat: v.lat, lon: v.lon, city: v.city, country: v.country, code: v.code, vid, created_at: new Date().toISOString() });
       localStorage.setItem('teax_visitors', JSON.stringify(list.slice(-500)));
     } catch (e) {}
     return true;
@@ -170,31 +182,39 @@
     return [...map.values()];
   }
 
-  async function render(you) {
-    const stored = await loadVisitors();
-    const cities = aggregate(stored);
+  let _storedAll = [], _citiesAll = [], _you = null, _mapWin = 'all';
 
+  function drawMap() {
+    let list = _storedAll;
+    if (_mapWin !== 'all') {
+      const now = Date.now();
+      list = _storedAll.filter(v => v.created_at && (now - new Date(v.created_at)) < _mapWin * 86400000);
+    }
+    const cities = aggregate(list);
     pinsG.innerHTML = '';
     cities.forEach(c => {
       const [x, y] = project(c.lat, c.lon);
-      const isYou = you && Math.round(c.lat) === Math.round(you.lat) && Math.round(c.lon) === Math.round(you.lon);
+      const isYou = _you && Math.round(c.lat) === Math.round(_you.lat) && Math.round(c.lon) === Math.round(_you.lon);
       const label = [c.city, c.country].filter(Boolean).join(', ') + (c.count > 1 ? ` · ${c.count}` : '');
       addPin(x, y, { r: Math.min(8, 3 + Math.log2(c.count + 1) * 1.6), you: isYou, label });
     });
+  }
 
-    const visits = stored.length;
+  async function render(you) {
+    const stored = await loadVisitors();
+    _storedAll = stored; _you = you; _citiesAll = aggregate(stored);
+    drawMap();
+
     const countries = new Set(stored.map(v => v.country).filter(Boolean)).size;
-    if (statEl) statEl.textContent = `${visits} 次到访 · ${countries} 个国家/地区`;
-    if (greetEl) {
-      greetEl.textContent = useRemote ? '全站访客足迹（仅你可见）' : '本机访客足迹';
-    }
+    if (statEl) statEl.textContent = `${stored.length} 次到访 · ${countries} 个国家/地区`;
+    if (greetEl) greetEl.textContent = useRemote ? '全站访客足迹（仅你可见）' : '本机访客足迹';
     if (noteEl) {
       noteEl.textContent = useRemote
         ? '所有访客的真实落点，圆点越大到访越多'
         : '当前仅记录本机足迹，配置 Supabase 后显示全站访客（见 js/visitor-map.js）';
     }
     if (listEl) {
-      const top = cities.slice().sort((a, b) => b.count - a.count).slice(0, 20);
+      const top = _citiesAll.slice().sort((a, b) => b.count - a.count).slice(0, 20);
       listEl.innerHTML = top.map(c => {
         const flag = flagFromCode(c.code);
         const place = [c.city, c.country].filter(Boolean).join(', ') || '未知';
@@ -202,7 +222,7 @@
       }).join('') || '<li><span>还没人来过，可能大家都在忙着上班 🫠</span><b>0</b></li>';
     }
 
-    renderDashboard(stored, cities);
+    renderDashboard(stored, _citiesAll);
   }
 
   // ---- Dashboard: KPIs, trends, breakdowns ----
@@ -357,6 +377,36 @@
       }).join('') || '<li><span>还没有访客</span><em></em></li>';
     }
 
+    // New vs returning visitors (needs the vid column + repeat visits)
+    const retEl = document.getElementById('visitorRetention');
+    if (retEl) {
+      const vids = withTime.filter(v => v.vid);
+      if (vids.length >= 2) {
+        const byVid = {};
+        vids.forEach(v => { (byVid[v.vid] || (byVid[v.vid] = new Set())).add(localDay(v.created_at)); });
+        const uniq = Object.keys(byVid).length;
+        const ret = Object.values(byVid).filter(s => s.size > 1).length;
+        const nw = uniq - ret;
+        const rate = uniq ? Math.round(ret / uniq * 100) : 0;
+        const total = (nw + ret) || 1;
+        retEl.innerHTML =
+          `<div class="vret-rate">${rate}%<small>回访率</small></div>` +
+          `<div class="vret-bar"><i class="vret-new" style="width:${(nw / total * 100).toFixed(1)}%"></i><i class="vret-ret" style="width:${(ret / total * 100).toFixed(1)}%"></i></div>` +
+          `<div class="vret-legend"><span><i class="vdot vdot-new"></i>新访客 ${nw}</span><span><i class="vdot vdot-ret"></i>回访 ${ret}</span></div>`;
+      } else {
+        retEl.innerHTML = '<p class="vmuted">数据积累中（需多日回访才能统计）</p>';
+      }
+    }
+
+    // Weekly trend (last 8 weeks)
+    const wkEl = document.getElementById('visitorWeekly');
+    if (wkEl) {
+      const weeks = 8, counts = Array(weeks).fill(0), nowt = Date.now();
+      withTime.forEach(v => { const w = Math.floor((nowt - new Date(v.created_at)) / (7 * dayMs)); if (w >= 0 && w < weeks) counts[weeks - 1 - w]++; });
+      const labels = counts.map((_, i) => { const ago = weeks - 1 - i; return ago === 0 ? '本周' : ago + ' 周前'; });
+      wkEl.innerHTML = withTime.length ? barsSVG(counts, labels) : '<p class="vmuted">暂无数据</p>';
+    }
+
     // Wire interactive controls once
     if (!_wired) {
       _wired = true;
@@ -367,6 +417,14 @@
         _trendWin = b.dataset.win === 'all' ? 'all' : parseInt(b.dataset.win, 10);
         rt.querySelectorAll('button').forEach(x => x.classList.toggle('active', x === b));
         renderTrendChart();
+      });
+      const mr = document.getElementById('mapRangeBtns');
+      if (mr) mr.addEventListener('click', e => {
+        const b = e.target.closest('button[data-mwin]');
+        if (!b) return;
+        _mapWin = b.dataset.mwin === 'all' ? 'all' : parseInt(b.dataset.mwin, 10);
+        mr.querySelectorAll('button').forEach(x => x.classList.toggle('active', x === b));
+        drawMap();
       });
       const ex = document.getElementById('exportCsv');
       if (ex) ex.addEventListener('click', exportCsv);

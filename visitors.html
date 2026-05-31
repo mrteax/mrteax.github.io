@@ -25,6 +25,14 @@
     <div class="vkpis" id="visitorKpis"></div>
     <div class="vinsights" id="visitorInsights"></div>
 
+    <div class="vsec-head">
+      <h2 class="section-label">世界足迹</h2>
+      <div class="vrange" id="mapRangeBtns">
+        <button data-mwin="all" class="active">全部</button>
+        <button data-mwin="30">近30天</button>
+        <button data-mwin="7">近7天</button>
+      </div>
+    </div>
     <section class="card visitor-card">
       <div class="visitor-map-wrap">
         <svg class="vmap" id="vmap" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" aria-label="访客地图">
@@ -63,6 +71,17 @@
       </div>
     </div>
     <div class="card vchart-card"><div id="visitorTrend"></div></div>
+
+    <div class="vcols">
+      <div class="vcol">
+        <h2 class="section-label">新访客 vs 回访</h2>
+        <div class="card vlist-card" id="visitorRetention"></div>
+      </div>
+      <div class="vcol">
+        <h2 class="section-label">每周到访（近 8 周）</h2>
+        <div class="card vchart-card"><div id="visitorWeekly"></div></div>
+      </div>
+    </div>
 
     <div class="vcols">
       <div class="vcol">
