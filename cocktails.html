@@ -204,16 +204,26 @@
       renderBars();
     });
 
+    const DOMESTIC_CITY = { shanghai: '上海', beijing: '北京' };
     const barModal = document.getElementById('barModal');
     function openBarModal(idx) {
       const b = BARS[activeCity][idx];
       if (!b) return;
+      const cityZh = DOMESTIC_CITY[activeCity];
+      let mapHref, mapLabel;
+      if (cityZh) {
+        mapHref = 'https://uri.amap.com/search?keyword=' + encodeURIComponent(b.name + ' ' + cityZh) + '&callnative=1';
+        mapLabel = '📍 高德地图导航';
+      } else {
+        mapHref = 'https://www.google.com/maps/search/?api=1&query=' + b.map;
+        mapLabel = '📍 Google Maps 导航';
+      }
       document.getElementById('barModalBody').innerHTML = 
         '<h2 class="bar-modal-name">'+b.name+'</h2>' +
         '<span class="bar-tag" style="margin-bottom:12px;display:inline-block">'+b.tag+'</span>' +
         '<p class="bar-modal-desc">'+b.desc+'</p>' +
         '<div class="bar-modal-section"><h3>🍸 必点</h3><ul>'+b.sig.map(s => '<li>'+s+'</li>').join('')+'</ul></div>' +
-        '<a class="bar-map-btn" href="https://www.google.com/maps/search/?api=1&query='+b.map+'" target="_blank" rel="noopener">📍 Google Maps 导航</a>';
+        '<a class="bar-map-btn" href="'+mapHref+'" target="_blank" rel="noopener">'+mapLabel+'</a>';
       barModal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
     }
