@@ -103,8 +103,8 @@ a{color:inherit;text-decoration:none}
 .ai-modal-desc{font-size:.78rem;color:var(--t3);line-height:1.7;margin-bottom:16px}
 .ai-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .ai-form-grid label{font-size:.76rem;color:var(--t2)}
-.ai-form-grid input{width:100%;margin-top:5px;padding:10px 11px;border:1px solid var(--border);border-radius:var(--rs);background:var(--input);color:var(--text);font:inherit;outline:none}
-.ai-form-grid input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--abg)}
+.ai-form-grid input,.ai-form-grid select{width:100%;margin-top:5px;padding:10px 11px;border:1px solid var(--border);border-radius:var(--rs);background:var(--input);color:var(--text);font:inherit;outline:none}
+.ai-form-grid input:focus,.ai-form-grid select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--abg)}
 .ai-modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
 .ai-modal-actions button{border:1px solid var(--border);border-radius:100px;background:var(--input);color:var(--text);font:inherit;font-size:.82rem;padding:8px 16px;cursor:pointer}
 .ai-modal-actions button[type="submit"]{background:var(--accent);border-color:var(--accent);color:#fff}

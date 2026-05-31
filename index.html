@@ -201,14 +201,20 @@
         <label>供应商/账号名
           <input id="aiProviderInput" type="text" placeholder="Cursor / Claude / OpenAI">
         </label>
-        <label>本月额度（M tokens）
-          <input id="aiLimitInput" type="number" min="0" step="0.1" placeholder="例如 100">
+        <label>统计单位
+          <select id="aiUnitInput">
+            <option value="usd">USD spend</option>
+            <option value="mtok">M tokens</option>
+          </select>
         </label>
-        <label>本月已用（M tokens）
-          <input id="aiUsedInput" type="number" min="0" step="0.1" placeholder="例如 32.5">
+        <label>本月额度
+          <input id="aiLimitInput" type="number" min="0" step="0.01" placeholder="例如 2000">
         </label>
-        <label>今日消耗（M tokens）
-          <input id="aiTodayInput" type="number" min="0" step="0.1" placeholder="例如 1.8">
+        <label>本月已用
+          <input id="aiUsedInput" type="number" min="0" step="0.01" placeholder="例如 1882.69">
+        </label>
+        <label>今日/日均消耗
+          <input id="aiTodayInput" type="number" min="0" step="0.01" placeholder="例如 173.56">
         </label>
         <label>账期重置日
           <input id="aiResetDayInput" type="number" min="1" max="31" step="1" placeholder="例如 1">
