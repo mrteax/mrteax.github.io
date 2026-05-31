@@ -105,6 +105,29 @@
   function saveAiUsage(data) {
     localStorage.setItem(AI_KEY, JSON.stringify(data));
   }
+  function importAiUsageFromHash() {
+    const prefix = '#ai_usage=';
+    if (!location.hash.startsWith(prefix)) return;
+    try {
+      const encoded = location.hash.slice(prefix.length).replace(/-/g, '+').replace(/_/g, '/');
+      const json = decodeURIComponent(escape(atob(encoded)));
+      const incoming = JSON.parse(json);
+      saveAiUsage(normalizeAiUsage({
+        provider: incoming.provider || 'Cursor',
+        spendLimit: num(incoming.spendLimit),
+        spendUsed: num(incoming.spendUsed),
+        spendDaily: num(incoming.spendDaily),
+        tokenUsedM: num(incoming.tokenUsedM),
+        tokenDailyM: num(incoming.tokenDailyM),
+        resetDay: clamp(Math.round(num(incoming.resetDay) || 1), 1, 31),
+        note: incoming.note || 'Imported from Cursor dashboard'
+      }));
+    } catch (e) {
+      console.warn('Failed to import AI usage data', e);
+    } finally {
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+  }
   function fmtToken(v) {
     return `${nf.format(Math.max(0, v))}M`;
   }
@@ -163,6 +186,7 @@
     document.body.style.overflow = '';
   }
   if (aiCard && aiModal && aiForm) {
+    importAiUsageFromHash();
     renderAiUsage();
     aiCard.addEventListener('click', openAiModal);
     aiCard.addEventListener('keydown', e => {

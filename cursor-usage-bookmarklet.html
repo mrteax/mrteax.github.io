@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cursor 用量本地采集书签，只读取页面可见汇总数字并导入 Tea X 首页 localStorage">
+  <title>Cursor 用量采集器 · Tea X</title>
+  <style>
+    :root{--bg:#f5f3f0;--card:#fff;--text:#1a1a1a;--t2:#555;--t3:#999;--accent:#b07d4f;--border:rgba(0,0,0,.08);--input:#f8f7f5;--sh:0 1px 4px rgba(0,0,0,.04),0 10px 28px rgba(0,0,0,.06);--r:18px;--font:'Noto Sans SC',-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.75}
+    .page{max-width:820px;margin:0 auto;padding:32px 18px 72px}
+    a{color:inherit;text-decoration:none}
+    .back{display:inline-flex;margin-bottom:16px;color:var(--t2);font-size:.86rem}
+    .hero,.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh)}
+    .hero{padding:30px;margin-bottom:16px}
+    h1{margin:0;font-size:2rem;letter-spacing:-.04em}
+    h2{margin:0 0 12px;font-size:1.2rem}
+    p{margin:8px 0;color:var(--t2)}
+    .card{padding:22px;margin-top:14px}
+    .bookmarklet{display:inline-flex;align-items:center;justify-content:center;margin:12px 0;padding:12px 18px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;box-shadow:var(--sh)}
+    ol,ul{margin:8px 0 0 1.2em;padding:0;color:var(--t2)}
+    li{margin:6px 0}
+    code,pre{font-family:var(--mono);font-size:.82rem}
+    pre{white-space:pre-wrap;word-break:break-word;background:var(--input);border:1px solid var(--border);border-radius:12px;padding:14px;color:var(--t2)}
+    .warn{border-color:rgba(180,83,9,.25);background:#fffbeb}
+    .ok{border-color:rgba(4,120,87,.22);background:#ecfdf5}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a href="/" class="back">← 返回 Tea X</a>
+    <section class="hero">
+      <h1>Cursor 用量本地采集器</h1>
+      <p>适合 Cursor Pro / Team 成员，没有 Admin API 权限时使用。它只读取你当前浏览器里 Cursor dashboard 已显示的汇总数字，不读取 cookie、session、密码或 API key。</p>
+    </section>
+
+    <section class="card ok">
+      <h2>安装</h2>
+      <p>把下面这个按钮拖到浏览器书签栏：</p>
+      <a class="bookmarklet" href="javascript:(()=>{const target='https://mrteax.github.io/';const text=document.body.innerText;const val=s=>Number(String(s||'').replace(/[$,]/g,''))||0;const unit=(n,u)=>{n=val(n);u=(u||'').toUpperCase();return u==='B'?n*1000:u==='K'?n/1000:n};const money=text.match(/\\$([\\d,]+(?:\\.\\d+)?)\\s*\\/\\s*\\$([\\d,]+(?:\\.\\d+)?)/);const total=text.match(/Total spend\\s*\\n?\\s*\\$([\\d,]+(?:\\.\\d+)?)/i);const daily=text.match(/Daily total\\s*\\n?\\s*([\\d,.]+)\\s*([KMB]?)/i);const cumulative=text.match(/Cumulative total\\s*\\n?\\s*([\\d,.]+)\\s*([KMB]?)/i);const reset=text.match(/Resets\\s+([A-Z][a-z]{2})\\s+(\\d{1,2}),\\s+(\\d{4})/);const spendLimit=money?val(money[2]):0;const spendUsed=money?val(money[1]):0;const spend7=total?val(total[1]):0;const data={provider:'Cursor',spendLimit,spendUsed,spendDaily:spend7?Number((spend7/7).toFixed(2)):0,tokenUsedM:cumulative?unit(cumulative[1],cumulative[2]):0,tokenDailyM:daily?unit(daily[1],daily[2]):0,resetDay:reset?Number(reset[2]):1,note:'Imported from Cursor dashboard'};const enc=btoa(unescape(encodeURIComponent(JSON.stringify(data)))).replace(/\\+/g,'-').replace(/\\//g,'_').replace(/=+$/,'');window.open(target+'#ai_usage='+enc,'_blank','noopener');})()">Import Cursor Usage</a>
+      <p>如果浏览器不允许拖拽，也可以右键复制链接地址，手动新建书签并粘贴到 URL。</p>
+    </section>
+
+    <section class="card">
+      <h2>使用</h2>
+      <ol>
+        <li>打开 Cursor 用量页：<code>cursor.com/dashboard</code>。</li>
+        <li>如果你想导入某一天 token，先把鼠标悬停到图表对应日期，让 tooltip 显示 <code>Daily total</code> 和 <code>Cumulative total</code>。</li>
+        <li>点击书签栏里的 <code>Import Cursor Usage</code>。</li>
+        <li>它会打开 Tea X 首页，用 URL fragment 导入数据到 localStorage，然后自动清掉 fragment。</li>
+      </ol>
+    </section>
+
+    <section class="card warn">
+      <h2>安全边界</h2>
+      <ul>
+        <li>不会读取或上传 Cursor cookie、session、密码、API key。</li>
+        <li>导入数据通过 <code>#ai_usage=...</code> fragment 传递，fragment 不会发送给 GitHub Pages 服务器。</li>
+        <li>数据最终只存在你浏览器的 <code>localStorage</code>。</li>
+        <li>公开主页源码里不保存你的真实金额、token 或模型明细。</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>能采集什么</h2>
+      <ul>
+        <li>月度金额额度和本月已花费。</li>
+        <li>当前 7 天 Total spend，并换算日均花费。</li>
+        <li>图表 tooltip 可见时的 Daily total tokens 和 Cumulative total tokens。</li>
+        <li>账期重置日。</li>
+      </ul>
+      <p>如果 Cursor 页面结构变化，书签可能需要更新。</p>
+    </section>
+  </main>
+</body>
+</html>
