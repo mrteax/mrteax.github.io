@@ -50,6 +50,36 @@
       </div>
     </section>
 
+    <!-- AI Usage: local-only token budget tracker -->
+    <section class="card card-ai-usage" id="aiUsageCard" role="button" tabindex="0" title="点击编辑 AI 用量">
+      <div class="ai-usage-top">
+        <div>
+          <span class="ai-usage-label">AI 用量</span>
+          <strong id="aiUsageProvider">Local</strong>
+        </div>
+        <span class="ai-usage-pill" id="aiUsageStatus">点击设置</span>
+      </div>
+      <div class="ai-usage-main">
+        <div>
+          <span class="ai-usage-num" id="aiUsageUsed">--</span>
+          <span class="ai-usage-unit">已用</span>
+        </div>
+        <div>
+          <span class="ai-usage-num" id="aiUsageRemaining">--</span>
+          <span class="ai-usage-unit">剩余</span>
+        </div>
+        <div>
+          <span class="ai-usage-num" id="aiUsageToday">--</span>
+          <span class="ai-usage-unit">今日</span>
+        </div>
+      </div>
+      <div class="ai-usage-bar"><i id="aiUsageBar"></i></div>
+      <div class="ai-usage-foot">
+        <span id="aiUsageCycle">数据仅保存在本机浏览器</span>
+        <span id="aiUsageDays">--</span>
+      </div>
+    </section>
+
     <!-- Row 2: Daily Cocktail + Daily Tea -->
     <div class="row row-featured">
       <div class="card card-daily card-cocktail" id="dailyCocktail" role="button" tabindex="0" title="点击查看这杯详情">
@@ -159,6 +189,39 @@
         <a class="dmodal-more" id="dmMore"></a>
       </div>
     </div>
+  </div>
+
+  <!-- AI usage editor -->
+  <div class="ai-modal hidden" id="aiUsageModal" role="dialog" aria-modal="true" aria-labelledby="aiUsageTitle">
+    <form class="ai-modal-card" id="aiUsageForm">
+      <button type="button" class="dmodal-close" id="aiUsageClose" aria-label="关闭">✕</button>
+      <h2 id="aiUsageTitle">AI 用量设置</h2>
+      <p class="ai-modal-desc">这些数据只保存在当前浏览器的 localStorage，不会上传到 GitHub Pages。</p>
+      <div class="ai-form-grid">
+        <label>供应商/账号名
+          <input id="aiProviderInput" type="text" placeholder="Cursor / Claude / OpenAI">
+        </label>
+        <label>本月额度（M tokens）
+          <input id="aiLimitInput" type="number" min="0" step="0.1" placeholder="例如 100">
+        </label>
+        <label>本月已用（M tokens）
+          <input id="aiUsedInput" type="number" min="0" step="0.1" placeholder="例如 32.5">
+        </label>
+        <label>今日消耗（M tokens）
+          <input id="aiTodayInput" type="number" min="0" step="0.1" placeholder="例如 1.8">
+        </label>
+        <label>账期重置日
+          <input id="aiResetDayInput" type="number" min="1" max="31" step="1" placeholder="例如 1">
+        </label>
+        <label>备注
+          <input id="aiNoteInput" type="text" placeholder="手动估算 / 账单导出">
+        </label>
+      </div>
+      <div class="ai-modal-actions">
+        <button type="button" id="aiUsageClear">清空</button>
+        <button type="submit">保存</button>
+      </div>
+    </form>
   </div>
 
   <footer class="footer">

@@ -58,6 +58,109 @@
   }
   tick(); setInterval(tick, 1000);
 
+  // ===== AI usage budget (local-only) =====
+  const AI_KEY = 'teax_ai_usage_v1';
+  const aiCard = document.getElementById('aiUsageCard');
+  const aiModal = document.getElementById('aiUsageModal');
+  const aiForm = document.getElementById('aiUsageForm');
+  const aiDefaults = { provider: 'AI', limitM: 0, usedM: 0, todayM: 0, resetDay: 1, note: '手动估算' };
+  const nf = new Intl.NumberFormat('zh-CN', { maximumFractionDigits: 1 });
+  const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
+  const num = v => {
+    const n = Number(v);
+    return Number.isFinite(n) && n >= 0 ? n : 0;
+  };
+  function loadAiUsage() {
+    try {
+      return { ...aiDefaults, ...JSON.parse(localStorage.getItem(AI_KEY) || '{}') };
+    } catch (e) {
+      return { ...aiDefaults };
+    }
+  }
+  function saveAiUsage(data) {
+    localStorage.setItem(AI_KEY, JSON.stringify(data));
+  }
+  function fmtM(v) {
+    return `${nf.format(Math.max(0, v))}M`;
+  }
+  function daysUntilReset(day) {
+    const now = new Date();
+    const y = now.getFullYear(), m = now.getMonth();
+    const safeDay = clamp(Math.round(num(day) || 1), 1, 28);
+    let next = new Date(y, m, safeDay);
+    if (next <= now) next = new Date(y, m + 1, safeDay);
+    return Math.max(1, Math.ceil((next - now) / 86400000));
+  }
+  function renderAiUsage() {
+    if (!aiCard) return;
+    const d = loadAiUsage();
+    const limit = num(d.limitM), used = num(d.usedM), today = num(d.todayM);
+    const remaining = Math.max(0, limit - used);
+    const pct = limit > 0 ? clamp((used / limit) * 100, 0, 100) : 0;
+    const leftDays = daysUntilReset(d.resetDay);
+    const avg = today > 0 ? Math.max(1, Math.floor(remaining / today)) : null;
+    const bar = document.getElementById('aiUsageBar');
+    const barWrap = bar && bar.parentElement;
+
+    document.getElementById('aiUsageProvider').textContent = d.provider || 'AI';
+    document.getElementById('aiUsageUsed').textContent = fmtM(used);
+    document.getElementById('aiUsageRemaining').textContent = fmtM(remaining);
+    document.getElementById('aiUsageToday').textContent = fmtM(today);
+    document.getElementById('aiUsageStatus').textContent = limit > 0 ? `已用 ${Math.round(pct)}%` : '点击设置';
+    document.getElementById('aiUsageCycle').textContent = `每月 ${clamp(Math.round(num(d.resetDay) || 1), 1, 31)} 日重置 · ${d.note || '本机数据'}`;
+    document.getElementById('aiUsageDays').textContent = avg ? `按今日约可用 ${Math.min(avg, leftDays)} 天` : `距重置 ${leftDays} 天`;
+    if (bar) bar.style.width = `${pct}%`;
+    if (barWrap) barWrap.classList.toggle('warn', pct >= 80);
+  }
+  function fillAiForm() {
+    const d = loadAiUsage();
+    document.getElementById('aiProviderInput').value = d.provider || '';
+    document.getElementById('aiLimitInput').value = num(d.limitM) || '';
+    document.getElementById('aiUsedInput').value = num(d.usedM) || '';
+    document.getElementById('aiTodayInput').value = num(d.todayM) || '';
+    document.getElementById('aiResetDayInput').value = clamp(Math.round(num(d.resetDay) || 1), 1, 31);
+    document.getElementById('aiNoteInput').value = d.note || '';
+  }
+  function openAiModal() {
+    if (!aiModal) return;
+    fillAiForm();
+    aiModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.getElementById('aiUsedInput')?.focus(), 0);
+  }
+  function closeAiModal() {
+    if (!aiModal) return;
+    aiModal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+  if (aiCard && aiModal && aiForm) {
+    renderAiUsage();
+    aiCard.addEventListener('click', openAiModal);
+    aiCard.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openAiModal(); }
+    });
+    document.getElementById('aiUsageClose').addEventListener('click', closeAiModal);
+    aiModal.addEventListener('click', e => { if (e.target === aiModal) closeAiModal(); });
+    document.getElementById('aiUsageClear').addEventListener('click', () => {
+      localStorage.removeItem(AI_KEY);
+      renderAiUsage();
+      closeAiModal();
+    });
+    aiForm.addEventListener('submit', e => {
+      e.preventDefault();
+      saveAiUsage({
+        provider: document.getElementById('aiProviderInput').value.trim() || 'AI',
+        limitM: num(document.getElementById('aiLimitInput').value),
+        usedM: num(document.getElementById('aiUsedInput').value),
+        todayM: num(document.getElementById('aiTodayInput').value),
+        resetDay: clamp(Math.round(num(document.getElementById('aiResetDayInput').value) || 1), 1, 31),
+        note: document.getElementById('aiNoteInput').value.trim() || '本机数据'
+      });
+      renderAiUsage();
+      closeAiModal();
+    });
+  }
+
   // ===== Greeting =====
   const greetMsg = document.getElementById('greetMsg');
   const greetSub = document.getElementById('greetSub');
