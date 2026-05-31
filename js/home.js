@@ -63,7 +63,16 @@
   const aiCard = document.getElementById('aiUsageCard');
   const aiModal = document.getElementById('aiUsageModal');
   const aiForm = document.getElementById('aiUsageForm');
-  const aiDefaults = { provider: 'AI', unit: 'usd', limitM: 0, usedM: 0, todayM: 0, resetDay: 1, note: '手动估算' };
+  const aiDefaults = {
+    provider: 'Cursor',
+    spendLimit: 0,
+    spendUsed: 0,
+    spendDaily: 0,
+    tokenUsedM: 0,
+    tokenDailyM: 0,
+    resetDay: 1,
+    note: '手动估算'
+  };
   const nf = new Intl.NumberFormat('zh-CN', { maximumFractionDigits: 1 });
   const moneyFmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
   const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
@@ -71,9 +80,24 @@
     const n = Number(v);
     return Number.isFinite(n) && n >= 0 ? n : 0;
   };
+  function normalizeAiUsage(raw) {
+    const d = { ...aiDefaults, ...raw };
+    // Backward compatible migration from the previous single-unit tracker.
+    if (raw && raw.limitM != null) {
+      if (raw.unit === 'mtok') {
+        d.tokenUsedM = raw.usedM;
+        d.tokenDailyM = raw.todayM;
+      } else {
+        d.spendLimit = raw.limitM;
+        d.spendUsed = raw.usedM;
+        d.spendDaily = raw.todayM;
+      }
+    }
+    return d;
+  }
   function loadAiUsage() {
     try {
-      return { ...aiDefaults, ...JSON.parse(localStorage.getItem(AI_KEY) || '{}') };
+      return normalizeAiUsage(JSON.parse(localStorage.getItem(AI_KEY) || '{}'));
     } catch (e) {
       return { ...aiDefaults };
     }
@@ -81,12 +105,8 @@
   function saveAiUsage(data) {
     localStorage.setItem(AI_KEY, JSON.stringify(data));
   }
-  function usageUnit(d) {
-    return d.unit === 'mtok' ? 'mtok' : 'usd';
-  }
-  function fmtUsage(v, d) {
-    const n = Math.max(0, v);
-    return usageUnit(d) === 'usd' ? moneyFmt.format(n) : `${nf.format(n)}M`;
+  function fmtToken(v) {
+    return `${nf.format(Math.max(0, v))}M`;
   }
   function daysUntilReset(day) {
     const now = new Date();
@@ -99,31 +119,34 @@
   function renderAiUsage() {
     if (!aiCard) return;
     const d = loadAiUsage();
-    const limit = num(d.limitM), used = num(d.usedM), today = num(d.todayM);
-    const remaining = Math.max(0, limit - used);
-    const pct = limit > 0 ? clamp((used / limit) * 100, 0, 100) : 0;
+    const spendLimit = num(d.spendLimit), spendUsed = num(d.spendUsed), spendDaily = num(d.spendDaily);
+    const tokenUsed = num(d.tokenUsedM), tokenToday = num(d.tokenDailyM);
+    const remaining = Math.max(0, spendLimit - spendUsed);
+    const pct = spendLimit > 0 ? clamp((spendUsed / spendLimit) * 100, 0, 100) : 0;
     const leftDays = daysUntilReset(d.resetDay);
-    const avg = today > 0 ? Math.max(1, Math.floor(remaining / today)) : null;
+    const avg = spendDaily > 0 ? Math.max(1, Math.floor(remaining / spendDaily)) : null;
     const bar = document.getElementById('aiUsageBar');
     const barWrap = bar && bar.parentElement;
 
     document.getElementById('aiUsageProvider').textContent = d.provider || 'AI';
-    document.getElementById('aiUsageUsed').textContent = fmtUsage(used, d);
-    document.getElementById('aiUsageRemaining').textContent = fmtUsage(remaining, d);
-    document.getElementById('aiUsageToday').textContent = fmtUsage(today, d);
-    document.getElementById('aiUsageStatus').textContent = limit > 0 ? `已用 ${Math.round(pct)}%` : '点击设置';
-    document.getElementById('aiUsageCycle').textContent = `${usageUnit(d) === 'usd' ? '金额' : 'Token'} · 每月 ${clamp(Math.round(num(d.resetDay) || 1), 1, 31)} 日重置 · ${d.note || '本机数据'}`;
-    document.getElementById('aiUsageDays').textContent = avg ? `按今日约可用 ${Math.min(avg, leftDays)} 天` : `距重置 ${leftDays} 天`;
+    document.getElementById('aiUsageUsed').textContent = moneyFmt.format(spendUsed);
+    document.getElementById('aiUsageRemaining').textContent = moneyFmt.format(remaining);
+    document.getElementById('aiTokenUsed').textContent = fmtToken(tokenUsed);
+    document.getElementById('aiTokenToday').textContent = fmtToken(tokenToday);
+    document.getElementById('aiUsageStatus').textContent = spendLimit > 0 ? `预算 ${Math.round(pct)}%` : '点击设置';
+    document.getElementById('aiUsageCycle').textContent = `每月 ${clamp(Math.round(num(d.resetDay) || 1), 1, 31)} 日重置 · ${d.note || '本机数据'}`;
+    document.getElementById('aiUsageDays').textContent = avg ? `按花费约可用 ${Math.min(avg, leftDays)} 天` : `距重置 ${leftDays} 天`;
     if (bar) bar.style.width = `${pct}%`;
     if (barWrap) barWrap.classList.toggle('warn', pct >= 80);
   }
   function fillAiForm() {
     const d = loadAiUsage();
     document.getElementById('aiProviderInput').value = d.provider || '';
-    document.getElementById('aiUnitInput').value = usageUnit(d);
-    document.getElementById('aiLimitInput').value = num(d.limitM) || '';
-    document.getElementById('aiUsedInput').value = num(d.usedM) || '';
-    document.getElementById('aiTodayInput').value = num(d.todayM) || '';
+    document.getElementById('aiSpendLimitInput').value = num(d.spendLimit) || '';
+    document.getElementById('aiSpendUsedInput').value = num(d.spendUsed) || '';
+    document.getElementById('aiSpendDailyInput').value = num(d.spendDaily) || '';
+    document.getElementById('aiTokenUsedInput').value = num(d.tokenUsedM) || '';
+    document.getElementById('aiTokenTodayInput').value = num(d.tokenDailyM) || '';
     document.getElementById('aiResetDayInput').value = clamp(Math.round(num(d.resetDay) || 1), 1, 31);
     document.getElementById('aiNoteInput').value = d.note || '';
   }
@@ -156,10 +179,11 @@
       e.preventDefault();
       saveAiUsage({
         provider: document.getElementById('aiProviderInput').value.trim() || 'AI',
-        unit: document.getElementById('aiUnitInput').value === 'mtok' ? 'mtok' : 'usd',
-        limitM: num(document.getElementById('aiLimitInput').value),
-        usedM: num(document.getElementById('aiUsedInput').value),
-        todayM: num(document.getElementById('aiTodayInput').value),
+        spendLimit: num(document.getElementById('aiSpendLimitInput').value),
+        spendUsed: num(document.getElementById('aiSpendUsedInput').value),
+        spendDaily: num(document.getElementById('aiSpendDailyInput').value),
+        tokenUsedM: num(document.getElementById('aiTokenUsedInput').value),
+        tokenDailyM: num(document.getElementById('aiTokenTodayInput').value),
         resetDay: clamp(Math.round(num(document.getElementById('aiResetDayInput').value) || 1), 1, 31),
         note: document.getElementById('aiNoteInput').value.trim() || '本机数据'
       });
