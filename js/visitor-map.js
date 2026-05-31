@@ -99,7 +99,7 @@
     if (useRemote) {
       try {
         const url = `${SUPABASE.url}/rest/v1/${SUPABASE.table}` +
-          `?select=lat,lon,city,country,code&order=created_at.desc&limit=1000`;
+          `?select=lat,lon,city,country,code,created_at&order=created_at.desc&limit=5000`;
         const r = await fetch(url, { headers: { apikey: SUPABASE.key, Authorization: `Bearer ${SUPABASE.key}` } });
         if (r.ok) return await r.json();
       } catch (e) {}
@@ -130,7 +130,7 @@
     }
     try {
       const list = JSON.parse(localStorage.getItem('teax_visitors') || '[]');
-      list.push({ lat: v.lat, lon: v.lon, city: v.city, country: v.country, code: v.code });
+      list.push({ lat: v.lat, lon: v.lon, city: v.city, country: v.country, code: v.code, created_at: new Date().toISOString() });
       localStorage.setItem('teax_visitors', JSON.stringify(list.slice(-500)));
     } catch (e) {}
     return true;
@@ -200,6 +200,101 @@
         const place = [c.city, c.country].filter(Boolean).join(', ') || '未知';
         return `<li><span>${flag ? flag + ' ' : ''}${place}</span><b>${c.count}</b></li>`;
       }).join('') || '<li><span>还没人来过，可能大家都在忙着上班 🫠</span><b>0</b></li>';
+    }
+
+    renderDashboard(stored, cities);
+  }
+
+  // ---- Dashboard: KPIs, trends, breakdowns ----
+  const localDay = ts => { const d = new Date(ts); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+  function relTime(ts) {
+    const diff = Date.now() - new Date(ts).getTime();
+    if (!(diff >= 0)) return '';
+    const min = Math.floor(diff / 60000);
+    if (min < 1) return '刚刚';
+    if (min < 60) return `${min} 分钟前`;
+    const hr = Math.floor(min / 60);
+    if (hr < 24) return `${hr} 小时前`;
+    const day = Math.floor(hr / 24);
+    if (day === 1) return '昨天';
+    if (day < 30) return `${day} 天前`;
+    return localDay(ts).slice(5);
+  }
+  function barsSVG(values, labels) {
+    const n = values.length || 1, max = Math.max(1, ...values), bw = 100 / n;
+    const rects = values.map((v, i) => {
+      const h = v / max * 32, x = i * bw + bw * 0.15, w = bw * 0.7, y = 36 - h;
+      const lab = labels && labels[i] != null ? labels[i] : '';
+      return `<rect x="${x.toFixed(2)}" y="${y.toFixed(2)}" width="${w.toFixed(2)}" height="${Math.max(0.6, h).toFixed(2)}" rx="0.5"><title>${lab}：${v}</title></rect>`;
+    }).join('');
+    return `<svg class="vchart" viewBox="0 0 100 40" preserveAspectRatio="none">${rects}</svg>`;
+  }
+
+  function renderDashboard(stored, cities) {
+    const withTime = stored.filter(v => v.created_at);
+    const now = new Date(), dayMs = 86400000, todayKey = localDay(now);
+
+    // KPI cards
+    const kpiEl = document.getElementById('visitorKpis');
+    if (kpiEl) {
+      const countries = new Set(stored.map(v => v.country).filter(Boolean)).size;
+      const today = withTime.filter(v => localDay(v.created_at) === todayKey).length;
+      const week = withTime.filter(v => now - new Date(v.created_at) < 7 * dayMs).length;
+      const kpis = [
+        ['总到访', stored.length], ['国家/地区', countries], ['城市', cities.length],
+        ['今日', today], ['近 7 天', week],
+      ];
+      kpiEl.innerHTML = kpis.map(([l, v]) => `<div class="vkpi"><div class="vkpi-n">${v}</div><div class="vkpi-l">${l}</div></div>`).join('');
+    }
+
+    // Daily trend (last 30 days)
+    const trendEl = document.getElementById('visitorTrend');
+    if (trendEl) {
+      const days = [], counts = [];
+      for (let i = 29; i >= 0; i--) days.push(localDay(new Date(now - i * dayMs)));
+      const byDay = {};
+      withTime.forEach(v => { const k = localDay(v.created_at); byDay[k] = (byDay[k] || 0) + 1; });
+      days.forEach(d => counts.push(byDay[d] || 0));
+      if (withTime.length) {
+        trendEl.innerHTML = barsSVG(counts, days.map(d => d.slice(5))) +
+          `<div class="vchart-axis"><span>${days[0].slice(5)}</span><span>${days[days.length - 1].slice(5)}</span></div>`;
+      } else {
+        trendEl.innerHTML = '<p class="vmuted">暂无带时间的记录</p>';
+      }
+    }
+
+    // Hour-of-day distribution
+    const hoursEl = document.getElementById('visitorHours');
+    if (hoursEl) {
+      const hours = Array(24).fill(0);
+      withTime.forEach(v => { hours[new Date(v.created_at).getHours()]++; });
+      hoursEl.innerHTML = withTime.length
+        ? barsSVG(hours, hours.map((_, i) => i + ':00')) + '<div class="vchart-axis"><span>0时</span><span>12时</span><span>23时</span></div>'
+        : '<p class="vmuted">暂无数据</p>';
+    }
+
+    // Top countries (horizontal bars)
+    const cEl = document.getElementById('visitorCountries');
+    if (cEl) {
+      const byC = {}, codeOf = {};
+      stored.forEach(v => { const c = v.country || '未知'; byC[c] = (byC[c] || 0) + 1; if (v.code) codeOf[c] = v.code; });
+      const top = Object.entries(byC).sort((a, b) => b[1] - a[1]).slice(0, 8);
+      const max = top.length ? top[0][1] : 1;
+      cEl.innerHTML = top.map(([c, n]) => {
+        const flag = flagFromCode(codeOf[c]);
+        return `<div class="vbar"><span class="vbar-l">${flag ? flag + ' ' : ''}${c}</span><div class="vbar-track"><i style="width:${(n / max * 100).toFixed(1)}%"></i></div><b>${n}</b></div>`;
+      }).join('') || '<p class="vmuted">暂无数据</p>';
+    }
+
+    // Recent visitors
+    const recentEl = document.getElementById('visitorRecent');
+    if (recentEl) {
+      const recent = withTime.slice(0, 12);
+      recentEl.innerHTML = recent.map(v => {
+        const flag = flagFromCode(v.code);
+        const place = [v.city, v.country].filter(Boolean).join(', ') || '未知';
+        return `<li><span>${flag ? flag + ' ' : ''}${place}</span><em>${relTime(v.created_at)}</em></li>`;
+      }).join('') || '<li><span>还没有访客</span><em></em></li>';
     }
   }
 

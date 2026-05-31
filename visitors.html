@@ -19,6 +19,8 @@
     </div>
     <h1 class="vstats-title" id="visitorGreet">访客足迹</h1>
 
+    <div class="vkpis" id="visitorKpis"></div>
+
     <section class="card visitor-card">
       <div class="visitor-map-wrap">
         <svg class="vmap" id="vmap" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" aria-label="访客地图">
@@ -48,8 +50,25 @@
       <p class="visitor-note" id="visitorNote"></p>
     </section>
 
-    <h2 class="section-label">到访最多的地区</h2>
-    <ol class="vlist" id="visitorList"></ol>
+    <h2 class="section-label">每日到访趋势（近 30 天）</h2>
+    <div class="card vchart-card"><div id="visitorTrend"></div></div>
+
+    <div class="vcols">
+      <div class="vcol">
+        <h2 class="section-label">国家 / 地区 Top</h2>
+        <div class="card vlist-card" id="visitorCountries"></div>
+      </div>
+      <div class="vcol">
+        <h2 class="section-label">到访最多的城市</h2>
+        <ol class="vlist" id="visitorList"></ol>
+      </div>
+    </div>
+
+    <h2 class="section-label">活跃时段（按小时）</h2>
+    <div class="card vchart-card"><div id="visitorHours"></div></div>
+
+    <h2 class="section-label">最近到访</h2>
+    <ol class="vlist vlist-recent" id="visitorRecent"></ol>
   </main>
 
   <script>
