@@ -249,6 +249,19 @@
     }).join('');
     return `<svg class="vchart" viewBox="0 0 100 40" preserveAspectRatio="none">${rects}</svg>`;
   }
+  const PALETTE = ['#b07d4f', '#d4a574', '#8c6239', '#c98a5e', '#e0b483', '#9aa0a6'];
+  function donutSVG(slices) {
+    const total = slices.reduce((s, x) => s + x.value, 0) || 1;
+    const R = 15.915, C = 2 * Math.PI * R;
+    let off = 0;
+    const arcs = slices.map(s => {
+      const len = s.value / total * C;
+      const el = `<circle cx="21" cy="21" r="${R}" fill="none" stroke="${s.color}" stroke-width="7" stroke-dasharray="${len.toFixed(2)} ${(C - len).toFixed(2)}" stroke-dashoffset="${(-off).toFixed(2)}" transform="rotate(-90 21 21)"><title>${s.label}：${s.value}（${Math.round(s.value / total * 100)}%）</title></circle>`;
+      off += len;
+      return el;
+    }).join('');
+    return `<svg class="vdonut" viewBox="0 0 42 42">${arcs}<text x="21" y="20.5" text-anchor="middle" class="vdonut-c">${total}</text><text x="21" y="25" text-anchor="middle" class="vdonut-cs">到访</text></svg>`;
+  }
 
   let _stored = [];
   let _trendWin = 30;
@@ -323,10 +336,16 @@
         const byC = {}; stored.forEach(v => { const c = v.country || '未知'; byC[c] = (byC[c] || 0) + 1; });
         const topC = Object.entries(byC).sort((a, b) => b[1] - a[1])[0];
         const share = topC ? Math.round(topC[1] / stored.length * 100) : 0;
+        const wk = withTime.filter(v => now - new Date(v.created_at) < 7 * dayMs).length;
+        const pw = withTime.filter(v => { const d = now - new Date(v.created_at); return d >= 7 * dayMs && d < 14 * dayMs; }).length;
+        let wow = '';
+        if (pw > 0) { const p = Math.round((wk - pw) / pw * 100); wow = `📈 本周较上周 <b>${p >= 0 ? '↑' : '↓'}${Math.abs(p)}%</b>`; }
+        else if (wk > 0) wow = `📈 本周 <b>${wk}</b> 次到访`;
         insEl.innerHTML = [
           `🕒 高峰时段 <b>${peakHour}:00</b> 左右`,
           `📅 最活跃 <b>${busyWd}</b>`,
           topC ? `🌍 主要来自 <b>${topC[0]}</b>（${share}%）` : '',
+          wow,
         ].filter(Boolean).map(t => `<span class="vinsight">${t}</span>`).join('');
       }
     }
@@ -353,17 +372,25 @@
         : '<p class="vmuted">暂无数据</p>';
     }
 
-    // Top countries (horizontal bars)
+    // Source composition (donut + legend)
     const cEl = document.getElementById('visitorCountries');
     if (cEl) {
       const byC = {}, codeOf = {};
       stored.forEach(v => { const c = v.country || '未知'; byC[c] = (byC[c] || 0) + 1; if (v.code) codeOf[c] = v.code; });
-      const top = Object.entries(byC).sort((a, b) => b[1] - a[1]).slice(0, 8);
-      const max = top.length ? top[0][1] : 1;
-      cEl.innerHTML = top.map(([c, n]) => {
-        const flag = flagFromCode(codeOf[c]);
-        return `<div class="vbar"><span class="vbar-l">${flag ? flag + ' ' : ''}${c}</span><div class="vbar-track"><i style="width:${(n / max * 100).toFixed(1)}%"></i></div><b>${n}</b></div>`;
-      }).join('') || '<p class="vmuted">暂无数据</p>';
+      const sorted = Object.entries(byC).sort((a, b) => b[1] - a[1]);
+      if (!sorted.length) { cEl.innerHTML = '<p class="vmuted">暂无数据</p>'; }
+      else {
+        const topN = sorted.slice(0, 5);
+        const otherVal = sorted.slice(5).reduce((s, x) => s + x[1], 0);
+        const slices = topN.map(([c, n], i) => ({ label: c, value: n, code: codeOf[c], color: PALETTE[i] }));
+        if (otherVal) slices.push({ label: '其他', value: otherVal, code: '', color: PALETTE[5] });
+        const total = stored.length || 1;
+        const legend = slices.map(s => {
+          const flag = flagFromCode(s.code);
+          return `<div class="vlg"><i style="background:${s.color}"></i><span>${flag ? flag + ' ' : ''}${s.label}</span><b>${Math.round(s.value / total * 100)}%</b></div>`;
+        }).join('');
+        cEl.innerHTML = `<div class="vdonut-wrap">${donutSVG(slices)}<div class="vdonut-legend">${legend}</div></div>`;
+      }
     }
 
     // Recent visitors

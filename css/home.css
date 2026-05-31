@@ -215,6 +215,15 @@ a{color:inherit;text-decoration:none}
 .vret-legend{display:flex;gap:16px;font-size:.76rem;color:var(--t2)}
 .vret-legend .vdot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:middle}
 .vdot-new{background:var(--accent2,#d4a574)}.vdot-ret{background:var(--accent)}
+.vdonut-wrap{display:flex;align-items:center;gap:16px}
+.vdonut{width:104px;height:104px;flex-shrink:0}
+.vdonut-c{font-family:var(--mono);font-size:8px;font-weight:700;fill:var(--text)}
+.vdonut-cs{font-size:3.2px;fill:var(--t3)}
+.vdonut-legend{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.vlg{display:flex;align-items:center;gap:8px;font-size:.8rem}
+.vlg i{width:9px;height:9px;border-radius:2px;flex-shrink:0}
+.vlg span{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--t2)}
+.vlg b{font-family:var(--mono);color:var(--text);font-weight:500}
 
 
 
