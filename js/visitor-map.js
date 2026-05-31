@@ -266,6 +266,51 @@
   let _stored = [];
   let _trendWin = 30;
   let _wired = false;
+  let _tableRows = [], _retVids = new Set(), _tablePage = 0, _tableQuery = '', _compareWin = 7;
+  const TABLE_PAGE = 15;
+
+  function fmtDateTime(ts) {
+    const d = new Date(ts);
+    return `${localDay(ts)} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+  }
+
+  function renderTable() {
+    const body = document.getElementById('vtBody');
+    if (!body) return;
+    const q = _tableQuery.trim().toLowerCase();
+    let rows = _tableRows;
+    if (q) rows = rows.filter(r => ((r.city || '') + ' ' + (r.country || '')).toLowerCase().includes(q));
+    const pages = Math.max(1, Math.ceil(rows.length / TABLE_PAGE));
+    if (_tablePage >= pages) _tablePage = pages - 1;
+    if (_tablePage < 0) _tablePage = 0;
+    const slice = rows.slice(_tablePage * TABLE_PAGE, (_tablePage + 1) * TABLE_PAGE);
+    body.innerHTML = slice.map(r => {
+      const flag = flagFromCode(r.code);
+      const place = [r.city, r.country].filter(Boolean).join(', ') || '未知';
+      const ret = r.vid && _retVids.has(r.vid);
+      const badge = ret ? '<span class="vt-badge ret">回访</span>' : '<span class="vt-badge new">新</span>';
+      return `<tr><td>${fmtDateTime(r.created_at)}</td><td>${flag ? flag + ' ' : ''}${place}</td><td>${badge}</td></tr>`;
+    }).join('') || '<tr><td colspan="3" class="vmuted">无匹配记录</td></tr>';
+    const info = document.getElementById('vtInfo');
+    if (info) info.textContent = `${rows.length} 条 · 第 ${_tablePage + 1}/${pages} 页`;
+  }
+
+  function renderCompare() {
+    const el = document.getElementById('visitorCompare');
+    if (!el) return;
+    const withTime = _stored.filter(v => v.created_at);
+    const now = Date.now(), dayMs = 86400000, W = _compareWin;
+    const inWin = (lo, hi) => withTime.filter(v => { const a = now - new Date(v.created_at); return a >= lo * dayMs && a < hi * dayMs; });
+    const cur = inWin(0, W), prev = inWin(W, 2 * W);
+    const uniq = a => new Set(a.map(v => v.vid).filter(Boolean)).size;
+    const ctry = a => new Set(a.map(v => v.country).filter(Boolean)).size;
+    const row = (l, c, p) => {
+      const d = c - p, cls = d > 0 ? 'up' : d < 0 ? 'down' : 'flat', a = d > 0 ? '↑' : d < 0 ? '↓' : '→';
+      const pct = p > 0 ? Math.abs(Math.round((c - p) / p * 100)) + '%' : (c > 0 ? '新增' : '—');
+      return `<div class="vcmp-row"><span class="vcmp-l">${l}</span><b>${c}</b><span class="vcmp-p">前期 ${p}</span><span class="vcmp-d ${cls}">${a}${pct}</span></div>`;
+    };
+    el.innerHTML = row('到访', cur.length, prev.length) + row('独立访客', uniq(cur), uniq(prev)) + row('国家/地区', ctry(cur), ctry(prev));
+  }
 
   function deltaHtml(cur, prev) {
     const d = cur - prev;
@@ -307,6 +352,14 @@
     _stored = stored;
     const withTime = stored.filter(v => v.created_at);
     const now = new Date(), dayMs = 86400000, todayKey = localDay(now);
+
+    // Returning-visitor set (vid seen on >=2 distinct days) + table source
+    const byVidDays = {};
+    withTime.forEach(v => { if (v.vid) (byVidDays[v.vid] || (byVidDays[v.vid] = new Set())).add(localDay(v.created_at)); });
+    _retVids = new Set(Object.keys(byVidDays).filter(k => byVidDays[k].size > 1));
+    _tableRows = withTime;
+    renderTable();
+    renderCompare();
 
     // KPI cards (with day-over-day / week-over-week deltas)
     const kpiEl = document.getElementById('visitorKpis');
@@ -455,6 +508,19 @@
       });
       const ex = document.getElementById('exportCsv');
       if (ex) ex.addEventListener('click', exportCsv);
+      const cmp = document.getElementById('compareBtns');
+      if (cmp) cmp.addEventListener('click', e => {
+        const b = e.target.closest('button[data-cw]');
+        if (!b) return;
+        _compareWin = parseInt(b.dataset.cw, 10);
+        cmp.querySelectorAll('button').forEach(x => x.classList.toggle('active', x === b));
+        renderCompare();
+      });
+      const search = document.getElementById('vtSearch');
+      if (search) search.addEventListener('input', () => { _tableQuery = search.value; _tablePage = 0; renderTable(); });
+      const prev = document.getElementById('vtPrev'), next = document.getElementById('vtNext');
+      if (prev) prev.addEventListener('click', () => { _tablePage--; renderTable(); });
+      if (next) next.addEventListener('click', () => { _tablePage++; renderTable(); });
     }
   }
 

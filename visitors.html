@@ -83,9 +83,18 @@
       </div>
     </div>
 
+    <div class="vsec-head">
+      <h2 class="section-label">时间段对比</h2>
+      <div class="vrange" id="compareBtns">
+        <button data-cw="7" class="active">本周 vs 上周</button>
+        <button data-cw="30">近30天 vs 前30天</button>
+      </div>
+    </div>
+    <div class="card vlist-card" id="visitorCompare"></div>
+
     <div class="vcols">
       <div class="vcol">
-        <h2 class="section-label">国家 / 地区 Top</h2>
+        <h2 class="section-label">来源构成</h2>
         <div class="card vlist-card" id="visitorCountries"></div>
       </div>
       <div class="vcol">
@@ -107,6 +116,21 @@
 
     <h2 class="section-label">最近到访</h2>
     <ol class="vlist vlist-recent" id="visitorRecent"></ol>
+
+    <h2 class="section-label">访客明细</h2>
+    <div class="card vtable-card">
+      <input class="vt-search" id="vtSearch" placeholder="🔍 搜索城市 / 国家…">
+      <div class="vtable-scroll">
+        <table class="vtable">
+          <thead><tr><th>时间</th><th>位置</th><th>类型</th></tr></thead>
+          <tbody id="vtBody"></tbody>
+        </table>
+      </div>
+      <div class="vt-foot">
+        <span id="vtInfo"></span>
+        <div class="vt-pager"><button id="vtPrev" aria-label="上一页">‹</button><button id="vtNext" aria-label="下一页">›</button></div>
+      </div>
+    </div>
   </main>
 
   <script>
