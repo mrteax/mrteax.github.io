@@ -139,7 +139,7 @@
     };
 
     // Vibe filters: scenario / style tags mapped by bar name
-    const VIBES = { classic:'🍸 经典技法', creative:'🧪 创意实验', date:'💑 约会格调', lively:'🎉 热闹', pairing:'🍽️ 餐酒搭配', view:'🌃 景观', hidden:'🤫 隐藏/无菜单', local:'🀄 在地·东方', award:'🏆 获奖名店' };
+    const VIBES = { classic:'经典技法', creative:'创意实验', date:'约会格调', lively:'热闹', pairing:'餐酒搭配', view:'景观', hidden:'隐藏/无菜单', local:'在地·东方', award:'获奖名店' };
     const VIBE_MAP = {
       // Shanghai
       'Speak Low':['hidden','classic','award'], 'Sober Company':['pairing','creative','award'], 'Epic':['view','date','award'], 'Bar No.3':['classic','date'], 'COA Shanghai':['creative','award','local'], 'Penicillin Shanghai':['creative','local','award'], 'Bar Leone Shanghai':['classic','award','lively'], 'Pony Up':['lively','award'], 'El Coctel':['classic','creative'], 'The Union Trading Company':['classic','award'], 'Senator Saloon':['classic','date'], 'The Nest':['view','date','pairing'], 'Constellation（酒池星座）':['classic','hidden'], 'Bar Bud':['creative','pairing','award'], 'Mi Shang · Prada 荣宅':['date','creative','view'], '酿青 Niang Qing':['local','creative'], 'Botanik':['creative','local'], "Logan's Punch":['lively'], 'The Tuxedo':['classic','date','award'], 'Asian Flush':['creative','local'], 'Tribeca':['lively','date'], 'ToT':['pairing','date','classic'], 'Bar S-Otto':['hidden','classic'], 'Gallows Humor':['creative','lively'], 'Triple Neck':['creative','local','lively'], 'Bar Rock':['creative','local'],
@@ -168,7 +168,7 @@
       const present = [];
       (BARS[activeCity] || []).forEach(b => vibesOf(b).forEach(v => { if (!present.includes(v)) present.push(v); }));
       const order = Object.keys(VIBES).filter(k => present.includes(k));
-      const chips = ['<button class="bar-vibe-chip'+(activeVibe==='all'?' active':'')+'" data-vibe="all">全部</button>']
+      const chips = ['<span class="bar-vibe-label">筛选</span>', '<button class="bar-vibe-chip'+(activeVibe==='all'?' active':'')+'" data-vibe="all">全部</button>']
         .concat(order.map(k => '<button class="bar-vibe-chip'+(activeVibe===k?' active':'')+'" data-vibe="'+k+'">'+VIBES[k]+'</button>'));
       filtersEl.innerHTML = chips.join('');
       filtersEl.querySelectorAll('.bar-vibe-chip').forEach(c => c.addEventListener('click', () => {

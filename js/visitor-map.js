@@ -230,37 +230,97 @@
     return `<svg class="vchart" viewBox="0 0 100 40" preserveAspectRatio="none">${rects}</svg>`;
   }
 
+  let _stored = [];
+  let _trendWin = 30;
+  let _wired = false;
+
+  function deltaHtml(cur, prev) {
+    const d = cur - prev;
+    if (!cur && !prev) return '';
+    const cls = d > 0 ? 'up' : d < 0 ? 'down' : 'flat';
+    const a = d > 0 ? '↑' : d < 0 ? '↓' : '→';
+    return `<div class="vkpi-d ${cls}">${a}${Math.abs(d)} <span>较前期</span></div>`;
+  }
+
+  function renderTrendChart() {
+    const trendEl = document.getElementById('visitorTrend');
+    if (!trendEl) return;
+    const withTime = _stored.filter(v => v.created_at);
+    if (!withTime.length) { trendEl.innerHTML = '<p class="vmuted">暂无带时间的记录</p>'; return; }
+    const now = new Date(), dayMs = 86400000;
+    let win = _trendWin;
+    if (win === 'all') {
+      const earliest = withTime.reduce((m, v) => Math.min(m, new Date(v.created_at).getTime()), now.getTime());
+      win = Math.min(365, Math.max(7, Math.ceil((now - earliest) / dayMs) + 1));
+    }
+    const days = [], counts = [], byDay = {};
+    withTime.forEach(v => { const k = localDay(v.created_at); byDay[k] = (byDay[k] || 0) + 1; });
+    for (let i = win - 1; i >= 0; i--) { const d = localDay(new Date(now - i * dayMs)); days.push(d); counts.push(byDay[d] || 0); }
+    trendEl.innerHTML = barsSVG(counts, days.map(d => d.slice(5))) +
+      `<div class="vchart-axis"><span>${days[0].slice(5)}</span><span>${days[days.length - 1].slice(5)}</span></div>`;
+  }
+
+  function exportCsv() {
+    const head = ['created_at', 'city', 'country', 'code', 'lat', 'lon'];
+    const esc = s => { s = s == null ? '' : String(s); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+    const csv = [head.join(',')].concat(_stored.map(r => head.map(k => esc(r[k])).join(','))).join('\n');
+    const url = URL.createObjectURL(new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' }));
+    const a = document.createElement('a');
+    a.href = url; a.download = 'visitors-' + localDay(new Date()) + '.csv'; a.click();
+    URL.revokeObjectURL(url);
+  }
+
   function renderDashboard(stored, cities) {
+    _stored = stored;
     const withTime = stored.filter(v => v.created_at);
     const now = new Date(), dayMs = 86400000, todayKey = localDay(now);
 
-    // KPI cards
+    // KPI cards (with day-over-day / week-over-week deltas)
     const kpiEl = document.getElementById('visitorKpis');
     if (kpiEl) {
       const countries = new Set(stored.map(v => v.country).filter(Boolean)).size;
       const today = withTime.filter(v => localDay(v.created_at) === todayKey).length;
+      const yesterday = withTime.filter(v => localDay(v.created_at) === localDay(new Date(now - dayMs))).length;
       const week = withTime.filter(v => now - new Date(v.created_at) < 7 * dayMs).length;
+      const prev7 = withTime.filter(v => { const d = now - new Date(v.created_at); return d >= 7 * dayMs && d < 14 * dayMs; }).length;
       const kpis = [
-        ['总到访', stored.length], ['国家/地区', countries], ['城市', cities.length],
-        ['今日', today], ['近 7 天', week],
+        ['总到访', stored.length, ''], ['国家/地区', countries, ''], ['城市', cities.length, ''],
+        ['今日', today, deltaHtml(today, yesterday)], ['近 7 天', week, deltaHtml(week, prev7)],
       ];
-      kpiEl.innerHTML = kpis.map(([l, v]) => `<div class="vkpi"><div class="vkpi-n">${v}</div><div class="vkpi-l">${l}</div></div>`).join('');
+      kpiEl.innerHTML = kpis.map(([l, v, d]) => `<div class="vkpi"><div class="vkpi-n">${v}</div><div class="vkpi-l">${l}</div>${d || ''}</div>`).join('');
     }
 
-    // Daily trend (last 30 days)
-    const trendEl = document.getElementById('visitorTrend');
-    if (trendEl) {
-      const days = [], counts = [];
-      for (let i = 29; i >= 0; i--) days.push(localDay(new Date(now - i * dayMs)));
-      const byDay = {};
-      withTime.forEach(v => { const k = localDay(v.created_at); byDay[k] = (byDay[k] || 0) + 1; });
-      days.forEach(d => counts.push(byDay[d] || 0));
-      if (withTime.length) {
-        trendEl.innerHTML = barsSVG(counts, days.map(d => d.slice(5))) +
-          `<div class="vchart-axis"><span>${days[0].slice(5)}</span><span>${days[days.length - 1].slice(5)}</span></div>`;
-      } else {
-        trendEl.innerHTML = '<p class="vmuted">暂无带时间的记录</p>';
+    // Quick insights
+    const insEl = document.getElementById('visitorInsights');
+    if (insEl) {
+      if (!withTime.length) { insEl.innerHTML = ''; }
+      else {
+        const hours = Array(24).fill(0); withTime.forEach(v => hours[new Date(v.created_at).getHours()]++);
+        const peakHour = hours.indexOf(Math.max(...hours));
+        const wn = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+        const wd = Array(7).fill(0); withTime.forEach(v => { wd[(new Date(v.created_at).getDay() + 6) % 7]++; });
+        const busyWd = wn[wd.indexOf(Math.max(...wd))];
+        const byC = {}; stored.forEach(v => { const c = v.country || '未知'; byC[c] = (byC[c] || 0) + 1; });
+        const topC = Object.entries(byC).sort((a, b) => b[1] - a[1])[0];
+        const share = topC ? Math.round(topC[1] / stored.length * 100) : 0;
+        insEl.innerHTML = [
+          `🕒 高峰时段 <b>${peakHour}:00</b> 左右`,
+          `📅 最活跃 <b>${busyWd}</b>`,
+          topC ? `🌍 主要来自 <b>${topC[0]}</b>（${share}%）` : '',
+        ].filter(Boolean).map(t => `<span class="vinsight">${t}</span>`).join('');
       }
+    }
+
+    renderTrendChart();
+
+    // Day-of-week distribution
+    const wdEl = document.getElementById('visitorWeekday');
+    if (wdEl) {
+      const names = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+      const wd = Array(7).fill(0); withTime.forEach(v => { wd[(new Date(v.created_at).getDay() + 6) % 7]++; });
+      wdEl.innerHTML = withTime.length
+        ? barsSVG(wd, names) + '<div class="vchart-axis">' + names.map(n => `<span>${n}</span>`).join('') + '</div>'
+        : '<p class="vmuted">暂无数据</p>';
     }
 
     // Hour-of-day distribution
@@ -295,6 +355,21 @@
         const place = [v.city, v.country].filter(Boolean).join(', ') || '未知';
         return `<li><span>${flag ? flag + ' ' : ''}${place}</span><em>${relTime(v.created_at)}</em></li>`;
       }).join('') || '<li><span>还没有访客</span><em></em></li>';
+    }
+
+    // Wire interactive controls once
+    if (!_wired) {
+      _wired = true;
+      const rt = document.getElementById('trendRangeBtns');
+      if (rt) rt.addEventListener('click', e => {
+        const b = e.target.closest('button[data-win]');
+        if (!b) return;
+        _trendWin = b.dataset.win === 'all' ? 'all' : parseInt(b.dataset.win, 10);
+        rt.querySelectorAll('button').forEach(x => x.classList.toggle('active', x === b));
+        renderTrendChart();
+      });
+      const ex = document.getElementById('exportCsv');
+      if (ex) ex.addEventListener('click', exportCsv);
     }
   }
 

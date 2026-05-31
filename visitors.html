@@ -15,11 +15,15 @@
   <main class="content vstats">
     <div class="vstats-head">
       <a href="/" class="vstats-back">← 返回主页</a>
-      <span class="map-stat" id="mapStat">加载中…</span>
+      <div class="vstats-head-r">
+        <span class="map-stat" id="mapStat">加载中…</span>
+        <button class="vstats-export" id="exportCsv">⬇ 导出 CSV</button>
+      </div>
     </div>
     <h1 class="vstats-title" id="visitorGreet">访客足迹</h1>
 
     <div class="vkpis" id="visitorKpis"></div>
+    <div class="vinsights" id="visitorInsights"></div>
 
     <section class="card visitor-card">
       <div class="visitor-map-wrap">
@@ -50,7 +54,14 @@
       <p class="visitor-note" id="visitorNote"></p>
     </section>
 
-    <h2 class="section-label">每日到访趋势（近 30 天）</h2>
+    <div class="vsec-head">
+      <h2 class="section-label">每日到访趋势</h2>
+      <div class="vrange" id="trendRangeBtns">
+        <button data-win="30" class="active">30天</button>
+        <button data-win="90">90天</button>
+        <button data-win="all">全部</button>
+      </div>
+    </div>
     <div class="card vchart-card"><div id="visitorTrend"></div></div>
 
     <div class="vcols">
@@ -64,8 +75,16 @@
       </div>
     </div>
 
-    <h2 class="section-label">活跃时段（按小时）</h2>
-    <div class="card vchart-card"><div id="visitorHours"></div></div>
+    <div class="vcols">
+      <div class="vcol">
+        <h2 class="section-label">活跃星期</h2>
+        <div class="card vchart-card"><div id="visitorWeekday"></div></div>
+      </div>
+      <div class="vcol">
+        <h2 class="section-label">活跃时段（按小时）</h2>
+        <div class="card vchart-card"><div id="visitorHours"></div></div>
+      </div>
+    </div>
 
     <h2 class="section-label">最近到访</h2>
     <ol class="vlist vlist-recent" id="visitorRecent"></ol>
