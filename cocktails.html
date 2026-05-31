@@ -52,6 +52,7 @@
         <button class="bar-city-tab" data-city="newyork">🇺🇸 纽约</button>
         <button class="bar-city-tab" data-city="mexico">🇲🇽 墨西哥城</button>
       </div>
+      <div class="bar-vibe-filters" id="barVibeFilters"></div>
       <div class="bar-cards" id="barCards"></div>
     </div>
   </details>
@@ -137,13 +138,52 @@
       ],
     };
 
+    // Vibe filters: scenario / style tags mapped by bar name
+    const VIBES = { classic:'🍸 经典技法', creative:'🧪 创意实验', date:'💑 约会格调', lively:'🎉 热闹', pairing:'🍽️ 餐酒搭配', view:'🌃 景观', hidden:'🤫 隐藏/无菜单', local:'🀄 在地·东方', award:'🏆 获奖名店' };
+    const VIBE_MAP = {
+      // Shanghai
+      'Speak Low':['hidden','classic','award'], 'Sober Company':['pairing','creative','award'], 'Epic':['view','date','award'], 'Bar No.3':['classic','date'], 'COA Shanghai':['creative','award','local'], 'Penicillin Shanghai':['creative','local','award'], 'Bar Leone Shanghai':['classic','award','lively'], 'Pony Up':['lively','award'], 'El Coctel':['classic','creative'], 'The Union Trading Company':['classic','award'], 'Senator Saloon':['classic','date'], 'The Nest':['view','date','pairing'], 'Constellation（酒池星座）':['classic','hidden'], 'Bar Bud':['creative','pairing','award'], 'Mi Shang · Prada 荣宅':['date','creative','view'], '酿青 Niang Qing':['local','creative'], 'Botanik':['creative','local'], "Logan's Punch":['lively'], 'The Tuxedo':['classic','date','award'], 'Asian Flush':['creative','local'], 'Tribeca':['lively','date'], 'ToT':['pairing','date','classic'], 'Bar S-Otto':['hidden','classic'], 'Gallows Humor':['creative','lively'], 'Triple Neck':['creative','local','lively'], 'Bar Rock':['creative','local'],
+      // Beijing
+      'TIAO':['local','creative','award'], 'MO Bar':['view','date'], 'Janes & Hooch':['classic','lively'], 'Hide & Seek':['creative','date'], 'The Bvlgari Bar':['date','view'], 'Revolution':['creative','lively'],
+      // Singapore
+      'Jigger & Pony':['classic','award'], 'Native':['local','creative','award'], 'Atlas':['view','date','classic'], 'Offtrack':['creative','award'], 'Nutmeg & Clove':['local','creative','award'], 'Cat Bite Club':['lively','award'], 'BOP (Bartenders of Pony)':['lively','creative'],
+      // Tokyo
+      'Bar High Five':['classic','hidden','award'], 'Bar Benfiddich':['creative','award'], 'SG Club':['lively','classic','award'], 'Star Bar Ginza':['classic'], 'Gen Yamamoto':['pairing','hidden','date'],
+      // London
+      'Connaught Bar':['classic','date','award'], 'Tayēr + Elementary':['creative','award'], "Satan's Whiskers":['classic','hidden','lively'], 'Swift':['classic','date'],
+      // New York
+      'Attaboy':['hidden','classic','award'], 'Double Chicken Please':['creative','pairing','award'], 'Katana Kitten':['lively','pairing','award'], 'Dead Rabbit':['classic','lively','award'],
+      // Mexico City
+      'Handshake Speakeasy':['hidden','creative','award'], 'Licorería Limantour':['local','classic','award'],
+    };
+    const vibesOf = b => VIBE_MAP[b.name] || [];
+
     let activeCity = 'shanghai';
+    let activeVibe = 'all';
     const tabs = document.getElementById('barCityTabs');
     const cardsEl = document.getElementById('barCards');
+    const filtersEl = document.getElementById('barVibeFilters');
+
+    function renderFilters() {
+      const present = [];
+      (BARS[activeCity] || []).forEach(b => vibesOf(b).forEach(v => { if (!present.includes(v)) present.push(v); }));
+      const order = Object.keys(VIBES).filter(k => present.includes(k));
+      const chips = ['<button class="bar-vibe-chip'+(activeVibe==='all'?' active':'')+'" data-vibe="all">全部</button>']
+        .concat(order.map(k => '<button class="bar-vibe-chip'+(activeVibe===k?' active':'')+'" data-vibe="'+k+'">'+VIBES[k]+'</button>'));
+      filtersEl.innerHTML = chips.join('');
+      filtersEl.querySelectorAll('.bar-vibe-chip').forEach(c => c.addEventListener('click', () => {
+        activeVibe = c.dataset.vibe;
+        renderFilters();
+        renderBars();
+      }));
+    }
 
     function renderBars() {
       const bars = BARS[activeCity] || [];
-      cardsEl.innerHTML = bars.map((b, i) => 
+      const rows = bars.map((b, i) => ({ b, i }))
+        .filter(({ b }) => activeVibe === 'all' || vibesOf(b).includes(activeVibe));
+      if (!rows.length) { cardsEl.innerHTML = '<p class="bar-empty">这个筛选下还没有店，换一个标签试试 🍸</p>'; return; }
+      cardsEl.innerHTML = rows.map(({ b, i }) =>
         '<div class="bar-card" data-idx="'+i+'">' +
           '<div class="bar-card-top"><span class="bar-card-name">'+b.name+'</span><span class="bar-tag">'+b.tag+'</span></div>' +
           '<p class="bar-card-desc">'+b.desc.substring(0, 60)+'…</p>' +
@@ -158,7 +198,9 @@
       const t = e.target.closest('.bar-city-tab');
       if (!t) return;
       activeCity = t.dataset.city;
+      activeVibe = 'all';
       tabs.querySelectorAll('.bar-city-tab').forEach(x => x.classList.toggle('active', x.dataset.city === activeCity));
+      renderFilters();
       renderBars();
     });
 
@@ -179,6 +221,7 @@
     document.getElementById('barModalClose').addEventListener('click', () => { barModal.classList.add('hidden'); document.body.style.overflow = ''; });
     barModal.addEventListener('click', e => { if (e.target === barModal) { barModal.classList.add('hidden'); document.body.style.overflow = ''; }});
 
+    renderFilters();
     renderBars();
   })();
   </script>
