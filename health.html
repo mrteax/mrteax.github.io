@@ -466,15 +466,16 @@
         let json;
         try { json = JSON.parse(reader.result); }
         catch (e) { msg.className = 'parse-msg err'; msg.textContent = '❌ 解析失败：这不是有效的 JSON 文件'; return; }
-        const p = parseHealthExport(json);
+        const norm = normalizeExport(json);
+        const p = parseHealthExport(norm);
         if (!p || !p.found) {
           msg.className = 'parse-msg err';
-          msg.textContent = '❌ 没找到睡眠/心率/HRV 数据。导出时请勾选 Sleep、Resting Heart Rate、Heart Rate Variability，并选择 JSON 格式。';
+          msg.textContent = '❌ 没找到睡眠/心率/HRV 数据。支持 Health Auto Export 的 JSON，或扁平格式（含 sleep / restingHR / hrv 等字段）。';
           return;
         }
         msg.className = 'parse-msg ok';
         msg.textContent = `✅ 已解析${p.date ? '（' + p.date + '）' : ''}，识别到 ${p.found} 项核心指标，已自动填表并评估 👇`;
-        lastRaw = normalizeExport(json);
+        lastRaw = norm;
         applyParsed(p);
       };
       reader.readAsText(file);
@@ -492,10 +493,41 @@
       key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRyY2V0ZXN5ZXhvcG5nY2ZyZ2NrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMjIxNDYsImV4cCI6MjA5NTU5ODE0Nn0.ezCv2WcvJe7UjcLogSw96KTtL1HsBdnSytrbTuhDF2c',
       table: 'health_imports',
     };
+    // Convert a simple flat daily payload into Health Auto Export's metric shape,
+    // so a lightweight Shortcut/app can post easy JSON like
+    // {"date":"2026-06-05","sleep":7.2,"restingHR":58,"hrv":46,"steps":8000,...}
+    function flatToHAE(o) {
+      const pick = (...keys) => { for (const k of keys) if (o[k] != null) return o[k]; return null; };
+      const date = (o.date && String(o.date).slice(0, 10)) || new Date().toISOString().slice(0, 10);
+      const dt = date + ' 12:00:00 +0000';
+      const M = [];
+      const qty = (name, val, units) => { const n = Number(val); if (val != null && isFinite(n)) M.push({ name, units: units || '', data: [{ date: dt, qty: n }] }); };
+      const sleep = pick('sleep', 'sleepHours', 'totalSleep');
+      const deep = pick('deep', 'deepSleepHours'), rem = pick('rem', 'remSleepHours'), core = pick('core'), inBed = pick('inBed'), awake = pick('awake', 'awakeHours');
+      if (sleep != null || deep != null || rem != null || core != null) {
+        M.push({ name: 'sleep_analysis', units: 'hr', data: [{ date: dt, totalSleep: sleep, asleep: sleep, deep, rem, core, inBed, awake }] });
+      }
+      qty('resting_heart_rate', pick('restingHR', 'resting_heart_rate', 'restingHeartRate'), 'count/min');
+      qty('heart_rate_variability', pick('hrv', 'heart_rate_variability', 'hrvMs'), 'ms');
+      qty('step_count', pick('steps', 'step_count'), 'count');
+      qty('active_energy', pick('activeEnergy', 'active_energy', 'activeEnergyKcal'), 'kcal');
+      qty('apple_exercise_time', pick('exerciseMin', 'apple_exercise_time', 'exerciseMinutes'), 'min');
+      qty('blood_oxygen_saturation', pick('spo2', 'blood_oxygen_saturation', 'spo2Percent'), '%');
+      qty('respiratory_rate', pick('respRate', 'respiratory_rate', 'respiratoryRate'), 'count/min');
+      qty('vo2_max', pick('vo2max', 'vo2_max'), 'ml/(kg·min)');
+      const minHR = pick('minHR', 'minHeartRate'), avgHR = pick('avgHR', 'avgHeartRate'), maxHR = pick('maxHR', 'maxHeartRate');
+      if (minHR != null || avgHR != null || maxHR != null) {
+        M.push({ name: 'heart_rate', units: 'count/min', data: [{ date: dt, Min: minHR, Avg: avgHR, Max: maxHR }] });
+      }
+      return { data: { metrics: M } };
+    }
+    const FLAT_KEYS = ['sleep', 'sleepHours', 'totalSleep', 'deep', 'rem', 'core', 'restingHR', 'resting_heart_rate', 'restingHeartRate', 'hrv', 'heart_rate_variability', 'hrvMs', 'steps', 'step_count', 'activeEnergy', 'active_energy', 'spo2', 'blood_oxygen_saturation', 'respRate', 'respiratory_rate', 'vo2max', 'vo2_max', 'minHR', 'avgHR', 'exerciseMin'];
+
     function normalizeExport(d) {
       if (!d) return null;
       if (d.data && d.data.metrics) return d;     // {data:{metrics}}
       if (d.metrics) return { data: d };          // {metrics} -> wrap
+      if (typeof d === 'object' && FLAT_KEYS.some(k => d[k] != null)) return flatToHAE(d); // flat daily payload
       return d;
     }
 
