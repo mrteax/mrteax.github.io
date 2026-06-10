@@ -17,11 +17,20 @@
 
     <a href="/portal.html" class="pack-link" aria-label="进入 Tea X 主页">
       <span class="sr-only">Beside Me — 点击进入</span>
-      <!-- 透视立体烟盒：正面 + 顶面 + 右侧面（参照漫画手持角度） -->
       <svg class="pack-svg" viewBox="0 0 188 248" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
         <defs>
-          <pattern id="dots" width="3" height="3" patternUnits="userSpaceOnUse">
-            <circle cx="1.5" cy="1.5" r="0.5" fill="#111" opacity="0.2"/>
+          <linearGradient id="paper" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="#fffdf8"/>
+            <stop offset="0.58" stop-color="#f5f1e9"/>
+            <stop offset="1" stop-color="#e4ded2"/>
+          </linearGradient>
+          <linearGradient id="sidePaper" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="#f2eee6"/>
+            <stop offset="1" stop-color="#d7d0c3"/>
+          </linearGradient>
+          <pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse">
+            <circle cx="0.9" cy="1.1" r="0.45" fill="#1f1f1f" opacity="0.08"/>
+            <circle cx="3" cy="2.8" r="0.35" fill="#1f1f1f" opacity="0.05"/>
           </pattern>
           <clipPath id="frontClip">
             <polygon points="18,50 134,50 134,214 18,214"/>
@@ -29,58 +38,47 @@
           <clipPath id="topClip">
             <polygon points="18,50 134,50 158,38 42,38"/>
           </clipPath>
-          <clipPath id="sideClip">
-            <polygon points="134,50 158,38 158,202 134,214"/>
-          </clipPath>
         </defs>
 
-        <!-- 右侧面 -->
-        <polygon points="134,50 158,38 158,202 134,214" fill="#ebe9e6" stroke="#111" stroke-width="2" stroke-linejoin="round"/>
-        <line x1="146" y1="56" x2="146" y2="206" stroke="#111" stroke-width="0.8" opacity="0.25"/>
+        <g class="cigarette-reveal" aria-hidden="true">
+          <rect x="82" y="12" width="12" height="62" rx="5" fill="#f7f1e6" stroke="#141414" stroke-width="1.6"/>
+          <rect x="82" y="12" width="12" height="14" rx="5" fill="#d8b06d" stroke="#141414" stroke-width="1.2"/>
+          <line x1="84" y1="34" x2="92" y2="34" stroke="#141414" stroke-width="0.7" opacity="0.22"/>
+        </g>
 
-        <!-- 顶面 -->
-        <polygon points="18,50 134,50 158,38 42,38" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/>
+        <polygon points="134,50 158,38 158,202 134,214" fill="url(#sidePaper)" stroke="#141414" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M145 51 L145 207" stroke="#141414" stroke-width="0.9" opacity="0.2"/>
+        <path d="M153 42 L153 197" stroke="#fff" stroke-width="1" opacity="0.35"/>
+
+        <polygon points="18,50 134,50 158,38 42,38" fill="url(#paper)" stroke="#141414" stroke-width="2" stroke-linejoin="round"/>
         <g clip-path="url(#topClip)">
-          <polygon points="18,50 134,50 158,38 42,38" fill="#1f1f1f" transform="scale(1,0.42) translate(0,68)"/>
-          <polygon points="18,50 134,50 158,38 42,38" fill="url(#dots)" transform="scale(1,0.42) translate(0,68)"/>
+          <path d="M18 48 H134 L158 38 H42 Z" fill="#202020" opacity="0.95" transform="scale(1,0.45) translate(0,64)"/>
+          <path d="M18 48 H134 L158 38 H42 Z" fill="url(#grain)" transform="scale(1,0.45) translate(0,64)"/>
         </g>
-        <!-- 顶面封口竖条 -->
-        <polygon points="72,48 86,48 88,40 74,40" fill="#111"/>
+        <polygon points="72,49 86,49 88,40 74,40" fill="#161616"/>
 
-        <!-- 正面 -->
-        <polygon points="18,50 134,50 134,214 18,214" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/>
-
+        <polygon points="18,50 134,50 134,214 18,214" fill="url(#paper)" stroke="#141414" stroke-width="2" stroke-linejoin="round"/>
         <g clip-path="url(#frontClip)">
-          <!-- 顶部深色区：心形上沿，中间凹、两侧弧出 -->
-          <path id="shade"
-                d="M18 64
-                   H134
-                   V102
-                   C118 102 108 90 92 98
-                   C82 110 70 110 60 98
-                   C44 90 34 102 18 102
-                   Z"
-                fill="#1f1f1f"/>
-          <use href="#shade" fill="url(#dots)"/>
+          <path d="M18 62 H134 V104 C119 101 111 89 96 96 C84 105 76 116 64 100 C50 88 36 103 18 101 Z" fill="#202020"/>
+          <path d="M18 62 H134 V104 C119 101 111 89 96 96 C84 105 76 116 64 100 C50 88 36 103 18 101 Z" fill="url(#grain)"/>
+          <path d="M28 118 C46 109 66 119 76 133 C88 116 110 110 126 121 C116 146 94 164 76 177 C58 163 36 145 28 118 Z" fill="none" stroke="#171717" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+          <path d="M43 204 C64 211 96 211 120 203" fill="none" stroke="#141414" stroke-width="1" opacity="0.16"/>
         </g>
 
-        <!-- 正面封口竖条 -->
-        <rect x="70" y="52" width="14" height="18" fill="#111" rx="0.5"/>
-
-        <!-- Beside Me 手写体 -->
-        <text x="76" y="148"
-              transform="rotate(11 76 148)"
+        <rect x="70" y="52" width="14" height="18" fill="#141414" rx="0.5"/>
+        <text x="76" y="151"
+              transform="rotate(10 76 151)"
               text-anchor="middle"
               font-family="'Reenie Beanie', 'Segoe Print', cursive"
-              font-size="40"
-              fill="#111"
-              letter-spacing="0.5">Beside Me</text>
+              font-size="39"
+              fill="#141414"
+              letter-spacing="0.4">Beside Me</text>
+        <path d="M55 162 C63 168 71 166 77 157 C84 168 95 168 101 161" fill="none" stroke="#141414" stroke-width="1.35" stroke-linecap="round" opacity="0.55"/>
 
-        <!-- 棱线强调立体 -->
-        <line x1="134" y1="50" x2="134" y2="214" stroke="#111" stroke-width="2"/>
-        <line x1="18" y1="50" x2="134" y2="50" stroke="#111" stroke-width="2"/>
-        <line x1="134" y1="50" x2="158" y2="38" stroke="#111" stroke-width="2"/>
-        <line x1="18" y1="50" x2="42" y2="38" stroke="#111" stroke-width="2"/>
+        <line x1="134" y1="50" x2="134" y2="214" stroke="#141414" stroke-width="2"/>
+        <line x1="18" y1="50" x2="134" y2="50" stroke="#141414" stroke-width="2"/>
+        <line x1="134" y1="50" x2="158" y2="38" stroke="#141414" stroke-width="2"/>
+        <line x1="18" y1="50" x2="42" y2="38" stroke="#141414" stroke-width="2"/>
       </svg>
     </a>
   </main>
