@@ -118,28 +118,6 @@ body {
   transition: filter 0.5s var(--ease);
 }
 
-.cigarette-reveal {
-  opacity: 0;
-  transform: translateY(34px);
-  transform-origin: 88px 74px;
-  animation: cigaretteReveal 20s var(--ease) infinite;
-}
-
-@keyframes cigaretteReveal {
-  0%, 74% {
-    opacity: 0;
-    transform: translateY(34px);
-  }
-  80%, 92% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(34px);
-  }
-}
-
 .pack-link:hover .pack-svg {
   filter: drop-shadow(0 28px 52px var(--shadow-deep)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.07));
 }
@@ -158,14 +136,8 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .pack-link,
-  .pack-shadow,
-  .cigarette-reveal {
+  .pack-shadow {
     animation: none;
-  }
-
-  .cigarette-reveal {
-    opacity: 1;
-    transform: translateY(0);
   }
 
   .pack-link:hover {
