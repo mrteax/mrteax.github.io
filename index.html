@@ -14,70 +14,92 @@
 
     <a href="/portal.html" class="pack-link" aria-label="进入 Tea X 主页">
       <span class="sr-only">Beside Me — 点击进入</span>
-      <svg class="pack-svg" viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+      <!-- 日本版マールボロ（赤マル）レイアウト — 《ヤニ吸うふたり》Beside Me -->
+      <svg class="pack-svg" viewBox="0 0 176 268" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
         <defs>
-          <linearGradient id="packBody" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#ffffff"/>
-            <stop offset="100%" stop-color="#f0eeec"/>
+          <linearGradient id="redBand" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#d42026"/>
+            <stop offset="100%" stop-color="#b01018"/>
           </linearGradient>
-          <linearGradient id="packRed" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#d4282e"/>
-            <stop offset="100%" stop-color="#a8181e"/>
+          <linearGradient id="goldRing" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#e8cc55"/>
+            <stop offset="45%" stop-color="#c9a02a"/>
+            <stop offset="100%" stop-color="#9a7518"/>
           </linearGradient>
-          <linearGradient id="packGold" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#e8c84a"/>
-            <stop offset="50%" stop-color="#c9a227"/>
-            <stop offset="100%" stop-color="#a07d18"/>
+          <linearGradient id="sideFace" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#ece8e4"/>
+            <stop offset="100%" stop-color="#d8d4d0"/>
           </linearGradient>
-          <linearGradient id="foil" x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient id="cellophane" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
-            <stop offset="45%" stop-color="rgba(255,255,255,0.35)"/>
-            <stop offset="55%" stop-color="rgba(255,255,255,0.15)"/>
+            <stop offset="42%" stop-color="rgba(255,255,255,0.28)"/>
+            <stop offset="50%" stop-color="rgba(255,255,255,0.08)"/>
             <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
           </linearGradient>
-          <filter id="innerShadow" x="-10%" y="-10%" width="120%" height="120%">
-            <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="rgba(0,0,0,0.12)"/>
-          </filter>
+          <clipPath id="frontClip">
+            <rect x="14" y="20" width="148" height="228" rx="2.5"/>
+          </clipPath>
         </defs>
 
-        <!-- Pack body -->
-        <rect x="20" y="52" width="160" height="210" rx="4" fill="url(#packBody)" stroke="#d8d4d0" stroke-width="0.8"/>
+        <!-- 3D: right side -->
+        <path d="M162 20 L172 26 L172 248 L162 242 Z" fill="url(#sideFace)"/>
+        <!-- 3D: bottom -->
+        <path d="M14 242 L162 242 L172 248 L24 248 Z" fill="#d0ccc8"/>
 
-        <!-- Red top flap (Marlboro-style chevron) -->
-        <path d="M20 52 L100 18 L180 52 Z" fill="url(#packRed)"/>
-        <path d="M20 52 L100 18 L180 52 L180 68 L20 68 Z" fill="url(#packRed)" opacity="0.15"/>
+        <!-- Cellophane pull strip -->
+        <rect x="68" y="14" width="40" height="7" rx="1" fill="#c8c4c0" opacity="0.85"/>
+        <rect x="72" y="15.5" width="32" height="4" rx="0.5" fill="#e8e4e0"/>
 
-        <!-- Lid seam -->
-        <line x1="20" y1="68" x2="180" y2="68" stroke="#8a1014" stroke-width="0.6" opacity="0.5"/>
+        <!-- Front face -->
+        <g clip-path="url(#frontClip)">
+          <!-- White body -->
+          <rect x="14" y="20" width="148" height="228" fill="#faf9f7"/>
 
-        <!-- Side depth -->
-        <path d="M180 52 L188 56 L188 262 L180 262 Z" fill="#e8e4e0"/>
-        <path d="M20 262 L180 262 L188 262 L188 256 L20 256 Z" fill="#ddd8d4"/>
+          <!-- Red top band (日本マールボロ横分) -->
+          <rect x="14" y="20" width="148" height="88" fill="url(#redBand)"/>
 
-        <!-- Gold crest -->
-        <circle cx="100" cy="118" r="22" fill="url(#packGold)" filter="url(#innerShadow)"/>
-        <circle cx="100" cy="118" r="18" fill="none" stroke="#a07d18" stroke-width="0.8" opacity="0.6"/>
-        <path d="M100 104 L106 116 L100 128 L94 116 Z" fill="#8a6510" opacity="0.5"/>
-        <text x="100" y="122" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="700" fill="#6b5010" letter-spacing="1">BM</text>
+          <!-- Flip-top lid seam -->
+          <line x1="14" y1="52" x2="162" y2="52" stroke="#8a0a10" stroke-width="0.7" opacity="0.45"/>
 
-        <!-- Beside Me script logo -->
-        <text x="100" y="168" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic" font-weight="700" fill="#c41e24" letter-spacing="-0.5">Beside</text>
-        <text x="100" y="192" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic" font-weight="700" fill="#c41e24" letter-spacing="-0.5">Me</text>
+          <!-- Gold crest at red/white boundary -->
+          <circle cx="88" cy="108" r="27" fill="url(#goldRing)" stroke="#8a7010" stroke-width="0.6"/>
+          <circle cx="88" cy="108" r="23.5" fill="none" stroke="#f0d860" stroke-width="0.5" opacity="0.7"/>
+          <!-- Inner red field + chevron -->
+          <circle cx="88" cy="108" r="19" fill="#c41e24"/>
+          <path d="M88 94 L100 118 L76 118 Z" fill="#d42026"/>
+          <path d="M88 97 L96 115 L80 115 Z" fill="#f0d040" opacity="0.35"/>
 
-        <!-- Filter line -->
-        <rect x="44" y="206" width="112" height="1" fill="#ccc8c4"/>
-        <text x="100" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#999" letter-spacing="2.5">FILTER CIGARETTES</text>
+          <!-- Beside Me script logo (Marlboro-style placement) -->
+          <text x="88" y="152"
+                text-anchor="middle"
+                font-family="'Brush Script MT', 'Segoe Script', 'Snell Roundhand', cursive"
+                font-size="28"
+                fill="#c41e24"
+                letter-spacing="-0.5">Beside Me</text>
 
-        <!-- Health warning strip -->
-        <rect x="24" y="232" width="152" height="24" rx="1" fill="#f5f3f0" stroke="#e0dcd8" stroke-width="0.5"/>
-        <text x="100" y="244" text-anchor="middle" font-family="Arial, sans-serif" font-size="5.5" fill="#888" letter-spacing="0.3">喫煙は健康に有害です</text>
-        <text x="100" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="5" fill="#aaa">SMOKING MAY BE HAZARDOUS</text>
+          <!-- Subtitle -->
+          <line x1="40" y1="162" x2="136" y2="162" stroke="#d0ccc8" stroke-width="0.5"/>
+          <text x="88" y="174" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="6.5" fill="#888" letter-spacing="1.8">FILTER CIGARETTES</text>
+          <text x="88" y="184" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#999" letter-spacing="0.5">20</text>
+
+          <!-- Japanese health warning -->
+          <rect x="20" y="200" width="136" height="40" fill="#f2f0ee" stroke="#ddd8d4" stroke-width="0.5"/>
+          <text x="88" y="214" text-anchor="middle" font-family="'Hiragino Sans', 'Noto Sans JP', sans-serif" font-size="6.5" font-weight="700" fill="#333">喫煙は健康に有害です</text>
+          <text x="88" y="224" text-anchor="middle" font-family="'Hiragino Sans', 'Noto Sans JP', sans-serif" font-size="5.5" fill="#555">喫煙により肺癌の危険性が高まるなどの</text>
+          <text x="88" y="232" text-anchor="middle" font-family="'Hiragino Sans', 'Noto Sans JP', sans-serif" font-size="5.5" fill="#555">健康への影響があります</text>
+        </g>
+
+        <!-- Front border -->
+        <rect x="14" y="20" width="148" height="228" rx="2.5" fill="none" stroke="#c8c4c0" stroke-width="0.8"/>
 
         <!-- Cellophane shine -->
-        <rect x="20" y="52" width="160" height="210" rx="4" fill="url(#foil)" pointer-events="none"/>
+        <rect x="14" y="20" width="148" height="228" rx="2.5" fill="url(#cellophane)" pointer-events="none"/>
 
-        <!-- Subtle edge highlight -->
-        <rect x="20" y="52" width="160" height="210" rx="4" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+        <!-- Side branding (vertical) -->
+        <text x="167" y="140" text-anchor="middle"
+              transform="rotate(90 167 140)"
+              font-family="Georgia, serif" font-size="7" font-weight="700"
+              fill="#b01018" letter-spacing="1.5" opacity="0.7">BESIDE ME</text>
       </svg>
     </a>
   </main>
