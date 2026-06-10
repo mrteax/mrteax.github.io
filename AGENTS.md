@@ -12,7 +12,8 @@ python3 -m http.server 8080
 
 ### Structure
 
-- `index.html` — single-page layout with 12 tool cards
+- `index.html` — minimal landing page (Beside Me cigarette pack, links to portal)
+- `portal.html` — main Tea X homepage (greeting, daily picks, theme cards)
 - `css/style.css` — all styles, including dark mode via `[data-theme="dark"]`
 - `js/main.js` — all tool logic (clock, timer, notes, JSON, Base64, timestamp, color, password, text, URL encode, hash, regex)
 

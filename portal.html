@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tea X — 发现生活的好内容">
+  <title>Tea X</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand"><span class="brand-icon">✨</span><span class="brand-name">Tea X</span></div>
+      <div class="header-links">
+        <a href="/tools.html" class="header-link">🛠️ 工具箱</a>
+        <a href="/games.html" class="header-link">🎮 小游戏</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <svg class="ti sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="ti moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+
+    <!-- Hero: Greeting + Clock -->
+    <section class="card card-hero">
+      <div class="hero-left">
+        <div class="greeting-msg" id="greetMsg">你好</div>
+        <div class="greeting-sub" id="greetSub"></div>
+      </div>
+      <div class="hero-right">
+        <div class="clock-time" id="clockTime">--:--</div>
+        <div class="clock-sec" id="clockSec">--</div>
+        <div class="clock-date" id="clockDate">----</div>
+        <div class="world-clocks" id="worldClocks">
+          <span class="wc"><em>🇦🇺</em><b data-tz="Australia/Sydney">--:--</b></span>
+          <span class="wc"><em>🇨🇳</em><b data-tz="Asia/Shanghai">--:--</b></span>
+          <span class="wc"><em>🇬🇧</em><b data-tz="Europe/London">--:--</b></span>
+          <span class="wc"><em>🇺🇸</em><b data-tz="America/New_York">--:--</b></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Usage: local-only token budget tracker -->
+    <section class="card card-ai-usage" id="aiUsageCard" role="button" tabindex="0" title="点击编辑 AI 用量">
+      <div class="ai-usage-top">
+        <div>
+          <span class="ai-usage-label">AI 用量</span>
+          <strong id="aiUsageProvider">Local</strong>
+        </div>
+        <span class="ai-usage-pill" id="aiUsageStatus">点击设置</span>
+      </div>
+      <div class="ai-usage-main">
+        <div>
+          <span class="ai-usage-num" id="aiUsageUsed">--</span>
+          <span class="ai-usage-unit">本月花费</span>
+        </div>
+        <div>
+          <span class="ai-usage-num" id="aiUsageRemaining">--</span>
+          <span class="ai-usage-unit">剩余额度</span>
+        </div>
+        <div>
+          <span class="ai-usage-num" id="aiTokenUsed">--</span>
+          <span class="ai-usage-unit">累计 Token</span>
+        </div>
+        <div>
+          <span class="ai-usage-num" id="aiTokenToday">--</span>
+          <span class="ai-usage-unit">今日 Token</span>
+        </div>
+      </div>
+      <div class="ai-usage-bar"><i id="aiUsageBar"></i></div>
+      <div class="ai-usage-foot">
+        <span id="aiUsageCycle">数据仅保存在本机浏览器</span>
+        <span id="aiUsageDays">--</span>
+      </div>
+    </section>
+
+    <!-- Row 2: Daily Cocktail + Daily Tea -->
+    <div class="row row-featured">
+      <div class="card card-daily card-cocktail" id="dailyCocktail" role="button" tabindex="0" title="点击查看这杯详情">
+        <div class="daily-color" id="cColor"></div>
+        <div class="daily-body">
+          <span class="daily-label">🍸 每日一杯</span>
+          <h2 class="daily-name" id="cName">—</h2>
+          <p class="daily-zh" id="cZh"></p>
+          <p class="daily-desc" id="cDesc"></p>
+          <a class="daily-more" id="cMore" href="/cocktails.html">查看全部鸡尾酒 →</a>
+        </div>
+      </div>
+      <div class="card card-daily card-tea" id="dailyTea" role="button" tabindex="0" title="点击查看这款茶详情">
+        <div class="daily-color" id="tColor"></div>
+        <div class="daily-body">
+          <span class="daily-label">🍵 每日一茶</span>
+          <h2 class="daily-name" id="tName">—</h2>
+          <p class="daily-zh" id="tZh"></p>
+          <p class="daily-desc" id="tDesc"></p>
+          <a class="daily-more" id="tMore" href="/tea.html">查看全部茶百科 →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: Lifestyle Themes -->
+    <h3 class="section-label">探索</h3>
+    <div class="row row-themes">
+      <a href="/hiking.html" class="card card-theme">
+        <span class="theme-emoji">🥾</span>
+        <div><div class="theme-name">徒步</div><div class="theme-sub" id="dTrail">30 条经典路线</div></div>
+        <span class="theme-go">→</span>
+      </a>
+      <a href="/fitness.html" class="card card-theme">
+        <span class="theme-emoji">💪</span>
+        <div><div class="theme-name">功能性训练</div><div class="theme-sub" id="dExercise">30 个训练动作</div></div>
+        <span class="theme-go">→</span>
+      </a>
+      <a href="/tennis.html" class="card card-theme">
+        <span class="theme-emoji">🎾</span>
+        <div><div class="theme-name">网球</div><div class="theme-sub" id="dTennis">30 个技术要点</div></div>
+        <span class="theme-go">→</span>
+      </a>
+      <a href="/skiing.html" class="card card-theme">
+        <span class="theme-emoji">⛷️</span>
+        <div><div class="theme-name">滑雪</div><div class="theme-sub" id="dSki">25 个滑雪胜地</div></div>
+        <span class="theme-go">→</span>
+      </a>
+      <a href="/surfing.html" class="card card-theme">
+        <span class="theme-emoji">🏄</span>
+        <div><div class="theme-name">冲浪</div><div class="theme-sub" id="dSurf">26 个冲浪圣地</div></div>
+        <span class="theme-go">→</span>
+      </a>
+      <a href="/billiards.html" class="card card-theme">
+        <span class="theme-emoji">🎱</span>
+        <div><div class="theme-name">台球</div><div class="theme-sub">30 个技术要点</div></div>
+        <span class="theme-go">→</span>
+      </a>
+      <a href="/health.html" class="card card-theme">
+        <span class="theme-emoji">❤️</span>
+        <div><div class="theme-name">今日状态</div><div class="theme-sub">睡眠·心率·HRV → 训练建议</div></div>
+        <span class="theme-go">→</span>
+      </a>
+      <a href="/cocktails.html" class="card card-theme">
+        <span class="theme-emoji">🍸</span>
+        <div><div class="theme-name">鸡尾酒</div><div class="theme-sub">46 款经典配方</div></div>
+        <span class="theme-go">→</span>
+      </a>
+      <a href="/tea.html" class="card card-theme">
+        <span class="theme-emoji">🍵</span>
+        <div><div class="theme-name">茶</div><div class="theme-sub">30 款名茶百科</div></div>
+        <span class="theme-go">→</span>
+      </a>
+      <a href="/coffee.html" class="card card-theme">
+        <span class="theme-emoji">☕</span>
+        <div><div class="theme-name">咖啡</div><div class="theme-sub">40 款咖啡百科</div></div>
+        <span class="theme-go">→</span>
+      </a>
+    </div>
+
+    <!-- Row 4: Quick Links -->
+    <div class="row row-links">
+      <a href="/tools.html" class="card card-link">🛠️ 工具箱 <small>JSON · Base64 · 颜色 · 密码 · 时间戳 · 哈希 · 正则 …</small></a>
+      <a href="/games.html" class="card card-link">🎮 小游戏 <small>骰子 · 数字炸弹 · 国王 · 真心话大冒险</small></a>
+    </div>
+
+  </main>
+
+  <!-- Daily Quote (click to cycle) -->
+  <div class="daily-quote" id="quoteBox" role="button" tabindex="0" title="点击换一条">
+    <p class="quote-text" id="dailyQuote"></p>
+    <p class="quote-from" id="quoteFrom"></p>
+  </div>
+
+  <!-- Daily item detail modal -->
+  <div class="dmodal hidden" id="dModal" role="dialog" aria-modal="true">
+    <div class="dmodal-card">
+      <button class="dmodal-close" id="dModalClose" aria-label="关闭">✕</button>
+      <div class="dmodal-color" id="dmColor"></div>
+      <div class="dmodal-body">
+        <span class="dmodal-label" id="dmLabel"></span>
+        <h2 class="dmodal-name" id="dmName"></h2>
+        <p class="dmodal-zh" id="dmZh"></p>
+        <div class="dmodal-meta" id="dmMeta"></div>
+        <p class="dmodal-desc" id="dmDesc"></p>
+        <ul class="dmodal-list" id="dmList"></ul>
+        <div class="dmodal-tags" id="dmTags"></div>
+        <a class="dmodal-more" id="dmMore"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI usage editor -->
+  <div class="ai-modal hidden" id="aiUsageModal" role="dialog" aria-modal="true" aria-labelledby="aiUsageTitle">
+    <form class="ai-modal-card" id="aiUsageForm">
+      <button type="button" class="dmodal-close" id="aiUsageClose" aria-label="关闭">✕</button>
+      <h2 id="aiUsageTitle">AI 用量设置</h2>
+      <p class="ai-modal-desc">这些数据只保存在当前浏览器的 localStorage，不会上传到 GitHub Pages。</p>
+      <div class="ai-form-grid">
+        <label>供应商/账号名
+          <input id="aiProviderInput" type="text" placeholder="Cursor / Claude / OpenAI">
+        </label>
+        <label>月度金额额度（USD）
+          <input id="aiSpendLimitInput" type="number" min="0" step="0.01" placeholder="例如 2000">
+        </label>
+        <label>本月已花费（USD）
+          <input id="aiSpendUsedInput" type="number" min="0" step="0.01" placeholder="例如 1891.11">
+        </label>
+        <label>今日/日均花费（USD）
+          <input id="aiSpendDailyInput" type="number" min="0" step="0.01" placeholder="例如 174.76">
+        </label>
+        <label>累计 Tokens（M）
+          <input id="aiTokenUsedInput" type="number" min="0" step="0.1" placeholder="例如 787.6">
+        </label>
+        <label>今日 Tokens（M）
+          <input id="aiTokenTodayInput" type="number" min="0" step="0.1" placeholder="例如 88.6">
+        </label>
+        <label>账期重置日
+          <input id="aiResetDayInput" type="number" min="1" max="31" step="1" placeholder="例如 1">
+        </label>
+        <label>备注
+          <input id="aiNoteInput" type="text" placeholder="手动估算 / 账单导出">
+        </label>
+      </div>
+      <div class="ai-modal-actions">
+        <button type="button" id="aiUsageClear">清空</button>
+        <button type="submit">保存</button>
+      </div>
+    </form>
+  </div>
+
+  <footer class="footer">
+    <a href="/visitors.html" class="footer-brand" title="✨">✨ Tea X</a>
+    <a href="/cursor-usage-bookmarklet.html" class="footer-private-link" title="AI usage importer">AI</a>
+    <a href="/france-schengen-2026.html" class="footer-private-link" title="France">FR</a>
+  </footer>
+
+  <script src="/js/cocktails-data.js"></script>
+  <script src="/js/tea-data.js"></script>
+  <script src="/js/coffee-data.js"></script>
+  <script src="/js/hiking-data.js"></script>
+  <script src="/js/fitness-data.js"></script>
+  <script src="/js/tennis-data.js"></script>
+  <script src="/js/skiing-data.js"></script>
+  <script src="/js/surfing-data.js"></script>
+  <script src="/js/visitor-map.js"></script>
+  <script src="/js/home.js"></script>
+</body>
+</html>
