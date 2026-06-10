@@ -1,10 +1,7 @@
 :root {
   --bg: #fafafa;
-  --shadow: rgba(0, 0, 0, 0.08);
-  --shadow-deep: rgba(0, 0, 0, 0.14);
-  --pack-red: #c41e24;
-  --pack-red-dark: #9a1519;
-  --pack-gold: #c9a227;
+  --shadow: rgba(0, 0, 0, 0.07);
+  --shadow-deep: rgba(0, 0, 0, 0.12);
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -39,15 +36,11 @@ body {
   padding: 48px 24px;
 }
 
-/* Subtle ambient gradient — Apple keynote feel */
 .landing::before {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 70% 50% at 50% 45%, rgba(255, 255, 255, 0.9) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 30% at 80% 80%, rgba(196, 30, 36, 0.03) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 30% at 20% 20%, rgba(196, 30, 36, 0.02) 0%, transparent 60%);
+  background: radial-gradient(ellipse 70% 50% at 50% 45%, rgba(255, 255, 255, 0.95) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -62,43 +55,42 @@ body {
   outline: none;
   -webkit-tap-highlight-color: transparent;
   animation: packFloat 5s ease-in-out infinite;
-  transform: rotate(-14deg);
+  transform: rotate(14deg);
   transition: transform 0.5s var(--ease);
 }
 
 .pack-link:hover {
   animation-play-state: paused;
-  transform: rotate(-10deg) scale(1.04);
+  transform: rotate(10deg) scale(1.04);
 }
 
 .pack-link:active {
-  transform: rotate(-12deg) scale(0.98);
+  transform: rotate(12deg) scale(0.98);
   transition-duration: 0.15s;
 }
 
 .pack-link:focus-visible {
-  outline: 2px solid rgba(196, 30, 36, 0.45);
+  outline: 2px solid rgba(26, 26, 26, 0.35);
   outline-offset: 16px;
   border-radius: 4px;
 }
 
 @keyframes packFloat {
   0%, 100% {
-    transform: rotate(-14deg) translateY(0);
+    transform: rotate(14deg) translateY(0);
   }
   50% {
-    transform: rotate(-14deg) translateY(-18px);
+    transform: rotate(14deg) translateY(-18px);
   }
 }
 
-/* Ground shadow that breathes with the float */
 .pack-shadow {
   position: absolute;
-  bottom: calc(50% - 130px);
+  bottom: calc(50% - 125px);
   left: 50%;
-  width: 140px;
-  height: 22px;
-  margin-left: -70px;
+  width: 130px;
+  height: 20px;
+  margin-left: -58px;
   background: radial-gradient(ellipse, var(--shadow-deep) 0%, transparent 72%);
   border-radius: 50%;
   animation: shadowFloat 5s ease-in-out infinite;
@@ -108,25 +100,25 @@ body {
 
 @keyframes shadowFloat {
   0%, 100% {
-    transform: scale(1);
-    opacity: 0.55;
+    transform: scale(1) rotate(14deg);
+    opacity: 0.5;
   }
   50% {
-    transform: scale(0.82);
-    opacity: 0.3;
+    transform: scale(0.82) rotate(14deg);
+    opacity: 0.28;
   }
 }
 
 .pack-svg {
   display: block;
-  width: min(176px, 38vw);
+  width: min(168px, 40vw);
   height: auto;
-  filter: drop-shadow(0 24px 48px var(--shadow)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.06));
+  filter: drop-shadow(0 20px 40px var(--shadow)) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.05));
   transition: filter 0.5s var(--ease);
 }
 
 .pack-link:hover .pack-svg {
-  filter: drop-shadow(0 32px 56px var(--shadow-deep)) drop-shadow(0 12px 24px rgba(0, 0, 0, 0.08));
+  filter: drop-shadow(0 28px 52px var(--shadow-deep)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.07));
 }
 
 .sr-only {
@@ -148,6 +140,6 @@ body {
   }
 
   .pack-link:hover {
-    transform: rotate(-12deg) scale(1.02);
+    transform: rotate(12deg) scale(1.02);
   }
 }
