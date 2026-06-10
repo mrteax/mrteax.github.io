@@ -20,65 +20,64 @@
       <svg class="pack-svg" viewBox="0 0 188 248" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
         <defs>
           <linearGradient id="paper" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0" stop-color="#fffdf8"/>
-            <stop offset="0.58" stop-color="#f5f1e9"/>
-            <stop offset="1" stop-color="#e4ded2"/>
+            <stop offset="0" stop-color="#fffefb"/>
+            <stop offset="0.68" stop-color="#f4f0e8"/>
+            <stop offset="1" stop-color="#ded6c8"/>
           </linearGradient>
           <linearGradient id="sidePaper" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0" stop-color="#f2eee6"/>
-            <stop offset="1" stop-color="#d7d0c3"/>
+            <stop offset="0" stop-color="#f3eee5"/>
+            <stop offset="1" stop-color="#cbc2b3"/>
           </linearGradient>
-          <pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse">
-            <circle cx="0.9" cy="1.1" r="0.45" fill="#1f1f1f" opacity="0.08"/>
-            <circle cx="3" cy="2.8" r="0.35" fill="#1f1f1f" opacity="0.05"/>
+          <pattern id="tone" width="4" height="4" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="0.42" fill="#111" opacity="0.14"/>
+            <circle cx="3" cy="3" r="0.32" fill="#111" opacity="0.08"/>
+          </pattern>
+          <pattern id="topHatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(21)">
+            <line x1="0" y1="0" x2="0" y2="7" stroke="#fff" stroke-width="0.9" opacity="0.5"/>
           </pattern>
           <clipPath id="frontClip">
-            <polygon points="18,50 134,50 134,214 18,214"/>
+            <polygon points="34,36 128,55 128,222 34,202"/>
           </clipPath>
           <clipPath id="topClip">
-            <polygon points="18,50 134,50 158,38 42,38"/>
+            <polygon points="34,36 128,55 153,42 59,23"/>
+          </clipPath>
+          <clipPath id="warningClip">
+            <polygon points="51,163 113,176 113,208 51,195"/>
           </clipPath>
         </defs>
 
-        <g class="cigarette-reveal" aria-hidden="true">
-          <rect x="82" y="12" width="12" height="62" rx="5" fill="#f7f1e6" stroke="#141414" stroke-width="1.6"/>
-          <rect x="82" y="12" width="12" height="14" rx="5" fill="#d8b06d" stroke="#141414" stroke-width="1.2"/>
-          <line x1="84" y1="34" x2="92" y2="34" stroke="#141414" stroke-width="0.7" opacity="0.22"/>
-        </g>
+        <polygon points="128,55 153,42 153,207 128,222" fill="url(#sidePaper)" stroke="#111" stroke-width="2.2" stroke-linejoin="round"/>
+        <polygon points="128,55 153,42 153,111 128,127" fill="#111"/>
+        <path d="M142 51 L142 213" stroke="#111" stroke-width="0.9" opacity="0.2"/>
 
-        <polygon points="134,50 158,38 158,202 134,214" fill="url(#sidePaper)" stroke="#141414" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M145 51 L145 207" stroke="#141414" stroke-width="0.9" opacity="0.2"/>
-        <path d="M153 42 L153 197" stroke="#fff" stroke-width="1" opacity="0.35"/>
-
-        <polygon points="18,50 134,50 158,38 42,38" fill="url(#paper)" stroke="#141414" stroke-width="2" stroke-linejoin="round"/>
+        <polygon points="34,36 128,55 153,42 59,23" fill="#111" stroke="#111" stroke-width="2.2" stroke-linejoin="round"/>
         <g clip-path="url(#topClip)">
-          <path d="M18 48 H134 L158 38 H42 Z" fill="#202020" opacity="0.95" transform="scale(1,0.45) translate(0,64)"/>
-          <path d="M18 48 H134 L158 38 H42 Z" fill="url(#grain)" transform="scale(1,0.45) translate(0,64)"/>
+          <polygon points="50,30 126,45 140,38 64,23" fill="url(#topHatch)" opacity="0.74"/>
+          <polygon points="78,48 93,51 97,38 82,35" fill="#fffefb"/>
+          <polygon points="80,49 93,51 96,40 83,38" fill="none" stroke="#111" stroke-width="0.8" opacity="0.65"/>
         </g>
-        <polygon points="72,49 86,49 88,40 74,40" fill="#161616"/>
 
-        <polygon points="18,50 134,50 134,214 18,214" fill="url(#paper)" stroke="#141414" stroke-width="2" stroke-linejoin="round"/>
+        <polygon points="34,36 128,55 128,222 34,202" fill="url(#paper)" stroke="#111" stroke-width="2.2" stroke-linejoin="round"/>
         <g clip-path="url(#frontClip)">
-          <path d="M18 62 H134 V104 C119 101 111 89 96 96 C84 105 76 116 64 100 C50 88 36 103 18 101 Z" fill="#202020"/>
-          <path d="M18 62 H134 V104 C119 101 111 89 96 96 C84 105 76 116 64 100 C50 88 36 103 18 101 Z" fill="url(#grain)"/>
-          <path d="M28 118 C46 109 66 119 76 133 C88 116 110 110 126 121 C116 146 94 164 76 177 C58 163 36 145 28 118 Z" fill="none" stroke="#171717" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
-          <path d="M43 204 C64 211 96 211 120 203" fill="none" stroke="#141414" stroke-width="1" opacity="0.16"/>
+          <path d="M34 36 L128 55 L128 109 C113 103 100 101 88 106 C77 110 70 123 59 122 C48 121 40 108 34 98 Z" fill="#111"/>
+          <path d="M34 36 L128 55 L128 109 C113 103 100 101 88 106 C77 110 70 123 59 122 C48 121 40 108 34 98 Z" fill="url(#tone)" opacity="0.72"/>
+          <path d="M44 62 C43 83 40 102 35 119" fill="none" stroke="#fff" stroke-width="2.2" opacity="0.86"/>
+          <path d="M94 51 C92 65 91 79 91 92" fill="none" stroke="#fff" stroke-width="2" opacity="0.76"/>
+          <g clip-path="url(#warningClip)">
+            <polygon points="51,163 113,176 113,208 51,195" fill="none" stroke="#111" stroke-width="1.7" opacity="0.72"/>
+            <path d="M57 173 L107 184 M57 183 L107 194 M57 192 L101 202" stroke="#111" stroke-width="1.2" opacity="0.52"/>
+          </g>
+          <path d="M43 207 C62 218 98 224 121 214" fill="none" stroke="#111" stroke-width="1" opacity="0.16"/>
         </g>
 
-        <rect x="70" y="52" width="14" height="18" fill="#141414" rx="0.5"/>
-        <text x="76" y="151"
-              transform="rotate(10 76 151)"
-              text-anchor="middle"
-              font-family="'Reenie Beanie', 'Segoe Print', cursive"
-              font-size="39"
-              fill="#141414"
-              letter-spacing="0.4">Beside Me</text>
-        <path d="M55 162 C63 168 71 166 77 157 C84 168 95 168 101 161" fill="none" stroke="#141414" stroke-width="1.35" stroke-linecap="round" opacity="0.55"/>
+        <g>
+          <text x="84" y="145" transform="rotate(9 84 145)" text-anchor="middle" font-family="'Reenie Beanie', 'Segoe Print', cursive" font-size="14" font-weight="700" fill="#111" letter-spacing="-0.15">BesideMe</text>
+        </g>
 
-        <line x1="134" y1="50" x2="134" y2="214" stroke="#141414" stroke-width="2"/>
-        <line x1="18" y1="50" x2="134" y2="50" stroke="#141414" stroke-width="2"/>
-        <line x1="134" y1="50" x2="158" y2="38" stroke="#141414" stroke-width="2"/>
-        <line x1="18" y1="50" x2="42" y2="38" stroke="#141414" stroke-width="2"/>
+        <line x1="128" y1="55" x2="128" y2="222" stroke="#111" stroke-width="2.2"/>
+        <line x1="34" y1="36" x2="128" y2="55" stroke="#111" stroke-width="2.2"/>
+        <line x1="128" y1="55" x2="153" y2="42" stroke="#111" stroke-width="2.2"/>
+        <line x1="34" y1="36" x2="59" y2="23" stroke="#111" stroke-width="2.2"/>
       </svg>
     </a>
   </main>
