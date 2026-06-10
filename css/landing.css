@@ -111,7 +111,7 @@ body {
 
 .pack-svg {
   display: block;
-  width: min(168px, 40vw);
+  width: min(160px, 40vw);
   height: auto;
   filter: drop-shadow(0 20px 40px var(--shadow)) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.05));
   transition: filter 0.5s var(--ease);
