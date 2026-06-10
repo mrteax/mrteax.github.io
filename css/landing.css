@@ -86,11 +86,11 @@ body {
 
 .pack-shadow {
   position: absolute;
-  bottom: calc(50% - 125px);
+  bottom: calc(50% - 128px);
   left: 50%;
-  width: 130px;
-  height: 20px;
-  margin-left: -58px;
+  width: 150px;
+  height: 22px;
+  margin-left: -68px;
   background: radial-gradient(ellipse, var(--shadow-deep) 0%, transparent 72%);
   border-radius: 50%;
   animation: shadowFloat 5s ease-in-out infinite;
@@ -111,9 +111,9 @@ body {
 
 .pack-svg {
   display: block;
-  width: min(160px, 40vw);
+  width: min(188px, 44vw);
   height: auto;
-  filter: drop-shadow(0 20px 40px var(--shadow)) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.05));
+  filter: drop-shadow(0 24px 48px var(--shadow)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.06));
   transition: filter 0.5s var(--ease);
 }
 
