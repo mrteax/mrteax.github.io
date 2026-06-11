@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 188 248" role="img" aria-label="Beside Me 烟盒图标">
+  <defs>
+    <linearGradient id="paper" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fffefb"/>
+      <stop offset="0.68" stop-color="#f4f0e8"/>
+      <stop offset="1" stop-color="#ded6c8"/>
+    </linearGradient>
+    <linearGradient id="sidePaper" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f3eee5"/>
+      <stop offset="1" stop-color="#cbc2b3"/>
+    </linearGradient>
+    <pattern id="tone" width="4" height="4" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.42" fill="#111" opacity="0.14"/>
+      <circle cx="3" cy="3" r="0.32" fill="#111" opacity="0.08"/>
+    </pattern>
+    <pattern id="topHatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(21)">
+      <line x1="0" y1="0" x2="0" y2="7" stroke="#fff" stroke-width="0.9" opacity="0.5"/>
+    </pattern>
+    <clipPath id="frontClip">
+      <polygon points="34,36 128,55 128,222 34,202"/>
+    </clipPath>
+    <clipPath id="topClip">
+      <polygon points="34,36 128,55 153,42 59,23"/>
+    </clipPath>
+    <clipPath id="warningClip">
+      <polygon points="51,163 113,176 113,208 51,195"/>
+    </clipPath>
+  </defs>
+  <polygon points="128,55 153,42 153,207 128,222" fill="url(#sidePaper)" stroke="#111" stroke-width="2.2" stroke-linejoin="round"/>
+  <polygon points="128,55 153,42 153,111 128,127" fill="#111"/>
+  <path d="M142 51 L142 213" stroke="#111" stroke-width="0.9" opacity="0.2"/>
+  <polygon points="34,36 128,55 153,42 59,23" fill="#111" stroke="#111" stroke-width="2.2" stroke-linejoin="round"/>
+  <g clip-path="url(#topClip)">
+    <polygon points="50,30 126,45 140,38 64,23" fill="url(#topHatch)" opacity="0.74"/>
+    <polygon points="78,48 93,51 97,38 82,35" fill="#fffefb"/>
+    <polygon points="80,49 93,51 96,40 83,38" fill="none" stroke="#111" stroke-width="0.8" opacity="0.65"/>
+  </g>
+  <polygon points="34,36 128,55 128,222 34,202" fill="url(#paper)" stroke="#111" stroke-width="2.2" stroke-linejoin="round"/>
+  <g clip-path="url(#frontClip)">
+    <path d="M34 36 L128 55 L128 109 C113 103 100 101 88 106 C77 110 70 123 59 122 C48 121 40 108 34 98 Z" fill="#111"/>
+    <path d="M34 36 L128 55 L128 109 C113 103 100 101 88 106 C77 110 70 123 59 122 C48 121 40 108 34 98 Z" fill="url(#tone)" opacity="0.72"/>
+    <path d="M44 62 C43 83 40 102 35 119" fill="none" stroke="#fff" stroke-width="2.2" opacity="0.86"/>
+    <path d="M94 51 C92 65 91 79 91 92" fill="none" stroke="#fff" stroke-width="2" opacity="0.76"/>
+    <g clip-path="url(#warningClip)">
+      <polygon points="51,163 113,176 113,208 51,195" fill="none" stroke="#111" stroke-width="1.7" opacity="0.72"/>
+      <path d="M57 173 L107 184 M57 183 L107 194 M57 192 L101 202" stroke="#111" stroke-width="1.2" opacity="0.52"/>
+    </g>
+    <path d="M43 207 C62 218 98 224 121 214" fill="none" stroke="#111" stroke-width="1" opacity="0.16"/>
+  </g>
+  <text x="84" y="145" transform="rotate(9 84 145)" text-anchor="middle" font-family="'Reenie Beanie', 'Segoe Print', cursive" font-size="14" font-weight="700" fill="#111" letter-spacing="-0.15">Beside Me</text>
+  <line x1="128" y1="55" x2="128" y2="222" stroke="#111" stroke-width="2.2"/>
+  <line x1="34" y1="36" x2="128" y2="55" stroke="#111" stroke-width="2.2"/>
+  <line x1="128" y1="55" x2="153" y2="42" stroke="#111" stroke-width="2.2"/>
+  <line x1="34" y1="36" x2="59" y2="23" stroke="#111" stroke-width="2.2"/>
+</svg>
