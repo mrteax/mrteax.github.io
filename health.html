@@ -523,10 +523,139 @@
     }
     const FLAT_KEYS = ['sleep', 'sleepHours', 'totalSleep', 'deep', 'rem', 'core', 'restingHR', 'resting_heart_rate', 'restingHeartRate', 'hrv', 'heart_rate_variability', 'hrvMs', 'steps', 'step_count', 'activeEnergy', 'active_energy', 'spo2', 'blood_oxygen_saturation', 'respRate', 'respiratory_rate', 'vo2max', 'vo2_max', 'minHR', 'avgHR', 'exerciseMin'];
 
+    function appleHealthUploaderToHAE(raw) {
+      const payload = raw && raw.data && !raw.summary && (raw.data.summary || raw.data.sleepSessions || raw.data.heartRateSamples || raw.data.restingHeartRateSamples || raw.data.hrvSamples)
+        ? raw.data
+        : raw;
+      if (!payload || typeof payload !== 'object') return raw;
+      const hasAppleShape = payload.summary || payload.sleepSessions || payload.heartRateSamples || payload.restingHeartRateSamples || payload.hrvSamples || payload.stepCountSamples || payload.activeEnergySamples || payload.workouts;
+      if (!hasAppleShape) return raw;
+
+      const toDateKey = v => {
+        if (!v) return '';
+        const s = String(v);
+        if (/^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0, 10);
+        const d = new Date(v);
+        return isNaN(d) ? s.slice(0, 10) : d.toISOString().slice(0, 10);
+      };
+      const asDateTime = (v, fallbackDate) => {
+        const s = String(v || '');
+        if (/^\d{4}-\d{2}-\d{2} /.test(s)) return s;
+        if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s + ' 12:00:00 +0000';
+        const d = v ? new Date(v) : null;
+        if (d && !isNaN(d)) {
+          const pad = n => String(n).padStart(2, '0');
+          const y = d.getUTCFullYear();
+          const m = pad(d.getUTCMonth() + 1);
+          const day = pad(d.getUTCDate());
+          const hh = pad(d.getUTCHours());
+          const mm = pad(d.getUTCMinutes());
+          const ss = pad(d.getUTCSeconds());
+          return `${y}-${m}-${day} ${hh}:${mm}:${ss} +0000`;
+        }
+        return `${fallbackDate || new Date().toISOString().slice(0, 10)} 12:00:00 +0000`;
+      };
+      const baseDate = payload.dateKey || toDateKey(payload.generatedAt) || new Date().toISOString().slice(0, 10);
+      const metrics = [];
+      const pushQtyMetric = (name, unit, items, valueKey) => {
+        if (!Array.isArray(items) || !items.length) return false;
+        const data = items.map(item => {
+          const value = num(item && item[valueKey]);
+          if (value == null) return null;
+          return { date: asDateTime(item.endDate || item.startDate || item.date, baseDate), qty: value };
+        }).filter(Boolean);
+        if (!data.length) return false;
+        metrics.push({ name, units: unit || '', data });
+        return true;
+      };
+      const pushSummaryQty = (name, unit, value) => {
+        const n = num(value);
+        if (n == null) return false;
+        metrics.push({ name, units: unit || '', data: [{ date: `${baseDate} 12:00:00 +0000`, qty: n }] });
+        return true;
+      };
+
+      const sleepByDay = {};
+      const addSleep = (date, field, hours) => {
+        if (!date || hours == null) return;
+        const row = sleepByDay[date] || (sleepByDay[date] = { date: `${date} 12:00:00 +0000`, totalSleep: 0, asleep: 0, deep: 0, rem: 0, core: 0, inBed: 0, awake: 0 });
+        if (field === 'asleep') row.asleep += hours;
+        else row[field] = (row[field] || 0) + hours;
+        if (field !== 'inBed' && field !== 'awake') {
+          if (field !== 'asleep') row.asleep += hours;
+          row.totalSleep += hours;
+        }
+      };
+      if (Array.isArray(payload.sleepSessions)) {
+        payload.sleepSessions.forEach(item => {
+          const date = toDateKey(item && (item.endDate || item.startDate)) || baseDate;
+          const start = item && item.startDate ? new Date(item.startDate) : null;
+          const end = item && item.endDate ? new Date(item.endDate) : null;
+          const hours = start && end && !isNaN(start) && !isNaN(end) ? Math.max(0, (end - start) / 3600000) : null;
+          const stage = String((item && item.stage) || '').toLowerCase();
+          if (hours == null) return;
+          if (stage === 'inbed') addSleep(date, 'inBed', hours);
+          else if (stage === 'awake') addSleep(date, 'awake', hours);
+          else if (stage === 'asleepdeep') addSleep(date, 'deep', hours);
+          else if (stage === 'asleeprem') addSleep(date, 'rem', hours);
+          else if (stage === 'asleepcore') addSleep(date, 'core', hours);
+          else addSleep(date, 'asleep', hours);
+        });
+      }
+      const sleepData = Object.values(sleepByDay).filter(row => row.asleep || row.inBed || row.awake);
+      if (sleepData.length) metrics.push({ name: 'sleep_analysis', units: 'hr', data: sleepData });
+      else if (payload.summary && payload.summary.totalSleepHours != null) metrics.push({ name: 'sleep_analysis', units: 'hr', data: [{ date: `${baseDate} 12:00:00 +0000`, totalSleep: num(payload.summary.totalSleepHours), asleep: num(payload.summary.totalSleepHours) }] });
+
+      const heartByDay = {};
+      if (Array.isArray(payload.heartRateSamples)) {
+        payload.heartRateSamples.forEach(item => {
+          const value = num(item && item.value);
+          const date = toDateKey(item && (item.endDate || item.startDate)) || baseDate;
+          if (value == null) return;
+          const row = heartByDay[date] || (heartByDay[date] = { date: `${date} 12:00:00 +0000`, values: [] });
+          row.values.push(value);
+        });
+      }
+      const heartData = Object.entries(heartByDay).map(([date, row]) => ({
+        date: `${date} 12:00:00 +0000`,
+        Min: Math.min(...row.values),
+        Avg: row.values.reduce((a, b) => a + b, 0) / row.values.length,
+        Max: Math.max(...row.values)
+      }));
+      if (heartData.length) metrics.push({ name: 'heart_rate', units: 'count/min', data: heartData });
+
+      const hasResting = pushQtyMetric('resting_heart_rate', 'count/min', payload.restingHeartRateSamples, 'value');
+      if (!hasResting && payload.summary) pushSummaryQty('resting_heart_rate', 'count/min', payload.summary.latestRestingHeartRateBpm);
+      const hasHRV = pushQtyMetric('heart_rate_variability', 'ms', payload.hrvSamples, 'value');
+      if (!hasHRV && payload.summary) pushSummaryQty('heart_rate_variability', 'ms', payload.summary.latestHRVMilliseconds);
+      const hasSteps = pushQtyMetric('step_count', 'count', payload.stepCountSamples, 'value');
+      if (!hasSteps && payload.summary) pushSummaryQty('step_count', 'count', payload.summary.totalSteps);
+      const hasEnergy = pushQtyMetric('active_energy', 'kcal', payload.activeEnergySamples, 'value');
+      if (!hasEnergy && payload.summary) pushSummaryQty('active_energy', 'kcal', payload.summary.totalActiveEnergyKCal);
+
+      let hasWorkoutMinutes = false;
+      if (Array.isArray(payload.workouts) && payload.workouts.length) {
+        const data = payload.workouts.map(item => {
+          const value = num(item && item.durationMinutes);
+          if (value == null) return null;
+          return { date: asDateTime(item.endDate || item.startDate, baseDate), qty: value };
+        }).filter(Boolean);
+        if (data.length) {
+          metrics.push({ name: 'apple_exercise_time', units: 'min', data });
+          hasWorkoutMinutes = true;
+        }
+      }
+      if (!hasWorkoutMinutes && payload.summary) pushSummaryQty('apple_exercise_time', 'min', payload.summary.workoutMinutes);
+
+      return { data: { metrics } };
+    }
+
     function normalizeExport(d) {
       if (!d) return null;
       if (d.data && d.data.metrics) return d;     // {data:{metrics}}
       if (d.metrics) return { data: d };          // {metrics} -> wrap
+      if (d.data && (d.data.summary || d.data.sleepSessions || d.data.heartRateSamples || d.data.restingHeartRateSamples || d.data.hrvSamples || d.data.stepCountSamples || d.data.activeEnergySamples || d.data.workouts)) return appleHealthUploaderToHAE(d);
+      if (d.summary || d.sleepSessions || d.heartRateSamples || d.restingHeartRateSamples || d.hrvSamples || d.stepCountSamples || d.activeEnergySamples || d.workouts) return appleHealthUploaderToHAE(d);
       if (typeof d === 'object' && FLAT_KEYS.some(k => d[k] != null)) return flatToHAE(d); // flat daily payload
       return d;
     }
