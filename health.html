@@ -346,11 +346,21 @@
     const sum = a => a.reduce((x, y) => x + y, 0);
     const avg = a => a.length ? sum(a) / a.length : null;
     const num = v => { const n = Number(v); return isFinite(n) ? n : null; };
-    const dayKey = d => String(d || '').slice(0, 10);
+    const dayKey = d => {
+      const s = String(d || '');
+      if (/^\d{4}-\d{2}-\d{2}(?:\s|$)/.test(s)) return s.slice(0, 10);
+      const dt = new Date(d);
+      if (isNaN(dt)) return s.slice(0, 10);
+      const pad = n => String(n).padStart(2, '0');
+      return `${dt.getFullYear()}-${pad(dt.getMonth() + 1)}-${pad(dt.getDate())}`;
+    };
 
     function parseHealthExport(json) {
       const metrics = (json && json.data && json.data.metrics) || json.metrics || [];
       if (!Array.isArray(metrics) || !metrics.length) return null;
+      const meta = (json && json.data && json.data.meta) || {};
+      const appleSummary = meta.appleSummary || null;
+      const appleSleep = meta.appleSleep || null;
       const byName = {};
       metrics.forEach(m => { if (m && m.name) byName[m.name] = m; });
 
@@ -362,12 +372,12 @@
         return m.data.filter(p => dayKey(p.date) === latest);
       }
 
-      const out = { date: null, found: 0 };
+      const out = { date: meta.dateKey || null, found: 0 };
 
       // Sleep
       const sp = latestDayPoints('sleep_analysis');
       if (sp.length) {
-        out.date = dayKey(sp[0].date);
+        out.date = out.date || dayKey(sp[0].date);
         let asleep = 0, inBed = 0, deep = 0, rem = 0, core = 0, awake = 0;
         sp.forEach(p => {
           asleep += num(p.asleep) || num(p.totalSleep) || 0;
@@ -385,6 +395,18 @@
         if (core) out.core = Math.round(core * 10) / 10;
         if (awake) out.awake = Math.round(awake * 10) / 10;
       }
+      if (appleSummary && appleSummary.totalSleepHours != null) {
+        out.date = meta.dateKey || out.date;
+        out.sleep = Math.round(num(appleSummary.totalSleepHours) * 10) / 10;
+        if (!out.found) out.found++;
+      }
+      if (appleSleep) {
+        if (appleSleep.inBed != null) out.inBed = Math.round(num(appleSleep.inBed) * 10) / 10;
+        if (appleSleep.deep != null) out.deep = Math.round(num(appleSleep.deep) * 10) / 10;
+        if (appleSleep.rem != null) out.rem = Math.round(num(appleSleep.rem) * 10) / 10;
+        if (appleSleep.core != null) out.core = Math.round(num(appleSleep.core) * 10) / 10;
+        if (appleSleep.awake != null) out.awake = Math.round(num(appleSleep.awake) * 10) / 10;
+      }
 
       // Resting heart rate (fallback to min of heart_rate)
       const rhr = latestDayPoints('resting_heart_rate');
@@ -396,12 +418,20 @@
       if (mins.length) out.minHR = Math.round(Math.min(...mins));
       if (avgs.length) out.avgHR = Math.round(avg(avgs));
       if (out.restingHR == null && out.minHR != null) { out.restingHR = out.minHR; out.found++; }
+      if (appleSummary && appleSummary.latestRestingHeartRateBpm != null) {
+        out.restingHR = Math.round(num(appleSummary.latestRestingHeartRateBpm));
+        out.found = Math.max(out.found, 2);
+      }
       if (!out.date && hr.length) out.date = dayKey(hr[0].date);
 
       // HRV
       const hrv = latestDayPoints('heart_rate_variability');
       const hrvVals = hrv.map(p => num(p.qty)).filter(x => x != null);
       if (hrvVals.length) { out.hrv = Math.round(avg(hrvVals)); out.found++; }
+      if (appleSummary && appleSummary.latestHRVMilliseconds != null) {
+        out.hrv = Math.round(num(appleSummary.latestHRVMilliseconds));
+        out.found = Math.max(out.found, 3);
+      }
 
       // Activity
       const steps = latestDayPoints('step_count');
@@ -410,6 +440,10 @@
       if (ae.length) out.activeEnergy = Math.round(sum(ae.map(p => num(p.qty) || 0)));
       const ex = latestDayPoints('apple_exercise_time');
       if (ex.length) out.exerciseMin = Math.round(sum(ex.map(p => num(p.qty) || 0)));
+      if (appleSummary && appleSummary.totalSteps != null) out.steps = Math.round(num(appleSummary.totalSteps));
+      if (appleSummary && appleSummary.totalActiveEnergyKCal != null) out.activeEnergy = Math.round(num(appleSummary.totalActiveEnergyKCal));
+      if (appleSummary && appleSummary.workoutMinutes != null) out.exerciseMin = Math.round(num(appleSummary.workoutMinutes));
+      if (appleSummary && appleSummary.workoutCount != null) out.workoutCount = Math.round(num(appleSummary.workoutCount));
 
       // Extras
       const spo2 = latestDayPoints('blood_oxygen_saturation');
@@ -435,7 +469,8 @@
       if (p.hrv != null) push(p.hrv, 'ms', '📈 HRV');
       if (p.steps != null) push(p.steps.toLocaleString(), '', '👣 步数');
       if (p.activeEnergy != null) push(p.activeEnergy, 'kcal', '🔥 活动能量');
-      if (p.exerciseMin != null) push(p.exerciseMin, 'min', '🏃 锻炼');
+      if (p.exerciseMin != null) push(p.exerciseMin, 'min', '🏃 锻炼时长');
+      if (p.workoutCount != null) push(p.workoutCount, '次', '🏋️ 训练次数');
       if (p.spo2 != null) push(p.spo2, '%', '🫁 血氧');
       if (p.respRate != null) push(p.respRate, '', '🌬️ 呼吸率');
       if (p.vo2max != null) push(p.vo2max, '', '🫀 VO₂max');
@@ -531,31 +566,13 @@
       const hasAppleShape = payload.summary || payload.sleepSessions || payload.heartRateSamples || payload.restingHeartRateSamples || payload.hrvSamples || payload.stepCountSamples || payload.activeEnergySamples || payload.workouts;
       if (!hasAppleShape) return raw;
 
-      const toDateKey = v => {
-        if (!v) return '';
-        const s = String(v);
-        if (/^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0, 10);
-        const d = new Date(v);
-        return isNaN(d) ? s.slice(0, 10) : d.toISOString().slice(0, 10);
-      };
+      const localDateKey = v => dayKey(v);
       const asDateTime = (v, fallbackDate) => {
         const s = String(v || '');
-        if (/^\d{4}-\d{2}-\d{2} /.test(s)) return s;
-        if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s + ' 12:00:00 +0000';
-        const d = v ? new Date(v) : null;
-        if (d && !isNaN(d)) {
-          const pad = n => String(n).padStart(2, '0');
-          const y = d.getUTCFullYear();
-          const m = pad(d.getUTCMonth() + 1);
-          const day = pad(d.getUTCDate());
-          const hh = pad(d.getUTCHours());
-          const mm = pad(d.getUTCMinutes());
-          const ss = pad(d.getUTCSeconds());
-          return `${y}-${m}-${day} ${hh}:${mm}:${ss} +0000`;
-        }
-        return `${fallbackDate || new Date().toISOString().slice(0, 10)} 12:00:00 +0000`;
+        if (/^\d{4}-\d{2}-\d{2}(?:[ T]|$)/.test(s)) return s;
+        return fallbackDate || new Date().toISOString().slice(0, 10);
       };
-      const baseDate = payload.dateKey || toDateKey(payload.generatedAt) || new Date().toISOString().slice(0, 10);
+      const baseDate = localDateKey(payload.window && payload.window.start) || payload.dateKey || localDateKey(payload.generatedAt) || new Date().toISOString().slice(0, 10);
       const metrics = [];
       const pushQtyMetric = (name, unit, items, valueKey) => {
         if (!Array.isArray(items) || !items.length) return false;
@@ -571,14 +588,14 @@
       const pushSummaryQty = (name, unit, value) => {
         const n = num(value);
         if (n == null) return false;
-        metrics.push({ name, units: unit || '', data: [{ date: `${baseDate} 12:00:00 +0000`, qty: n }] });
+        metrics.push({ name, units: unit || '', data: [{ date: baseDate, qty: n }] });
         return true;
       };
 
       const sleepByDay = {};
       const addSleep = (date, field, hours) => {
         if (!date || hours == null) return;
-        const row = sleepByDay[date] || (sleepByDay[date] = { date: `${date} 12:00:00 +0000`, totalSleep: 0, asleep: 0, deep: 0, rem: 0, core: 0, inBed: 0, awake: 0 });
+        const row = sleepByDay[date] || (sleepByDay[date] = { date, totalSleep: 0, asleep: 0, deep: 0, rem: 0, core: 0, inBed: 0, awake: 0 });
         if (field === 'asleep') row.asleep += hours;
         else row[field] = (row[field] || 0) + hours;
         if (field !== 'inBed' && field !== 'awake') {
@@ -588,7 +605,7 @@
       };
       if (Array.isArray(payload.sleepSessions)) {
         payload.sleepSessions.forEach(item => {
-          const date = toDateKey(item && (item.endDate || item.startDate)) || baseDate;
+          const date = localDateKey(item && (item.endDate || item.startDate)) || baseDate;
           const start = item && item.startDate ? new Date(item.startDate) : null;
           const end = item && item.endDate ? new Date(item.endDate) : null;
           const hours = start && end && !isNaN(start) && !isNaN(end) ? Math.max(0, (end - start) / 3600000) : null;
@@ -604,20 +621,20 @@
       }
       const sleepData = Object.values(sleepByDay).filter(row => row.asleep || row.inBed || row.awake);
       if (sleepData.length) metrics.push({ name: 'sleep_analysis', units: 'hr', data: sleepData });
-      else if (payload.summary && payload.summary.totalSleepHours != null) metrics.push({ name: 'sleep_analysis', units: 'hr', data: [{ date: `${baseDate} 12:00:00 +0000`, totalSleep: num(payload.summary.totalSleepHours), asleep: num(payload.summary.totalSleepHours) }] });
+      else if (payload.summary && payload.summary.totalSleepHours != null) metrics.push({ name: 'sleep_analysis', units: 'hr', data: [{ date: baseDate, totalSleep: num(payload.summary.totalSleepHours), asleep: num(payload.summary.totalSleepHours) }] });
 
       const heartByDay = {};
       if (Array.isArray(payload.heartRateSamples)) {
         payload.heartRateSamples.forEach(item => {
           const value = num(item && item.value);
-          const date = toDateKey(item && (item.endDate || item.startDate)) || baseDate;
+          const date = localDateKey(item && (item.endDate || item.startDate)) || baseDate;
           if (value == null) return;
-          const row = heartByDay[date] || (heartByDay[date] = { date: `${date} 12:00:00 +0000`, values: [] });
+          const row = heartByDay[date] || (heartByDay[date] = { date, values: [] });
           row.values.push(value);
         });
       }
       const heartData = Object.entries(heartByDay).map(([date, row]) => ({
-        date: `${date} 12:00:00 +0000`,
+        date,
         Min: Math.min(...row.values),
         Avg: row.values.reduce((a, b) => a + b, 0) / row.values.length,
         Max: Math.max(...row.values)
@@ -633,9 +650,27 @@
       const hasEnergy = pushQtyMetric('active_energy', 'kcal', payload.activeEnergySamples, 'value');
       if (!hasEnergy && payload.summary) pushSummaryQty('active_energy', 'kcal', payload.summary.totalActiveEnergyKCal);
 
+      const overlapRatio = (a, b) => {
+        const sa = new Date(a.startDate).getTime(), ea = new Date(a.endDate).getTime();
+        const sb = new Date(b.startDate).getTime(), eb = new Date(b.endDate).getTime();
+        if (![sa, ea, sb, eb].every(Number.isFinite)) return 0;
+        const overlap = Math.max(0, Math.min(ea, eb) - Math.max(sa, sb));
+        const shorter = Math.max(1, Math.min(ea - sa, eb - sb));
+        return overlap / shorter;
+      };
+      const dedupedWorkouts = [];
+      if (Array.isArray(payload.workouts)) {
+        payload.workouts.forEach(item => {
+          if (!item || !item.startDate || !item.endDate) return;
+          const idx = dedupedWorkouts.findIndex(existing => overlapRatio(existing, item) >= 0.8);
+          if (idx < 0) dedupedWorkouts.push(item);
+          else if (num(item.durationMinutes) > num(dedupedWorkouts[idx].durationMinutes)) dedupedWorkouts[idx] = item;
+        });
+      }
+
       let hasWorkoutMinutes = false;
-      if (Array.isArray(payload.workouts) && payload.workouts.length) {
-        const data = payload.workouts.map(item => {
+      if (dedupedWorkouts.length) {
+        const data = dedupedWorkouts.map(item => {
           const value = num(item && item.durationMinutes);
           if (value == null) return null;
           return { date: asDateTime(item.endDate || item.startDate, baseDate), qty: value };
@@ -647,7 +682,27 @@
       }
       if (!hasWorkoutMinutes && payload.summary) pushSummaryQty('apple_exercise_time', 'min', payload.summary.workoutMinutes);
 
-      return { data: { metrics } };
+      const summaryFromPayload = payload.summary || {};
+      const summary = {
+        totalSteps: num(summaryFromPayload.totalSteps),
+        totalActiveEnergyKCal: num(summaryFromPayload.totalActiveEnergyKCal),
+        totalSleepHours: num(summaryFromPayload.totalSleepHours),
+        workoutMinutes: dedupedWorkouts.length ? dedupedWorkouts.reduce((acc, item) => acc + (num(item.durationMinutes) || 0), 0) : num(summaryFromPayload.workoutMinutes),
+        workoutCount: dedupedWorkouts.length || num(summaryFromPayload.workoutCount),
+        latestRestingHeartRateBpm: num(summaryFromPayload.latestRestingHeartRateBpm),
+        latestHRVMilliseconds: num(summaryFromPayload.latestHRVMilliseconds)
+      };
+
+      return {
+        data: {
+          metrics,
+          meta: {
+            dateKey: baseDate,
+            appleSummary: summary,
+            appleSleep: sleepByDay[baseDate] || sleepData[sleepData.length - 1] || null
+          }
+        }
+      };
     }
 
     function normalizeExport(d) {
@@ -808,7 +863,13 @@
             : '云端暂无数据，请先按下方说明开启自动上传。';
           return;
         }
-        const norm = normalizeExport(rows[0].data);
+        const isAppleRow = row => {
+          const d = row && row.data;
+          return !!(d && ((d.source && d.source.app === 'Apple Health Uploader') || d.summary || d.sleepSessions || d.heartRateSamples || d.restingHeartRateSamples || d.hrvSamples || d.stepCountSamples || d.activeEnergySamples || d.workouts));
+        };
+        const trendRows = rows.some(isAppleRow) ? rows.filter(isAppleRow) : rows;
+        const primaryRow = trendRows[0] || rows[0];
+        const norm = normalizeExport(primaryRow.data);
         const p = parseHealthExport(norm);
         if (!p || !p.found) {
           hint.className = 'parse-msg err';
@@ -816,10 +877,10 @@
           return;
         }
         lastRaw = norm;
-        const when = rows[0].created_at ? new Date(rows[0].created_at).toLocaleString('zh-CN') : '';
+        const when = primaryRow.created_at ? new Date(primaryRow.created_at).toLocaleString('zh-CN') : '';
         hint.className = 'parse-msg ok';
         hint.textContent = `✅ 已从云端同步${p.date ? '（数据日期 ' + p.date + '）' : ''}${when ? '，上传于 ' + when : ''}`;
-        renderTrends(buildSeries(rows));
+        renderTrends(buildSeries(trendRows));
         applyParsed(p);
       } catch (e) {
         hint.className = 'parse-msg err';
