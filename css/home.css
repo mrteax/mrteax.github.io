@@ -151,7 +151,7 @@ a{color:inherit;text-decoration:none}
 /* Theme Cards */
 .card-theme{padding:16px;display:flex;align-items:center;gap:12px;cursor:pointer}
 .card-theme:hover{text-decoration:none}
-.theme-emoji{font-size:1.8rem;flex-shrink:0}
+.theme-emoji{font-size:1.42rem;line-height:1;flex-shrink:0;filter:grayscale(.85);opacity:.78}
 .theme-name{font-size:.9rem;font-weight:700}
 .theme-sub{font-size:.75rem;color:var(--t3);margin-top:1px}
 .theme-go{margin-left:auto;color:var(--t3);font-size:1rem;transition:transform var(--t),color var(--t);flex-shrink:0}
