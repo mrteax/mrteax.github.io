@@ -249,7 +249,7 @@
     }).join('');
     return `<svg class="vchart" viewBox="0 0 100 40" preserveAspectRatio="none">${rects}</svg>`;
   }
-  const PALETTE = ['#b07d4f', '#d4a574', '#8c6239', '#c98a5e', '#e0b483', '#9aa0a6'];
+  const PALETTE = ['#ffe000', '#ff4d36', '#8ef0bf', '#b38aff', '#ff74a6', '#f3efe6'];
   function donutSVG(slices) {
     const total = slices.reduce((s, x) => s + x.value, 0) || 1;
     const R = 15.915, C = 2 * Math.PI * R;
