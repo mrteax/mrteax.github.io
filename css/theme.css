@@ -205,8 +205,8 @@ img.site-mark,
 img.brand-icon,
 img.brand-icon.site-mark {
   display: inline-block;
+  width: 1.5rem;
   height: 2.25rem;
-  width: auto;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -214,7 +214,8 @@ img.brand-icon.site-mark {
   filter: none;
   padding: 0;
   outline: 0;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: 50% 34%;
   animation: none;
   font-size: unset;
   opacity: 1;
@@ -501,9 +502,23 @@ code,
 .nav-home img.brand-icon,
 .brand img.site-mark,
 .brand img.brand-icon {
+  width: 24px !important;
   height: 36px !important;
-  width: auto !important;
+  object-fit: cover !important;
+  object-position: 50% 34% !important;
   flex: 0 0 auto;
 }
 .footer-theme-mark { margin-right: 0; }
+[data-theme="dark"] .cat-tag.active {
+  background: #d4a574 !important;
+  border-color: #d4a574 !important;
+  color: #111 !important;
+}
+
+[data-theme="light"] .cat-tag.active {
+  background: #b07d4f !important;
+  border-color: #b07d4f !important;
+  color: #fff !important;
+}
+
 .theme-emoji, .tool-icon { align-self: center; }
