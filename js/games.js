@@ -478,7 +478,7 @@ import { Chess as ChessCtor } from 'https://cdn.jsdelivr.net/npm/chess.js@1.0.0/
         }
 
         if (piece) {
-          squareEl.innerHTML = `<span class="chess-piece ${piece.color === 'b' ? 'chess-piece-black' : ''}">${PIECES[`${piece.color}${piece.type}`]}</span>`;
+          squareEl.innerHTML = `<span class="chess-piece ${piece.color === 'b' ? 'chess-piece-black' : 'chess-piece-white'}">${PIECES[`${piece.color}${piece.type}`]}</span>`;
         }
 
         squareEl.addEventListener('click', () => handleSquareClick(square));
