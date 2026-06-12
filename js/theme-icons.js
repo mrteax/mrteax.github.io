@@ -1,15 +1,18 @@
 (() => {
-  const PACK_FAVICON = '/pack-favicon.svg';
-  const PACK_LABELS = {
-    portal: 'HOME', health: 'HLTH', tools: 'UTIL', games: 'PLAY', cocktails: 'BAR',
-    tea: 'TEA', coffee: 'BREW', hiking: 'TRAIL', fitness: 'MOVE', tennis: 'TENNIS',
-    skiing: 'SKI', surfing: 'SURF', billiards: 'POOL', visitors: 'MAP', france: 'TRIP',
+  const PACK_FAVICON = '/pack-preview.png';
+  const PAGE_ICONS = {
+    portal: '⌂', health: '♡', tools: '⚙', games: '♟', cocktails: '♧',
+    tea: '◌', coffee: '◍', hiking: '△', fitness: '◇', tennis: '◐',
+    skiing: '⌁', surfing: '∿', billiards: '●', visitors: '◇', france: '✈',
     cursor: 'AI', index: 'TX'
   };
 
   const path = location.pathname.split('/').pop() || 'index.html';
-  const pageKey = path.replace('.html', '').replace(/-usage-bookmarklet$/, '').replace(/france-schengen-2026$/, 'france').replace(/cursor-usage-bookmarklet$/, 'cursor');
-  const pageLabel = PACK_LABELS[pageKey] || 'TX';
+  const pageKey = path
+    .replace('.html', '')
+    .replace(/france-schengen-2026$/, 'france')
+    .replace(/cursor-usage-bookmarklet$/, 'cursor') || 'index';
+  const pageIcon = PAGE_ICONS[pageKey] || '•';
 
   function stripLeadingIcon(text) {
     return String(text || '').replace(/^[\p{Emoji_Presentation}\p{Extended_Pictographic}\uFE0F\u200D#*0-9]+\s*/u, '').trim();
@@ -23,10 +26,10 @@
       document.head.appendChild(link);
     }
     link.href = PACK_FAVICON;
-    link.type = 'image/svg+xml';
+    link.type = 'image/png';
   }
 
-  function makeMark(label, cls = 'pack-mark') {
+  function makeIcon(label, cls = 'page-theme-mark') {
     const span = document.createElement('span');
     span.className = cls;
     span.setAttribute('aria-hidden', 'true');
@@ -34,55 +37,48 @@
     return span;
   }
 
-  function makePackImage(cls = 'pack-mark') {
-    const span = document.createElement('span');
-    span.className = cls;
-    span.setAttribute('aria-hidden', 'true');
-    return span;
-  }
-
   function enhanceNavHome() {
     document.querySelectorAll('.nav-home').forEach(el => {
-      if (el.dataset.packified === '1') return;
+      if (el.dataset.iconified === '1') return;
       const text = stripLeadingIcon(el.textContent) || 'Tea X';
       el.textContent = '';
-      el.append(makePackImage('page-icon-pack'), Object.assign(document.createElement('span'), { className: 'pack-wordmark', textContent: text }));
-      el.dataset.packified = '1';
+      el.append(makeIcon('TX', 'site-mark'), Object.assign(document.createElement('span'), { textContent: text }));
+      el.dataset.iconified = '1';
     });
   }
 
   function enhanceBrandIcons() {
     document.querySelectorAll('.brand-icon').forEach(el => {
-      el.classList.add('brand-icon-pack');
-      el.textContent = '';
+      el.classList.remove('brand-icon-pack');
+      el.classList.add('site-mark');
+      el.textContent = 'TX';
       el.setAttribute('aria-hidden', 'true');
     });
     document.querySelectorAll('.footer-brand').forEach(el => {
-      if (el.dataset.packified === '1') return;
+      if (el.dataset.iconified === '1') return;
       const labelText = stripLeadingIcon(el.textContent) || 'Tea X';
       el.textContent = '';
-      el.append(makePackImage('footer-brand-icon brand-icon-pack'), Object.assign(document.createElement('span'), { textContent: labelText }));
-      el.dataset.packified = '1';
+      el.append(makeIcon(pageIcon, 'page-theme-mark footer-theme-mark'), Object.assign(document.createElement('span'), { textContent: labelText }));
+      el.dataset.iconified = '1';
     });
   }
 
   function enhanceTitles() {
     document.querySelectorAll('.nav-title').forEach(el => {
       const clean = stripLeadingIcon(el.textContent);
-      el.textContent = clean;
+      el.textContent = '';
+      el.append(makeIcon(pageIcon), document.createTextNode(' ' + clean));
     });
     document.querySelectorAll('.daily-label').forEach(el => {
-      const clean = stripLeadingIcon(el.textContent);
-      el.textContent = '';
-      el.append(makeMark('WARN', 'pack-mini-chip'), document.createTextNode(' ' + clean));
+      el.textContent = stripLeadingIcon(el.textContent);
     });
   }
 
   function enhanceIconBuckets() {
-    document.querySelectorAll('.theme-emoji, .tool-icon').forEach((el, idx) => {
-      const clean = stripLeadingIcon(el.textContent) || ['LAB', 'TAG', 'PAGE', 'CTRL'][idx % 4];
-      el.classList.add(el.classList.contains('tool-icon') ? 'tool-icon-pack' : 'theme-pack-icon');
-      el.textContent = clean.slice(0, 6).toUpperCase();
+    document.querySelectorAll('.theme-emoji, .tool-icon').forEach(el => {
+      const clean = stripLeadingIcon(el.textContent);
+      el.classList.remove('theme-pack-icon', 'tool-icon-pack');
+      el.textContent = clean;
     });
   }
 
@@ -93,6 +89,5 @@
     enhanceBrandIcons();
     enhanceTitles();
     enhanceIconBuckets();
-    document.body.dataset.packPage = pageLabel;
   });
 })();
