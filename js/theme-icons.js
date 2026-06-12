@@ -2,6 +2,7 @@
   const PACK_FAVICON = '/pack-preview.png';
   const PACK_LOGO = PACK_FAVICON;
   const PACK_ALT = 'Beside Me 烟盒';
+  let PACK_LOGO_DATA_URL = '';
   const PAGE_ICONS = {
     portal: '⌂', health: '♡', tools: '⚙', games: '♟', cocktails: '♧',
     tea: '◌', coffee: '◍', hiking: '△', fitness: '◇', tennis: '◐',
@@ -31,11 +32,46 @@
     link.type = 'image/png';
   }
 
+  function applyPackLogo(el) {
+    if (!el) return;
+    const src = PACK_LOGO_DATA_URL || PACK_LOGO;
+    el.style.backgroundImage = `url("${src}")`;
+    el.style.backgroundColor = 'transparent';
+    el.style.backgroundRepeat = 'no-repeat';
+    el.style.backgroundSize = 'contain';
+    el.style.backgroundPosition = 'center';
+  }
+
+  function preparePackLogo() {
+    return new Promise(resolve => {
+      if (PACK_LOGO_DATA_URL) return resolve(PACK_LOGO_DATA_URL);
+      const img = new Image();
+      img.decoding = 'async';
+      img.onload = () => {
+        try {
+          const canvas = document.createElement('canvas');
+          canvas.width = 88;
+          canvas.height = 120;
+          const ctx = canvas.getContext('2d');
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 250, 140, 300, 470, 0, 0, canvas.width, canvas.height);
+          PACK_LOGO_DATA_URL = canvas.toDataURL('image/png');
+          resolve(PACK_LOGO_DATA_URL);
+        } catch (err) {
+          resolve(PACK_LOGO);
+        }
+      };
+      img.onerror = () => resolve(PACK_LOGO);
+      img.src = PACK_LOGO;
+    });
+  }
+
   function makePackIcon(cls = 'site-mark') {
     const span = document.createElement('span');
     span.className = cls;
     span.setAttribute('aria-hidden', 'true');
     span.dataset.logoSrc = PACK_LOGO;
+    applyPackLogo(span);
     return span;
   }
 
@@ -62,7 +98,10 @@
 
   function enhanceBrandIcons() {
     document.querySelectorAll('.brand-icon').forEach(el => {
-      if (el.classList.contains('site-mark')) return;
+      if (el.classList.contains('site-mark')) {
+        applyPackLogo(el);
+        return;
+      }
       ensurePackImage(el);
     });
     document.querySelectorAll('.footer-brand').forEach(el => {
@@ -91,11 +130,13 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', async () => {
     ensureFavicon();
     document.documentElement.dataset.theme = document.documentElement.dataset.theme || 'light';
+    await preparePackLogo();
     enhanceNavHome();
     enhanceBrandIcons();
+    document.querySelectorAll('.site-mark').forEach(applyPackLogo);
     enhanceTitles();
     enhanceIconBuckets();
   });
