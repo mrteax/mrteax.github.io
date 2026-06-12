@@ -40,6 +40,7 @@
   function enhanceNavHome() {
     document.querySelectorAll('.nav-home').forEach(el => {
       if (el.dataset.iconified === '1') return;
+      if (el.querySelector('img')) return;
       const text = stripLeadingIcon(el.textContent) || 'Tea X';
       el.textContent = '';
       el.append(makeIcon('TX', 'site-mark'), Object.assign(document.createElement('span'), { textContent: text }));
@@ -68,7 +69,7 @@
     document.querySelectorAll('.nav-title').forEach(el => {
       const clean = stripLeadingIcon(el.textContent);
       el.textContent = '';
-      el.append(makeIcon(pageIcon), document.createTextNode(' ' + clean));
+      el.append(document.createTextNode(pageIcon + ' ' + clean));
     });
     document.querySelectorAll('.daily-label').forEach(el => {
       el.textContent = stripLeadingIcon(el.textContent);
