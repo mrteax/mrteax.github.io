@@ -51,6 +51,7 @@
     document.querySelectorAll('.brand-icon').forEach(el => {
       el.classList.remove('brand-icon-pack');
       el.classList.add('site-mark');
+      if (el.tagName.toLowerCase() === 'img') return;
       el.textContent = 'TX';
       el.setAttribute('aria-hidden', 'true');
     });
@@ -58,7 +59,7 @@
       if (el.dataset.iconified === '1') return;
       const labelText = stripLeadingIcon(el.textContent) || 'Tea X';
       el.textContent = '';
-      el.append(makeIcon(pageIcon, 'page-theme-mark footer-theme-mark'), Object.assign(document.createElement('span'), { textContent: labelText }));
+      el.append(Object.assign(document.createElement('span'), { textContent: labelText }));
       el.dataset.iconified = '1';
     });
   }
