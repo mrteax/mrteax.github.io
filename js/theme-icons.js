@@ -34,12 +34,19 @@
     return span;
   }
 
+  function makePackImage(cls = 'pack-mark') {
+    const span = document.createElement('span');
+    span.className = cls;
+    span.setAttribute('aria-hidden', 'true');
+    return span;
+  }
+
   function enhanceNavHome() {
     document.querySelectorAll('.nav-home').forEach(el => {
       if (el.dataset.packified === '1') return;
       const text = stripLeadingIcon(el.textContent) || 'Tea X';
       el.textContent = '';
-      el.append(makeMark('TX', 'page-icon-pack'), Object.assign(document.createElement('span'), { className: 'pack-wordmark', textContent: text }));
+      el.append(makePackImage('page-icon-pack'), Object.assign(document.createElement('span'), { className: 'pack-wordmark', textContent: text }));
       el.dataset.packified = '1';
     });
   }
@@ -47,14 +54,14 @@
   function enhanceBrandIcons() {
     document.querySelectorAll('.brand-icon').forEach(el => {
       el.classList.add('brand-icon-pack');
-      el.textContent = 'TX';
+      el.textContent = '';
       el.setAttribute('aria-hidden', 'true');
     });
     document.querySelectorAll('.footer-brand').forEach(el => {
       if (el.dataset.packified === '1') return;
       const labelText = stripLeadingIcon(el.textContent) || 'Tea X';
       el.textContent = '';
-      el.append(makeMark('TX', 'footer-brand-icon brand-icon-pack'), Object.assign(document.createElement('span'), { textContent: labelText }));
+      el.append(makePackImage('footer-brand-icon brand-icon-pack'), Object.assign(document.createElement('span'), { textContent: labelText }));
       el.dataset.packified = '1';
     });
   }
@@ -81,7 +88,7 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     ensureFavicon();
-    document.documentElement.dataset.theme = document.documentElement.dataset.theme || 'dark';
+    document.documentElement.dataset.theme = document.documentElement.dataset.theme || 'light';
     enhanceNavHome();
     enhanceBrandIcons();
     enhanceTitles();
