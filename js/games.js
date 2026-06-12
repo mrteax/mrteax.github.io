@@ -325,6 +325,109 @@ import { Chess as ChessCtor } from 'https://cdn.jsdelivr.net/npm/chess.js@1.0.0/
   const ranksLeft = document.getElementById('chessRanksLeft');
   const ranksRight = document.getElementById('chessRanksRight');
 
+  // ---- Board overlay (fullscreen-board-only mode) ----
+  let boardOverlayEl = null;
+  let overlayBoardEl = null;
+  let overlayTurnEl = null;
+
+  function buildBoardOverlay() {
+    if (boardOverlayEl) return;
+    boardOverlayEl = document.createElement('div');
+    boardOverlayEl.className = 'chess-board-overlay';
+    boardOverlayEl.innerHTML = `
+      <div class="chess-overlay-turn" id="overlayTurn"></div>
+      <div class="chess-board-wrap">
+        <div class="chess-files" id="overlayFilesTop"></div>
+        <div class="chess-board-area">
+          <div class="chess-ranks" id="overlayRanksLeft"></div>
+          <div class="chess-board" id="overlayBoard" aria-label="国际象棋棋盘（全屏）"></div>
+          <div class="chess-ranks" id="overlayRanksRight"></div>
+        </div>
+        <div class="chess-files" id="overlayFilesBottom"></div>
+      </div>
+      <button class="chess-overlay-close" id="overlayClose">收起棋盘</button>
+    `;
+    document.body.appendChild(boardOverlayEl);
+    overlayBoardEl = boardOverlayEl.querySelector('#overlayBoard');
+    overlayTurnEl = boardOverlayEl.querySelector('#overlayTurn');
+
+    // sync coordinate labels
+    const fileMarkup = FILES.map(f => `<span>${f}</span>`).join('');
+    const rankMarkup = RANKS.map(r => `<span>${r}</span>`).join('');
+    boardOverlayEl.querySelector('#overlayFilesTop').innerHTML = fileMarkup;
+    boardOverlayEl.querySelector('#overlayFilesBottom').innerHTML = fileMarkup;
+    boardOverlayEl.querySelector('#overlayRanksLeft').innerHTML = rankMarkup;
+    boardOverlayEl.querySelector('#overlayRanksRight').innerHTML = rankMarkup;
+
+    boardOverlayEl.querySelector('#overlayClose').addEventListener('click', closeOverlay);
+    boardOverlayEl.addEventListener('click', e => { if (e.target === boardOverlayEl) closeOverlay(); });
+  }
+
+  function renderOverlayBoard() {
+    if (!overlayBoardEl) return;
+    const board = chess.board();
+    const checkSquare = chess.inCheck() ? getCheckSquare() : '';
+    overlayBoardEl.innerHTML = '';
+    board.forEach((row, rowIndex) => {
+      row.forEach((piece, colIndex) => {
+        const square = `${FILES[colIndex]}${8 - rowIndex}`;
+        const squareEl = document.createElement('button');
+        squareEl.type = 'button';
+        squareEl.className = `chess-square ${((rowIndex + colIndex) % 2 === 0) ? 'light' : 'dark'}`;
+        squareEl.dataset.square = square;
+        if (selectedSquare === square) squareEl.classList.add('selected');
+        const legal = legalTargets.find(m => m.to === square);
+        if (legal) squareEl.classList.add(legal.captured ? 'capture' : 'legal');
+        if (checkSquare === square) squareEl.classList.add('in-check');
+        if (piece) {
+          squareEl.innerHTML = `<span class="chess-piece ${piece.color === 'b' ? 'chess-piece-black' : 'chess-piece-white'}">${PIECES[`${piece.color}${piece.type}`]}</span>`;
+        }
+        squareEl.addEventListener('click', () => {
+          handleSquareClick(square);
+          renderOverlayBoard();
+          syncOverlayTurn();
+        });
+        overlayBoardEl.appendChild(squareEl);
+      });
+    });
+  }
+
+  function syncOverlayTurn() {
+    if (!overlayTurnEl) return;
+    if (chessFinished) { overlayTurnEl.textContent = '对局已结束'; return; }
+    const name = chess.turn() === 'w' ? getPlayerName('w') : getPlayerName('b');
+    overlayTurnEl.textContent = `${name} 回合`;
+  }
+
+  function openOverlay() {
+    buildBoardOverlay();
+    boardOverlayEl.classList.add('active');
+    document.body.classList.add('chess-fullscreen-lock');
+    renderOverlayBoard();
+    syncOverlayTurn();
+    fullscreenBtn.textContent = '🗗 收起';
+  }
+
+  function closeOverlay() {
+    if (!boardOverlayEl) return;
+    boardOverlayEl.classList.remove('active');
+    document.body.classList.remove('chess-fullscreen-lock');
+    fullscreenBtn.textContent = '⛶ 棋盘放大';
+    // sync main board in case moves happened in overlay
+    renderBoard();
+    renderMoves();
+    updateMeta();
+    updateTurnHighlight();
+  }
+
+  function toggleChessFullscreen() {
+    if (boardOverlayEl && boardOverlayEl.classList.contains('active')) {
+      closeOverlay();
+    } else {
+      openOverlay();
+    }
+  }
+
   let chess = new ChessCtor();
   let selectedSquare = null;
   let legalTargets = [];
@@ -498,33 +601,9 @@ import { Chess as ChessCtor } from 'https://cdn.jsdelivr.net/npm/chess.js@1.0.0/
     metaEl.textContent = `记录 ${rows.length} 回合 / ${chess.history().length} 步`;
   }
 
-  function updateFullscreenButton(isFullscreen) {
-    fullscreenBtn.textContent = isFullscreen ? '🗗 退出全屏' : '⛶ 全屏';
-    fullscreenBtn.setAttribute('aria-pressed', String(isFullscreen));
-  }
-
-  function syncFullscreenState() {
-    const isFullscreen = document.fullscreenElement === chessShellEl;
-    chessShellEl.classList.toggle('is-fullscreen', isFullscreen);
-    document.body.classList.toggle('chess-fullscreen-lock', isFullscreen);
-    updateFullscreenButton(isFullscreen);
-  }
-
-  async function toggleChessFullscreen() {
-    if (!document.fullscreenEnabled) {
-      setStatus('当前环境不支持全屏模式。');
-      return;
-    }
-
-    try {
-      if (document.fullscreenElement === chessShellEl) {
-        await document.exitFullscreen();
-      } else {
-        await chessShellEl.requestFullscreen();
-      }
-    } catch {
-      setStatus('全屏切换失败，请重试。');
-    }
+  function updateFullscreenButton(isOpen) {
+    fullscreenBtn.textContent = isOpen ? '🗗 收起' : '⛶ 棋盘放大';
+    fullscreenBtn.setAttribute('aria-pressed', String(isOpen));
   }
 
   function stopTimer() {
@@ -732,13 +811,9 @@ import { Chess as ChessCtor } from 'https://cdn.jsdelivr.net/npm/chess.js@1.0.0/
     toggleChessFullscreen();
   });
 
-  document.addEventListener('fullscreenchange', () => {
-    syncFullscreenState();
-  });
-
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && document.fullscreenElement === chessShellEl) {
-      syncFullscreenState();
+    if (event.key === 'Escape' && boardOverlayEl && boardOverlayEl.classList.contains('active')) {
+      closeOverlay();
     }
   });
 
