@@ -26,6 +26,7 @@
     <button class="tab" data-game="bomb">💣 炸弹</button>
     <button class="tab" data-game="king">🃏 国王</button>
     <button class="tab" data-game="truth">🤔 真大</button>
+    <button class="tab" data-game="chess">♟️ 国际象棋</button>
   </div>
 
   <main class="main">
@@ -107,13 +108,75 @@
       <button class="big-btn" id="drawTod">来一题！</button>
     </section>
 
+    <!-- ♟️ Chess -->
+    <section class="game hidden" id="game-chess">
+      <h2>♟️ 国际象棋</h2>
+      <p class="game-desc">双人对弈，支持计时、胜负判断与本地对局记录</p>
+
+      <div class="chess-shell">
+        <div class="chess-topbar">
+          <div class="chess-player-card" id="whiteCard">
+            <span class="chess-player-label">白方</span>
+            <input class="chess-player-input" id="whitePlayer" placeholder="白方玩家" value="白方">
+            <strong class="chess-clock" id="whiteClock">05:00</strong>
+          </div>
+          <div class="chess-turn-pill" id="chessTurn">白方回合</div>
+          <div class="chess-player-card chess-player-card-dark" id="blackCard">
+            <span class="chess-player-label">黑方</span>
+            <input class="chess-player-input" id="blackPlayer" placeholder="黑方玩家" value="黑方">
+            <strong class="chess-clock" id="blackClock">05:00</strong>
+          </div>
+        </div>
+
+        <div class="chess-toolbar">
+          <label class="chess-control">
+            <span>用时</span>
+            <select id="chessPreset">
+              <option value="180">3 分钟</option>
+              <option value="300" selected>5 分钟</option>
+              <option value="600">10 分钟</option>
+            </select>
+          </label>
+          <button class="small-btn" id="chessStart">开始</button>
+          <button class="small-btn" id="chessUndo">悔棋</button>
+          <button class="small-btn" id="chessReset">新一局</button>
+        </div>
+
+        <div class="chess-status-card">
+          <div class="chess-status" id="chessStatus">点击开始，准备开盘。</div>
+          <div class="chess-meta" id="chessMeta">记录 0 步</div>
+        </div>
+
+        <div class="chess-board-wrap">
+          <div class="chess-files chess-files-top" id="chessFilesTop"></div>
+          <div class="chess-board-area">
+            <div class="chess-ranks" id="chessRanksLeft"></div>
+            <div class="chess-board" id="chessBoard" aria-label="国际象棋棋盘"></div>
+            <div class="chess-ranks" id="chessRanksRight"></div>
+          </div>
+          <div class="chess-files chess-files-bottom" id="chessFilesBottom"></div>
+        </div>
+
+        <div class="chess-panels">
+          <div class="chess-panel">
+            <h3>对局记录</h3>
+            <div class="chess-moves" id="chessMoves">暂无走子</div>
+          </div>
+          <div class="chess-panel">
+            <h3>历史战绩</h3>
+            <div class="chess-history" id="chessHistory">暂无历史对局</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer">
     <span>🎮 适度饮酒，快乐游戏</span>
   </footer>
 
-  <script src="/js/games.js"></script>
+  <script type="module" src="/js/games.js"></script>
   <script src="/js/theme-icons.js"></script>
 </body>
 </html>

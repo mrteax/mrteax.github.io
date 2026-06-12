@@ -1,3 +1,5 @@
+import { Chess as ChessCtor } from 'https://cdn.jsdelivr.net/npm/chess.js@1.0.0/+esm';
+
 (() => {
   'use strict';
 
@@ -63,7 +65,7 @@
   document.getElementById('pickPlayer').addEventListener('click', () => {
     const inputs = document.querySelectorAll('.player-input');
     const players = [];
-    inputs.forEach((inp, i) => {
+    inputs.forEach(inp => {
       const name = inp.value.trim() || inp.placeholder;
       players.push(name);
     });
@@ -110,9 +112,9 @@
   document.getElementById('bombGuess').addEventListener('click', () => {
     const input = document.getElementById('bombInput');
     const msg = document.getElementById('bombMsg');
-    const guess = parseInt(input.value);
+    const guess = parseInt(input.value, 10);
 
-    if (isNaN(guess) || guess < bombMin || guess > bombMax) {
+    if (Number.isNaN(guess) || guess < bombMin || guess > bombMax) {
       msg.textContent = `请输入 ${bombMin} 到 ${bombMax} 之间的数字`;
       msg.className = 'bomb-msg';
       return;
@@ -125,12 +127,12 @@
     } else if (guess < bombNum) {
       bombMin = guess + 1;
       document.querySelector('.bomb-min').textContent = bombMin;
-      msg.textContent = `安全 ✓ 大了点…下一位！`;
+      msg.textContent = '安全 ✓ 大了点…下一位！';
       msg.className = 'bomb-msg safe';
     } else {
       bombMax = guess - 1;
       document.querySelector('.bomb-max').textContent = bombMax;
-      msg.textContent = `安全 ✓ 小了点…下一位！`;
+      msg.textContent = '安全 ✓ 小了点…下一位！';
       msg.className = 'bomb-msg safe';
     }
 
@@ -140,8 +142,10 @@
     input.placeholder = `${bombMin} - ${bombMax}`;
   });
 
-  document.getElementById('bombInput').addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') document.getElementById('bombGuess').click();
+  document.getElementById('bombInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      document.getElementById('bombGuess').click();
+    }
   });
 
   document.getElementById('bombReset').addEventListener('click', () => {
@@ -180,7 +184,7 @@
     '真心夸赞左边的人一句',
     '做10秒内最搞笑的表情，大家评判',
     '和全桌碰杯，每人抿一口',
-    '分享一个你最近的尴尬经历',
+    '分享一个你最近的尴尬经历'
   ];
 
   let lastKingIdx = -1;
@@ -189,7 +193,9 @@
     el.classList.remove('reveal');
 
     let idx;
-    do { idx = Math.floor(Math.random() * KING_COMMANDS.length); } while (idx === lastKingIdx);
+    do {
+      idx = Math.floor(Math.random() * KING_COMMANDS.length);
+    } while (idx === lastKingIdx);
     lastKingIdx = idx;
 
     setTimeout(() => {
@@ -226,7 +232,7 @@
     '你最近在纠结什么事？',
     '你会因为什么理由跟一个人绝交？',
     '你觉得这桌谁最适合做你男/女朋友？',
-    '坦白一个只有你知道的秘密',
+    '坦白一个只有你知道的秘密'
   ];
 
   const DARES = [
@@ -254,7 +260,7 @@
     '让右边的人画花在你脸上',
     '站起来向全桌鞠躬说"大家辛苦了"',
     '大冒险中的大冒险：直接干一杯！',
-    '用最搞笑的声音说"我今天心情很好"',
+    '用最搞笑的声音说"我今天心情很好"'
   ];
 
   document.getElementById('todTruth').addEventListener('click', () => {
@@ -276,7 +282,9 @@
     el.classList.remove('reveal');
 
     let idx;
-    do { idx = Math.floor(Math.random() * pool.length); } while (idx === lastTodIdx);
+    do {
+      idx = Math.floor(Math.random() * pool.length);
+    } while (idx === lastTodIdx);
     lastTodIdx = idx;
 
     setTimeout(() => {
@@ -285,4 +293,429 @@
     }, 50);
   });
 
+  // ===== ♟️ Chess =====
+
+  const FILES = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+  const RANKS = ['8', '7', '6', '5', '4', '3', '2', '1'];
+  const PIECES = {
+    wp: '♙', wn: '♘', wb: '♗', wr: '♖', wq: '♕', wk: '♔',
+    bp: '♟', bn: '♞', bb: '♝', br: '♜', bq: '♛', bk: '♚'
+  };
+  const CHESS_HISTORY_KEY = 'tea-x-chess-history';
+  const boardEl = document.getElementById('chessBoard');
+  const movesEl = document.getElementById('chessMoves');
+  const historyEl = document.getElementById('chessHistory');
+  const statusEl = document.getElementById('chessStatus');
+  const metaEl = document.getElementById('chessMeta');
+  const turnEl = document.getElementById('chessTurn');
+  const whiteClockEl = document.getElementById('whiteClock');
+  const blackClockEl = document.getElementById('blackClock');
+  const whiteCardEl = document.getElementById('whiteCard');
+  const blackCardEl = document.getElementById('blackCard');
+  const presetEl = document.getElementById('chessPreset');
+  const whiteInput = document.getElementById('whitePlayer');
+  const blackInput = document.getElementById('blackPlayer');
+  const startBtn = document.getElementById('chessStart');
+  const resetBtn = document.getElementById('chessReset');
+  const undoBtn = document.getElementById('chessUndo');
+  const filesTop = document.getElementById('chessFilesTop');
+  const filesBottom = document.getElementById('chessFilesBottom');
+  const ranksLeft = document.getElementById('chessRanksLeft');
+  const ranksRight = document.getElementById('chessRanksRight');
+
+  let chess = new ChessCtor();
+  let selectedSquare = null;
+  let legalTargets = [];
+  let chessStarted = false;
+  let chessFinished = false;
+  let timeLimitSeconds = Number(presetEl.value);
+  let timers = { w: timeLimitSeconds, b: timeLimitSeconds };
+  let activeTimer = null;
+  let lastTickAt = 0;
+  let gameStartedAt = null;
+  let lastPersistedFen = '';
+
+  function escapeHtml(text) {
+    return String(text).replace(/[&<>"']/g, char => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    })[char]);
+  }
+
+  function getPlayerName(color) {
+    const raw = color === 'w' ? whiteInput.value : blackInput.value;
+    const fallback = color === 'w' ? '白方' : '黑方';
+    return raw.trim() || fallback;
+  }
+
+  function formatClock(totalSeconds) {
+    const safe = Math.max(0, totalSeconds);
+    const mins = String(Math.floor(safe / 60)).padStart(2, '0');
+    const secs = String(safe % 60).padStart(2, '0');
+    return `${mins}:${secs}`;
+  }
+
+  function setFilesAndRanks() {
+    const fileMarkup = FILES.map(file => `<span>${file}</span>`).join('');
+    const rankMarkup = RANKS.map(rank => `<span>${rank}</span>`).join('');
+    filesTop.innerHTML = fileMarkup;
+    filesBottom.innerHTML = fileMarkup;
+    ranksLeft.innerHTML = rankMarkup;
+    ranksRight.innerHTML = rankMarkup;
+  }
+
+  function readHistory() {
+    try {
+      const raw = localStorage.getItem(CHESS_HISTORY_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function writeHistory(list) {
+    localStorage.setItem(CHESS_HISTORY_KEY, JSON.stringify(list.slice(0, 20)));
+  }
+
+  function renderHistory() {
+    const history = readHistory();
+    if (!history.length) {
+      historyEl.innerHTML = '<div class="chess-empty">暂无历史对局</div>';
+      return;
+    }
+
+    historyEl.innerHTML = history.map(item => `
+      <article class="chess-history-item">
+        <div class="chess-history-main">
+          <div class="chess-history-title">${escapeHtml(item.white)} vs ${escapeHtml(item.black)}</div>
+          <div class="chess-history-sub">${escapeHtml(item.resultText)}</div>
+          <div class="chess-history-meta">${escapeHtml(item.reason)} · ${escapeHtml(item.timeControl)} · ${escapeHtml(item.finishedAt)}</div>
+        </div>
+        <span class="chess-result-badge">${escapeHtml(item.resultCode)}</span>
+      </article>
+    `).join('');
+  }
+
+  function getMoveRows() {
+    return chess.history({ verbose: true }).reduce((rows, move, index) => {
+      if (index % 2 === 0) {
+        rows.push({ turn: Math.floor(index / 2) + 1, white: move.san, black: '' });
+      } else {
+        rows[rows.length - 1].black = move.san;
+      }
+      return rows;
+    }, []);
+  }
+
+  function renderMoves() {
+    const rows = getMoveRows();
+    if (!rows.length) {
+      movesEl.innerHTML = '<div class="chess-empty">暂无走子</div>';
+      return;
+    }
+
+    movesEl.innerHTML = rows.map(row => `
+      <div class="chess-move-row">
+        <strong>${row.turn}.</strong>
+        <span>${escapeHtml(row.white)}</span>
+        <span>${escapeHtml(row.black || '—')}</span>
+      </div>
+    `).join('');
+    movesEl.scrollTop = movesEl.scrollHeight;
+  }
+
+  function updateClockDisplay() {
+    whiteClockEl.textContent = formatClock(timers.w);
+    blackClockEl.textContent = formatClock(timers.b);
+  }
+
+  function updateTurnHighlight() {
+    const turn = chess.turn();
+    whiteCardEl.classList.toggle('chess-active', chessStarted && !chessFinished && turn === 'w');
+    blackCardEl.classList.toggle('chess-active', chessStarted && !chessFinished && turn === 'b');
+    turnEl.textContent = chessFinished ? '对局已结束' : `${turn === 'w' ? '白方' : '黑方'}回合`;
+  }
+
+  function getCheckSquare() {
+    const board = chess.board();
+    let kingSquare = '';
+    board.forEach((row, rowIndex) => {
+      row.forEach((piece, colIndex) => {
+        if (piece && piece.type === 'k' && piece.color === chess.turn()) {
+          kingSquare = `${FILES[colIndex]}${8 - rowIndex}`;
+        }
+      });
+    });
+    return kingSquare;
+  }
+
+  function renderBoard() {
+    const board = chess.board();
+    const checkSquare = chess.inCheck() ? getCheckSquare() : '';
+    boardEl.innerHTML = '';
+
+    board.forEach((row, rowIndex) => {
+      row.forEach((piece, colIndex) => {
+        const square = `${FILES[colIndex]}${8 - rowIndex}`;
+        const squareEl = document.createElement('button');
+        squareEl.type = 'button';
+        squareEl.className = `chess-square ${((rowIndex + colIndex) % 2 === 0) ? 'light' : 'dark'}`;
+        squareEl.dataset.square = square;
+
+        if (selectedSquare === square) {
+          squareEl.classList.add('selected');
+        }
+        const legal = legalTargets.find(move => move.to === square);
+        if (legal) {
+          squareEl.classList.add(legal.captured ? 'capture' : 'legal');
+        }
+        if (checkSquare === square) {
+          squareEl.classList.add('in-check');
+        }
+
+        if (piece) {
+          squareEl.innerHTML = `<span class="chess-piece ${piece.color === 'b' ? 'chess-piece-black' : ''}">${PIECES[`${piece.color}${piece.type}`]}</span>`;
+        }
+
+        squareEl.addEventListener('click', () => handleSquareClick(square));
+        boardEl.appendChild(squareEl);
+      });
+    });
+  }
+
+  function setStatus(text) {
+    statusEl.textContent = text;
+  }
+
+  function updateMeta() {
+    const rows = getMoveRows();
+    metaEl.textContent = `记录 ${rows.length} 回合 / ${chess.history().length} 步`;
+  }
+
+  function stopTimer() {
+    if (activeTimer) {
+      clearInterval(activeTimer);
+      activeTimer = null;
+    }
+  }
+
+  function persistResult(record) {
+    const history = readHistory();
+    history.unshift(record);
+    writeHistory(history);
+    renderHistory();
+  }
+
+  function finishGame(resultCode, resultText, reason) {
+    if (chessFinished) {
+      return;
+    }
+    chessFinished = true;
+    chessStarted = true;
+    stopTimer();
+    setStatus(`${resultText}（${reason}）`);
+    updateTurnHighlight();
+
+    if (lastPersistedFen === chess.fen()) {
+      return;
+    }
+
+    lastPersistedFen = chess.fen();
+    const finishedAt = new Date().toLocaleString('zh-CN', { hour12: false });
+    const totalMoves = chess.history().length;
+    const record = {
+      white: getPlayerName('w'),
+      black: getPlayerName('b'),
+      resultCode,
+      resultText,
+      reason,
+      timeControl: `${Math.round(timeLimitSeconds / 60)} 分钟`,
+      finishedAt,
+      totalMoves,
+      pgn: chess.pgn(),
+      startedAt: gameStartedAt ? new Date(gameStartedAt).toLocaleString('zh-CN', { hour12: false }) : finishedAt
+    };
+    persistResult(record);
+  }
+
+  function evaluateGameState() {
+    if (chess.isCheckmate()) {
+      const winnerColor = chess.turn() === 'w' ? 'b' : 'w';
+      finishGame(winnerColor === 'w' ? '1-0' : '0-1', `${getPlayerName(winnerColor)} 获胜`, '将死');
+      return;
+    }
+    if (chess.isStalemate()) {
+      finishGame('1/2-1/2', '双方和棋', '逼和');
+      return;
+    }
+    if (chess.isThreefoldRepetition()) {
+      finishGame('1/2-1/2', '双方和棋', '三次重复局面');
+      return;
+    }
+    if (chess.isInsufficientMaterial()) {
+      finishGame('1/2-1/2', '双方和棋', '子力不足');
+      return;
+    }
+    if (chess.isDraw()) {
+      finishGame('1/2-1/2', '双方和棋', '50 回合和棋');
+      return;
+    }
+
+    const turnName = chess.turn() === 'w' ? getPlayerName('w') : getPlayerName('b');
+    if (chess.inCheck()) {
+      setStatus(`${turnName} 被将军，请应对。`);
+    } else {
+      setStatus(`${turnName} 思考中。`);
+    }
+  }
+
+  function resetSelection() {
+    selectedSquare = null;
+    legalTargets = [];
+  }
+
+  function resetTimers() {
+    timeLimitSeconds = Number(presetEl.value);
+    timers = { w: timeLimitSeconds, b: timeLimitSeconds };
+    updateClockDisplay();
+  }
+
+  function setupNewGame(autoStart) {
+    stopTimer();
+    chess = new ChessCtor();
+    chessStarted = autoStart;
+    chessFinished = false;
+    gameStartedAt = autoStart ? Date.now() : null;
+    lastPersistedFen = '';
+    resetSelection();
+    resetTimers();
+    setStatus(autoStart ? `${getPlayerName('w')} 先手，比赛开始。` : '点击开始，准备开盘。');
+    updateMeta();
+    renderMoves();
+    renderBoard();
+    updateTurnHighlight();
+    if (autoStart) {
+      startClock();
+    }
+  }
+
+  function startClock() {
+    stopTimer();
+    if (!chessStarted || chessFinished) {
+      return;
+    }
+    lastTickAt = Date.now();
+    activeTimer = setInterval(() => {
+      const now = Date.now();
+      const delta = Math.floor((now - lastTickAt) / 1000);
+      if (delta <= 0) {
+        return;
+      }
+      lastTickAt += delta * 1000;
+      const turn = chess.turn();
+      timers[turn] = Math.max(0, timers[turn] - delta);
+      updateClockDisplay();
+      if (timers[turn] <= 0) {
+        const winner = turn === 'w' ? 'b' : 'w';
+        finishGame(winner === 'w' ? '1-0' : '0-1', `${getPlayerName(winner)} 获胜`, `${turn === 'w' ? getPlayerName('w') : getPlayerName('b')} 超时`);
+      }
+    }, 250);
+  }
+
+  function handleSquareClick(square) {
+    if (!chessStarted || chessFinished) {
+      setStatus(chessFinished ? '本局已结束，点击“新一局”继续。' : '请先点击“开始”。');
+      return;
+    }
+
+    const piece = chess.get(square);
+    const ownPiece = piece && piece.color === chess.turn();
+
+    if (selectedSquare && selectedSquare === square) {
+      resetSelection();
+      renderBoard();
+      return;
+    }
+
+    if (selectedSquare) {
+      const chosenMove = legalTargets.find(move => move.to === square);
+      if (chosenMove) {
+        const promotion = chosenMove.flags.includes('p') ? 'q' : undefined;
+        const result = chess.move({ from: selectedSquare, to: square, promotion });
+        resetSelection();
+        if (result) {
+          renderBoard();
+          renderMoves();
+          updateMeta();
+          updateTurnHighlight();
+          startClock();
+          evaluateGameState();
+        }
+        return;
+      }
+    }
+
+    if (ownPiece) {
+      selectedSquare = square;
+      legalTargets = chess.moves({ square, verbose: true });
+      renderBoard();
+      return;
+    }
+
+    resetSelection();
+    renderBoard();
+  }
+
+  startBtn.addEventListener('click', () => {
+    setupNewGame(true);
+  });
+
+  resetBtn.addEventListener('click', () => {
+    setupNewGame(false);
+  });
+
+  undoBtn.addEventListener('click', () => {
+    if (!chessStarted || chess.history().length === 0) {
+      setStatus('当前没有可悔的棋。');
+      return;
+    }
+    if (chessFinished) {
+      chessFinished = false;
+      lastPersistedFen = '';
+    }
+    chess.undo();
+    resetSelection();
+    renderBoard();
+    renderMoves();
+    updateMeta();
+    updateTurnHighlight();
+    setStatus('已悔棋一步。');
+    startClock();
+  });
+
+  presetEl.addEventListener('change', () => {
+    if (!chessStarted || chess.history().length === 0) {
+      resetTimers();
+      updateClockDisplay();
+      return;
+    }
+    setStatus('用时设置将在下一局生效。');
+  });
+
+  [whiteInput, blackInput].forEach(input => {
+    input.addEventListener('change', () => {
+      updateTurnHighlight();
+      if (!chessStarted) {
+        setStatus('点击开始，准备开盘。');
+      }
+    });
+  });
+
+  setFilesAndRanks();
+  renderHistory();
+  setupNewGame(false);
 })();
