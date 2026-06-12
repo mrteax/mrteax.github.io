@@ -204,15 +204,15 @@ body {
 .site-mark,
 .brand-icon.site-mark {
   display: inline-block;
-  width: 26px;
-  height: 40px;
+  width: 18px;
+  height: 28px;
   border: 0;
   border-radius: 0;
   background-color: transparent;
-  background-image: url('/pack-preview.png');
+  background-image: none;
   background-repeat: no-repeat;
-  background-size: 92px 92px;
-  background-position: center 82%;
+  background-size: contain;
+  background-position: center;
   box-shadow: none;
   filter: none;
   padding: 0;
@@ -222,7 +222,7 @@ body {
   opacity: 1;
   vertical-align: middle;
   flex: none;
-  transform: rotate(-10deg);
+  transform: none;
   transform-origin: center center;
 }
 
@@ -505,10 +505,10 @@ code,
 .nav-home .brand-icon.site-mark,
 .brand .site-mark,
 .brand .brand-icon.site-mark {
-  width: 30px !important;
-  height: 44px !important;
-  background-size: 100px 100px !important;
-  background-position: center 82% !important;
+  width: 18px !important;
+  height: 28px !important;
+  background-size: contain !important;
+  background-position: center !important;
   flex: 0 0 auto;
 }
 .footer-theme-mark { margin-right: 0; }
