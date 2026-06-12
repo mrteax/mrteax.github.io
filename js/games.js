@@ -318,6 +318,8 @@ import { Chess as ChessCtor } from 'https://cdn.jsdelivr.net/npm/chess.js@1.0.0/
   const startBtn = document.getElementById('chessStart');
   const resetBtn = document.getElementById('chessReset');
   const undoBtn = document.getElementById('chessUndo');
+  const fullscreenBtn = document.getElementById('chessFullscreen');
+  const chessShellEl = document.querySelector('#game-chess .chess-shell');
   const filesTop = document.getElementById('chessFilesTop');
   const filesBottom = document.getElementById('chessFilesBottom');
   const ranksLeft = document.getElementById('chessRanksLeft');
@@ -494,6 +496,35 @@ import { Chess as ChessCtor } from 'https://cdn.jsdelivr.net/npm/chess.js@1.0.0/
   function updateMeta() {
     const rows = getMoveRows();
     metaEl.textContent = `记录 ${rows.length} 回合 / ${chess.history().length} 步`;
+  }
+
+  function updateFullscreenButton(isFullscreen) {
+    fullscreenBtn.textContent = isFullscreen ? '🗗 退出全屏' : '⛶ 全屏';
+    fullscreenBtn.setAttribute('aria-pressed', String(isFullscreen));
+  }
+
+  function syncFullscreenState() {
+    const isFullscreen = document.fullscreenElement === chessShellEl;
+    chessShellEl.classList.toggle('is-fullscreen', isFullscreen);
+    document.body.classList.toggle('chess-fullscreen-lock', isFullscreen);
+    updateFullscreenButton(isFullscreen);
+  }
+
+  async function toggleChessFullscreen() {
+    if (!document.fullscreenEnabled) {
+      setStatus('当前环境不支持全屏模式。');
+      return;
+    }
+
+    try {
+      if (document.fullscreenElement === chessShellEl) {
+        await document.exitFullscreen();
+      } else {
+        await chessShellEl.requestFullscreen();
+      }
+    } catch {
+      setStatus('全屏切换失败，请重试。');
+    }
   }
 
   function stopTimer() {
@@ -697,6 +728,20 @@ import { Chess as ChessCtor } from 'https://cdn.jsdelivr.net/npm/chess.js@1.0.0/
     startClock();
   });
 
+  fullscreenBtn.addEventListener('click', () => {
+    toggleChessFullscreen();
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    syncFullscreenState();
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && document.fullscreenElement === chessShellEl) {
+      syncFullscreenState();
+    }
+  });
+
   presetEl.addEventListener('change', () => {
     if (!chessStarted || chess.history().length === 0) {
       resetTimers();
@@ -717,5 +762,6 @@ import { Chess as ChessCtor } from 'https://cdn.jsdelivr.net/npm/chess.js@1.0.0/
 
   setFilesAndRanks();
   renderHistory();
+  updateFullscreenButton(false);
   setupNewGame(false);
 })();
