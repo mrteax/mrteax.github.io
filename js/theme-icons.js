@@ -1,5 +1,6 @@
 (() => {
   const PACK_FAVICON = '/pack-preview.png';
+  const PACK_ALT = 'Beside Me 烟盒';
   const PAGE_ICONS = {
     portal: '⌂', health: '♡', tools: '⚙', games: '♟', cocktails: '♧',
     tea: '◌', coffee: '◍', hiking: '△', fitness: '◇', tennis: '◐',
@@ -29,32 +30,47 @@
     link.type = 'image/png';
   }
 
-  function makeIcon(label, cls = 'page-theme-mark') {
-    const span = document.createElement('span');
-    span.className = cls;
-    span.setAttribute('aria-hidden', 'true');
-    span.textContent = label;
-    return span;
+  function makePackIcon(cls = 'site-mark') {
+    const img = document.createElement('img');
+    img.className = cls;
+    img.src = PACK_FAVICON;
+    img.alt = '';
+    img.setAttribute('aria-hidden', 'true');
+    img.decoding = 'async';
+    return img;
+  }
+
+  function ensurePackImage(el) {
+    if (!el || el.querySelector('img.site-mark')) return;
+    const cls = el.classList.contains('brand-icon') ? 'brand-icon site-mark' : 'site-mark';
+    const img = makePackIcon(cls);
+    el.replaceWith(img);
+    return img;
   }
 
   function enhanceNavHome() {
     document.querySelectorAll('.nav-home').forEach(el => {
       if (el.dataset.iconified === '1') return;
-      if (el.querySelector('img')) return;
+      if (el.querySelector('img.site-mark')) return;
       const text = stripLeadingIcon(el.textContent) || 'Tea X';
+      const label = document.createElement('span');
+      label.textContent = text;
       el.textContent = '';
-      el.append(makeIcon('TX', 'site-mark'), Object.assign(document.createElement('span'), { textContent: text }));
+      el.append(makePackIcon('site-mark'), label);
       el.dataset.iconified = '1';
     });
   }
 
   function enhanceBrandIcons() {
     document.querySelectorAll('.brand-icon').forEach(el => {
-      el.classList.remove('brand-icon-pack');
-      el.classList.add('site-mark');
-      if (el.tagName.toLowerCase() === 'img') return;
-      el.textContent = 'TX';
-      el.setAttribute('aria-hidden', 'true');
+      if (el.tagName.toLowerCase() === 'img') {
+        el.classList.add('site-mark');
+        el.src = PACK_FAVICON;
+        el.alt = el.alt || PACK_ALT;
+        el.removeAttribute('style');
+        return;
+      }
+      ensurePackImage(el);
     });
     document.querySelectorAll('.footer-brand').forEach(el => {
       if (el.dataset.iconified === '1') return;
@@ -77,9 +93,9 @@
   }
 
   function enhanceIconBuckets() {
-    document.querySelectorAll('.theme-emoji, .tool-icon').forEach(el => {
+    document.querySelectorAll('.theme-emoji, .tool-icon, .page-theme-mark').forEach(el => {
       const clean = stripLeadingIcon(el.textContent);
-      el.classList.remove('theme-pack-icon', 'tool-icon-pack');
+      el.classList.remove('theme-pack-icon', 'tool-icon-pack', 'page-theme-mark');
       el.textContent = clean;
     });
   }
