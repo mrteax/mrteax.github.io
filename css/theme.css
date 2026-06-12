@@ -201,26 +201,29 @@ body {
 }
 
 /* .site-mark: brand logo image — no border, no background, no frame */
-img.site-mark,
-img.brand-icon,
-img.brand-icon.site-mark {
+.site-mark,
+.brand-icon.site-mark {
   display: inline-block;
-  width: 1.5rem;
-  height: 2.25rem;
+  width: 26px;
+  height: 40px;
   border: 0;
   border-radius: 0;
-  background: transparent;
+  background-color: transparent;
+  background-image: url('/pack-preview.png');
+  background-repeat: no-repeat;
+  background-size: 92px 92px;
+  background-position: center 82%;
   box-shadow: none;
   filter: none;
   padding: 0;
   outline: 0;
-  object-fit: cover;
-  object-position: 50% 34%;
   animation: none;
   font-size: unset;
   opacity: 1;
   vertical-align: middle;
   flex: none;
+  transform: rotate(-10deg);
+  transform-origin: center center;
 }
 
 .footer-theme-mark {
@@ -498,17 +501,26 @@ code,
 }
 
 .nav-home, .footer-brand, .daily-label { display: inline-flex; align-items: center; gap: .42rem; }
-.nav-home img.site-mark,
-.nav-home img.brand-icon,
-.brand img.site-mark,
-.brand img.brand-icon {
-  width: 24px !important;
-  height: 36px !important;
-  object-fit: cover !important;
-  object-position: 50% 34% !important;
+.nav-home .site-mark,
+.nav-home .brand-icon.site-mark,
+.brand .site-mark,
+.brand .brand-icon.site-mark {
+  width: 30px !important;
+  height: 44px !important;
+  background-size: 100px 100px !important;
+  background-position: center 82% !important;
   flex: 0 0 auto;
 }
 .footer-theme-mark { margin-right: 0; }
+[data-theme="dark"] #monthFilters .cat-tag,
+[data-theme="dark"] #sceneFilters .cat-tag {
+  background: #18191d !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #bbb6ad !important;
+}
+
+[data-theme="dark"] #monthFilters .cat-tag.active,
+[data-theme="dark"] #sceneFilters .cat-tag.active,
 [data-theme="dark"] .cat-tag.active {
   background: #d4a574 !important;
   border-color: #d4a574 !important;

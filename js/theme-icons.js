@@ -32,27 +32,25 @@
   }
 
   function makePackIcon(cls = 'site-mark') {
-    const img = document.createElement('img');
-    img.className = cls;
-    img.src = PACK_LOGO;
-    img.alt = '';
-    img.setAttribute('aria-hidden', 'true');
-    img.decoding = 'async';
-    return img;
+    const span = document.createElement('span');
+    span.className = cls;
+    span.setAttribute('aria-hidden', 'true');
+    span.dataset.logoSrc = PACK_LOGO;
+    return span;
   }
 
   function ensurePackImage(el) {
-    if (!el || el.querySelector('img.site-mark')) return;
+    if (!el || el.querySelector('.site-mark')) return;
     const cls = el.classList.contains('brand-icon') ? 'brand-icon site-mark' : 'site-mark';
-    const img = makePackIcon(cls);
-    el.replaceWith(img);
-    return img;
+    const icon = makePackIcon(cls);
+    el.replaceWith(icon);
+    return icon;
   }
 
   function enhanceNavHome() {
     document.querySelectorAll('.nav-home').forEach(el => {
       if (el.dataset.iconified === '1') return;
-      if (el.querySelector('img.site-mark')) return;
+      if (el.querySelector('.site-mark')) return;
       const text = stripLeadingIcon(el.textContent) || 'Tea X';
       const label = document.createElement('span');
       label.textContent = text;
@@ -64,13 +62,7 @@
 
   function enhanceBrandIcons() {
     document.querySelectorAll('.brand-icon').forEach(el => {
-      if (el.tagName.toLowerCase() === 'img') {
-        el.classList.add('site-mark');
-        el.src = PACK_LOGO;
-        el.alt = el.alt || PACK_ALT;
-        el.removeAttribute('style');
-        return;
-      }
+      if (el.classList.contains('site-mark')) return;
       ensurePackImage(el);
     });
     document.querySelectorAll('.footer-brand').forEach(el => {
