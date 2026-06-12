@@ -142,7 +142,7 @@
   $('#colorPick').addEventListener('input',()=>setColor($('#colorPick').value));
   $('#cHex').addEventListener('change',()=>{if(/^#?[0-9a-fA-F]{3,6}$/.test($('#cHex').value.trim()))setColor($('#cHex').value.trim())});
   $('#cRgb').addEventListener('change',()=>{const p=$('#cRgb').value.split(/[\s,]+/).map(Number);if(p.length>=3&&p.every(n=>!isNaN(n)))setColor(rgbToHex(p[0],p[1],p[2]))});
-  setColor('#b07d4f');
+  setColor('#ffe000');
 
   // ===== Password =====
   const CHARS='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
