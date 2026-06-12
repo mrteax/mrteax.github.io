@@ -189,36 +189,42 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid currentColor;
-  background: transparent;
-  color: currentColor;
-  font-weight: 800;
+  flex: 0 0 auto;
+  background: url('/pack-favicon.svg') center / contain no-repeat;
+  color: transparent;
+  overflow: hidden;
+  text-indent: -999px;
   line-height: 1;
-  letter-spacing: .04em;
-  border-radius: 999px;
+  vertical-align: middle;
 }
 
 .pack-mark,
 .brand-icon-pack,
 .page-icon-pack {
-  min-width: 1.55rem;
-  height: 1.55rem;
-  padding: 0 .38rem;
-  font-size: .58rem;
+  width: 1.35rem;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  padding: 0;
+  font-size: 0;
 }
 
 .tool-icon-pack,
 .theme-pack-icon {
-  min-width: 2rem;
-  height: 2rem;
-  padding: 0 .46rem;
-  font-size: .62rem;
+  width: 1.85rem;
+  min-width: 1.85rem;
+  height: 1.85rem;
+  padding: 0;
+  font-size: 0;
 }
 
 .pack-chip,
 .pack-mini-chip {
-  padding: .18rem .46rem;
-  font-size: .58rem;
+  margin-right: .38rem;
+  width: 1.4rem;
+  min-width: 1.4rem;
+  height: 1.4rem;
+  padding: 0;
+  font-size: 0;
 }
 
 .brand-name {
@@ -472,3 +478,7 @@ code,
   background: rgba(255, 214, 87, 0.45);
   color: #111;
 }
+
+.nav-home, .footer-brand, .daily-label { display: inline-flex; align-items: center; gap: .42rem; }
+.brand-icon-pack.footer-brand-icon { margin-right: 0; }
+.theme-emoji.theme-pack-icon, .tool-icon.tool-icon-pack { align-self: center; }
