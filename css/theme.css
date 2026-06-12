@@ -201,6 +201,14 @@ body {
   opacity: .72;
 }
 
+.site-mark {
+  background: url('/pack-preview.png') center / cover no-repeat;
+  color: transparent;
+  overflow: hidden;
+  text-indent: -999px;
+  box-shadow: 0 0 0 1px rgba(127, 127, 127, 0.16);
+}
+
 .page-theme-mark {
   font-size: .72rem;
   font-family: var(--font);
