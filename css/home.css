@@ -287,10 +287,10 @@ a{color:inherit;text-decoration:none}
 
 
 /* Ambient time-of-day tint */
-body.morning{--particle:rgba(255,224,0,.12)}
-body.afternoon{--particle:rgba(255,224,0,.12)}
-body.evening{--particle:rgba(255,77,54,.12)}
-body.night{--particle:rgba(255,255,255,.08)}
+body.morning{--particle:rgba(127,127,127,.10)}
+body.afternoon{--particle:rgba(127,127,127,.08)}
+body.evening{--particle:rgba(216,76,76,.08)}
+body.night{--particle:rgba(255,255,255,.06)}
 
 /* Visit count in footer */
 .visit-count{font-family:var(--mono);color:var(--accent);font-weight:500}
