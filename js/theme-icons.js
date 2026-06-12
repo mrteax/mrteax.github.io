@@ -1,6 +1,6 @@
 (() => {
   const PACK_FAVICON = '/pack-preview.png';
-  const PACK_LOGO = '/pack-preview.svg';
+  const PACK_LOGO = '/pack-nav.svg';
   const PACK_ALT = 'Beside Me 烟盒';
   const PAGE_ICONS = {
     portal: '⌂', health: '♡', tools: '⚙', games: '♟', cocktails: '♧',
