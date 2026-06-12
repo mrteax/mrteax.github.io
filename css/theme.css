@@ -202,11 +202,17 @@ body {
 }
 
 .site-mark {
-  background: url('/pack-preview.png') center / cover no-repeat;
+  width: 1.25rem;
+  min-width: 1.25rem;
+  height: 1.65rem;
+  border: 0;
+  border-radius: 0;
+  background: url('/pack-preview.png') center / contain no-repeat;
+  box-shadow: none;
   color: transparent;
   overflow: hidden;
   text-indent: -999px;
-  box-shadow: 0 0 0 1px rgba(127, 127, 127, 0.16);
+  opacity: 1;
 }
 
 .page-theme-mark {
