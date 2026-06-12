@@ -179,26 +179,25 @@ body {
   border-radius: 999px !important;
 }
 
-/* .page-theme-mark: small badge/pill label on nav links */
+/* .page-theme-mark: render as plain emoji/text, not grey pill */
 .page-theme-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-  width: 1.25rem;
-  min-width: 1.25rem;
-  height: 1.25rem;
-  border: 1px solid rgba(127, 127, 127, 0.18);
-  border-radius: 999px;
-  color: var(--text);
-  background: rgba(127, 127, 127, 0.06);
-  font-family: var(--font);
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: 0;
-  line-height: 1;
+  display: inline;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  background: transparent;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: inherit;
+  line-height: inherit;
   vertical-align: middle;
-  opacity: .72;
+  opacity: 1;
+  padding: 0;
+  box-shadow: none;
+  filter: none;
 }
 
 /* .site-mark: brand logo image — no border, no background, no frame */
@@ -206,12 +205,13 @@ img.site-mark,
 img.brand-icon,
 img.brand-icon.site-mark {
   display: inline-block;
-  height: 1.65rem;
+  height: 2.5rem;
   width: auto;
   border: 0;
   border-radius: 0;
   background: transparent;
   box-shadow: none;
+  filter: none;
   padding: 0;
   outline: 0;
   object-fit: contain;
@@ -470,6 +470,20 @@ code,
 .mini-icon,
 .card-emoji {
   font-style: normal;
+}
+
+.theme-emoji,
+.tool-icon,
+.page-theme-mark {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
 }
 
 ::-webkit-scrollbar-thumb {
