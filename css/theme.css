@@ -179,7 +179,7 @@ body {
   border-radius: 999px !important;
 }
 
-.site-mark,
+/* .page-theme-mark: small badge/pill label on nav links */
 .page-theme-mark {
   display: inline-flex;
   align-items: center;
@@ -192,56 +192,34 @@ body {
   border-radius: 999px;
   color: var(--text);
   background: rgba(127, 127, 127, 0.06);
-  font-family: var(--mono);
-  font-size: .56rem;
-  font-weight: 700;
+  font-family: var(--font);
+  font-size: .72rem;
+  font-weight: 800;
   letter-spacing: 0;
   line-height: 1;
   vertical-align: middle;
   opacity: .72;
 }
 
-.site-mark {
-  width: 1.25rem;
-  min-width: 1.25rem;
-  height: 1.65rem;
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  color: transparent;
-  overflow: visible;
-  text-indent: 0;
-  opacity: 1;
-  object-fit: contain;
-  display: inline-block !important;
-  flex: none !important;
-}
-
-/* img tag overrides — ensure no container frame bleeds through */
+/* .site-mark: brand logo image — no border, no background, no frame */
 img.site-mark,
+img.brand-icon,
 img.brand-icon.site-mark {
-  display: inline-block !important;
-  width: auto !important;
-  min-width: unset !important;
-  height: 1.65rem !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  object-fit: contain !important;
-  animation: none !important;
-  font-size: unset !important;
-  opacity: 1 !important;
-  vertical-align: middle !important;
-}
-
-.page-theme-mark {
-  font-size: .72rem;
-  font-family: var(--font);
-  font-weight: 800;
+  display: inline-block;
+  height: 1.65rem;
+  width: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  outline: 0;
+  object-fit: contain;
+  animation: none;
+  font-size: unset;
+  opacity: 1;
+  vertical-align: middle;
+  flex: none;
 }
 
 .footer-theme-mark {
