@@ -1,6 +1,6 @@
 (() => {
   const PACK_FAVICON = '/pack-preview.png';
-  const PACK_LOGO = '/pack-nav.svg';
+  const PACK_LOGO = PACK_FAVICON;
   const PACK_ALT = 'Beside Me 烟盒';
   const PAGE_ICONS = {
     portal: '⌂', health: '♡', tools: '⚙', games: '♟', cocktails: '♧',
@@ -95,9 +95,7 @@
 
   function enhanceIconBuckets() {
     document.querySelectorAll('.theme-emoji, .tool-icon, .page-theme-mark').forEach(el => {
-      const clean = stripLeadingIcon(el.textContent);
       el.classList.remove('theme-pack-icon', 'tool-icon-pack', 'page-theme-mark');
-      el.textContent = clean;
     });
   }
 
