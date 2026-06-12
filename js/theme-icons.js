@@ -1,5 +1,6 @@
 (() => {
   const PACK_FAVICON = '/pack-preview.png';
+  const PACK_LOGO = '/pack-preview.svg';
   const PACK_ALT = 'Beside Me 烟盒';
   const PAGE_ICONS = {
     portal: '⌂', health: '♡', tools: '⚙', games: '♟', cocktails: '♧',
@@ -33,7 +34,7 @@
   function makePackIcon(cls = 'site-mark') {
     const img = document.createElement('img');
     img.className = cls;
-    img.src = PACK_FAVICON;
+    img.src = PACK_LOGO;
     img.alt = '';
     img.setAttribute('aria-hidden', 'true');
     img.decoding = 'async';
@@ -65,7 +66,7 @@
     document.querySelectorAll('.brand-icon').forEach(el => {
       if (el.tagName.toLowerCase() === 'img') {
         el.classList.add('site-mark');
-        el.src = PACK_FAVICON;
+        el.src = PACK_LOGO;
         el.alt = el.alt || PACK_ALT;
         el.removeAttribute('style');
         return;

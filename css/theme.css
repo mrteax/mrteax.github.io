@@ -205,7 +205,7 @@ img.site-mark,
 img.brand-icon,
 img.brand-icon.site-mark {
   display: inline-block;
-  height: 2.5rem;
+  height: 2.25rem;
   width: auto;
   border: 0;
   border-radius: 0;
@@ -497,5 +497,13 @@ code,
 }
 
 .nav-home, .footer-brand, .daily-label { display: inline-flex; align-items: center; gap: .42rem; }
+.nav-home img.site-mark,
+.nav-home img.brand-icon,
+.brand img.site-mark,
+.brand img.brand-icon {
+  height: 34px !important;
+  width: auto !important;
+  flex: 0 0 auto;
+}
 .footer-theme-mark { margin-right: 0; }
 .theme-emoji, .tool-icon { align-self: center; }
