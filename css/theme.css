@@ -126,7 +126,29 @@ body {
 .game,
 .king-card,
 .tod-card,
-.bomb-range {
+.bomb-range,
+.topbar a,
+.hero,
+.eyebrow,
+.chip,
+.toc,
+.callout,
+.folder,
+.table-wrap,
+.template,
+.warn,
+.dropzone,
+.metric-cell,
+.trend-insight,
+.trend-item,
+.bookmarklet,
+pre,
+code,
+.tool-icon,
+.color-pick,
+.color-swatch,
+.pw-out,
+.wc {
   border-radius: 0 !important;
   box-shadow: var(--shadow);
 }
@@ -233,7 +255,14 @@ body {
 .vtable .vt-badge,
 .theme-go,
 .mini-arrow,
-.theme-arrow {
+.theme-arrow,
+.score-tag,
+.shortcut-steps code,
+.topbar a,
+.toc a,
+.bookmarklet,
+.dice-num,
+.tod-btn {
   border-radius: 0 !important;
 }
 
@@ -249,7 +278,8 @@ body {
 .dice-num.active,
 .tab.active,
 .tod-truth.active,
-.tod-dare.active {
+.tod-dare.active,
+.bookmarklet {
   background: var(--accent) !important;
   color: #111 !important;
   border-color: var(--accent) !important;
@@ -265,20 +295,35 @@ body {
 .dmodal-tags span,
 .dmodal-meta span,
 .vt-badge.new,
-.bar-tag {
+.bar-tag,
+.score-tag,
+.ok {
   background: var(--accent-bg) !important;
   color: var(--accent) !important;
   border: 1px solid var(--border);
 }
 
 .score-red,
-.bomb-msg.boom {
+.bomb-msg.boom,
+.warn,
+.parse-msg.err,
+.trend-delta.down {
   color: var(--accent2) !important;
 }
 
+.score-red {
+  background: var(--pack-danger-soft) !important;
+}
+
 .score-green,
-.bomb-msg.safe {
+.bomb-msg.safe,
+.parse-msg.ok,
+.trend-delta.up {
   color: var(--accent3) !important;
+}
+
+.score-green {
+  background: rgba(142, 240, 191, 0.12) !important;
 }
 
 .search-input,
@@ -291,8 +336,140 @@ body {
 .ai-form-grid select,
 .input-group input,
 .input-group select,
-.vt-search {
+.vt-search,
+.day-switch select,
+.pw-len-row input[type="range"] {
   border-radius: 0 !important;
+}
+
+.dropzone:hover,
+.dropzone.drag,
+.toc a:hover,
+.tb:hover,
+.tp:hover,
+.small-btn:hover,
+.clear-btn:hover,
+.base-tag:hover,
+.flav-tag:hover,
+.bar-city-tab:hover,
+.bar-card:hover,
+.cocktail-card:hover,
+.item-card:hover,
+.bento-card:hover,
+.bookmarklet:hover,
+.rules-toggle:hover,
+.map-toggle:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.dropzone:hover,
+.dropzone.drag,
+.toc a:hover,
+.tb:hover,
+.tp:hover,
+.small-btn:hover,
+.clear-btn:hover,
+.base-tag:hover,
+.flav-tag:hover,
+.bar-city-tab:hover,
+.rules-toggle:hover,
+.map-toggle:hover,
+.bookmarklet:hover {
+  background: var(--accent-bg) !important;
+  color: var(--text) !important;
+  border-color: var(--accent) !important;
+}
+
+.hero,
+.bookmarklet,
+.big-btn,
+.assess-btn,
+.tb,
+.tp,
+.small-btn,
+.clear-btn,
+.base-tag,
+.flav-tag,
+.bar-city-tab,
+.bar-card,
+.cocktail-card,
+.item-card,
+.bento-card,
+.dropzone,
+.rules-toggle,
+.map-toggle,
+.theme-btn,
+.theme-toggle,
+.modal-close,
+.bar-modal-close,
+.dmodal-close,
+.tod-btn,
+.dice-num {
+  transition: none !important;
+}
+
+pre,
+code,
+.shortcut-steps code {
+  box-shadow: none !important;
+  background: var(--bg-input) !important;
+  border: 1px solid var(--border);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0 !important;
+}
+
+.ai-usage-bar,
+.ai-usage-bar i,
+.vbar-track,
+.vbar-track i,
+.vret-bar,
+.vret-bar i,
+.visitor-map-wrap,
+.pack-shadow,
+.vlg i,
+.vdot,
+.dmodal-color {
+  border-radius: 0 !important;
+}
+
+.ai-usage-bar i,
+.vbar-track i {
+  background: var(--accent) !important;
+}
+
+.ai-usage-bar.warn i {
+  background: var(--accent2) !important;
+}
+
+.vt-badge.ret {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border);
+}
+
+.spark polyline {
+  stroke-linejoin: miter !important;
+  stroke-linecap: square !important;
+}
+
+.header,
+.nav,
+.ai-modal,
+.dmodal,
+.modal-overlay,
+.bar-modal-overlay {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.ai-modal,
+.dmodal,
+.modal-overlay,
+.bar-modal-overlay {
+  background: rgba(0, 0, 0, 0.85) !important;
 }
 
 .daily-quote,

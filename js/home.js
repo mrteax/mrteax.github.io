@@ -541,7 +541,7 @@
 
   // ===== Console easter egg =====
   try {
-    console.log('%c✨ Tea X', 'color:#b07d4f;font-size:22px;font-weight:900');
+    console.log('%cPACK TEA X', 'color:#ffe000;background:#111;font-size:22px;font-weight:900;padding:2px 8px;border:1px solid #ffe000');
     console.log('%c嘿，被你抓到啦 👀 既然都打开控制台了，说明你也是同道中人。摸鱼愉快，别被老板发现～', 'color:#999;font-size:13px');
   } catch (e) {}
 
