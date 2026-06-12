@@ -718,7 +718,18 @@
       if (!hasResting && payload.summary) pushSummaryQty('resting_heart_rate', 'count/min', payload.summary.latestRestingHeartRateBpm);
       const hasHRV = pushQtyMetric('heart_rate_variability', 'ms', payload.hrvSamples, 'value');
       if (!hasHRV && payload.summary) pushSummaryQty('heart_rate_variability', 'ms', payload.summary.latestHRVMilliseconds);
-      const hasSteps = pushQtyMetric('step_count', 'count', payload.stepCountSamples, 'value');
+      let hasSteps = false;
+      if (Array.isArray(payload.stepCountSamples) && payload.stepCountSamples.length) {
+        const stepTotal = payload.stepCountSamples.reduce((acc, item) => {
+          const date = localDateKey(item && (item.endDate || item.startDate || item.date));
+          const value = num(item && item.value);
+          return date === baseDate && value != null ? acc + value : acc;
+        }, 0);
+        if (stepTotal > 0) {
+          metrics.push({ name: 'step_count', units: 'count', data: [{ date: baseDate, qty: stepTotal }] });
+          hasSteps = true;
+        }
+      }
       if (!hasSteps && payload.summary) pushSummaryQty('step_count', 'count', payload.summary.totalSteps);
       const hasEnergy = pushQtyMetric('active_energy', 'kcal', payload.activeEnergySamples, 'value');
       if (!hasEnergy && payload.summary) pushSummaryQty('active_energy', 'kcal', payload.summary.totalActiveEnergyKCal);
