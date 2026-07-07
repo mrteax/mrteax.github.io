@@ -52,8 +52,14 @@
     .parse-msg{font-size:.8rem;margin-top:10px;line-height:1.6}
     .parse-msg.err{color:#e74c3c}
     .parse-msg.ok{color:#27ae60}
+    .parsed-sections{margin-top:14px}
+    .parsed-sections:empty{display:none}
     .parsed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;margin-top:14px}
-    .parsed-grid:empty{display:none}
+    .metric-section{margin-top:14px}
+    .metric-section:first-child{margin-top:0}
+    .metric-section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.78rem;color:var(--text-2);font-weight:700;margin-bottom:8px}
+    .metric-section-title span:last-child{font-size:.68rem;color:var(--text-3);font-weight:400;text-align:right}
+    .metric-section .parsed-grid{margin-top:0}
     .metric-cell{background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 8px;text-align:center}
     .metric-cell .mv{font-size:1.02rem;font-weight:700;font-family:var(--mono);line-height:1.2}
     .metric-cell .mu{font-size:.6rem;color:var(--text-3);font-family:var(--mono)}
@@ -104,7 +110,7 @@
         <span id="dzText">📄 点击选择，或把 JSON 文件拖到这里</span>
       </label>
       <p class="parse-msg" id="parseMsg"></p>
-      <div class="parsed-grid" id="parsedGrid"></div>
+      <div class="parsed-sections" id="parsedGrid"></div>
     </div>
 
     <div class="health-card day-switch" id="daySwitchCard">
@@ -437,7 +443,7 @@
           return;
         }
 
-        const sumNames = { step_count: 'steps', active_energy: 'activeEnergy', apple_exercise_time: 'exerciseMin' };
+        const sumNames = { step_count: 'steps', active_energy: 'activeEnergy', apple_exercise_time: 'exerciseMin', workout_count: 'workoutCount' };
         const avgNames = {
           resting_heart_rate: 'restingHR',
           heart_rate_variability: 'hrv',
@@ -518,21 +524,26 @@
     }
 
     function renderParsed(p) {
-      const cells = [];
-      const push = (v, u, l) => cells.push(`<div class="metric-cell"><div class="mv">${v}<span class="mu">${u || ''}</span></div><div class="ml">${l}</div></div>`);
-      if (p.sleep != null) push(p.sleep, 'h', '😴 睡眠');
-      if (p.deep != null) push(p.deep, 'h', '🌊 深睡');
-      if (p.rem != null) push(p.rem, 'h', '💭 REM');
-      if (p.restingHR != null) push(p.restingHR, '', '❤️ 静息心率');
-      if (p.hrv != null) push(p.hrv, 'ms', '📈 HRV');
-      if (p.steps != null) push(p.steps.toLocaleString(), '', '👣 步数');
-      if (p.activeEnergy != null) push(p.activeEnergy, 'kcal', '🔥 活动能量');
-      if (p.exerciseMin != null) push(p.exerciseMin, 'min', '🏃 锻炼时长');
-      if (p.workoutCount != null) push(p.workoutCount, '次', '🏋️ 训练次数');
-      if (p.spo2 != null) push(p.spo2, '%', '🫁 血氧');
-      if (p.respRate != null) push(p.respRate, '', '🌬️ 呼吸率');
-      if (p.vo2max != null) push(p.vo2max, '', '🫀 VO₂max');
-      $('parsedGrid').innerHTML = cells.join('');
+      const cell = (v, u, l) => `<div class="metric-cell"><div class="mv">${v}<span class="mu">${u || ''}</span></div><div class="ml">${l}</div></div>`;
+      const section = (title, note, cells) => cells.length ? `<div class="metric-section"><div class="metric-section-title"><span>${title}</span><span>${note}</span></div><div class="parsed-grid">${cells.join('')}</div></div>` : '';
+      const recent24h = [];
+      const todayTotal = [];
+      if (p.sleep != null) recent24h.push(cell(p.sleep, 'h', '😴 睡眠'));
+      if (p.deep != null) recent24h.push(cell(p.deep, 'h', '🌊 深睡'));
+      if (p.rem != null) recent24h.push(cell(p.rem, 'h', '💭 REM'));
+      if (p.restingHR != null) recent24h.push(cell(p.restingHR, '', '❤️ 静息心率'));
+      if (p.hrv != null) recent24h.push(cell(p.hrv, 'ms', '📈 HRV'));
+      if (p.spo2 != null) recent24h.push(cell(p.spo2, '%', '🫁 血氧'));
+      if (p.respRate != null) recent24h.push(cell(p.respRate, '', '🌬️ 呼吸率'));
+      if (p.vo2max != null) recent24h.push(cell(p.vo2max, '', '🫀 VO₂max'));
+      if (p.steps != null) todayTotal.push(cell(p.steps.toLocaleString(), '', '👣 步数'));
+      if (p.activeEnergy != null) todayTotal.push(cell(p.activeEnergy, 'kcal', '🔥 活动能量'));
+      if (p.exerciseMin != null) todayTotal.push(cell(p.exerciseMin, 'min', '🏃 锻炼时长'));
+      if (p.workoutCount != null) todayTotal.push(cell(p.workoutCount, '次', '🏋️ 训练次数'));
+      $('parsedGrid').innerHTML = [
+        section('最近 24h 状态', '睡眠 / 心率 / HRV / 恢复类', recent24h),
+        section('今日累计', '按本地今天 00:00 ～ 当前时间裁剪', todayTotal)
+      ].join('');
     }
 
     function applyParsed(p) {
@@ -587,7 +598,7 @@
       const msg = lastDataOrigin === 'cloud' ? $('syncHint') : $('parseMsg');
       if (msg && availableMetricDates.length > 1) {
         msg.className = 'parse-msg ok';
-        msg.textContent = `✅ 已切换到 ${p.date} 的数据，以下指标均按当天单独解析。`;
+        msg.textContent = `✅ 已切换到 ${p.date} 的数据；恢复类展示最近 24h，今日累计类按本地今天 00:00 ～ 当前时间裁剪。`;
       }
       applyParsed(p);
     });
@@ -645,8 +656,22 @@
         if (/^\d{4}-\d{2}-\d{2}(?:[ T]|$)/.test(s)) return s;
         return fallbackDate || new Date().toISOString().slice(0, 10);
       };
-      const baseDate = localDateKey(payload.window && payload.window.start) || payload.dateKey || localDateKey(payload.generatedAt) || new Date().toISOString().slice(0, 10);
+      const baseDate = localDateKey((payload.window && payload.window.end) || payload.generatedAt) || payload.dateKey || new Date().toISOString().slice(0, 10);
+      const now = new Date();
+      const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const todayEnd = now;
+      const todayKey = localDateKey(todayStart);
+      const windowStart = payload.window && payload.window.start ? new Date(payload.window.start) : null;
+      const windowEnd = payload.window && payload.window.end ? new Date(payload.window.end) : null;
+      const windowIsTodayOnly = windowStart && windowEnd && !isNaN(windowStart) && !isNaN(windowEnd)
+        && windowStart >= todayStart && windowEnd <= todayEnd;
       const metrics = [];
+      const clippedHours = (startValue, endValue, clipStart = todayStart, clipEnd = todayEnd) => {
+        const start = new Date(startValue), end = new Date(endValue);
+        if (isNaN(start) || isNaN(end) || end <= start) return null;
+        const overlap = Math.max(0, Math.min(end.getTime(), clipEnd.getTime()) - Math.max(start.getTime(), clipStart.getTime()));
+        return overlap / 3600000;
+      };
       const pushQtyMetric = (name, unit, items, valueKey) => {
         if (!Array.isArray(items) || !items.length) return false;
         const data = items.map(item => {
@@ -658,10 +683,31 @@
         metrics.push({ name, units: unit || '', data });
         return true;
       };
-      const pushSummaryQty = (name, unit, value) => {
+      const pushClippedTodaySumMetric = (name, unit, items, valueKey) => {
+        if (!Array.isArray(items) || !items.length) return false;
+        const total = items.reduce((acc, item) => {
+          const value = num(item && item[valueKey]);
+          if (value == null) return acc;
+          const start = item && (item.startDate || item.date);
+          const end = item && (item.endDate || item.date || item.startDate);
+          if (!start || !end) return localDateKey(end || start) === todayKey ? acc + value : acc;
+          const sampleHours = clippedHours(start, end, new Date(start), new Date(end));
+          const overlapHours = clippedHours(start, end);
+          if (sampleHours == null || overlapHours == null || overlapHours <= 0) return acc;
+          const ratio = Math.min(1, overlapHours / Math.max(sampleHours, 1 / 3600000));
+          return acc + value * ratio;
+        }, 0);
+        if (total > 0) {
+          metrics.push({ name, units: unit || '', data: [{ date: todayKey, qty: total }] });
+          return true;
+        }
+        return false;
+      };
+      const pushSummaryQty = (name, unit, value, options = {}) => {
         const n = num(value);
         if (n == null) return false;
-        metrics.push({ name, units: unit || '', data: [{ date: baseDate, qty: n }] });
+        if (options.todayOnly && !windowIsTodayOnly) return false;
+        metrics.push({ name, units: unit || '', data: [{ date: options.todayOnly ? todayKey : baseDate, qty: n }] });
         return true;
       };
 
@@ -718,21 +764,10 @@
       if (!hasResting && payload.summary) pushSummaryQty('resting_heart_rate', 'count/min', payload.summary.latestRestingHeartRateBpm);
       const hasHRV = pushQtyMetric('heart_rate_variability', 'ms', payload.hrvSamples, 'value');
       if (!hasHRV && payload.summary) pushSummaryQty('heart_rate_variability', 'ms', payload.summary.latestHRVMilliseconds);
-      let hasSteps = false;
-      if (Array.isArray(payload.stepCountSamples) && payload.stepCountSamples.length) {
-        const stepTotal = payload.stepCountSamples.reduce((acc, item) => {
-          const date = localDateKey(item && (item.endDate || item.startDate || item.date));
-          const value = num(item && item.value);
-          return date === baseDate && value != null ? acc + value : acc;
-        }, 0);
-        if (stepTotal > 0) {
-          metrics.push({ name: 'step_count', units: 'count', data: [{ date: baseDate, qty: stepTotal }] });
-          hasSteps = true;
-        }
-      }
-      if (!hasSteps && payload.summary) pushSummaryQty('step_count', 'count', payload.summary.totalSteps);
-      const hasEnergy = pushQtyMetric('active_energy', 'kcal', payload.activeEnergySamples, 'value');
-      if (!hasEnergy && payload.summary) pushSummaryQty('active_energy', 'kcal', payload.summary.totalActiveEnergyKCal);
+      let hasSteps = pushClippedTodaySumMetric('step_count', 'count', payload.stepCountSamples, 'value');
+      if (!hasSteps && payload.summary) pushSummaryQty('step_count', 'count', payload.summary.totalSteps, { todayOnly: true });
+      const hasEnergy = pushClippedTodaySumMetric('active_energy', 'kcal', payload.activeEnergySamples, 'value');
+      if (!hasEnergy && payload.summary) pushSummaryQty('active_energy', 'kcal', payload.summary.totalActiveEnergyKCal, { todayOnly: true });
 
       const overlapRatio = (a, b) => {
         const sa = new Date(a.startDate).getTime(), ea = new Date(a.endDate).getTime();
@@ -754,17 +789,22 @@
 
       let hasWorkoutMinutes = false;
       if (dedupedWorkouts.length) {
-        const data = dedupedWorkouts.map(item => {
+        const workoutCountToday = dedupedWorkouts.filter(item => item && item.startDate && item.endDate && clippedHours(item.startDate, item.endDate) > 0).length;
+        if (workoutCountToday) metrics.push({ name: 'workout_count', units: 'count', data: [{ date: todayKey, qty: workoutCountToday }] });
+        const workoutMinutesToday = dedupedWorkouts.reduce((acc, item) => {
           const value = num(item && item.durationMinutes);
-          if (value == null) return null;
-          return { date: asDateTime(item.endDate || item.startDate, baseDate), qty: value };
-        }).filter(Boolean);
-        if (data.length) {
-          metrics.push({ name: 'apple_exercise_time', units: 'min', data });
+          if (value == null || !item.startDate || !item.endDate) return acc;
+          const durationHours = clippedHours(item.startDate, item.endDate, new Date(item.startDate), new Date(item.endDate));
+          const overlapHours = clippedHours(item.startDate, item.endDate);
+          if (durationHours == null || overlapHours == null || overlapHours <= 0) return acc;
+          return acc + value * Math.min(1, overlapHours / Math.max(durationHours, 1 / 3600000));
+        }, 0);
+        if (workoutMinutesToday > 0) {
+          metrics.push({ name: 'apple_exercise_time', units: 'min', data: [{ date: todayKey, qty: workoutMinutesToday }] });
           hasWorkoutMinutes = true;
         }
       }
-      if (!hasWorkoutMinutes && payload.summary) pushSummaryQty('apple_exercise_time', 'min', payload.summary.workoutMinutes);
+      if (!hasWorkoutMinutes && payload.summary) pushSummaryQty('apple_exercise_time', 'min', payload.summary.workoutMinutes, { todayOnly: true });
 
       const summaryFromPayload = payload.summary || {};
       const summary = {
@@ -937,7 +977,7 @@
         const series = buildSeries(trendRows);
         const when = primaryRow.created_at ? new Date(primaryRow.created_at).toLocaleString('zh-CN') : '';
         hint.className = 'parse-msg ok';
-        hint.textContent = `✅ 已从云端同步 ${p.availableDates.length} 天数据，默认展示最新日期 ${p.date}${when ? '，最近上传于 ' + when : ''}`;
+        hint.textContent = `✅ 已从云端同步 ${p.availableDates.length} 天数据，默认展示最新日期 ${p.date}${when ? '，最近上传于 ' + when : ''}。恢复类按最近 24h 展示，步数/能量/训练按本地今天 00:00 ～ 当前时间累计。`;
         renderTrends(series);
         applyParsed(p);
       } catch (e) {
