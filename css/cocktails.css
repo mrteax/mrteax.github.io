@@ -78,6 +78,7 @@ a{color:var(--accent);text-decoration:none}
 .rules-toggle::before{content:'▶';font-size:.7rem;color:var(--accent);transition:transform .2s}
 [open] .rules-toggle::before{transform:rotate(90deg)}
 .rules-content{background:var(--bg-card);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:16px}
+.bar-guide-note{margin:0 0 14px;color:var(--text-2);font-size:.78rem;line-height:1.7}
 
 
 

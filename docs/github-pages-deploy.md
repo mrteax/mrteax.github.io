@@ -51,8 +51,7 @@ The script will:
 ## Useful Links
 
 - Homepage: <https://mrteax.github.io/>
-- France Schengen guide: <https://mrteax.github.io/france-schengen-2026.html>
 
 ## Privacy Rule
 
-Do not publish private visa information to GitHub Pages. Keep names, passport numbers, company names, school names, phone numbers, emails, bank statements, visa numbers and application IDs in local-only files.
+Do not publish private visa, health, or travel information to GitHub Pages. Keep names, passport numbers, company and school details, phone numbers, emails, bank statements, visa numbers, application IDs, health details, and identifiable travel bookings or schedules in local-only files. `noindex` is only a crawler preference, not access control; anything deployed to GitHub Pages must be treated as public.

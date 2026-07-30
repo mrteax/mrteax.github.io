@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
   <title>今日状态 · Tea X</title>
   <link rel="icon" href="/pack-preview.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,11 +35,6 @@
     .score-green{background:rgba(39,174,96,.1);color:#27ae60}
     .score-yellow{background:rgba(243,156,18,.1);color:#f39c12}
     .score-red{background:rgba(231,76,60,.1);color:#e74c3c}
-    .shortcut-section{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px}
-    .shortcut-section h2{font-size:1rem;margin-bottom:12px}
-    .shortcut-steps{font-size:.82rem;color:var(--text-2);line-height:1.9}
-    .shortcut-steps li{margin-bottom:6px}
-    .shortcut-steps code{background:var(--bg-input);padding:1px 6px;border-radius:4px;font-size:.78rem}
     .history-section{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
     .history-section h2{font-size:1rem;margin-bottom:10px}
     .history-list{font-size:.82rem;color:var(--text-2)}
@@ -80,6 +76,7 @@
     .spark{display:block;width:100%;height:34px;margin-top:6px}
     .spark polyline{fill:none;stroke:var(--accent);stroke-width:2;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
     .spark circle{fill:var(--accent)}
+    .privacy-card{border-color:rgba(39,174,96,.35);background:linear-gradient(135deg,rgba(39,174,96,.06),transparent)}
   </style>
 </head>
 <body>
@@ -87,15 +84,12 @@
 
   <div class="health-wrap">
 
-    <!-- Cloud auto-sync (Health Auto Export → Supabase) -->
-    <div class="health-card">
-      <h2>🔄 每日自动同步</h2>
-      <p class="parse-msg" id="syncHint" style="margin-top:0">正在从云端读取最新数据…</p>
-      <button class="assess-btn" id="syncBtn" style="margin-top:6px;font-size:.9rem;padding:11px">↻ 立即从云端同步</button>
-      <button class="assess-btn" id="shareBtn" style="display:none;margin-top:8px;font-size:.9rem;padding:11px;background:var(--bg-input);color:var(--accent);border:1px solid var(--border)">📤 导出最新数据分享给 AI</button>
+    <div class="health-card privacy-card">
+      <h2>🔒 本地健康分析</h2>
+      <p class="hint">选择的 JSON 文件只在当前浏览器中解析，不会发送到 Tea X、Supabase 或其他服务器。</p>
     </div>
 
-    <!-- Import Health Auto Export JSON (fallback / one-off) -->
+    <!-- Import Health Auto Export JSON -->
     <div class="health-card">
       <h2>📥 手动导入 <span style="font-size:.72rem;font-weight:400;color:var(--text-3)">（临时用）</span></h2>
       <p class="hint">把 Health Auto Export 导出的 <code>.json</code> 文件拖进来，或点击选择。文件只在你的浏览器本地解析，<strong>不会上传</strong>到任何服务器。</p>
@@ -105,6 +99,7 @@
       </label>
       <p class="parse-msg" id="parseMsg"></p>
       <div class="parsed-grid" id="parsedGrid"></div>
+      <button class="assess-btn" id="shareBtn" style="display:none;margin-top:8px;font-size:.9rem;padding:11px;background:var(--bg-input);color:var(--accent);border:1px solid var(--border)">📤 导出最新数据供你主动分享</button>
     </div>
 
     <div class="health-card day-switch" id="daySwitchCard">
@@ -204,7 +199,6 @@
     const $ = s => document.getElementById(s);
     let lastParsed = null, lastRaw = null;
     let selectedMetricDate = null, availableMetricDates = [];
-    let lastDataOrigin = null;
 
     function assess() {
       const sleep = parseFloat($('inSleep').value) || 0;
@@ -571,8 +565,9 @@
         msg.className = 'parse-msg ok';
         msg.textContent = `✅ 已解析 ${p.availableDates.length} 天数据，默认展示最新日期 ${p.date}，已自动填表并评估 👇`;
         lastRaw = norm;
-        lastDataOrigin = 'file';
         applyParsed(p);
+        const series = buildSeries([{ data: norm, created_at: new Date(file.lastModified || Date.now()).toISOString() }]);
+        renderTrends(series);
       };
       reader.readAsText(file);
     }
@@ -584,7 +579,7 @@
       const nextDate = e.target.value;
       const p = parseHealthExport(lastRaw, nextDate);
       if (!p) return;
-      const msg = lastDataOrigin === 'cloud' ? $('syncHint') : $('parseMsg');
+      const msg = $('parseMsg');
       if (msg && availableMetricDates.length > 1) {
         msg.className = 'parse-msg ok';
         msg.textContent = `✅ 已切换到 ${p.date} 的数据，以下指标均按当天单独解析。`;
@@ -595,12 +590,6 @@
     ['dragleave', 'drop'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove('drag'); }));
     dz.addEventListener('drop', e => { if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]); });
 
-    // ===== Cloud auto-sync from Supabase =====
-    const SUPA = {
-      url: 'https://trcetesyexopngcfrgck.supabase.co',
-      key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRyY2V0ZXN5ZXhvcG5nY2ZyZ2NrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMjIxNDYsImV4cCI6MjA5NTU5ODE0Nn0.ezCv2WcvJe7UjcLogSw96KTtL1HsBdnSytrbTuhDF2c',
-      table: 'health_imports',
-    };
     // Convert a simple flat daily payload into Health Auto Export's metric shape,
     // so a lightweight Shortcut/app can post easy JSON like
     // {"date":"2026-06-05","sleep":7.2,"restingHR":58,"hrv":46,"steps":8000,...}
@@ -896,60 +885,8 @@
       card.style.display = 'block';
     }
 
-    async function cloudSync(auto) {
-      const hint = $('syncHint');
-      hint.className = 'parse-msg';
-      hint.textContent = '正在从云端读取最新数据…';
-      try {
-        const r = await fetch(
-          `${SUPA.url}/rest/v1/${SUPA.table}?select=data,created_at&order=created_at.desc&limit=60`,
-          { headers: { apikey: SUPA.key, Authorization: `Bearer ${SUPA.key}` } }
-        );
-        if (r.status === 404) {
-          hint.className = 'parse-msg';
-          hint.textContent = '尚未开启云端同步。展开下方「怎么开启每日自动上传」按一次性步骤设置即可。';
-          return;
-        }
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        const rows = await r.json();
-        if (!rows.length) {
-          hint.className = 'parse-msg';
-          hint.textContent = auto
-            ? '云端暂无数据。展开下方说明开启每日自动上传后，数据会自动出现在这里。'
-            : '云端暂无数据，请先按下方说明开启自动上传。';
-          return;
-        }
-        const isAppleRow = row => {
-          const d = row && row.data;
-          return !!(d && ((d.source && d.source.app === 'Apple Health Uploader') || d.summary || d.sleepSessions || d.heartRateSamples || d.restingHeartRateSamples || d.hrvSamples || d.stepCountSamples || d.activeEnergySamples || d.workouts));
-        };
-        const trendRows = rows.some(isAppleRow) ? rows.filter(isAppleRow) : rows;
-        const primaryRow = trendRows[0] || rows[0];
-        const norm = normalizeExport(primaryRow.data);
-        const p = parseHealthExport(norm, null);
-        if (!p || !p.found) {
-          hint.className = 'parse-msg err';
-          hint.textContent = '读到了云端数据，但没识别到睡眠/心率/HRV 指标。';
-          return;
-        }
-        lastRaw = norm;
-        lastDataOrigin = 'cloud';
-        const series = buildSeries(trendRows);
-        const when = primaryRow.created_at ? new Date(primaryRow.created_at).toLocaleString('zh-CN') : '';
-        hint.className = 'parse-msg ok';
-        hint.textContent = `✅ 已从云端同步 ${p.availableDates.length} 天数据，默认展示最新日期 ${p.date}${when ? '，最近上传于 ' + when : ''}`;
-        renderTrends(series);
-        applyParsed(p);
-      } catch (e) {
-        hint.className = 'parse-msg err';
-        hint.textContent = '❌ 同步失败：' + (e.message || e) + '（先确认已建表并开启读写权限）';
-      }
-    }
-    $('syncBtn').addEventListener('click', () => cloudSync(false));
-    cloudSync(true);
-
     // ===== Export the full raw latest record to share with an AI app =====
-    const SHARE_LABEL = '📤 导出最新数据分享给 AI';
+    const SHARE_LABEL = '📤 导出最新数据供你主动分享';
     async function shareToAI() {
       const sb = $('shareBtn');
       if (!lastRaw) { return; }
