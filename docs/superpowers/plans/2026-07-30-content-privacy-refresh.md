@@ -75,8 +75,10 @@ for (const [file, source] of scanned) {
 }
 
 const forbidden = ['trcetesyexopngcfrgck.supabase.co', 'ipwho.is', 'ipapi.co/json', 'visitor-map.js'];
-for (const value of forbidden) {
-  check(!scanned.some(([, source]) => source.includes(value)), `production source contains ${value}`);
+for (const [file, source] of scanned) {
+  for (const value of forbidden) {
+    check(!source.includes(value), `${file}: production source contains ${value}`);
+  }
 }
 
 const portal = read('portal.html');
@@ -91,6 +93,13 @@ for (const text of ['最后更新：2026-07-30', '递签城市：武汉', '8 月
   check(france.includes(text), `france guide: missing ${text}`);
 }
 check(!france.includes('尽量 6 月内递签'), 'france guide: stale June deadline');
+check(france.includes('11 个酒店夜晚全部在法国'), 'france guide: missing 11 hotel nights in France statement');
+check(france.includes('摩纳哥可从尼斯乘区域列车往返'),
+  'france guide: missing Monaco same-day return from Nice statement');
+const franceWithoutUrls = france.replace(/https?:\/\/[^\s"'<>]+/g, '');
+const visaCentreHardcodedAddress = /(?:TLScontact|签证中心)[\s\S]{0,200}(?:[\u4e00-\u9fff]{2,12}(?:路|街|大道|巷)\s*\d+|\d+\s*号(?:楼|层)?)/;
+check(!visaCentreHardcodedAddress.test(franceWithoutUrls),
+  'france guide: hard-coded TLScontact or visa-centre street address');
 check(france.includes('noindex,nofollow'), 'france guide: missing noindex');
 check(read('health.html').includes('noindex,nofollow'), 'health: missing noindex');
 

@@ -62,7 +62,8 @@ check(france.includes('11 个酒店夜晚全部在法国'), 'france guide: missi
 check(france.includes('摩纳哥可从尼斯乘区域列车往返'),
   'france guide: missing Monaco same-day return from Nice statement');
 const franceWithoutUrls = france.replace(/https?:\/\/[^\s"'<>]+/g, '');
-check(!/(?:TLScontact|签证中心)[\s\S]{0,200}[\u4e00-\u9fff]{2,12}(?:路|街|大道|巷)\s*\d+|\d+\s*号(?:楼|层)?/.test(franceWithoutUrls),
+const visaCentreHardcodedAddress = /(?:TLScontact|签证中心)[\s\S]{0,200}(?:[\u4e00-\u9fff]{2,12}(?:路|街|大道|巷)\s*\d+|\d+\s*号(?:楼|层)?)/;
+check(!visaCentreHardcodedAddress.test(franceWithoutUrls),
   'france guide: hard-coded TLScontact or visa-centre street address');
 check(france.includes('noindex,nofollow'), 'france guide: missing noindex');
 check(read('health.html').includes('noindex,nofollow'), 'health: missing noindex');
