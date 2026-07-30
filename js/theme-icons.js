@@ -6,7 +6,7 @@
   const PAGE_ICONS = {
     portal: '⌂', health: '♡', tools: '⚙', games: '♟', cocktails: '♧',
     tea: '◌', coffee: '◍', hiking: '△', fitness: '◇', tennis: '◐',
-    skiing: '⌁', surfing: '∿', billiards: '●', visitors: '◇', france: '✈',
+    skiing: '⌁', surfing: '∿', billiards: '●', france: '✈',
     cursor: 'AI', index: 'TX'
   };
 

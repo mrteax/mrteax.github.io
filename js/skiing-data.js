@@ -216,6 +216,8 @@ const SKI_RESORTS = [
     region: "美国",
     country: "USA",
     difficulty: "intermediate",
+    // 2025–26 official stats: 127 + 144 + 44 + 98 = 413.
+    // Source: https://www.aspensnowmass.com/-/media/aspen-snowmass/documents/pdfs/25-26/aspen-snowmass-mountain-stats.pdf
     trails: "413条雪道（四山合计）",
     vertical: "1,343m落差",
     season: "11月-4月",

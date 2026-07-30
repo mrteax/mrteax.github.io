@@ -108,7 +108,6 @@ body {
 .health-card,
 .result-card,
 .history-section,
-.shortcut-section,
 .item-card,
 .cocktail-card,
 .modal-card,
@@ -116,11 +115,6 @@ body {
 .ai-modal-card,
 .dmodal-card,
 .bar-card,
-.vkpi,
-.visitor-card,
-.vchart-card,
-.vlist-card,
-.vtable-card,
 .rules-toggle,
 .rules-content,
 .map-toggle,
@@ -156,15 +150,10 @@ body {
 .flav-tag,
 .bar-city-tab,
 .bar-vibe-chip,
-.vrange button,
-.vstats-export,
-.vstats-back,
-.vtable .vt-badge,
 .theme-go,
 .mini-arrow,
 .theme-arrow,
 .score-tag,
-.shortcut-steps code,
 .topbar a,
 .toc a,
 .bookmarklet,
@@ -174,8 +163,7 @@ body {
 .modal-tags span,
 .dmodal-tags span,
 .dmodal-meta span,
-.card-badge,
-.vinsight {
+.card-badge {
   border-radius: 999px !important;
 }
 
@@ -274,8 +262,7 @@ body {
 .tab.active,
 .tod-truth.active,
 .tod-dare.active,
-.bookmarklet,
-.vrange button.active {
+.bookmarklet {
   background: var(--accent) !important;
   color: var(--bg) !important;
   border-color: transparent !important;
@@ -285,12 +272,10 @@ body {
 .flav-tag.active,
 .ai-usage-pill,
 .score-yellow,
-.vinsight,
 .card-badge,
 .modal-tags span,
 .dmodal-tags span,
 .dmodal-meta span,
-.vt-badge.new,
 .bar-tag,
 .score-tag,
 .ok {
@@ -323,8 +308,7 @@ body {
   color: var(--text) !important;
 }
 
-.score-green,
-.vt-badge.ret {
+.score-green {
   background: rgba(127, 127, 127, 0.1) !important;
   color: var(--text) !important;
   border: 1px solid rgba(127, 127, 127, 0.08) !important;
@@ -340,7 +324,6 @@ body {
 .ai-form-grid select,
 .input-group input,
 .input-group select,
-.vt-search,
 .day-switch select,
 .pw-len-row input[type="range"] {
   border-radius: var(--radius-sm) !important;
@@ -350,7 +333,6 @@ body {
 
 pre,
 code,
-.shortcut-steps code,
 .template {
   background: var(--bg-input) !important;
   border: 1px solid rgba(127, 127, 127, 0.08) !important;
@@ -359,28 +341,16 @@ code,
 
 .ai-usage-bar,
 .ai-usage-bar i,
-.vbar-track,
-.vbar-track i,
-.vret-bar,
-.vret-bar i,
-.visitor-map-wrap,
 .pack-shadow,
-.vlg i,
-.vdot,
 .dmodal-color {
   border-radius: 999px !important;
 }
 
-.ai-usage-bar i,
-.vbar-track i,
-.vret-ret,
-.vdot-ret {
+.ai-usage-bar i {
   background: var(--text) !important;
 }
 
-.ai-usage-bar.warn i,
-.vret-new,
-.vdot-new {
+.ai-usage-bar.warn i {
   background: var(--accent2) !important;
 }
 
@@ -401,10 +371,7 @@ code,
 .bar-city-tab:hover,
 .rules-toggle:hover,
 .map-toggle:hover,
-.bookmarklet:hover,
-.vstats-export:hover,
-.vstats-back:hover,
-.vrange button:hover {
+.bookmarklet:hover {
   transform: none !important;
   box-shadow: none !important;
   background: var(--accent-bg) !important;

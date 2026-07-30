@@ -15,6 +15,7 @@ python3 -m http.server 8080
 Run the static regression checker (Node standard library only):
 
 ```bash
+node scripts/check-site.test.mjs
 node scripts/check-site.mjs
 ```
 
@@ -37,10 +38,16 @@ It validates HTML asset links, JavaScript syntax, dataset counts, forbidden remo
 
 ### Privacy and data
 
-- User-specific state stays in the browser: `localStorage` for theme, tools notes (`teax_notes`), portal visit count (`teax_visits`), AI usage (`teax_ai_usage_v1`), chess history, and health import history (`teax_health_history` on `health.html`).
+- User-specific state stays in the browser: `localStorage` for theme, tools notes (`teax_notes`), portal visit count (`teax_visits`), AI usage (`teax_ai_usage_v1`), chess history (`tea-x-chess-history`), and health import history (`teax_health_history` on `health.html`).
 - `health.html` is local-only (no cloud sync); it uses `noindex,nofollow`. Health JSON is parsed and stored only in the current browser.
 - Removed from production: open-meteo weather on the portal, the public visitor map page (`visitors.html`) and its geolocation script (removed from `js/`), and Supabase-backed health or visitor remote reads. Do not reintroduce these without an explicit product decision.
 - Personal pages (`health.html`, `france-schengen-2026.html`, `cursor-usage-bookmarklet.html`) use `noindex,nofollow`; that is not access control.
+
+### Supabase cleanup limitation
+
+- Old Supabase credentials remain in Git history, and the current environment has no Supabase admin credentials.
+- An authorized project owner must rotate or revoke the old anon key and tighten or drop the old health/visitor tables, or retire the old project.
+- Removing the frontend integration stopped the current site from accessing Supabase, but it did not change the remote Row Level Security (RLS) policies.
 
 ### External dependencies
 
@@ -56,4 +63,4 @@ There is no site-owned backend API. `crypto.subtle` is used for SHA-256 on the t
 ### Key notes
 
 - No npm install or bundler; deploy is static files to GitHub Pages (`docs/github-pages-deploy.md`, `scripts/deploy-pages.sh`).
-- Portal loads a subset of `*-data.js` for daily picks; individual theme pages load their own data scripts. `coffee-data.js` is not loaded on `portal.html`.
+- Portal loads a subset of `*-data.js` for daily picks; individual theme pages load their own data scripts. Neither `coffee-data.js` nor `billiards-data.js` is loaded on `portal.html`.

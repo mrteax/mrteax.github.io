@@ -13,24 +13,62 @@ const check = (condition, message) => {
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 
 const htmlFiles = fs.readdirSync(root).filter(file => file.endsWith('.html'));
+const jsFiles = fs.readdirSync(path.join(root, 'js'))
+  .filter(file => file.endsWith('.js'))
+  .map(file => `js/${file}`);
+const cssFiles = fs.readdirSync(path.join(root, 'css'))
+  .filter(file => file.endsWith('.css'))
+  .map(file => `css/${file}`);
+
+const ignoredReference = value => {
+  const trimmed = value.trim();
+  return !trimmed
+    || trimmed.startsWith('#')
+    || trimmed.startsWith('//')
+    || /^[a-z][a-z\d+.-]*:/i.test(trimmed);
+};
+
+const resolveLocalReference = (file, value) => {
+  const clean = value.trim().split(/[?#]/, 1)[0];
+  if (!clean) return null;
+  return clean.startsWith('/')
+    ? path.resolve(root, clean.slice(1))
+    : path.resolve(root, path.dirname(file), clean);
+};
+
 for (const file of htmlFiles) {
   const source = read(file);
-  const refs = [...source.matchAll(/(?:href|src)=["'](\/[^"'#?]+)(?:[?#][^"']*)?["']/g)];
+  const refs = [...source.matchAll(/\b(?:href|src)\s*=\s*["']([^"']+)["']/gi)];
   for (const match of refs) {
-    check(fs.existsSync(path.join(root, match[1].slice(1))), `${file}: missing ${match[1]}`);
+    const value = match[1];
+    if (ignoredReference(value)) continue;
+    const target = resolveLocalReference(file, value);
+    check(target && fs.existsSync(target), `${file}: missing ${value}`);
   }
   check((source.match(/href=["']\/css\/theme\.css(?:\?[^"']*)?["']/g) || []).length <= 1,
     `${file}: duplicate theme.css`);
 }
 
-for (const file of fs.readdirSync(path.join(root, 'js')).filter(file => file.endsWith('.js'))) {
-  const result = spawnSync(process.execPath, ['--check', path.join(root, 'js', file)]);
-  check(result.status === 0, `js/${file}: invalid JavaScript`);
+for (const file of cssFiles) {
+  const source = read(file);
+  const refs = [...source.matchAll(/url\(\s*(["']?)(.*?)\1\s*\)/gi)];
+  for (const match of refs) {
+    const value = match[2];
+    if (ignoredReference(value)) continue;
+    const target = resolveLocalReference(file, value);
+    check(target && fs.existsSync(target), `${file}: missing ${value}`);
+  }
+}
+
+for (const file of jsFiles) {
+  const result = spawnSync(process.execPath, ['--check', path.join(root, file)]);
+  check(result.status === 0, `${file}: invalid JavaScript`);
 }
 
 const scanned = [
   ...htmlFiles,
-  ...fs.readdirSync(path.join(root, 'js')).filter(file => file.endsWith('.js')).map(file => `js/${file}`),
+  ...jsFiles,
+  ...cssFiles,
   'AGENTS.md'
 ].map(file => [file, read(file)]);
 for (const [file, source] of scanned) {
@@ -39,10 +77,18 @@ for (const [file, source] of scanned) {
   check(!source.includes('aiUsedInput'), `${file}: obsolete AI input id`);
 }
 
-const forbidden = ['trcetesyexopngcfrgck.supabase.co', 'ipwho.is', 'ipapi.co/json', 'visitor-map.js'];
+const forbidden = [
+  [/\b[a-z\d-]+\.supabase\.co\b/i, 'Supabase endpoint'],
+  [/\bapi\.open-meteo\.com\b/i, 'Open-Meteo endpoint'],
+  [/\bapikey\b["']?\s*[:=]/i, 'apikey credential'],
+  [/\beyJ[A-Za-z\d_-]{10,}\.[A-Za-z\d_-]{10,}\.[A-Za-z\d_-]{10,}\b/, 'JWT-shaped credential'],
+  [/\bipwho\.is\b/i, 'ipwho.is'],
+  [/\bipapi\.co\/json\b/i, 'ipapi.co/json'],
+  [/\bvisitor-map\.js\b/i, 'visitor-map.js']
+];
 for (const [file, source] of scanned) {
-  for (const value of forbidden) {
-    check(!source.includes(value), `${file}: production source contains ${value}`);
+  for (const [pattern, label] of forbidden) {
+    check(!pattern.test(source), `${file}: production source contains ${label}`);
   }
 }
 
@@ -65,8 +111,38 @@ const franceWithoutUrls = france.replace(/https?:\/\/[^\s"'<>]+/g, '');
 const visaCentreHardcodedAddress = /(?:TLScontact|签证中心)[\s\S]{0,200}(?:[\u4e00-\u9fff]{2,12}(?:路|街|大道|巷)\s*\d+|\d+\s*号(?:楼|层)?)/;
 check(!visaCentreHardcodedAddress.test(franceWithoutUrls),
   'france guide: hard-coded TLScontact or visa-centre street address');
+const itinerary = france.match(/<section class="card" id="itinerary">([\s\S]*?)<\/section>/);
+check(Boolean(itinerary), 'france guide: missing itinerary section');
+if (itinerary) {
+  const dateCells = [...itinerary[1].matchAll(/<tr>\s*<td>([^<]+)<\/td>/g)];
+  check(dateCells.length > 0, 'france guide: itinerary has no date rows');
+  const weekdayLabels = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+  for (const [, cell] of dateCells) {
+    const parsed = cell.trim().match(/^(\d{1,2})\.(\d{1,2})\s+(周[一二三四五六日天])$/);
+    check(Boolean(parsed), `france guide: invalid itinerary date/weekday cell "${cell.trim()}"`);
+    if (!parsed) continue;
+    const month = Number(parsed[1]);
+    const day = Number(parsed[2]);
+    const date = new Date(Date.UTC(2026, month - 1, day));
+    const validDate = date.getUTCFullYear() === 2026
+      && date.getUTCMonth() === month - 1
+      && date.getUTCDate() === day;
+    check(validDate, `france guide: invalid 2026 itinerary date ${month}.${day}`);
+    if (!validDate) continue;
+    const expected = weekdayLabels[date.getUTCDay()];
+    check(parsed[3].replace('周天', '周日') === expected,
+      `france guide: ${month}.${day} says ${parsed[3]}; expected ${expected} for 2026`);
+  }
+}
 check(france.includes('noindex,nofollow'), 'france guide: missing noindex');
 check(read('health.html').includes('noindex,nofollow'), 'health: missing noindex');
+
+const games = read('games.html');
+check(!/<html\b[^>]*\bdata-theme=["']dark["']/i.test(games), 'games: fixed dark theme');
+const themeIcons = read('js/theme-icons.js');
+const sharedThemeFallback = /localStorage\.getItem\('theme'\)\s*\|\|\s*\(matchMedia\('\(prefers-color-scheme: dark\)'\)\.matches \? 'dark' : 'light'\)/;
+check(sharedThemeFallback.test(themeIcons),
+  'theme icons: missing localStorage then system fallback');
 
 const datasets = [
   ['js/hiking-data.js', 'TRAILS', 34],
