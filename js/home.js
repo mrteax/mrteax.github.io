@@ -272,42 +272,6 @@
 
     const ambient = h < 6 ? 'night' : h < 12 ? 'morning' : h < 18 ? 'afternoon' : h < 22 ? 'evening' : 'night';
     document.body.classList.add(ambient);
-
-    // ---- Weather-aware quip (reuses the visitor-map IP geolocation) ----
-    let weatherDone = false;
-    function weatherQuip(t, code, city) {
-      t = Math.round(t);
-      const C = city ? city + ' ' : '';
-      let cond;
-      if (code <= 1) cond = '大晴天 ☀️';
-      else if (code <= 3) cond = '阴天 ☁️';
-      else if (code === 45 || code === 48) cond = '有雾 🌫️';
-      else if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) cond = '在下雨 🌧️';
-      else if ((code >= 71 && code <= 77) || code === 85 || code === 86) cond = '在下雪 ❄️';
-      else if (code >= 95) cond = '打雷下雨 ⛈️';
-      else cond = '天气一般';
-      let tail;
-      if (t >= 33) tail = '，热到融化，空调和西瓜走起 🥵';
-      else if (t >= 28) tail = '，有点热，短袖安排上';
-      else if (t <= 3) tail = '，冷到原地结冰，秋裤别省 🥶';
-      else if (t <= 12) tail = '，降温了，多穿件别硬撑';
-      else tail = rnd(['，体感刚刚好', '，适合出门浪一圈', '，温度还算给面子']);
-      return `${C}现在 ${t}°，${cond}${tail}`;
-    }
-    async function fetchWeather(geo) {
-      if (weatherDone || !geo || geo.lat == null) return;
-      weatherDone = true;
-      try {
-        const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${geo.lat}&longitude=${geo.lon}&current=temperature_2m,weather_code&timezone=auto`);
-        const d = await r.json();
-        const cur = d && d.current;
-        if (cur && cur.temperature_2m != null && greetSub) {
-          greetSub.textContent = weatherQuip(cur.temperature_2m, cur.weather_code, geo.city);
-        }
-      } catch (e) { weatherDone = false; }
-    }
-    try { const g = sessionStorage.getItem('teax_geo'); if (g) fetchWeather(JSON.parse(g)); } catch (e) {}
-    window.addEventListener('teax:geo', e => fetchWeather(e.detail));
   }
 
   // ===== Daily item detail modal =====
