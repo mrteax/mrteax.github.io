@@ -132,7 +132,12 @@
 
   document.addEventListener('DOMContentLoaded', async () => {
     ensureFavicon();
-    document.documentElement.dataset.theme = document.documentElement.dataset.theme || 'light';
+    const pageHasThemeInitializer = document.getElementById('themeToggle')
+      && document.documentElement.dataset.theme;
+    if (!pageHasThemeInitializer) {
+      document.documentElement.dataset.theme = localStorage.getItem('theme')
+        || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    }
     await preparePackLogo();
     enhanceNavHome();
     enhanceBrandIcons();

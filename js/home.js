@@ -178,7 +178,7 @@
     fillAiForm();
     aiModal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
-    setTimeout(() => document.getElementById('aiUsedInput')?.focus(), 0);
+    setTimeout(() => document.getElementById('aiProviderInput')?.focus(), 0);
   }
   function closeAiModal() {
     if (!aiModal) return;
@@ -194,6 +194,7 @@
     });
     document.getElementById('aiUsageClose').addEventListener('click', closeAiModal);
     aiModal.addEventListener('click', e => { if (e.target === aiModal) closeAiModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAiModal(); });
     document.getElementById('aiUsageClear').addEventListener('click', () => {
       localStorage.removeItem(AI_KEY);
       renderAiUsage();
@@ -497,9 +498,16 @@
 
   if (quoteBox) {
     showQuote(quoteIdx);
-    quoteBox.addEventListener('click', () => {
+    const nextQuote = () => {
       quoteIdx = (quoteIdx + 1) % QUOTES.length;
       showQuote(quoteIdx);
+    };
+    quoteBox.addEventListener('click', nextQuote);
+    quoteBox.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        nextQuote();
+      }
     });
   }
 
