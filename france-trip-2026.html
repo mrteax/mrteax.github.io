@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2026 国庆法国全家自由行完整攻略：上海往返机票方案、TGV 铁路、逐日行程、必须提前预订清单、老人小孩专项提示、地图快捷跳转">
+  <title>法国全家行攻略 2026.09.25–10.07 · Tea X</title>
+  <link rel="icon" href="/pack-preview.png" type="image/png">
+  <link rel="stylesheet" href="/css/theme.css">
+  <style>
+    :root {
+      --bg: var(--pack-bg);
+      --card: var(--pack-surface);
+      --card2: var(--pack-surface-2);
+      --ink: var(--pack-text);
+      --muted: var(--pack-text-muted);
+      --faint: var(--pack-text-faint);
+      --line: var(--pack-line);
+      --accent: var(--pack-accent);
+      --red: var(--pack-accent-2);
+      --shadow: var(--pack-shadow);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 18px 72px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .topbar a {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 34px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      margin-bottom: 16px;
+      background: var(--card2);
+      border: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(30px, 5.4vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -.04em;
+    }
+
+    .hero p {
+      max-width: 840px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
+    .chip {
+      padding: 7px 12px;
+      background: var(--card2);
+      border: 1px solid var(--line);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 18px;
+      align-self: start;
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    .toc strong { display: block; margin-bottom: 10px; }
+
+    .toc a {
+      display: block;
+      padding: 7px 10px;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .toc a:hover { color: var(--ink); background: var(--card2); }
+
+    main { display: grid; gap: 18px; }
+
+    .card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 25px;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+    }
+
+    h3 { margin: 24px 0 8px; font-size: 17px; }
+    h4 { margin: 16px 0 6px; font-size: 15px; color: var(--muted); }
+    p { margin: 8px 0; }
+    ul, ol { margin: 8px 0 0 1.15em; padding: 0; }
+    li { margin: 5px 0; }
+    .lead { color: var(--muted); margin-bottom: 4px; }
+
+    .callouts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+
+    .callout {
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: var(--card2);
+    }
+
+    .callout strong { display: block; margin-bottom: 6px; }
+    .callout p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      background: var(--card);
+      margin-top: 10px;
+    }
+
+    table { width: 100%; min-width: 720px; border-collapse: collapse; }
+
+    th, td {
+      padding: 11px 13px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th { background: var(--card2); font-weight: 600; white-space: nowrap; }
+    tr:last-child td { border-bottom: 0; }
+    td.nowrap { white-space: nowrap; }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 12px;
+      border: 1px solid var(--line);
+      background: var(--card2);
+      white-space: nowrap;
+    }
+
+    .tag-p0 { color: var(--red); border-color: var(--red); }
+    .tag-p1 { color: var(--ink); }
+
+    .warn {
+      padding: 14px 16px;
+      margin-top: 12px;
+      color: var(--ink);
+      background: var(--pack-danger-soft);
+      border: 1px solid var(--red);
+    }
+
+    .note {
+      padding: 14px 16px;
+      margin-top: 12px;
+      background: var(--card2);
+      border: 1px solid var(--line);
+    }
+
+    .warn strong, .note strong { display: block; margin-bottom: 4px; }
+
+    /* Booking checklist */
+    .todo { list-style: none; margin: 10px 0 0; padding: 0; }
+
+    .todo li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .todo li:last-child { border-bottom: 0; }
+    .todo input { margin-top: 5px; width: 16px; height: 16px; flex: 0 0 auto; accent-color: var(--red); }
+    .todo label { cursor: pointer; }
+    .todo .why { display: block; color: var(--muted); font-size: 13px; }
+    .todo input:checked + label { color: var(--faint); text-decoration: line-through; }
+    .todo input:checked + label .why { text-decoration: line-through; }
+
+    /* Day timeline */
+    .day {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .day:last-child { border-bottom: 0; padding-bottom: 0; }
+
+    .day-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .day-date { font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
+    .day-city { color: var(--muted); font-size: 14px; }
+
+    .day-badge {
+      padding: 2px 8px;
+      font-size: 12px;
+      border: 1px solid var(--line);
+      background: var(--card2);
+    }
+
+    .day dl { display: grid; grid-template-columns: 62px minmax(0, 1fr); gap: 4px 12px; margin: 10px 0 0; }
+    .day dt { color: var(--faint); font-size: 13px; font-variant-numeric: tabular-nums; }
+    .day dd { margin: 0; font-size: 14px; }
+
+    /* Google Maps links */
+    a.gmap {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--muted);
+      white-space: nowrap;
+    }
+
+    a.gmap::after { content: " ↗"; font-size: 11px; color: var(--faint); }
+    a.gmap:hover { border-bottom-color: var(--red); color: var(--red); }
+
+    .link {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--muted);
+      word-break: break-all;
+    }
+
+    .link:hover { color: var(--red); border-bottom-color: var(--red); }
+
+    footer { margin-top: 24px; color: var(--muted); text-align: center; font-size: 13px; }
+
+    .updated { color: var(--faint); font-size: 13px; margin-top: 4px; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc { position: static; }
+      .callouts { grid-template-columns: 1fr; }
+      .hero { padding: 24px 20px; }
+      .card { padding: 20px 16px; }
+      .day dl { grid-template-columns: 1fr; gap: 2px; }
+      .day dt { margin-top: 8px; }
+    }
+
+    @media print {
+      body { background: #fff; color: #000; }
+      .page { max-width: none; padding: 0; }
+      .topbar, .toc { display: none; }
+      .layout { display: block; }
+      .hero, .card, .callout { box-shadow: none; }
+      .card { break-inside: avoid; margin-bottom: 16px; }
+      a.gmap::after { content: ""; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="topbar">
+      <a href="/portal.html">← 返回 Tea X</a>
+      <a href="/france-schengen-2026.html">签证作战包 →</a>
+    </nav>
+
+    <section class="hero">
+      <div class="eyebrow">🇫🇷 France Family Trip · 2026 国庆</div>
+      <h1>法国全家行完整攻略</h1>
+      <p>2026.09.25 上海出发 → 2026.10.07 落地上海。5 人：你 + 太太 + 一年级小孩 + 两位老人。纯法国：巴黎 → 卢瓦尔河谷 → 普罗旺斯 → 蔚蓝海岸。这一页把「必须提前订的东西」按截止时间排在最前面，后面才是逐日行程。</p>
+      <div class="chips">
+        <span class="chip">11 晚 / 12 个白天</span>
+        <span class="chip">4 个落脚点</span>
+        <span class="chip">老人 70+ · 小孩 7 岁</span>
+        <span class="chip">欧洲经验：仅意大利</span>
+        <span class="chip">签证：申请中</span>
+      </div>
+      <p class="updated">所有地名都可以点，直接跳 Google 地图。价格与班次以官网为准，出发前一周复核一次。</p>
+    </section>
+
+    <div class="layout">
+      <aside class="toc">
+        <strong>目录</strong>
+        <a href="#tldr">0. 一分钟版</a>
+        <a href="#booking">1. 高优预订清单 ⚠️</a>
+        <a href="#flights">2. 机票方案</a>
+        <a href="#rail">3. 法国境内交通</a>
+        <a href="#days">4. 逐日行程</a>
+        <a href="#family">5. 老人 + 小孩专项</a>
+        <a href="#tickets">6. 门票与通票</a>
+        <a href="#ground">7. 落地实务</a>
+        <a href="#safety">8. 安全与应急</a>
+        <a href="#diff">9. 与签证行程单的差异</a>
+        <a href="#pack">10. 打包清单</a>
+      </aside>
+
+      <main>
+        <section class="card" id="tldr">
+          <h2>0. 一分钟版</h2>
+          <p class="lead">如果你只看一段，就看这段。</p>
+          <div class="callouts">
+            <div class="callout">
+              <strong>路线</strong>
+              <p>巴黎 5 晚 → 图尔/昂布瓦斯 2 晚 → 阿维尼翁 2 晚 → 尼斯 2 晚 → 10.6 尼斯经巴黎回上海。单向推进，不折返。</p>
+            </div>
+            <div class="callout">
+              <strong>返程的硬约束</strong>
+              <p>要 10.7 落地上海，就必须 10.6 从巴黎起飞。签证行程单上的「10.6 住巴黎 + 10.7 飞」会让你 10.8 才到，得改。</p>
+            </div>
+            <div class="callout">
+              <strong>最该马上做的三件事</strong>
+              <p>① 出发/返程机票（国庆返程票紧）② 巴黎 9.25 当晚的房（不是 9.26）③ 埃菲尔铁塔 + 卢浮宫 + 凡尔赛的定时票。</p>
+            </div>
+            <div class="callout">
+              <strong>最容易踩的坑</strong>
+              <p>卢浮宫周二闭馆、奥赛周一闭馆、凡尔赛周一闭馆。9.29 正好是周二，所以那天安排凡尔赛，卢浮宫放在 9.28 周一。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="flights">
+          <h2>2. 机票方案</h2>
+          <p class="lead">法航与东航 2026 夏秋航季（3.29–10.24）官方时刻，出发日 9.25 是周五、返程日 10.6 是周二，这两个星期几决定了可选航班。</p>
+
+          <h3>去程：9.25（周五）上海 → 巴黎</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>航班</th><th>时刻</th><th>时长 / 机型</th><th>点评</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap"><strong>东航 MU569</strong><br><span class="tag tag-p0">推荐</span></td>
+                  <td class="nowrap">PVG 12:55 → CDG 19:15<br>当天到</td>
+                  <td class="nowrap">约 12h20<br>777-300ER</td>
+                  <td><strong>白天飞，当天晚上睡在床上。</strong>周二/周四至周日运营，9.25 周五有。对老人和小孩是决定性优势：不用红眼航班，落地后直接洗澡睡觉，第二天自然醒就基本对上巴黎时间。中文机组、中餐。</td>
+                </tr>
+                <tr>
+                  <td class="nowrap"><strong>法航 AF111</strong></td>
+                  <td class="nowrap">PVG 21:25 → CDG 05:50<br>次日到</td>
+                  <td class="nowrap">约 14h25<br>777-300ER</td>
+                  <td>每日运营。红眼航班，9.26 清晨 05:50 落地，加上入境采集生物信息的排队，走出机场大概 07:30。换来 9.26 一整个白天，但全家会很累。<strong>与你签证行程单上的「9.25 机上 / 9.26 抵达」完全一致。</strong>绕开俄罗斯领空，比东航多飞 2 小时。</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">东航 MU553</td>
+                  <td class="nowrap">PVG 00:15 → CDG 06:30<br>当天到</td>
+                  <td class="nowrap">约 12h15</td>
+                  <td>每日。9.25 的 00:15 起飞意味着 9.24 晚就得出门，等于多赚一个白天，但半夜出发带老人小孩太折腾。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="warn">
+            <strong>⚠️ 定去程票之前，先看签证上的 valid from 日期</strong>
+            MU569 是 9.25 当天落地巴黎。如果领馆按行程单签成「9.26 起生效」，你 9.25 落地会被拒绝入境，而且从 2026.4.10 起承运人有义务在上海登机口就做预检，柜台可能直接不让你上飞机。所以：签证下来后先看有效期起始日，如果是 9.25 就订 MU569，如果是 9.26 就订 AF111。
+          </div>
+
+          <h3>返程：10.6（周二）巴黎 → 上海</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>航班</th><th>时刻</th><th>落地上海</th><th>点评</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap"><strong>东航 MU570</strong><br><span class="tag tag-p0">推荐</span></td>
+                  <td class="nowrap">CDG 21:20 起飞</td>
+                  <td class="nowrap">10.7 14:40</td>
+                  <td>周二/周四至周日运营，10.6 周二有。约 11h20，是三个选项里最短的。21:20 起飞意味着 10.6 一整天还能留在尼斯，下午再飞回巴黎转机，时间很宽裕。</td>
+                </tr>
+                <tr>
+                  <td class="nowrap"><strong>法航 AF116</strong></td>
+                  <td class="nowrap">CDG 23:20 起飞</td>
+                  <td class="nowrap">10.7 17:45</td>
+                  <td>每日。起飞最晚、缓冲最大，但要在戴高乐机场耗到半夜，带老人小孩不轻松。</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">东航 MU554</td>
+                  <td class="nowrap">CDG 13:25 起飞</td>
+                  <td class="nowrap">10.7 07:00</td>
+                  <td>每日。落地最早、白天到家最舒服，但 13:25 起飞就必须 10.5 晚上先飞回巴黎住机场附近，等于砍掉尼斯最后半天。</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">法航 AF112</td>
+                  <td class="nowrap">CDG 14:15 起飞</td>
+                  <td class="nowrap">次日 08:25</td>
+                  <td><strong>10.6 不可用</strong>：只在周一/周三/周五运营（9.11–10.14 加班），10.6 是周二。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>关键：尼斯 → 巴黎那一段，一定要和长途放在同一张票上</h3>
+          <p>10.6 你们在尼斯，要先飞到巴黎再飞上海。<strong>务必买成「尼斯—巴黎—上海」的联程票（一个订单、一张行程单），不要分开买两张。</strong>好处有三个：</p>
+          <ul>
+            <li>行李从尼斯直挂上海，不用在戴高乐提出来重新托运——带 5 个人的行李，这一条就值回票价。</li>
+            <li>国内段延误导致误了长途，航司负责免费改签下一班；分开买则视为你自己的责任，要重新买全价票。</li>
+            <li>转机时间由系统保证符合最短衔接标准，不会买到接不上的组合。</li>
+          </ul>
+          <p>怎么买：东航官网/App 或法航官网选「多城市 / Multi-city」，去程填 <strong>PVG → CDG</strong>，返程填 <strong>NCE → PVG</strong>，系统会自动配上 NCE→CDG 的衔接段（东航返程会用法航或荷航的代码共享航班执飞尼斯—巴黎）。也可以直接让机票代理按这个结构出票。</p>
+          <div class="note">
+            <strong>如果联程票太贵或订不到</strong>
+            退一步的稳妥方案：10.5 傍晚自己买一张尼斯→巴黎的机票（法航、easyJet、Transavia 都飞，约 1h30），住一晚戴高乐机场附近的酒店，10.6 白天在巴黎补购物/退税，晚上从容登机。多花一晚酒店，换掉全部误机风险。
+          </div>
+
+          <h3>订票渠道</h3>
+          <ul>
+            <li><strong>东航</strong>：<a class="link" href="https://www.ceair.com" target="_blank" rel="noopener">ceair.com</a> 官网或 App，支持国内银行卡、支付宝、微信。</li>
+            <li><strong>法航</strong>：<a class="link" href="https://www.airfrance.com.cn" target="_blank" rel="noopener">airfrance.com.cn</a> 中文站。</li>
+            <li><strong>比价</strong>：携程 / 飞猪 / Google Flights。国庆返程（10.6–10.8）是全年最贵最紧的时段之一，<strong>越早锁定越好，别等签证下来</strong>——买可改签的舱位，或者用航司的「持有价格」服务。</li>
+            <li>5 个人建议一个订单出票，方便选座在一起；小孩满 2 岁按成人票价的儿童票，老人无特殊折扣。</li>
+          </ul>
+        </section>
+
+        <section class="card" id="rail">
+          <h2>3. 法国境内交通</h2>
+          <p class="lead">三段长途火车 + 一段国内飞机。法国高铁 TGV 全部强制订座，票越早越便宜，临期涨得非常凶。</p>
+
+          <h3>三段 TGV</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>日期</th><th>区间</th><th>说明</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">9.30 上午</td>
+                  <td class="nowrap">巴黎 <a class="gmap" data-q="Gare Montparnasse, Paris">蒙帕纳斯站</a><br>→ <a class="gmap" data-q="Gare de Saint-Pierre-des-Corps, Tours">图尔 / 圣皮埃尔德科尔</a></td>
+                  <td>最短最轻松的一段，约 1 小时。班次很多，选 09:00–10:30 之间的，到了刚好吃午饭。</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">10.2 上午</td>
+                  <td class="nowrap">图尔 → <a class="gmap" data-q="Gare d'Avignon TGV">阿维尼翁 TGV 站</a></td>
+                  <td>这是全程最麻烦的一段，多数班次要在 <a class="gmap" data-q="Gare de Massy TGV">马西 TGV 站</a> 换乘（同站台区换车，不进巴黎市区），全程 4 小时上下。<strong>务必优先找 Massy 换乘的方案，避开「回巴黎蒙帕纳斯站→坐地铁横穿市区→里昂站」那种走法</strong>：带 5 人行李在巴黎地铁换站是这趟行程里最糟糕的两小时。</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">10.4 上午</td>
+                  <td class="nowrap">阿维尼翁 → <a class="gmap" data-q="Gare de Nice-Ville">尼斯站</a></td>
+                  <td>有直达 TGV，约 3.5 小时，沿途经马赛、土伦、戛纳、昂蒂布，后半段贴着地中海开，是很好看的一段。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>购票</h3>
+          <ul>
+            <li><strong>官方渠道</strong>：<a class="link" href="https://www.sncf-connect.com" target="_blank" rel="noopener">SNCF Connect</a>（官网 + App，可切英文）。这是最便宜的，没有手续费。</li>
+            <li><strong>备用渠道</strong>：<a class="link" href="https://www.thetrainline.com" target="_blank" rel="noopener">Trainline</a> 或 <a class="link" href="https://www.raileurope.com" target="_blank" rel="noopener">Rail Europe</a>，界面友好、对国内信用卡更宽容，但会收几欧手续费。国内发行的 Visa/Mastercard 在 SNCF Connect 偶尔会被 3-D 验证卡住，这时换 Trainline 即可。</li>
+            <li><strong>坐票原则</strong>：3 小时以上的两段（图尔→阿维尼翁、阿维尼翁→尼斯）建议买一等座。差价通常不大，但座位是 2+1 布局、过道宽、行李架更多、车厢安静，对老人差别明显。1 小时的巴黎→图尔买二等就够。</li>
+            <li>买完立刻把电子票存进手机相册 + 打印一份纸质，法国车站进站要扫码，网络不稳时纸质救命。</li>
+          </ul>
+
+          <div class="warn">
+            <strong>⚠️ TGV 有行李件数限制，且真的会查</strong>
+            SNCF 规定每位乘客最多两件大件行李 + 一件随身小包，超出可被罚款。5 个人理论上可以带 10 件大箱，够用，但请注意<strong>大件必须放在车厢两头/座位上方的行李架上，法国高铁没有专门的行李车厢，也没人帮你搬</strong>。建议：老人只带一个 20 寸登机箱自己拖，大箱由你和太太负责，全家总箱数控制在 4 个大箱以内，留一个空箱位买东西。
+          </div>
+
+          <h3>10.6 尼斯 → 巴黎</h3>
+          <p>飞机，约 1h30，法航从 <a class="gmap" data-q="Aéroport Nice Côte d'Azur">尼斯蔚蓝海岸机场</a> 到戴高乐每天多班。已包含在联程票里。尼斯机场离市区很近，2 号有轨电车从老城/港口方向直达航站楼，约 30 分钟，是全欧洲最方便的机场之一。国内段建议提前 2 小时到。</p>
+
+          <h3>机场 ↔ 巴黎市区</h3>
+          <ul>
+            <li><strong>5 个人 + 行李，直接叫车，不要坐 RER B。</strong>戴高乐到巴黎有政府规定的出租车固定价：到右岸和左岸各一个固定金额，不打表、不看堵车。5 人需要 van（7 座），可以在出租车候车区直接要求大车，或提前在网上订好中文司机接机（携程/飞猪的「接送机」频道，或 Get Transfer、Welcome Pickups）。</li>
+            <li>RER B 郊区火车便宜快，但要走很多台阶、常有扒手、还要在北站一带换乘，带老人小孩加大箱子不值得。</li>
+          </ul>
+        </section>
+
+        <section class="card" id="diff">
+          <h2>9. 与签证行程单的差异说明</h2>
+          <p class="lead">你递签用的行程单（见<a class="link" href="/france-schengen-2026.html">签证作战包</a>）和这份实操攻略有几处不同，先说清楚，免得入境时自己心里没底。</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>项目</th><th>签证行程单</th><th>实操建议</th><th>要紧吗</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>返程</td>
+                  <td>10.6 住巴黎，10.7 飞上海</td>
+                  <td>10.6 晚从巴黎起飞，10.7 落地上海</td>
+                  <td><strong>要改</strong>。按行程单飞会 10.8 才到上海，和你「10.7 必须回来」冲突。提前回国不违反任何签证规定。</td>
+                </tr>
+                <tr>
+                  <td>抵达日</td>
+                  <td>9.26 抵达巴黎</td>
+                  <td>若签证 9.25 起生效，改乘白天航班 9.25 抵达</td>
+                  <td>看签证有效期起始日。落在有效期内就没问题。</td>
+                </tr>
+                <tr>
+                  <td>巴黎住宿</td>
+                  <td>9.26–9.29（4 晚）</td>
+                  <td>9.25–9.29（5 晚）</td>
+                  <td>不要紧，多住一晚只需重订酒店。</td>
+                </tr>
+                <tr>
+                  <td>最后一晚</td>
+                  <td>10.6 巴黎</td>
+                  <td>取消，10.5 住尼斯，10.6 直接走</td>
+                  <td>不要紧。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="note">
+            <strong>原则</strong>
+            申根签证只在意两件事：不早于生效日入境、不晚于失效日离境、不超过允许停留天数。行程内部怎么调整、提前几天回国，都不影响。但<strong>务必把最终版的机票和酒店订单打印一份放随身包</strong>，边检偶尔会问，拿得出来就是几十秒的事。
+          </div>
+        </section>
+
+        <section class="card" id="pack">
+          <h2>10. 打包清单</h2>
+          <h3>证件包（随身，不托运）</h3>
+          <ul>
+            <li>护照（含签证页）+ 全家护照首页复印件一套</li>
+            <li>机票行程单、全部酒店订单、火车票——各打印一份纸质</li>
+            <li>申根保险单（保额 ≥ 3 万欧的那份），纸质 + 电子</li>
+            <li>老人的常用药清单（中英文对照，写通用名不写商品名）+ 病历/处方复印件</li>
+            <li>小孩的出生证明或户口本复印件（同一家庭出行的佐证）</li>
+            <li>2 张证件照备用</li>
+          </ul>
+
+          <h3>电子与充电</h3>
+          <ul>
+            <li>法国是 <strong>230V / 法标 E 型插座</strong>（圆两脚带接地孔）。国标插头插不进去，必须带转换头，按人头带，5 个人至少 3 个。</li>
+            <li>一个带多口 USB 的排插，一个转换头就够全家充电。</li>
+            <li>充电宝按航司规定随身，不能托运。</li>
+            <li>eSIM 或流量包出发前在国内就装好激活（详见落地实务）。</li>
+          </ul>
+
+          <h3>衣物（9 月末 10 月初）</h3>
+          <ul>
+            <li>巴黎和卢瓦尔白天 18–21℃、早晚 10–12℃，会下雨；普罗旺斯和尼斯白天还有 22–25℃，太阳很晒。<strong>南北温差就是这趟行程最容易穿错的地方</strong>：按「洋葱式」带，薄羽绒/夹棉外套 1 件 + 抓绒或薄毛衣 + 长袖 T 恤若干。</li>
+            <li>轻便折叠雨伞或带帽冲锋衣，巴黎秋雨说来就来。</li>
+            <li><strong>鞋是重点</strong>：巴黎和南法老城全是石板路，凹凸不平。老人必须穿有包裹和缓冲的运动鞋，别穿新鞋、别穿皮鞋硬底鞋。每人一双主鞋 + 一双备用。</li>
+            <li>尼斯的海还能下水（水温 21–22℃），想游泳就带泳衣；尼斯是鹅卵石海滩，需要沙滩鞋。</li>
+            <li>太阳镜、帽子、防晒霜——南法 10 月紫外线依然可观。</li>
+          </ul>
+
+          <h3>别忘了的小东西</h3>
+          <ul>
+            <li><strong>折叠电热水壶或保温杯</strong>：法国酒店房间普遍不提供热水壶，老人要喝热水会很不方便。国内 220V 的小壶在法国 230V 可用（功率略高一点，问题不大），但要配转换头，且别用超过 1500W 的大功率壶。</li>
+            <li>常用药：感冒药、退烧药（大小两份剂量）、止泻药、创可贴、晕车药、老人的降压/降糖药按整个行程 + 5 天余量带。</li>
+            <li>小孩：水壶、零食、一两样能在火车上安静玩的东西（贴纸书、拼图卡）。三段火车合计 8 小时以上，这个很有用。</li>
+            <li>折叠购物袋 2 个（法国超市不免费给袋子）+ 一个空的软行李袋（回程装东西）。</li>
+            <li>湿巾、免洗洗手液、纸巾（法国公共厕所常不备纸）。</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <footer>Tea X · France Family Trip 2026 · 不含任何个人隐私信息</footer>
+  </div>
+
+  <script>
+    // Turn every [data-q] into a Google Maps search link.
+    document.querySelectorAll('a.gmap[data-q]').forEach(function (el) {
+      el.href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(el.dataset.q);
+      el.target = '_blank';
+      el.rel = 'noopener';
+      if (!el.title) el.title = el.dataset.q;
+    });
+
+    // Persist booking-checklist state locally.
+    var KEY = 'teax-fr-trip-2026';
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { saved = {}; }
+    document.querySelectorAll('.todo input[type="checkbox"][id]').forEach(function (box) {
+      box.checked = !!saved[box.id];
+      box.addEventListener('change', function () {
+        saved[box.id] = box.checked;
+        try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) { /* ignore */ }
+      });
+    });
+  </script>
+  <script src="/js/theme-icons.js"></script>
+</body>
+</html>
