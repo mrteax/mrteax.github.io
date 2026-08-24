@@ -2,8 +2,8 @@
 <html lang="zh-CN" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Tea X 旅行：行程攻略、签证材料、预订清单">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tea X 旅行：按大洲浏览国家旅行内容">
   <title>旅行 · Tea X</title>
   <link rel="icon" href="/pack-preview.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,181 +11,73 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/themes.css">
   <link rel="stylesheet" href="/css/theme.css">
-  <style>
-    .trip-hero {
-      max-width: 1100px;
-      margin: 16px auto 0;
-      padding: 22px 20px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-    }
-
-    .trip-hero .eyebrow {
-      font-size: .72rem;
-      color: var(--text-3);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .trip-hero h1 {
-      margin: 6px 0 0;
-      font-size: 1.5rem;
-      line-height: 1.25;
-    }
-
-    .countdown {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      margin-top: 12px;
-      flex-wrap: wrap;
-    }
-
-    .countdown-num {
-      font-family: var(--mono);
-      font-size: 2.6rem;
-      font-weight: 500;
-      line-height: 1;
-      color: var(--accent);
-    }
-
-    .countdown-label { font-size: .85rem; color: var(--text-2); }
-
-    .trip-meta {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
-
-    .trip-meta span {
-      padding: 3px 10px;
-      border-radius: 100px;
-      font-size: .72rem;
-      background: var(--accent-bg);
-      color: var(--accent);
-    }
-
-    .section-head {
-      max-width: 1100px;
-      margin: 26px auto 0;
-      padding: 0 16px;
-      font-size: .8rem;
-      color: var(--text-3);
-    }
-
-    a.item-card {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .card-status {
-      float: right;
-      padding: 2px 8px;
-      border-radius: 100px;
-      font-size: .68rem;
-      background: var(--accent-bg);
-      color: var(--accent);
-      font-weight: 400;
-    }
-  </style>
+  <link rel="stylesheet" href="/css/travel.css">
 </head>
 <body>
   <nav class="nav">
     <a href="/portal.html" class="nav-home">🍵 Tea X</a>
     <span class="nav-title">✈️ 旅行</span>
-    <button class="theme-btn" id="themeToggle">🌙</button>
+    <button class="theme-btn" id="themeToggle" aria-label="切换主题">🌙</button>
   </nav>
 
-  <section class="trip-hero">
-    <div class="eyebrow">Next trip</div>
-    <h1>🇫🇷 法国全家行</h1>
-    <div class="countdown">
-      <span class="countdown-num" id="cdNum">—</span>
-      <span class="countdown-label" id="cdLabel">正在计算…</span>
-    </div>
-    <div class="trip-meta">
-      <span>2026.09.25 – 10.07</span>
-      <span>巴黎 5 晚</span>
-      <span>阿维尼翁 3 晚</span>
-      <span>尼斯 3 晚</span>
-      <span>5 人 · 含老人与小孩</span>
-    </div>
-  </section>
+  <main class="travel-shell">
+    <section class="travel-hero">
+      <div class="eyebrow">Explore the world</div>
+      <h1>旅行</h1>
+      <p>从国家入口开始，集中查看签证、预订与逐日行程。</p>
+    </section>
 
-  <div class="section-head">行程手册</div>
-  <main class="grid">
-    <a class="item-card" href="/france-trip-2026.html">
-      <div class="card-color" style="background:linear-gradient(90deg,#0055A4 0 33%,#fff 33% 66%,#EF4135 66%)"></div>
-      <div class="card-body">
-        <div class="card-emoji">🗼</div>
-        <div class="card-name">法国行程攻略 <span class="card-status" id="stTrip">筹备中</span></div>
-        <div class="card-zh">巴黎 · 普罗旺斯 · 蔚蓝海岸</div>
-        <p class="card-desc">逐日行程、高优预订清单、机票与 TGV 方案、门票价格、老人与小孩专项、落地实务与应急联系方式。地名可直接跳转 Google 地图。</p>
-        <div class="card-footer">
-          <span class="card-badge">12 天</span>
-          <span class="card-badge">10 个章节</span>
-          <span class="card-badge">地图直达</span>
-        </div>
-      </div>
-    </a>
+    <div class="continent-filters" role="group" aria-label="按大洲筛选">
+      <button class="continent-tag active" type="button" data-filter="all">全部</button>
+      <button class="continent-tag" type="button" data-filter="europe">欧洲</button>
+      <button class="continent-tag" type="button" data-filter="asia">亚洲</button>
+      <button class="continent-tag" type="button" data-filter="north-america">北美洲</button>
+      <button class="continent-tag" type="button" data-filter="south-america">南美洲</button>
+      <button class="continent-tag" type="button" data-filter="africa">非洲</button>
+      <button class="continent-tag" type="button" data-filter="oceania">大洋洲</button>
+    </div>
 
-    <a class="item-card" href="/france-schengen-2026.html">
-      <div class="card-color" style="background:var(--text-3)"></div>
-      <div class="card-body">
-        <div class="card-emoji">🛂</div>
-        <div class="card-name">法国申根签证作战包</div>
-        <div class="card-zh">上海递签 · 多次入境</div>
-        <p class="card-desc">材料分袋清单、亲属关系证明、预订策略、英文模板（多次入境说明信与担保信）、递签当天的材料排序。</p>
-        <div class="card-footer">
-          <span class="card-badge">材料清单</span>
-          <span class="card-badge">英文模板</span>
-        </div>
-      </div>
-    </a>
+    <div class="country-grid" id="countryGrid">
+      <a class="content-card country-card" data-continent="europe" href="/france.html">
+        <span class="card-emoji" aria-hidden="true">🇫🇷</span>
+        <h2>法国</h2>
+        <p>巴黎 · 普罗旺斯 · 蔚蓝海岸</p>
+        <span class="card-badge">3 个页面</span>
+      </a>
+    </div>
+    <div class="empty-state" id="emptyState" role="status">这个大洲还没有内容</div>
   </main>
 
-  <footer class="footer">Tea X · 旅行 · 出发前一周记得复核票价与班次</footer>
-
+  <footer class="footer">Tea X · 旅行</footer>
   <script>
     (() => {
       const html = document.documentElement;
-      const saved = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
-      html.dataset.theme = saved;
-      const tb = document.getElementById('themeToggle');
-      tb.textContent = saved === 'dark' ? '☀️' : '🌙';
-      tb.addEventListener('click', () => {
-        const n = html.dataset.theme === 'dark' ? 'light' : 'dark';
-        html.dataset.theme = n;
-        localStorage.setItem('theme', n);
-        tb.textContent = n === 'dark' ? '☀️' : '🌙';
+      const savedTheme = localStorage.getItem('theme') ||
+        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const themeToggle = document.getElementById('themeToggle');
+      html.dataset.theme = savedTheme;
+      themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+      themeToggle.addEventListener('click', () => {
+        const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+        html.dataset.theme = next;
+        localStorage.setItem('theme', next);
+        themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
       });
 
-      const DEPART = new Date(2026, 8, 25);
-      const RETURN = new Date(2026, 9, 7);
-      const DAY = 86400000;
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      const num = document.getElementById('cdNum');
-      const label = document.getElementById('cdLabel');
-      const status = document.getElementById('stTrip');
-
-      if (today < DEPART) {
-        num.textContent = Math.round((DEPART - today) / DAY);
-        label.textContent = '天后从上海出发';
-        status.textContent = '筹备中';
-      } else if (today <= RETURN) {
-        num.textContent = 'D' + (Math.round((today - DEPART) / DAY) + 1);
-        label.textContent = '旅行中 · 一路顺风';
-        status.textContent = '进行中';
-      } else {
-        num.textContent = '✓';
-        label.textContent = '已结束';
-        status.textContent = '已结束';
-      }
+      const tags = document.querySelectorAll('.continent-tag');
+      const cards = document.querySelectorAll('.country-card');
+      const empty = document.getElementById('emptyState');
+      tags.forEach(tag => tag.addEventListener('click', () => {
+        const filter = tag.dataset.filter;
+        tags.forEach(item => item.classList.toggle('active', item === tag));
+        let visible = 0;
+        cards.forEach(card => {
+          const show = filter === 'all' || card.dataset.continent === filter;
+          card.hidden = !show;
+          if (show) visible++;
+        });
+        empty.style.display = visible ? 'none' : 'block';
+      }));
     })();
   </script>
   <script src="/js/theme-icons.js"></script>

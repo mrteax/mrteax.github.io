@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="法国旅行 2026：签证准备、行前规划与逐日行程">
+  <title>法国旅行 2026 · Tea X</title>
+  <link rel="icon" href="/pack-preview.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/themes.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/travel.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="/travel.html" class="nav-home">← 旅行</a>
+    <span class="nav-title">🇫🇷 法国</span>
+    <button class="theme-btn" id="themeToggle" aria-label="切换主题">🌙</button>
+  </nav>
+
+  <main class="travel-shell">
+    <section class="travel-hero">
+      <div class="eyebrow">France · 2026</div>
+      <h1>法国旅行</h1>
+      <p>巴黎 → 普罗旺斯 → 蔚蓝海岸</p>
+      <div class="trip-meta">
+        <span>2026.09.25 – 10.07</span>
+        <span id="tripCountdown">正在计算出发日期…</span>
+      </div>
+    </section>
+
+    <section aria-labelledby="contentTitle">
+      <h2 id="contentTitle" class="muted">旅行内容</h2>
+      <div class="content-grid">
+        <a class="content-card" href="/france-visa-2026.html">
+          <span class="card-emoji" aria-hidden="true">🛂</span>
+          <h2>签证准备</h2>
+          <p>申请步骤、匿名身份材料清单、英文模板与递签排序。</p>
+        </a>
+        <a class="content-card" href="/france-planning-2026.html">
+          <span class="card-emoji" aria-hidden="true">✅</span>
+          <h2>行前规划</h2>
+          <p>机票、火车、住宿、门票、保险与官方预约入口。</p>
+        </a>
+        <a class="content-card" href="/france-itinerary-2026.html">
+          <span class="card-emoji" aria-hidden="true">🗓️</span>
+          <h2>行程安排</h2>
+          <p>按日期查看每天路线，并直接打开 Google Maps 定位。</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Tea X · France 2026</footer>
+  <script>
+    (() => {
+      const html = document.documentElement;
+      const savedTheme = localStorage.getItem('theme') ||
+        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const themeToggle = document.getElementById('themeToggle');
+      html.dataset.theme = savedTheme;
+      themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+      themeToggle.addEventListener('click', () => {
+        const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+        html.dataset.theme = next;
+        localStorage.setItem('theme', next);
+        themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
+      });
+
+      const depart = new Date(2026, 8, 25);
+      const back = new Date(2026, 9, 7);
+      const today = new Date();
+      const DAY = 86400000;
+      const output = document.getElementById('tripCountdown');
+      today.setHours(0, 0, 0, 0);
+      if (today < depart) {
+        output.textContent = `距出发还有 ${Math.round((depart - today) / DAY)} 天`;
+      } else if (today <= back) {
+        output.textContent = '行程进行中';
+      } else {
+        output.textContent = '行程已结束';
+      }
+    })();
+  </script>
+  <script src="/js/theme-icons.js"></script>
+</body>
+</html>
