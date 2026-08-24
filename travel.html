@@ -8,7 +8,7 @@
   <link rel="icon" href="/pack-preview.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/themes.css">
   <link rel="stylesheet" href="/css/theme.css">
   <link rel="stylesheet" href="/css/travel.css">
@@ -28,13 +28,13 @@
     </section>
 
     <div class="continent-filters" role="group" aria-label="按大洲筛选">
-      <button class="continent-tag active" type="button" data-filter="all">全部</button>
-      <button class="continent-tag" type="button" data-filter="europe">欧洲</button>
-      <button class="continent-tag" type="button" data-filter="asia">亚洲</button>
-      <button class="continent-tag" type="button" data-filter="north-america">北美洲</button>
-      <button class="continent-tag" type="button" data-filter="south-america">南美洲</button>
-      <button class="continent-tag" type="button" data-filter="africa">非洲</button>
-      <button class="continent-tag" type="button" data-filter="oceania">大洋洲</button>
+      <button class="continent-tag active" type="button" data-filter="all" aria-pressed="true">全部</button>
+      <button class="continent-tag" type="button" data-filter="europe" aria-pressed="false">欧洲</button>
+      <button class="continent-tag" type="button" data-filter="asia" aria-pressed="false">亚洲</button>
+      <button class="continent-tag" type="button" data-filter="north-america" aria-pressed="false">北美洲</button>
+      <button class="continent-tag" type="button" data-filter="south-america" aria-pressed="false">南美洲</button>
+      <button class="continent-tag" type="button" data-filter="africa" aria-pressed="false">非洲</button>
+      <button class="continent-tag" type="button" data-filter="oceania" aria-pressed="false">大洋洲</button>
     </div>
 
     <div class="country-grid" id="countryGrid">
@@ -51,25 +51,16 @@
   <footer class="footer">Tea X · 旅行</footer>
   <script>
     (() => {
-      const html = document.documentElement;
-      const savedTheme = localStorage.getItem('theme') ||
-        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      const themeToggle = document.getElementById('themeToggle');
-      html.dataset.theme = savedTheme;
-      themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-      themeToggle.addEventListener('click', () => {
-        const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
-        html.dataset.theme = next;
-        localStorage.setItem('theme', next);
-        themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
-      });
-
       const tags = document.querySelectorAll('.continent-tag');
       const cards = document.querySelectorAll('.country-card');
       const empty = document.getElementById('emptyState');
       tags.forEach(tag => tag.addEventListener('click', () => {
         const filter = tag.dataset.filter;
-        tags.forEach(item => item.classList.toggle('active', item === tag));
+        tags.forEach(item => {
+          const selected = item === tag;
+          item.classList.toggle('active', selected);
+          item.setAttribute('aria-pressed', String(selected));
+        });
         let visible = 0;
         cards.forEach(card => {
           const show = filter === 'all' || card.dataset.continent === filter;
@@ -80,6 +71,7 @@
       }));
     })();
   </script>
+  <script src="/js/travel-theme.js"></script>
   <script src="/js/theme-icons.js"></script>
 </body>
 </html>

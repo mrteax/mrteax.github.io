@@ -18,6 +18,7 @@
     <nav class="topbar">
       <a href="/france.html">← 法国</a>
       <a href="/france-planning-2026.html">行前规划与预约 →</a>
+      <button class="theme-btn" id="themeToggle" type="button" aria-label="切换主题">🌙</button>
     </nav>
 
     <section class="travel-hero">
@@ -33,22 +34,23 @@
 
     <section class="page-section" aria-labelledby="daysTitle">
       <h2 id="daysTitle">逐日路线</h2>
+      <div class="notice">预约覆盖：航班、住宿、机场接送、TGV、普罗旺斯包车、所有定时票与行程中建议提前购买的门票均列在行前规划清单。清单末尾另列无需提前预约、可按当日开放状态现场处理的地点。</div>
 
       <section class="day">
         <div class="day-head">
           <span class="day-date">9.25 周五</span>
-          <span class="day-city">上海 → 巴黎</span>
+          <span class="day-city"><a class="map-link" data-q="Shanghai, China">上海</a> → <a class="map-link" data-q="Paris, France">巴黎</a></span>
           <span class="day-badge">飞行日</span>
         </div>
         <dl>
           <dt>上午</dt>
           <dd>提前到达<a class="map-link" data-q="Shanghai Pudong International Airport Terminal 1">浦东机场 T1</a>，完成值机、托运与出境手续。</dd>
           <dt>下午</dt>
-          <dd>飞往巴黎；登机后按目的地时间安排休息和进餐。</dd>
+          <dd>飞往<a class="map-link" data-q="Paris, France">巴黎</a>；登机后按目的地时间安排休息和进餐。</dd>
           <dt>傍晚</dt>
           <dd>抵达<a class="map-link" data-q="Paris Charles de Gaulle Airport Terminal 2E">戴高乐机场 T2E</a>，入境排队按高峰预留充分时间。</dd>
           <dt>夜间</dt>
-          <dd>已预约车辆接机。大型活动可能影响<a class="map-link" data-q="Stade de France, Saint-Denis">法兰西体育场</a>周边道路，直接入住休息。</dd>
+          <dd>按预订确认车辆接机。大型活动可能影响<a class="map-link" data-q="Stade de France, Saint-Denis">法兰西体育场</a>周边道路，直接入住休息。</dd>
         </dl>
         <div class="notice">交通提醒：只使用官方出租车候车区或已确认的接机服务；首晚不再安排景点。</div>
       </section>
@@ -56,12 +58,12 @@
       <section class="day">
         <div class="day-head">
           <span class="day-date">9.26 周六</span>
-          <span class="day-city">凡尔赛宫</span>
+          <span class="day-city"><a class="map-link" data-q="Château de Versailles">凡尔赛宫</a></span>
           <span class="day-badge">重点日</span>
         </div>
         <dl>
           <dt>08:00</dt>
-          <dd>从<a class="map-link" data-q="Gare Montparnasse, Paris">蒙帕纳斯站</a>乘郊区列车前往 Versailles Chantiers，避开市中心活动区域。</dd>
+          <dd>从<a class="map-link" data-q="Gare Montparnasse, Paris">蒙帕纳斯站</a>乘郊区列车前往<a class="map-link" data-q="Gare de Versailles Chantiers">Versailles Chantiers</a>，避开市中心活动区域。</dd>
           <dt>09:30</dt>
           <dd>按预约时段进入<a class="map-link" data-q="Château de Versailles">凡尔赛宫</a>，先参观国王套房与镜厅。</dd>
           <dt>12:00</dt>
@@ -75,7 +77,7 @@
       <section class="day">
         <div class="day-head">
           <span class="day-date">9.27 周日</span>
-          <span class="day-city">巴黎 · 西岱岛与左岸</span>
+          <span class="day-city"><a class="map-link" data-q="Paris, France">巴黎</a> · <a class="map-link" data-q="Île de la Cité, Paris">西岱岛</a>与<a class="map-link" data-q="Rive Gauche, Paris">左岸</a></span>
         </div>
         <dl>
           <dt>09:30</dt>
@@ -93,7 +95,7 @@
       <section class="day">
         <div class="day-head">
           <span class="day-date">9.28 周一</span>
-          <span class="day-city">巴黎 · 卢浮宫与蒙马特</span>
+          <span class="day-city"><a class="map-link" data-q="Paris, France">巴黎</a> · <a class="map-link" data-q="Musée du Louvre, Paris">卢浮宫</a>与<a class="map-link" data-q="Montmartre, Paris">蒙马特</a></span>
           <span class="day-badge">重点日</span>
         </div>
         <dl>
@@ -112,7 +114,7 @@
       <section class="day">
         <div class="day-head">
           <span class="day-date">9.29 周二</span>
-          <span class="day-city">巴黎 · 铁塔、塞纳河与奥赛</span>
+          <span class="day-city"><a class="map-link" data-q="Paris, France">巴黎</a> · <a class="map-link" data-q="Tour Eiffel, Paris">铁塔</a>、<a class="map-link" data-q="Seine, Paris">塞纳河</a>与<a class="map-link" data-q="Musée d'Orsay, Paris">奥赛</a></span>
         </div>
         <dl>
           <dt>09:30</dt>
@@ -132,7 +134,7 @@
       <section class="day">
         <div class="day-head">
           <span class="day-date">9.30 周三</span>
-          <span class="day-city">巴黎 → 阿维尼翁</span>
+          <span class="day-city"><a class="map-link" data-q="Paris, France">巴黎</a> → <a class="map-link" data-q="Avignon, France">阿维尼翁</a></span>
           <span class="day-badge">移动日</span>
         </div>
         <dl>
@@ -143,7 +145,7 @@
           <dt>15:00</dt>
           <dd>入住后参观<a class="map-link" data-q="Palais des Papes, Avignon">教皇宫</a>，现场领取 Histopad 导览设备。</dd>
           <dt>17:00</dt>
-          <dd>步行到<a class="map-link" data-q="Pont Saint-Bénézet, Avignon">圣贝内泽断桥</a>和钟楼广场。</dd>
+          <dd>步行到<a class="map-link" data-q="Pont Saint-Bénézet, Avignon">圣贝内泽断桥</a>和<a class="map-link" data-q="Place de l'Horloge, Avignon">钟楼广场</a>。</dd>
         </dl>
         <div class="notice">交通提醒：阿维尼翁有两个车站；车票目的地和住宿位置应提前核对。</div>
       </section>
@@ -151,12 +153,12 @@
       <section class="day">
         <div class="day-head">
           <span class="day-date">10.1 周四</span>
-          <span class="day-city">普罗旺斯 · 吕贝隆山村</span>
+          <span class="day-city"><a class="map-link" data-q="Provence, France">普罗旺斯</a> · <a class="map-link" data-q="Luberon, France">吕贝隆山村</a></span>
           <span class="day-badge">包车日</span>
         </div>
         <dl>
           <dt>09:00</dt>
-          <dd>从阿维尼翁包车出发，先到<a class="map-link" data-q="L'Isle-sur-la-Sorgue">索格河畔岛</a>的周四上午集市。</dd>
+          <dd>从<a class="map-link" data-q="Avignon, France">阿维尼翁</a>包车出发，先到<a class="map-link" data-q="L'Isle-sur-la-Sorgue">索格河畔岛</a>的周四上午集市。</dd>
           <dt>10:30</dt>
           <dd>前往<a class="map-link" data-q="Fontaine-de-Vaucluse">泉水镇</a>，河边步道相对平缓。</dd>
           <dt>12:30</dt>
@@ -172,7 +174,7 @@
       <section class="day">
         <div class="day-head">
           <span class="day-date">10.2 周五</span>
-          <span class="day-city">普罗旺斯 · 加尔桥与莱博</span>
+          <span class="day-city"><a class="map-link" data-q="Provence, France">普罗旺斯</a> · <a class="map-link" data-q="Pont du Gard">加尔桥</a>与<a class="map-link" data-q="Les Baux-de-Provence">莱博</a></span>
           <span class="day-badge">包车日</span>
         </div>
         <dl>
@@ -191,7 +193,7 @@
       <section class="day">
         <div class="day-head">
           <span class="day-date">10.3 周六</span>
-          <span class="day-city">阿维尼翁 → 尼斯</span>
+          <span class="day-city"><a class="map-link" data-q="Avignon, France">阿维尼翁</a> → <a class="map-link" data-q="Nice, France">尼斯</a></span>
           <span class="day-badge">移动日</span>
         </div>
         <dl>
@@ -202,7 +204,7 @@
           <dt>17:00</dt>
           <dd>从海边入口乘免费电梯上<a class="map-link" data-q="Colline du Château, Nice">城堡山</a>看日落。</dd>
           <dt>19:00</dt>
-          <dd>沿英国人散步大道短距离散步并用餐。</dd>
+          <dd>沿<a class="map-link" data-q="Promenade des Anglais, Nice">英国人散步大道</a>短距离散步并用餐。</dd>
         </dl>
         <div class="notice">营业匹配：萨莱亚市场周一通常改为古董市集，周六适合看花市和菜市。</div>
       </section>
@@ -210,7 +212,7 @@
       <section class="day">
         <div class="day-head">
           <span class="day-date">10.4 周日</span>
-          <span class="day-city">昂蒂布或滨海自由城</span>
+          <span class="day-city"><a class="map-link" data-q="Antibes, France">昂蒂布</a>或<a class="map-link" data-q="Villefranche-sur-Mer">滨海自由城</a></span>
           <span class="day-badge">弹性日</span>
         </div>
         <dl>
@@ -221,7 +223,7 @@
           <dt>下午</dt>
           <dd>返回尼斯后可选<a class="map-link" data-q="Musée Marc Chagall, Nice">夏加尔美术馆</a>或<a class="map-link" data-q="Musée Matisse, Nice">马蒂斯美术馆</a>，不要在同一下午都安排。</dd>
           <dt>傍晚</dt>
-          <dd>回尼斯海边休息；周日晚独立餐馆较多停业，晚餐提前订位。</dd>
+          <dd>回<a class="map-link" data-q="Promenade des Anglais, Nice">尼斯海边</a>休息；周日晚独立餐馆较多停业，晚餐提前订位。</dd>
         </dl>
         <div class="notice">闭馆匹配：昂蒂布毕加索美术馆通常周一闭馆，因此放在周日；每月首个周日的免费政策以场馆公告为准。</div>
       </section>
@@ -229,16 +231,16 @@
       <section class="day">
         <div class="day-head">
           <span class="day-date">10.5 周一</span>
-          <span class="day-city">摩纳哥与埃兹</span>
+          <span class="day-city"><a class="map-link" data-q="Monaco">摩纳哥</a>与<a class="map-link" data-q="Èze, France">埃兹</a></span>
           <span class="day-badge">重点日</span>
         </div>
         <dl>
           <dt>09:00</dt>
-          <dd>从尼斯乘火车到<a class="map-link" data-q="Monaco-Monte-Carlo railway station">摩纳哥蒙特卡洛站</a>，利用站内电梯和坡道前往海洋城。</dd>
+          <dd>从<a class="map-link" data-q="Gare de Nice-Ville">尼斯</a>乘火车到<a class="map-link" data-q="Monaco-Monte-Carlo railway station">摩纳哥蒙特卡洛站</a>，利用站内电梯和坡道前往<a class="map-link" data-q="Monaco-Ville">海洋城</a>。</dd>
           <dt>10:00</dt>
           <dd>参观<a class="map-link" data-q="Musée Océanographique de Monaco">摩纳哥海洋博物馆</a>；儿童游客通常更喜欢水族馆和触摸展示。</dd>
           <dt>11:45</dt>
-          <dd>到<a class="map-link" data-q="Palais Princier de Monaco">摩纳哥王宫</a>广场看换岗，再走访<a class="map-link" data-q="Cathédrale de Monaco">摩纳哥大教堂</a>。</dd>
+          <dd>到<a class="map-link" data-q="Place du Palais, Monaco">摩纳哥王宫广场</a>看换岗，再走访<a class="map-link" data-q="Cathédrale de Monaco">摩纳哥大教堂</a>。</dd>
           <dt>14:00</dt>
           <dd>在<a class="map-link" data-q="Casino de Monte-Carlo">蒙特卡洛赌场</a>外观区域散步，使用公共电梯连接不同高度街区。</dd>
           <dt>16:30</dt>
@@ -250,7 +252,7 @@
       <section class="day">
         <div class="day-head">
           <span class="day-date">10.6 周二</span>
-          <span class="day-city">尼斯 → 巴黎 → 上海</span>
+          <span class="day-city"><a class="map-link" data-q="Nice, France">尼斯</a> → <a class="map-link" data-q="Paris, France">巴黎</a> → <a class="map-link" data-q="Shanghai, China">上海</a></span>
           <span class="day-badge">返程日</span>
         </div>
         <dl>
@@ -281,6 +283,7 @@
       link.title = `在 Google Maps 中打开：${link.textContent.trim()}`;
     });
   </script>
+  <script src="/js/travel-theme.js"></script>
   <script src="/js/theme-icons.js"></script>
 </body>
 </html>

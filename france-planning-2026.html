@@ -18,6 +18,7 @@
     <nav class="topbar">
       <a href="/france.html">← 法国</a>
       <a href="/france-itinerary-2026.html">行程安排 →</a>
+      <button class="theme-btn" id="themeToggle" type="button" aria-label="切换主题">🌙</button>
     </nav>
 
     <section class="travel-hero">
@@ -50,118 +51,298 @@
       <ul class="booking-list">
         <li class="booking-item">
           <input type="checkbox" id="book-air">
-          <label for="book-air">
-            <strong>国际与境内联程航班</strong>
-            <span class="booking-meta">
-              <span class="priority">P0</span>
-              <span class="booking-window">建议：立即预订</span>
-              <span class="booking-rule">必须预约</span>
-              <span>价格：实时票价；比较可退改条件</span>
-            </span>
+          <div class="booking-body">
+            <label for="book-air"><strong>国际与境内联程航班</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+                <span class="priority">P0</span>
+                <span class="booking-window">建议：立即预订</span>
+                <span class="booking-rule">必须预约</span>
+                <span class="booking-price">价格：实时票价；比较可退改条件</span>
+              </span>
             <p>按“上海 → 巴黎；尼斯 → 巴黎 → 上海”的多城市结构查询，境内衔接与长途尽量开在同一张票上。</p>
             <a class="official-link" href="https://www.airfrance.com.cn" target="_blank" rel="noopener">法航官网预订 ↗</a>
             <a class="official-link" href="https://www.ceair.com" target="_blank" rel="noopener">东航官网预订 ↗</a>
-          </label>
+            </div>
+          </div>
         </li>
         <li class="booking-item">
-          <input type="checkbox" id="book-rail">
-          <label for="book-rail">
-            <strong>巴黎至阿维尼翁、阿维尼翁至尼斯 TGV</strong>
-            <span class="booking-meta">
+          <input type="checkbox" id="book-stay">
+          <div class="booking-body">
+            <label for="book-stay"><strong>巴黎、阿维尼翁与尼斯住宿</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
               <span class="priority">P0</span>
               <span class="booking-window">建议：立即预订</span>
               <span class="booking-rule">必须预约</span>
-              <span>价格：动态票价；按每位乘客计算</span>
-            </span>
-            <p>TGV 票与座位绑定。需要连续座位、下层车厢或无障碍协助时应尽早选择。</p>
-            <a class="official-link" href="https://www.sncf-connect.com" target="_blank" rel="noopener">SNCF 官网预订 ↗</a>
-          </label>
+                <span class="booking-price">价格：每间每晚实时房价 + 旅游税；核对取消条件</span>
+              </span>
+              <p>逐晚覆盖全部过夜城市；按核定入住人数筛选，并书面确认电梯、空调、床型和行李寄存。</p>
+              <a class="official-link" href="https://hotel.parisjetaime.com/" target="_blank" rel="noopener">巴黎旅游局住宿目录 ↗</a>
+              <a class="official-link" href="https://avignon-tourisme.com/en/prepare-your-stay/lodgings/hotels/" target="_blank" rel="noopener">阿维尼翁旅游局住宿目录 ↗</a>
+              <a class="official-link" href="https://www.explorenicecotedazur.com/en/your-stay/accommodation/hotels-in-nice-cote-dazur/" target="_blank" rel="noopener">尼斯旅游局住宿目录 ↗</a>
+            </div>
+          </div>
+        </li>
+        <li class="booking-item">
+          <input type="checkbox" id="book-airport-transfer">
+          <div class="booking-body">
+            <label for="book-airport-transfer"><strong>戴高乐机场至巴黎接送</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+              <span class="priority">P0</span>
+                <span class="booking-window">建议：航班确认后</span>
+                <span class="booking-rule">接机建议预约；官方出租车站无需预约</span>
+                <span class="booking-price">价格：接机按书面报价；机场出租车按官方计价</span>
+              </span>
+              <p>需要举牌接机、儿童座椅或大件行李车型时提前确认；临时乘车只到航站楼官方出租车候车区。</p>
+              <a class="official-link" href="https://www.parisaeroport.fr/docs/default-source/passager-fichiers/acces/taxi/forfaits-taxis-cdg.pdf" target="_blank" rel="noopener">巴黎机场官方出租车说明 ↗</a>
+            </div>
+          </div>
+        </li>
+        <li class="booking-item">
+          <input type="checkbox" id="book-rail">
+          <div class="booking-body">
+            <label for="book-rail"><strong>巴黎至阿维尼翁、阿维尼翁至尼斯 TGV</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+              <span class="priority">P0</span>
+              <span class="booking-window">建议：立即预订</span>
+                <span class="booking-rule">必须预约</span>
+                <span class="booking-price">价格：动态票价；按每位乘客计算</span>
+              </span>
+              <p>TGV 票与座位绑定。需要连续座位、下层车厢或无障碍协助时应尽早选择。</p>
+              <a class="official-link" href="https://www.sncf-connect.com" target="_blank" rel="noopener">SNCF 官网预订 ↗</a>
+            </div>
+          </div>
+        </li>
+        <li class="booking-item">
+          <input type="checkbox" id="book-driver">
+          <div class="booking-body">
+            <label for="book-driver"><strong>普罗旺斯吕贝隆与莱博包车</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+                <span class="priority">P0</span>
+                <span class="booking-window">建议：立即询价并确认</span>
+                <span class="booking-rule">必须预约</span>
+                <span class="booking-price">价格：按车型、时长与里程书面报价</span>
+              </span>
+              <p>从旅游局列出的持牌运营商中比价，要求报价写明路线、停车、超时、儿童座椅和取消条件。</p>
+              <a class="official-link" href="https://avignon-tourisme.com/en/offres/your-driver-provence-avignon-en-4837067/" target="_blank" rel="noopener">阿维尼翁旅游局运营商资料 ↗</a>
+            </div>
+          </div>
         </li>
         <li class="booking-item">
           <input type="checkbox" id="book-eiffel">
-          <label for="book-eiffel">
-            <strong>埃菲尔铁塔电梯票</strong>
-            <span class="booking-meta">
-              <span class="priority">P0</span>
-              <span class="booking-window">建议：开售即订</span>
-              <span class="booking-rule">建议预约</span>
-              <span>成人/儿童分级票价；二层与顶层分别计价</span>
-            </span>
-            <p>优先选择上午时段。需要减少台阶者可在二层结束参观。</p>
-            <a class="official-link" href="https://ticket.toureiffel.paris/en" target="_blank" rel="noopener">官网预订 ↗</a>
-          </label>
+          <div class="booking-body">
+            <label for="book-eiffel"><strong>埃菲尔铁塔电梯票</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+                <span class="priority">P0</span>
+                <span class="booking-window">建议：开售即订</span>
+                <span class="booking-rule">建议预约</span>
+                <span class="booking-price">价格：成人/儿童按楼层与电梯/楼梯分级</span>
+              </span>
+              <p>优先选择上午时段。需要减少台阶者可在二层结束参观。</p>
+              <a class="official-link" href="https://ticket.toureiffel.paris/en" target="_blank" rel="noopener">官网预订 ↗</a>
+            </div>
+          </div>
         </li>
         <li class="booking-item">
           <input type="checkbox" id="book-versailles">
-          <label for="book-versailles">
-            <strong>凡尔赛宫 Passeport 与宫殿时段</strong>
-            <span class="booking-meta">
-              <span class="priority">P0</span>
-              <span class="booking-window">建议：立即预订</span>
-              <span class="booking-rule">宫殿必须预约</span>
-              <span>演出日花园另有规则；儿童优惠以票种为准</span>
-            </span>
-            <p>先选上午宫殿时段，再核对花园演出日；儿童免票项目也可能需要预约名额。</p>
-            <a class="official-link" href="https://ticket.chateauversailles.fr" target="_blank" rel="noopener">官网预订 ↗</a>
-          </label>
+          <div class="booking-body">
+            <label for="book-versailles"><strong>凡尔赛宫 Passeport 与宫殿时段</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+                <span class="priority">P0</span>
+                <span class="booking-window">建议：立即预订</span>
+                <span class="booking-rule">宫殿必须预约</span>
+                <span class="booking-price">价格：演出日花园另有规则；优惠以票种为准</span>
+              </span>
+              <p>先选上午宫殿时段，再核对花园演出日；免费项目也可能需要预约名额。</p>
+              <a class="official-link" href="https://ticket.chateauversailles.fr" target="_blank" rel="noopener">官网预订 ↗</a>
+            </div>
+          </div>
         </li>
         <li class="booking-item">
           <input type="checkbox" id="book-louvre">
-          <label for="book-louvre">
-            <strong>卢浮宫定时票</strong>
-            <span class="booking-meta">
-              <span class="priority">P1</span>
-              <span class="booking-window">建议：尽早预订</span>
-              <span class="booking-rule">部分日期必须预约</span>
-              <span>按访客资格显示单价；未成年人规则见官网</span>
-            </span>
-            <p>选择上午时段并预留安检时间；开放日和临时闭馆以日历为准。</p>
-            <a class="official-link" href="https://ticket.louvre.fr/en" target="_blank" rel="noopener">官网预订 ↗</a>
-          </label>
+          <div class="booking-body">
+            <label for="book-louvre"><strong>卢浮宫定时票</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+                <span class="priority">P1</span>
+                <span class="booking-window">建议：尽早预订</span>
+                <span class="booking-rule">部分日期必须预约</span>
+                <span class="booking-price">价格：按访客资格显示单价；优惠规则见官网</span>
+              </span>
+              <p>选择上午时段并预留安检时间；开放日和临时闭馆以日历为准。</p>
+              <a class="official-link" href="https://ticket.louvre.fr/en" target="_blank" rel="noopener">官网预订 ↗</a>
+            </div>
+          </div>
         </li>
         <li class="booking-item">
           <input type="checkbox" id="book-orsay">
-          <label for="book-orsay">
-            <strong>奥赛博物馆定时票</strong>
-            <span class="booking-meta">
+          <div class="booking-body">
+            <label for="book-orsay"><strong>奥赛博物馆定时票</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
               <span class="priority">P1</span>
               <span class="booking-window">建议：行前完成</span>
               <span class="booking-rule">建议预约</span>
-              <span>成人单价与免费资格见官网</span>
-            </span>
-            <p>周一通常闭馆；预约能减少现场等待。</p>
-            <a class="official-link" href="https://billetterie.musee-orsay.fr" target="_blank" rel="noopener">官网预订 ↗</a>
-          </label>
+                <span class="booking-price">价格：成人单价与免费资格见官网</span>
+              </span>
+              <p>周一通常闭馆；预约能减少现场等待。</p>
+              <a class="official-link" href="https://billetterie.musee-orsay.fr" target="_blank" rel="noopener">官网预订 ↗</a>
+            </div>
+          </div>
         </li>
         <li class="booking-item">
           <input type="checkbox" id="book-cmn">
-          <label for="book-cmn">
-            <strong>圣礼拜堂与古监狱</strong>
-            <span class="booking-meta">
-              <span class="priority">P1</span>
-              <span class="booking-window">建议：行前完成</span>
-              <span class="booking-rule">圣礼拜堂必须预约时段</span>
-              <span>成人可选联票；未成年人通常免费但需名额</span>
-            </span>
-            <p>司法宫安检与景点入场分开排队，首场通常等待更短。</p>
-            <a class="official-link" href="https://www.monuments-nationaux.fr" target="_blank" rel="noopener">CMN 官网预订 ↗</a>
-          </label>
+          <div class="booking-body">
+            <label for="book-cmn"><strong>圣礼拜堂、古监狱与先贤祠</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+                <span class="priority">P1</span>
+                <span class="booking-window">建议：行前完成</span>
+                <span class="booking-rule">圣礼拜堂必须预约；其余建议购票</span>
+                <span class="booking-price">价格：可比较联票；免费资格仍需核对名额</span>
+              </span>
+              <p>司法宫安检与景点入场分开排队，首场通常等待更短。</p>
+              <a class="official-link" href="https://tickets.monuments-nationaux.fr/en-GB" target="_blank" rel="noopener">CMN 官方票务 ↗</a>
+            </div>
+          </div>
         </li>
         <li class="booking-item">
           <input type="checkbox" id="book-notredame">
-          <label for="book-notredame">
-            <strong>巴黎圣母院免费参观时段</strong>
-            <span class="booking-meta">
-              <span class="priority">P1</span>
-              <span class="booking-window">建议：开放窗口后预约</span>
-              <span class="booking-rule">可预约，入堂免费</span>
-              <span>钟楼为独立项目与票种</span>
-            </span>
-            <p>免费预约通常临近参观日开放。不要购买第三方“入堂门票”。</p>
-            <a class="official-link" href="https://www.notredamedeparis.fr" target="_blank" rel="noopener">官网预约 ↗</a>
-          </label>
+          <div class="booking-body">
+            <label for="book-notredame"><strong>巴黎圣母院免费参观时段</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+                <span class="priority">P1</span>
+                <span class="booking-window">建议：开放窗口后预约</span>
+                <span class="booking-rule">建议预约；入堂免费</span>
+                <span class="booking-price">价格：入堂免费；钟楼为独立项目</span>
+              </span>
+              <p>免费预约通常临近参观日开放。不要购买第三方“入堂门票”。</p>
+              <a class="official-link" href="https://www.notredamedeparis.fr/visiter/reserver/" target="_blank" rel="noopener">官网预约 ↗</a>
+            </div>
+          </div>
+        </li>
+        <li class="booking-item">
+          <input type="checkbox" id="book-cruise">
+          <div class="booking-body">
+            <label for="book-cruise"><strong>Bateaux Parisiens 塞纳河游船</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+                <span class="priority">P1</span>
+                <span class="booking-window">建议：确定铁塔时段后</span>
+                <span class="booking-rule">建议预约</span>
+                <span class="booking-price">价格：按观光、午餐或晚餐产品实时显示</span>
+              </span>
+              <p>选择与铁塔行程衔接的 Port de la Bourdonnais 出发班次，并核对到场时间。</p>
+              <a class="official-link" href="https://www.bateauxparisiens.com/en/cruise-tours/guided-tour.html" target="_blank" rel="noopener">运营方官网预订 ↗</a>
+            </div>
+          </div>
+        </li>
+        <li class="booking-item">
+          <input type="checkbox" id="book-avignon">
+          <div class="booking-body">
+            <label for="book-avignon"><strong>教皇宫与圣贝内泽断桥联票</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+                <span class="priority">P1</span>
+                <span class="booking-window">建议：行前完成</span>
+                <span class="booking-rule">非强制，建议预约</span>
+                <span class="booking-price">价格：宫殿、花园与断桥联票以官网为准</span>
+              </span>
+              <p>普通个人参观可现场购票，但官网建议提前购买以减少排队。</p>
+              <a class="official-link" href="https://palais-des-papes.com/" target="_blank" rel="noopener">阿维尼翁旅游局官方票务 ↗</a>
+            </div>
+          </div>
+        </li>
+        <li class="booking-item">
+          <input type="checkbox" id="book-carrieres">
+          <div class="booking-body">
+            <label for="book-carrieres"><strong>光影采石场与莱博城堡</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+                <span class="priority">P1</span>
+                <span class="booking-window">建议：时段开放后</span>
+                <span class="booking-rule">光影采石场建议预约；城堡非强制</span>
+                <span class="booking-price">价格：可比较单票与 Pass Baux-de-Provence</span>
+              </span>
+              <p>优先锁定光影采石场时段；联票同时覆盖莱博城堡，免费资格按官网说明处理。</p>
+              <a class="official-link" href="https://www.carrieres-lumieres.com/en/tickets" target="_blank" rel="noopener">光影采石场官方票务 ↗</a>
+              <a class="official-link" href="https://chateau-baux-provence.com/en/book-online/" target="_blank" rel="noopener">莱博城堡官方票务 ↗</a>
+            </div>
+          </div>
+        </li>
+        <li class="booking-item">
+          <input type="checkbox" id="book-winery">
+          <div class="booking-body">
+            <label for="book-winery"><strong>教皇新堡酒庄参观或品鉴</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+                <span class="priority">P1</span>
+                <span class="booking-window">建议：包车路线确认后</span>
+                <span class="booking-rule">多数酒庄建议或要求预约</span>
+                <span class="booking-price">价格：按酒庄与品鉴项目报价</span>
+              </span>
+              <p>从产区官方名录选择酒庄并直接确认语言、时长、迟到与取消规则；未确认则取消该停留。</p>
+              <a class="official-link" href="https://en.chateauneuf.com/wine-cellar-visit-tasting-chateauneuf-du-pape/" target="_blank" rel="noopener">产区官方酒庄与品鉴目录 ↗</a>
+            </div>
+          </div>
+        </li>
+        <li class="booking-item">
+          <input type="checkbox" id="book-picasso">
+          <div class="booking-body">
+            <label for="book-picasso"><strong>昂蒂布毕加索美术馆</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+                <span class="priority">P2</span>
+                <span class="booking-window">建议：行前一至两周</span>
+                <span class="booking-rule">个人非强制，建议购票</span>
+                <span class="booking-price">价格：全价、优惠价与联票见市政府官网</span>
+              </span>
+              <p>2026 年已提供线上票务；周日行程确定后提前购买可减少满额风险。</p>
+              <a class="official-link" href="https://www.antibes-juanlespins.com/sorties-loisirs/antibes-ville-de-culture/les-musees/le-musee-picasso/preparer-votre-visite" target="_blank" rel="noopener">昂蒂布市政府官方票务 ↗</a>
+            </div>
+          </div>
+        </li>
+        <li class="booking-item">
+          <input type="checkbox" id="book-oceanographic">
+          <div class="booking-body">
+            <label for="book-oceanographic"><strong>摩纳哥海洋博物馆</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+                <span class="priority">P2</span>
+                <span class="booking-window">建议：行前一至两周</span>
+                <span class="booking-rule">个人非强制，建议购票</span>
+                <span class="booking-price">价格：成人、儿童与无障碍优惠见官网</span>
+              </span>
+              <p>线上购票可直接入馆；临行前复核开放时间与当日活动。</p>
+              <a class="official-link" href="https://musee.oceano.org/en/you-are-individual/" target="_blank" rel="noopener">博物馆官网票务 ↗</a>
+            </div>
+          </div>
+        </li>
+        <li class="booking-item">
+          <input type="checkbox" id="book-dinner">
+          <div class="booking-body">
+            <label for="book-dinner"><strong>尼斯周日晚餐</strong></label>
+            <div class="booking-content">
+              <span class="booking-meta">
+                <span class="priority">P2</span>
+                <span class="booking-window">建议：确定餐厅后提前数日</span>
+                <span class="booking-rule">热门餐厅建议预约</span>
+                <span class="booking-price">价格：按餐厅菜单与订位条款</span>
+              </span>
+              <p>周日晚部分独立餐馆停业；从官方旅游目录选择营业餐厅，再向餐厅直接订位。</p>
+              <a class="official-link" href="https://www.explorenicecotedazur.com/en/out-and-about/restaurants/" target="_blank" rel="noopener">尼斯旅游局餐厅目录 ↗</a>
+            </div>
+          </div>
         </li>
       </ul>
+      <div class="notice reservation-coverage"><strong>无需提前预约：</strong>普通个人行程中的蒙马特缆车、凡尔赛园内小火车、加尔桥、圣保罗修道院、夏加尔美术馆自助参观、马蒂斯美术馆普通个人票、摩纳哥王宫广场与大教堂、蒙特卡洛赌场外观区域、埃兹异域花园均可按当日开放状态现场处理。若改选导览、团体票或特别活动，须再按场馆规则预约。</div>
     </section>
 
     <section class="page-section" id="flights">
@@ -218,6 +399,11 @@
             <tr><td>圣礼拜堂 + 古监狱</td><td>成人可比较联票；未成年人按官网规则</td><td>圣礼拜堂需选时段</td></tr>
             <tr><td>奥赛博物馆</td><td>成人单价与免费资格见官网</td><td>建议预约</td></tr>
             <tr><td>巴黎圣母院</td><td>入堂免费；钟楼独立售票</td><td>免费时段临近开放</td></tr>
+            <tr><td>塞纳河游船</td><td>按观光、午餐或晚餐产品显示</td><td>建议预约指定班次</td></tr>
+            <tr><td>教皇宫 + 圣贝内泽断桥</td><td>可比较单票与联票</td><td>个人非强制，建议预约</td></tr>
+            <tr><td>光影采石场 + 莱博城堡</td><td>可比较单票与 Pass Baux-de-Provence</td><td>光影采石场建议预约</td></tr>
+            <tr><td>昂蒂布毕加索美术馆</td><td>单票与市立博物馆联票见官网</td><td>个人非强制，建议购票</td></tr>
+            <tr><td>摩纳哥海洋博物馆</td><td>成人、儿童与无障碍优惠见官网</td><td>个人非强制，建议购票</td></tr>
           </tbody>
         </table>
       </div>
@@ -307,7 +493,10 @@
       const KEY = 'teax-france-2026-planning';
       let saved = {};
       try {
-        saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+        const parsed = JSON.parse(localStorage.getItem(KEY) || '{}');
+        saved = parsed !== null && typeof parsed === 'object' && !Array.isArray(parsed)
+          ? parsed
+          : {};
       } catch (error) {
         saved = {};
       }
@@ -324,6 +513,7 @@
       });
     })();
   </script>
+  <script src="/js/travel-theme.js"></script>
   <script src="/js/theme-icons.js"></script>
 </body>
 </html>

@@ -211,12 +211,13 @@ days from each day of your stay and the total must not exceed 90.
 - https://home-affairs.ec.europa.eu/policies/schengen/border-crossing/short-stay-calculator_en
 - Commission FAQ: https://home-affairs.ec.europa.eu/document/download/dae5e071-1564-4a5d-9714-2147f7641781_en?filename=FAQs.pdf
 
-**[A]** For a 13-day first trip this is a non-issue. It matters only if the visa turns out to be
-multi-entry and they return within six months. Worth noting: **EES now computes this automatically**
-at the border, so the era of miscounting stamps is over — and so is the era of getting away with it.
+**[A]** For every short stay, count all days spent anywhere in the Schengen Area during the rolling
+180-day window; nationality, issuing country and entry point do not change the calculation. A
+multi-entry visa does not grant a fresh 90-day allowance for each visit. EES records entries and
+exits automatically, but travellers remain responsible for complying with the limit.
 
-**[V]** A previous Italy trip is only relevant if it was within the last 180 days (i.e. after
-~29 March 2026). If so, those days count against the 90. Free official calculator (Check mode):
+**[V]** Enter every Schengen stay that falls within the relevant rolling window in the official
+calculator's Check mode before booking another visit:
 - https://home-affairs.ec.europa.eu/policies/schengen/border-crossing/short-stay-calculator_en
 
 ### 2.3 Does entering France first matter?

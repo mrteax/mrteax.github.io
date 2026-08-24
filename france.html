@@ -8,7 +8,7 @@
   <link rel="icon" href="/pack-preview.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/themes.css">
   <link rel="stylesheet" href="/css/theme.css">
   <link rel="stylesheet" href="/css/travel.css">
@@ -56,19 +56,6 @@
   <footer class="footer">Tea X · France 2026</footer>
   <script>
     (() => {
-      const html = document.documentElement;
-      const savedTheme = localStorage.getItem('theme') ||
-        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      const themeToggle = document.getElementById('themeToggle');
-      html.dataset.theme = savedTheme;
-      themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-      themeToggle.addEventListener('click', () => {
-        const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
-        html.dataset.theme = next;
-        localStorage.setItem('theme', next);
-        themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
-      });
-
       const depart = new Date(2026, 8, 25);
       const back = new Date(2026, 9, 7);
       const today = new Date();
@@ -84,6 +71,7 @@
       }
     })();
   </script>
+  <script src="/js/travel-theme.js"></script>
   <script src="/js/theme-icons.js"></script>
 </body>
 </html>

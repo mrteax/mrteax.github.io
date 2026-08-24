@@ -222,11 +222,24 @@ td {
   accent-color: var(--accent);
 }
 
-.booking-item input:checked + label {
+.booking-body {
+  min-width: 0;
+}
+
+.booking-body label {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.booking-content {
+  margin-top: 4px;
+}
+
+.booking-item input:checked + .booking-body {
   opacity: .58;
 }
 
-.booking-item input:checked + label strong {
+.booking-item input:checked + .booking-body label strong {
   text-decoration: line-through;
 }
 
@@ -249,7 +262,7 @@ td {
 
 .official-link {
   display: inline-block;
-  margin-top: 8px;
+  margin: 8px 8px 0 0;
   font-weight: 700;
 }
 
