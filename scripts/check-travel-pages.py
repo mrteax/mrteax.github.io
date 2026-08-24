@@ -280,6 +280,13 @@ if itinerary:
             errors.append(
                 f"france-itinerary-2026.html: day {index} lacks one dated day-date"
             )
+        summaries = [
+            child for child in day.descendants() if child.has_class("day-summary")
+        ]
+        if len(summaries) != 1 or len(summaries[0].text()) < 18:
+            errors.append(
+                f"france-itinerary-2026.html: day {index} needs a concise day-summary"
+            )
 
     map_links = itinerary.with_class("map-link")
     map_count = len(map_links)
@@ -427,6 +434,16 @@ if planning:
             errors.append(
                 "france-planning-2026.html: "
                 f"booking item {index} official links must be outside label"
+            )
+        what = [
+            node
+            for node in content.children
+            if node.has_class("place-what")
+        ]
+        if len(what) != 1 or len(what[0].text()) < 18:
+            errors.append(
+                "france-planning-2026.html: "
+                f"booking item {index} needs a concise place-what description"
             )
     if booking_ids != EXPECTED_BOOKING_IDS:
         errors.append(

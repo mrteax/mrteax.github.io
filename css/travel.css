@@ -235,6 +235,27 @@ td {
   margin-top: 4px;
 }
 
+.place-what,
+.day-summary {
+  margin: 8px 0 6px;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.day-summary {
+  margin: 10px 0 14px;
+  color: var(--text-2);
+}
+
+.reservation-coverage ul {
+  margin: 8px 0 0;
+  padding-left: 1.2em;
+}
+
+.reservation-coverage li {
+  margin: 4px 0;
+}
+
 .booking-item input:checked + .booking-body {
   opacity: .58;
 }
