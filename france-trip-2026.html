@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2026 国庆法国全家自由行完整攻略：上海往返机票方案、TGV 铁路、逐日行程、必须提前预订清单、老人小孩专项提示、地图快捷跳转">
+  <title>法国全家行攻略 2026.09.25–10.07 · Tea X</title>
+  <link rel="icon" href="/pack-preview.png" type="image/png">
+  <link rel="stylesheet" href="/css/theme.css">
+  <style>
+    :root {
+      --bg: var(--pack-bg);
+      --card: var(--pack-surface);
+      --card2: var(--pack-surface-2);
+      --ink: var(--pack-text);
+      --muted: var(--pack-text-muted);
+      --faint: var(--pack-text-faint);
+      --line: var(--pack-line);
+      --accent: var(--pack-accent);
+      --red: var(--pack-accent-2);
+      --shadow: var(--pack-shadow);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 18px 72px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .topbar a {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 34px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      margin-bottom: 16px;
+      background: var(--card2);
+      border: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(30px, 5.4vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -.04em;
+    }
+
+    .hero p {
+      max-width: 840px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
+    .chip {
+      padding: 7px 12px;
+      background: var(--card2);
+      border: 1px solid var(--line);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 18px;
+      align-self: start;
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    .toc strong { display: block; margin-bottom: 10px; }
+
+    .toc a {
+      display: block;
+      padding: 7px 10px;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .toc a:hover { color: var(--ink); background: var(--card2); }
+
+    main { display: grid; gap: 18px; }
+
+    .card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 25px;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+    }
+
+    h3 { margin: 24px 0 8px; font-size: 17px; }
+    h4 { margin: 16px 0 6px; font-size: 15px; color: var(--muted); }
+    p { margin: 8px 0; }
+    ul, ol { margin: 8px 0 0 1.15em; padding: 0; }
+    li { margin: 5px 0; }
+    .lead { color: var(--muted); margin-bottom: 4px; }
+
+    .callouts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+
+    .callout {
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: var(--card2);
+    }
+
+    .callout strong { display: block; margin-bottom: 6px; }
+    .callout p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      background: var(--card);
+      margin-top: 10px;
+    }
+
+    table { width: 100%; min-width: 720px; border-collapse: collapse; }
+
+    th, td {
+      padding: 11px 13px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th { background: var(--card2); font-weight: 600; white-space: nowrap; }
+    tr:last-child td { border-bottom: 0; }
+    td.nowrap { white-space: nowrap; }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 12px;
+      border: 1px solid var(--line);
+      background: var(--card2);
+      white-space: nowrap;
+    }
+
+    .tag-p0 { color: var(--red); border-color: var(--red); }
+    .tag-p1 { color: var(--ink); }
+
+    .warn {
+      padding: 14px 16px;
+      margin-top: 12px;
+      color: var(--ink);
+      background: var(--pack-danger-soft);
+      border: 1px solid var(--red);
+    }
+
+    .note {
+      padding: 14px 16px;
+      margin-top: 12px;
+      background: var(--card2);
+      border: 1px solid var(--line);
+    }
+
+    .warn strong, .note strong { display: block; margin-bottom: 4px; }
+
+    /* Booking checklist */
+    .todo { list-style: none; margin: 10px 0 0; padding: 0; }
+
+    .todo li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .todo li:last-child { border-bottom: 0; }
+    .todo input { margin-top: 5px; width: 16px; height: 16px; flex: 0 0 auto; accent-color: var(--red); }
+    .todo label { cursor: pointer; }
+    .todo .why { display: block; color: var(--muted); font-size: 13px; }
+    .todo input:checked + label { color: var(--faint); text-decoration: line-through; }
+    .todo input:checked + label .why { text-decoration: line-through; }
+
+    /* Day timeline */
+    .day {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .day:last-child { border-bottom: 0; padding-bottom: 0; }
+
+    .day-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .day-date { font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
+    .day-city { color: var(--muted); font-size: 14px; }
+
+    .day-badge {
+      padding: 2px 8px;
+      font-size: 12px;
+      border: 1px solid var(--line);
+      background: var(--card2);
+    }
+
+    .day dl { display: grid; grid-template-columns: 62px minmax(0, 1fr); gap: 4px 12px; margin: 10px 0 0; }
+    .day dt { color: var(--faint); font-size: 13px; font-variant-numeric: tabular-nums; }
+    .day dd { margin: 0; font-size: 14px; }
+
+    /* Google Maps links */
+    a.gmap {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--muted);
+      white-space: nowrap;
+    }
+
+    a.gmap::after { content: " ↗"; font-size: 11px; color: var(--faint); }
+    a.gmap:hover { border-bottom-color: var(--red); color: var(--red); }
+
+    .link {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--muted);
+      word-break: break-all;
+    }
+
+    .link:hover { color: var(--red); border-bottom-color: var(--red); }
+
+    footer { margin-top: 24px; color: var(--muted); text-align: center; font-size: 13px; }
+
+    .updated { color: var(--faint); font-size: 13px; margin-top: 4px; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc { position: static; }
+      .callouts { grid-template-columns: 1fr; }
+      .hero { padding: 24px 20px; }
+      .card { padding: 20px 16px; }
+      .day dl { grid-template-columns: 1fr; gap: 2px; }
+      .day dt { margin-top: 8px; }
+    }
+
+    @media print {
+      body { background: #fff; color: #000; }
+      .page { max-width: none; padding: 0; }
+      .topbar, .toc { display: none; }
+      .layout { display: block; }
+      .hero, .card, .callout { box-shadow: none; }
+      .card { break-inside: avoid; margin-bottom: 16px; }
+      a.gmap::after { content: ""; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="topbar">
+      <a href="/travel.html">← 旅行</a>
+      <a href="/france-schengen-2026.html">签证作战包 →</a>
+    </nav>
+
+    <section class="hero">
+      <div class="eyebrow">🇫🇷 France Family Trip · 2026 国庆</div>
+      <h1>法国全家行完整攻略</h1>
+      <p>2026.09.25 上海出发 → 2026.10.07 落地上海。5 人：你 + 太太 + 一年级小孩 + 两位老人。纯法国：巴黎 → 卢瓦尔河谷 → 普罗旺斯 → 蔚蓝海岸。这一页把「必须提前订的东西」按截止时间排在最前面，后面才是逐日行程。</p>
+      <div class="chips">
+        <span class="chip">11 晚 / 12 个白天</span>
+        <span class="chip">3 个落脚点</span>
+        <span class="chip">2 段直达 TGV</span>
+        <span class="chip">老人 70+ · 小孩 7 岁</span>
+        <span class="chip">欧洲经验：仅意大利</span>
+        <span class="chip">签证：申请中</span>
+      </div>
+      <p class="updated">所有地名都可以点，直接跳 Google 地图。价格与班次以官网为准，出发前一周复核一次。</p>
+    </section>
+
+    <div class="layout">
+      <aside class="toc">
+        <strong>目录</strong>
+        <a href="#tldr">0. 一分钟版</a>
+        <a href="#booking">1. 高优预订清单 ⚠️</a>
+        <a href="#flights">2. 机票方案</a>
+        <a href="#rail">3. 法国境内交通</a>
+        <a href="#days">4. 逐日行程</a>
+        <a href="#family">5. 老人 + 小孩专项</a>
+        <a href="#tickets">6. 门票与通票</a>
+        <a href="#ground">7. 落地实务</a>
+        <a href="#safety">8. 安全与应急</a>
+        <a href="#diff">9. 与签证行程单的差异</a>
+        <a href="#pack">10. 打包清单</a>
+      </aside>
+
+      <main>
+        <section class="card" id="tldr">
+          <h2>0. 一分钟版</h2>
+          <p class="lead">如果你只看一段，就看这段。</p>
+          <div class="callouts">
+            <div class="callout">
+              <strong>路线</strong>
+              <p><strong>巴黎 5 晚 → 阿维尼翁 3 晚 → 尼斯 3 晚</strong>，10.6 从尼斯经巴黎回上海。只有两段长途火车，且都是直达。</p>
+            </div>
+            <div class="callout">
+              <strong>返程的硬约束</strong>
+              <p>要 10.7 落地上海，就必须 10.6 从巴黎起飞。签证行程单上的「10.6 住巴黎 + 10.7 飞」会让你 10.8 才到，得改。</p>
+            </div>
+            <div class="callout">
+              <strong>最该马上做的三件事</strong>
+              <p>① 出发/返程机票（国庆返程票最紧）② 巴黎 9.25 当晚的房（不是 9.26）③ 埃菲尔铁塔 + 卢浮宫 + 凡尔赛的定时票。</p>
+            </div>
+            <div class="callout">
+              <strong>最大的意外</strong>
+              <p><strong>教宗 9.25–26 访问巴黎</strong>，9.26 下午协和广场加香榭丽舍有 50 万人的露天弥撒，圣母院 9.24–26 闭馆、凯旋门 9.26 闭馆。所以 9.26 整天安排去了城外的凡尔赛。</p>
+            </div>
+          </div>
+
+          <p><strong>闭馆日已经全部对齐过</strong>：卢浮宫周二闭馆 → 放 9.28 周一；奥赛周一闭馆 → 放 9.29 周二；凡尔赛周一闭馆 → 放 9.26 周六（还赶上大喷泉表演日）；摩纳哥王宫 10.1–10.4 和 10.7 关闭、只有 10.5 开 → 摩纳哥放 10.5 周一；昂蒂布毕加索美术馆周一闭馆 → 放 10.4 周日。</p>
+
+          <h3>为什么砍掉了卢瓦尔河谷</h3>
+          <p>你递签的行程单里有「图尔/昂布瓦斯 2 晚」，我建议去掉，原因是一条很硬的交通现实：</p>
+          <p><strong>图尔到阿维尼翁没有直达火车。</strong>最快的方案是在 <a class="gmap" data-q="Gare de Massy TGV">马西 TGV 站</a> 换乘、约 4 小时 30 分；而实际班次大多要绕里昂、换乘等待一小时，全程 5 到 6 个半小时。也就是说，为了在卢瓦尔待一天半，你要付出一整天的火车 + 一次带 5 人行李的中途换乘。带两位老人和一个 7 岁小孩，这笔账不划算。</p>
+          <p>改成三个落脚点之后，两段长途都变成直达：<strong>巴黎→阿维尼翁 2 小时 40 分直达，阿维尼翁→尼斯 3 小时 20 分左右直达</strong>，中途不用下车、不用搬行李。省下来的时间分给普罗旺斯和蔚蓝海岸各加一晚，节奏立刻松下来。</p>
+          <p>城堡的部分不会缺：<strong>凡尔赛宫</strong>本身就是法国宫殿的天花板，另外在巴黎的 5 晚里可以插一个城堡日（<a class="gmap" data-q="Château de Chantilly">尚蒂伊城堡</a> 或 <a class="gmap" data-q="Château de Fontainebleau">枫丹白露</a>，都在巴黎 1 小时内），比跑卢瓦尔轻松得多。真的很想看香波堡和舍农索，也可以从巴黎当天往返（见下面的弹性备选），但那会是一个 12 小时以上的长日子。</p>
+          <p>如果你更想贴着签证行程单走，也完全可以——只是要接受 10.2 那天基本全花在火车上。</p>
+        </section>
+
+        <section class="card" id="booking">
+          <h2>1. 高优预订清单</h2>
+          <p class="lead">按「再拖就要吃亏」的程度排序。勾选状态会存在这台设备的浏览器里，下次打开还在。</p>
+
+          <h3><span class="tag tag-p0">P0</span> 这周就要办，每拖一天都在涨价或减少选择</h3>
+          <ul class="todo">
+            <li>
+              <input type="checkbox" id="b-air">
+              <label for="b-air"><strong>往返机票，出成一张联程票</strong>
+                <span class="why">结构：去程 PVG→CDG（9.25），返程 NCE→CDG→PVG（10.6）。<strong>这是全清单里最紧急的一项</strong>：9.25 是中秋假第一天、10.7 是国庆假最后一天，两个高峰叠着，而 5 个人需要同一舱位里有 5 个座。渠道：ceair.com 或 airfrance.com.cn 选「多城市」。</span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="b-tgv">
+              <label for="b-tgv"><strong>两段 TGV 车票</strong>
+                <span class="why">巴黎里昂站→<strong>Avignon Centre</strong>（9.30）、Avignon TGV→尼斯（10.3，只有 3 班直达）。3 月 11 日就开售了，现在买最便宜，而且发车前 7 天以前免费退改——等于零风险。渠道：SNCF Connect，失败就换 Trainline + PayPal（银联卡不能用）。</span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="b-hotel-paris">
+              <label for="b-hotel-paris"><strong>巴黎住宿，从 9.25 当晚开始订 5 晚</strong>
+                <span class="why">不是 9.26。9.25 晚上 21:30 就要进房间睡觉。5 个人在法国基本要开 2 间房或订一套公寓（法国酒店房间大多严格限 2 人）。<strong>务必确认有电梯（ascenseur）</strong>——巴黎老楼很多没有，带老人和大箱子爬五层是灾难。</span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="b-insurance">
+              <label for="b-insurance"><strong>申根保险，重点确认两位老人的年龄条款</strong>
+                <span class="why">申根要求医疗保额 ≥ €30,000。<strong>国内很多申根险对 70 岁以上有拒保、限额或加费</strong>，别默认买了就有效——买之前逐条确认年龄上限和既往症条款。建议保到 10.8，比行程多一天。</span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="b-driver">
+              <label for="b-driver"><strong>普罗旺斯两天的包车（10.1、10.2）</strong>
+                <span class="why">中文司导在普罗旺斯的供给很薄，10 月初仍是旺季，越早越好。要一份写明路线、总公里、总小时的 all-in 报价，并确认儿童座椅。</span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="b-eiffel">
+              <label for="b-eiffel"><strong>埃菲尔铁塔登顶电梯票（9.29）</strong>
+                <span class="why">电梯票提前 <strong>60 天</strong>开售，你们那几天的票<strong>已经开卖三四周了</strong>，登顶票是最先卖光的品类。官网唯一渠道：ticket.toureiffel.paris。如果登顶已满，先买二层票，再持续刷官网等回流票。</span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="b-versailles">
+              <label for="b-versailles"><strong>凡尔赛宫 Passeport + 9.26 上午 09:00 的宫殿时段</strong>
+                <span class="why">宫殿必须预约定时入场，<strong>旺季上午的热门时段会提前数周订满</strong>。买 Passeport（含演出日花园），小孩买 €12 的优惠 Passeport——因为大喷泉演出日花园只有 5 岁以下免费。</span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="b-visa-date">
+              <label for="b-visa-date"><strong>签证一下来，立刻核对「valid from」日期</strong>
+                <span class="why">决定去程能不能选 9.25 当天落地的白天航班。如果签证从 9.26 才生效，9.25 落地的航班在上海登机口就会被拦下——从 2026 年 4 月起承运人有法定预检义务。</span>
+              </label>
+            </li>
+          </ul>
+
+          <h3><span class="tag tag-p1">P1</span> 两周内办完</h3>
+          <ul class="todo">
+            <li>
+              <input type="checkbox" id="b-hotel-south">
+              <label for="b-hotel-south"><strong>阿维尼翁 3 晚（9.30–10.2）+ 尼斯 3 晚（10.3–10.5）</strong>
+                <span class="why">阿维尼翁住老城墙内，尼斯住老城或 Jean Médecin 一带。同样确认电梯和空调。</span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="b-pickup">
+              <label for="b-pickup"><strong>戴高乐机场接机（7 座车）</strong>
+                <span class="why">9.25 晚 19:15 落地，出关约 20:30。5 人加行李别挤 RER B。携程/飞猪「接送机」订中文司机，或用 Welcome Pickups、GetTransfer。</span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="b-tickets">
+              <label for="b-tickets"><strong>其余巴黎定时票：卢浮宫（9.28 09:00）、圣礼拜堂+古监狱联票（9.27 首场）、奥赛（9.29 下午）</strong>
+                <span class="why">这三个都不是强制预约，但订了能省掉排队。圣礼拜堂必须选日期时段，而且<strong>小孩免费也要占一个名额</strong>。只用官网，第三方票有假。</span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="b-notredame">
+              <label for="b-notredame"><strong>（到巴黎后再做）巴黎圣母院免费时段预约</strong>
+                <span class="why">预约窗口<strong>只在参观前几小时到最多前两天开放</strong>，在国内根本约不了。9.26 之前也不用试——教宗访问期间 9.24–26 闭馆。到了巴黎用官方 App 抢 9.27 的时段。</span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="b-esim">
+              <label for="b-esim"><strong>eSIM 或境外流量包，出发前在国内装好并激活</strong>
+                <span class="why">落地就要用地图和叫车，不要到了巴黎才开始折腾。</span>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="b-driver-nice">
+              <label for="b-driver-nice"><strong>（可选）蔚蓝海岸包车</strong>
+                <span class="why">摩纳哥和埃兹坐火车+公交完全可行，所以这天不是必须包车。想省力再订。</span>
+              </label>
+            </li>
+          </ul>
+        </section>
+
+        <section class="card" id="flights">
+          <h2>2. 机票方案</h2>
+          <p class="lead">法航与东航 2026 夏秋航季（3.29–10.24）官方时刻，出发日 9.25 是周五、返程日 10.6 是周二，这两个星期几决定了可选航班。</p>
+
+          <h3>去程：9.25（周五）上海 → 巴黎</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>航班</th><th>时刻</th><th>时长 / 机型</th><th>点评</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap"><strong>东航 MU569</strong><br><span class="tag tag-p0">推荐</span></td>
+                  <td class="nowrap">PVG 12:55 → CDG 19:15<br>当天到</td>
+                  <td class="nowrap">约 12h20<br>777-300ER</td>
+                  <td><strong>白天飞，当天晚上睡在床上。</strong>周二/周四至周日运营，9.25 周五有。对老人和小孩是决定性优势：不用红眼航班，落地后直接洗澡睡觉，第二天自然醒就基本对上巴黎时间。中文机组、中餐。</td>
+                </tr>
+                <tr>
+                  <td class="nowrap"><strong>法航 AF111</strong></td>
+                  <td class="nowrap">PVG 21:25 → CDG 05:50<br>次日到</td>
+                  <td class="nowrap">约 14h25<br>777-300ER</td>
+                  <td>每日运营。红眼航班，9.26 清晨 05:50 落地，加上入境采集生物信息的排队，走出机场大概 07:30。换来 9.26 一整个白天，但全家会很累。<strong>与你签证行程单上的「9.25 机上 / 9.26 抵达」完全一致。</strong>绕开俄罗斯领空，比东航多飞 2 小时。</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">东航 MU553</td>
+                  <td class="nowrap">PVG 00:15 → CDG 06:30<br>当天到</td>
+                  <td class="nowrap">约 12h15</td>
+                  <td>每日。9.25 的 00:15 起飞意味着 9.24 晚就得出门，等于多赚一个白天，但半夜出发带老人小孩太折腾。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="warn">
+            <strong>⚠️ 定去程票之前，先看签证上的 valid from 日期</strong>
+            MU569 是 9.25 当天落地巴黎。如果领馆按行程单签成「9.26 起生效」，你 9.25 落地会被拒绝入境，而且从 2026.4.10 起承运人有义务在上海登机口就做预检，柜台可能直接不让你上飞机。所以：签证下来后先看有效期起始日，如果是 9.25 就订 MU569，如果是 9.26 就订 AF111。
+          </div>
+
+          <h3>返程：10.6（周二）巴黎 → 上海</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>航班</th><th>时刻</th><th>落地上海</th><th>点评</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap"><strong>东航 MU554</strong><br><span class="tag tag-p0">推荐</span></td>
+                  <td class="nowrap">CDG 13:25 起飞</td>
+                  <td class="nowrap">10.7 <strong>07:00</strong></td>
+                  <td>每日运营，约 11h35，四个选项里最短。<strong>唯一在 10.7 上午就落地的航班</strong>——把一整个 10.7 白天都留成延误缓冲，早上到家还能睡一觉再上班。代价是 10.6 要早起：尼斯 09:05 的飞机，酒店 07:00 出发。</td>
+                </tr>
+                <tr>
+                  <td class="nowrap"><strong>东航 MU570</strong></td>
+                  <td class="nowrap">CDG 21:20 起飞</td>
+                  <td class="nowrap">10.7 14:40</td>
+                  <td>周二/周四至周日运营，10.6 周二有，约 11h20。好处是 <strong>10.6 上午还能在尼斯从容吃顿早午饭</strong>，下午再飞巴黎转机。缺点是缓冲只剩 9 小时左右。想把最后半天用掉就选它。</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">法航 AF116</td>
+                  <td class="nowrap">CDG 23:20 起飞</td>
+                  <td class="nowrap">10.7 17:45</td>
+                  <td>每日。起飞最晚、转机缓冲最大，但要在戴高乐耗到半夜，且落地 17:45 只剩 6 小时余量。带老人小孩不推荐。</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">法航 AF112</td>
+                  <td class="nowrap">CDG 14:15 起飞</td>
+                  <td class="nowrap">次日 08:25</td>
+                  <td><strong>⚠️ 10.6 不可用</strong>：只在周一/周三/周五运营（9.11–10.14 加班班次），10.6 是周二。这是整份行程里最容易踩的一个坑——它的时刻看起来完美，但那天根本不飞。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>关键：尼斯 → 巴黎那一段，一定要和长途放在同一张票上</h3>
+          <p>10.6 你们在尼斯，要先飞到巴黎再飞上海。<strong>务必买成「尼斯—巴黎—上海」的联程票（一个订单、一张行程单），不要分开买两张。</strong>好处有三个：</p>
+          <ul>
+            <li>行李从尼斯直挂上海，不用在戴高乐提出来重新托运——带 5 个人的行李，这一条就值回票价。</li>
+            <li>国内段延误导致误了长途，航司负责免费改签下一班；分开买则视为你自己的责任，要重新买全价票。</li>
+            <li>转机时间由系统保证符合最短衔接标准，不会买到接不上的组合。</li>
+          </ul>
+          <p>怎么买：东航官网/App 或法航官网选「多城市 / Multi-city」，去程填 <strong>PVG → CDG</strong>，返程填 <strong>NCE → PVG</strong>，系统会自动配上 NCE→CDG 的衔接段。法航尼斯—巴黎的部分班次本来就以东航航班号在卖（代码共享），所以「全程东航票号」这种组合是配得出来的。也可以直接让机票代理按这个结构出票。</p>
+
+          <h4>推荐的具体衔接</h4>
+          <p><strong>AF7301 尼斯 09:05 → 戴高乐 10:40（降 2F 航站楼），转 MU554 戴高乐 13:25 → 浦东 10.7 07:00。</strong>中转 2 小时 45 分。尼斯早班机最早有 06:00 那班（AF7321），但没必要——09:05 这班意味着酒店 07:00 出发就够，不用凌晨四点叫老人起床，而 2 小时 45 分的中转时间已经是各种最短衔接标准的两倍以上，很安全。</p>
+          <div class="note">
+            <strong>戴高乐 2F → 2E 要过一次出境边检</strong>
+            尼斯来的国内航班停在 <strong>2F（申根区）</strong>，飞上海的长途在 <strong>2E（非申根区）</strong>。两者之间有专门的空侧转机通道，不用出机场，但<strong>要过一次申根离境边检 + 重新安检</strong>。现在欧盟生物信息系统全面启用，这一步会比过去慢一些，这也是我不建议把中转压到 1 小时的原因。
+          </div>
+
+          <div class="note">
+            <strong>如果联程票太贵、或者你想彻底消灭误机风险</strong>
+            10.5 直接坐 <strong>尼斯 → 巴黎里昂站的直达 TGV</strong>（约 5 小时 40 分，每天 7 班左右），当晚住戴高乐机场附近，10.6 白天在巴黎补购物和退税，从容登机。多花一晚酒店 + 一段火车，换掉全部转机风险，而且对老人比「早班机 + 转机」更舒服。有硬性回国期限的话，这个方案值得先去问价。
+          </div>
+
+          <h3>订票渠道与价格预期</h3>
+          <ul>
+            <li><strong>东航</strong>：<a class="link" href="https://www.ceair.com" target="_blank" rel="noopener">ceair.com</a> 官网或 App，支持国内银行卡、支付宝、微信。</li>
+            <li><strong>法航</strong>：<a class="link" href="https://www.airfrance.com.cn" target="_blank" rel="noopener">airfrance.com.cn</a> 中文站。</li>
+            <li><strong>比价</strong>：携程 / 飞猪 / Google Flights。先在比价平台看价，再回官网按「多城市」下单。</li>
+            <li>5 个人建议一个订单出票，方便选座在一起。7 岁按儿童票，长途通常是成人票价的 75% 左右加全额税费，老人没有折扣。</li>
+          </ul>
+
+          <div class="warn">
+            <strong>⚠️ 你这两个日期正好撞上两个国内假期高峰，机票要马上订</strong>
+            <p>按国务院 2026 年放假安排：<strong>中秋 9.25–9.27（3 天）</strong>，<strong>国庆 10.1–10.7（7 天）</strong>。也就是说——</p>
+            <ul>
+              <li><strong>去程 9.25 是中秋假期第一天</strong>，不是淡季的普通周五。</li>
+              <li><strong>回程 10.7 是国庆假期最后一天</strong>，是全年欧洲飞中国最挤的两天之一，所有出国过节的人都要在 10.8 上班前赶回来。</li>
+            </ul>
+            <p>两个高峰叠在一起。更关键的是：<strong>5 个人要的是「同一航班、同一个舱位等级里有 5 个座」</strong>。长途飞机最低价舱位往往只有几个座，5 人一订就会把这一档吃光、整团跳到下一个价格。距今只剩 6 周，便宜舱位大概率已经没了。</p>
+            <p>参考区间（估算，务必以实时查价为准）：<strong>每个成人往返 7,000–10,000 元</strong>，低于 6,500 元就算好价、直接下单；5 个人机票总预算按 <strong>3.5 万–5 万元</strong> 准备。</p>
+            <p><strong>不要等签证下来再订。</strong>买可改签的舱位，或者先出票、把改签费当成保险费。如果 MU554 上凑不到 5 个座，宁可换成 AF116，也不要改日期。</p>
+          </div>
+        </section>
+
+        <section class="card" id="rail">
+          <h2>3. 法国境内交通</h2>
+          <p class="lead">两段长途火车 + 一段国内飞机。法国高铁 TGV 全部强制订座（票和座位绑定，不能站票、不能随便换车次），票越早越便宜，临期涨得非常凶。</p>
+
+          <h3>两段 TGV，都是直达</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>日期</th><th>区间</th><th>说明</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">9.30 上午</td>
+                  <td>巴黎 <a class="gmap" data-q="Gare de Lyon, Paris">里昂站</a> → <a class="gmap" data-q="Gare d'Avignon TGV">阿维尼翁 TGV 站</a></td>
+                  <td>直达约 <strong>2 小时 40 分</strong>，班次密。选 09:30–10:30 之间发车的，中午前后到，下午就能逛老城。注意巴黎里昂站不是蒙帕纳斯站，去南法都从里昂站走。</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">10.3 上午</td>
+                  <td><a class="gmap" data-q="Gare d'Avignon TGV">阿维尼翁 TGV</a> → <a class="gmap" data-q="Gare de Nice-Ville">尼斯站</a></td>
+                  <td>直达约 <strong>3 小时</strong>（2h58–3h05），沿途经马赛、土伦、圣拉斐尔、戛纳、昂蒂布。后半段几乎贴着地中海开，是这趟行程里风景最好的一段车程，让小孩靠窗坐。<strong>每天只有 3 班直达</strong>（大致 08:28、13:04、17:04 发车），一定要挑直达的那几班——非直达要在马赛换车，那是个台阶很多的大站，多花 40 分钟还得搬行李。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="note">
+            <strong>阿维尼翁有两个火车站，买票时直接买到「Avignon Centre」</strong>
+            <a class="gmap" data-q="Gare d'Avignon TGV">Avignon TGV</a>（高铁站）在城外南边，<a class="gmap" data-q="Gare d'Avignon Centre">Avignon Centre</a>（中央站）就在老城墙边上、走路能到酒店。两站之间有一条专线摆渡小火车叫 <strong>Virgule</strong>，车程只有 4–6 分钟，而且<strong>和北边来的 TGV 停同一个站台</strong>，下车横穿一下就上，不用扛行李找月台。<br><br><strong>关键操作：买票时终点直接填 Avignon Centre，不要只买到 Avignon TGV。</strong>这样摆渡车已经含在票里，系统还会保证给你一个合理的接驳时间。如果只买到 TGV 站，落地后得另外买票（约 €1.6–1.7），而摆渡车班次并不是按 TGV 到站时间设计的，运气差要等一小时。<br><br>反过来，如果决定在普罗旺斯租车，<strong>租车公司全在 TGV 站</strong>，那就在 TGV 站下车直接提车。</div>
+
+          <div class="warn">
+            <strong>⚠️ 火车票现在就能订，而且没有任何等待的理由</strong>
+            <p>SNCF 从 2026 年 3 月起把 TGV inOui 的开售期从 4 个月延长到 6 个月，<strong>你们 9 月底到 10 月初的车票早在 3 月 11 日就已经开卖了</strong>。也就是说：现在能买，而且最便宜的那批早鸟票很可能已经卖掉了，越拖越贵。</p>
+            <p>而 TGV inOui 的票<strong>在发车前 7 天以前都可以免费改签或免费退票</strong>。所以正确的做法是：<strong>今天就按现在的价格买下来，把这 7 天前免费退改当成一个免费的期权</strong>。等下去只会更贵，没有任何好处。</p>
+          </div>
+
+          <h3>购票渠道，以及国内卡的支付坑</h3>
+          <ul>
+            <li><strong>首选</strong>：<a class="link" href="https://www.sncf-connect.com" target="_blank" rel="noopener">SNCF Connect</a> 官网/App（可切中英文）。没有手续费，票直接存在 App 里。</li>
+            <li><strong>⚠️ 银联卡不能用。</strong>SNCF Connect 接受 CB、Visa、Mastercard、American Express、Maestro、PayPal、Apple Pay、Google Pay——<strong>清单里没有 UnionPay</strong>。国内的纯银联卡刷不了，必须准备一张双币 Visa 或 Mastercard。</li>
+            <li><strong>就算是双币卡也可能失败</strong>，原因是 3-D Secure 验证：很多非欧洲银行的卡完不成这一步，交易在到达发卡行之前就被掐断了，所以<strong>你打电话问银行，银行会说「没看到这笔交易」——这时候再跟银行纠缠没有意义</strong>，直接换渠道。</li>
+            <li><strong>备用渠道</strong>：<a class="link" href="https://www.thetrainline.com" target="_blank" rel="noopener">Trainline</a>，同样的 SNCF 票价，加约 3% 手续费，<strong>支持 PayPal（绕开整个刷卡环节，是成功率最高的一招）</strong>，客服英文。或 <a class="link" href="https://www.raileurope.com" target="_blank" rel="noopener">Rail Europe</a>，每单收 €6.95 手续费。<strong>支付宝和微信这三家都不支持，别指望。</strong></li>
+            <li>建议顺序：SNCF Connect 试两次 → 不行就换 Trainline + PayPal，别死磕。</li>
+            <li>买完把电子票存进手机相册 + 打印一份纸质。法国车站进站要扫码，网络不稳时纸质救命。</li>
+          </ul>
+
+          <h3>选座：这是一等座真正值钱的地方</h3>
+          <ul>
+            <li><strong>二等座只能填「偏好」</strong>（靠窗/靠过道、上层/下层、面对面四人座），具体座位由系统分配——<strong>5 个人有可能被分散</strong>。</li>
+            <li><strong>一等座可以直接在座位图上一个一个点选</strong>，指定车厢和座位号。对 5 人同行、其中两位 70 岁一位 7 岁的组合来说，<strong>「能把 5 个座摆在一起」本身就值这个差价</strong>，何况一等座是 2+1 布局、座椅更宽、有脚踏、车厢安静。</li>
+            <li>建议：<strong>3 小时的阿维尼翁→尼斯买一等座</strong>；2 小时 40 分的巴黎→阿维尼翁也可以买（提前订的话差价通常只有 30–50%，不是翻倍）。</li>
+            <li><strong>如果是双层车（Duplex），订票时要求「salle basse」下层。</strong>下层不用爬楼梯，行李就在身边看得见；坐上层的话大件行李只能留在楼下的行李架上，看不到。</li>
+            <li>儿童票：4–11 岁没有自动折扣。可以买一张 <strong>Carte Avantage Adulte（€49，一年有效）</strong>：持卡人本人所有 TGV 打 7 折，<strong>同时下单的最多 3 名 4–11 岁儿童打 4 折</strong>。两段车算下来大概能省 €80–150，值不值取决于实际票价——如果买到的是深度打折的 Prems 特价票，可能反而不如直接买。下单时对比一下。</li>
+            <li>小孩每次坐车<strong>都要带着自己的护照</strong>，法国铁路查儿童年龄是要看证件的。</li>
+          </ul>
+
+          <div class="warn">
+            <strong>⚠️ TGV 的行李规定：额度够用，但有两条硬规则和罚款</strong>
+            <p><strong>额度</strong>：每人 <strong>2 件大件（单件不超过 70×90×50 cm）+ 1 件随身小包（40×30×15 cm）</strong>。5 个人合计可以带 10 件大件，你们远远用不完，额度不是问题。</p>
+            <p><strong>真正会出事的是这两条</strong>：</p>
+            <ul>
+              <li><strong>所有行李必须挂行李牌</strong>（写名字联系方式），这是强制规定，也是最容易被查的一条。车上找乘务员可以要牌子，但出发前自己贴好更省事。</li>
+              <li><strong>你必须能一次性、独自把全家行李搬完</strong>。法国高铁<strong>没有行李车厢、没有搬运工</strong>，大件放在车厢两头和中部的公共行李架上，先到先占。</li>
+            </ul>
+            <p><strong>罚款</strong>：超件或不合规 1 件罚 €50、2 件 €100、3 件以上 €150；<strong>行李挡住过道或占着座位罚 €150</strong>——后面这条才是乘务员最常真的开罚的情形。</p>
+            <p><strong>所以打包策略是：宁可 5 个中号箱，不要 3 个巨无霸箱。</strong>每个人管自己那一个，谁都搬得动，单件也不会超过 70×90×50。另外 TGV <strong>发车前 5 分钟就停止上车</strong>，官方建议提前 30 分钟到站——5 个人 5 件行李，这 30 分钟请当真。</p>
+          </div>
+
+          <h3>10.6 尼斯 → 巴黎</h3>
+          <p>飞机，约 1h30，法航从 <a class="gmap" data-q="Aéroport Nice Côte d'Azur">尼斯蔚蓝海岸机场</a> 到戴高乐每天多班。已包含在联程票里。尼斯机场离市区很近，2 号有轨电车从老城/港口方向直达航站楼，约 30 分钟，是全欧洲最方便的机场之一。国内段建议提前 2 小时到。</p>
+
+          <h3>普罗旺斯的一日游：请包车，不要自己租车</h3>
+          <p>普罗旺斯的精华全在小村小镇，公共交通班次稀、周末更少。所以那两天需要车。但<strong>我建议包车（带司机），而不是自己租车开</strong>，有一条很硬的原因：</p>
+          <div class="warn">
+            <strong>⚠️ 中国大陆根本不存在「国际驾照」</strong>
+            <p>中国不是 1949 年日内瓦公约和 1968 年维也纳公约的缔约国，<strong>所以中国驾照不可能签发合法的国际驾驶许可（IDP）</strong>。市面上各种 App 卖的「国际驾照翻译认证件」都不是 IDP。</p>
+            <p>法国法律给外国驾照留了三条路：驾照本身是法语、或配一份 IDP、或配一份<strong>官方翻译</strong>。对中国驾照来说<strong>只有第三条路走得通</strong>——需要法国上诉法院名册上的宣誓翻译员（traducteur assermenté）出的译本，或者中国驻法使领馆出的译本，或者在国内做完再办领事认证/加签。</p>
+            <p>问题在于租车公司的柜台口径不一致：<strong>Sixt 官网写的是「非拉丁字母驾照必须出示有效 IDP，无一例外」</strong>——照字面理解，中国驾照持有者根本租不了车，虽然同一页别处又说「IDP 或官方翻译均可」。这大概是文案没写清，但<strong>你不该拿一笔上千欧的预付租车去赌柜台那个人怎么理解</strong>。</p>
+            <p>另外还有两个现实障碍：<strong>自动挡的 7–9 座车是整个欧洲租车队里最稀缺的组合</strong>（默认都是手动挡，不明确指定就会给你手动挡），以及信用卡预授权押金按 9 座车估计要冻结 €1,000–2,500。</p>
+          </div>
+          <p>包车把这些问题一次性消掉：不用驾照、不用押金、不用在 <a class="gmap" data-q="Gordes, Vaucluse">石头城</a> 那种窄巷里找车位，司机还能把你们放在村口、开到山上接。价格也比想象的接近——把租车日租、全险、油、过路费、停车费加起来，差距没那么大（法国柴油现在约 €2.25/L，是历史高位）。</p>
+
+          <h4>参考价格与渠道</h4>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>区域</th><th>私人包车 + 司导（5 人一整天）</th><th>渠道</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">普罗旺斯<br>（从阿维尼翁出发）</td>
+                  <td><strong>€500–700 / 团 / 天</strong>（8–10 小时，含车、司机、油、过路费、停车费；门票和餐费自理）</td>
+                  <td>Itinerary France、A La Française、Ophorus 官网直订</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">蔚蓝海岸<br>（从尼斯出发）</td>
+                  <td><strong>€400–650 / 团 / 天</strong>（中文司导，10 小时口径）</td>
+                  <td>蓝普旅行、欧法旅游等中文司导公司</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">中文渠道</td>
+                  <td colspan="2"><strong>携程「包车游」频道</strong>搜「法国包车」，可以用人民币和国内支付方式下单，对你们最省事。中文司导在普罗旺斯和蔚蓝海岸的<strong>供给很薄，要早订</strong>。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="note">
+            <strong>问价时一定要问清「超时超公里」怎么算</strong>
+            这类报价的坑都在这里。比如常见的结构是「€600 含 10 小时 / 250 公里」，但从阿维尼翁跑一圈吕贝隆山村很容易超过 250 公里，<strong>超时 €50/小时、超公里 €1.5/公里</strong>，再加上「司机服务费 €20/车/天」和「司机餐费 €30」，一个标价 €600 的日子结账时会变成 €700 多。<strong>要一份写明具体路线、总公里数、总小时数的一次性总价报价（all-in），并且落在书面上。</strong>另外确认<strong>儿童座椅</strong>（通常第一个免费，之后每个约 €10–15）。
+          </div>
+
+          <h3>戴高乐机场 ↔ 巴黎市区</h3>
+          <div class="warn">
+            <strong>⚠️ Roissybus 已经停运，2026 年 3 月前写的攻略全部作废</strong>
+            那条开了 30 多年的「歌剧院 ↔ 戴高乐」直达大巴，<strong>2026 年 2 月 28 日开出最后一班，3 月 1 日起永久停运</strong>。另外 CDG Express 快线<strong>要到 2027 年 3 月才通车</strong>，这次也用不上。
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>方式</th><th>价格</th><th>时长</th><th>适合你们吗</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap"><strong>提前订 7 座商务车</strong><br><span class="tag tag-p0">推荐</span></td>
+                  <td class="nowrap">约 €70–110 / 车</td>
+                  <td class="nowrap">30–70 分钟</td>
+                  <td>司机举牌在到达厅接、跟踪航班、免费等 60 分钟，一辆车装下全家和所有行李，还能指定儿童座椅。<strong>19:15 落地、两位老人、一个 7 岁小孩、当晚还有大型活动堵车——这个溢价太值了。</strong>渠道：携程/飞猪「接送机」订中文司机，或 Welcome Pickups、GetTransfer。</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">官方出租车（两辆）</td>
+                  <td class="nowrap">右岸 €56×2 = <strong>€112</strong><br>左岸 €65×2 = <strong>€130</strong></td>
+                  <td class="nowrap">30–60 分钟</td>
+                  <td>戴高乐到巴黎有政府定额，<strong>不打表、夜间和周日不加价、不收行李费</strong>。但<strong>标准巴黎出租车限载 4 人，5 个人坐不下一辆</strong>，所以要叫两辆——反而比一辆商务车贵。可以在候车区要一辆 monospace 大车（定额相同、最便宜），但高峰期供应不稳定，等多久无法保证。</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">RER B</td>
+                  <td class="nowrap">成人 €14 / 4–9 岁 €7<br>5 人共 €63</td>
+                  <td class="nowrap">35–50 分钟</td>
+                  <td><strong>不推荐。</strong>台阶多、车厢挤、扒手多，两位老人拖大箱子在早晚高峰站着换乘不值得省这点钱。注意机场线不适用全域统一票价，所以是 €14 而不是 €2.55。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="warn">
+            <strong>🚨 到达厅里主动上来问你要不要坐车的，基本都是黑车</strong>
+            戴高乐到达大厅有专门拉客的假出租车，有报道收到合法价格的 4 倍。<strong>只在标着「TAXIS」的官方候车区排队上车</strong>，或者直接找你预订的、举着牌子等你的司机。上车前跟司机确认走定额（tarif forfaitaire）。<br><br>另外有一条我没能核实：<strong>超过 4 人时机场定额是否加收「第 5 位乘客附加费」</strong>（历史上约 €4/人）。2026 年的定额条款里没查到这一条，<strong>上车前问一句</strong>。</div>
+
+          <h3>巴黎市内交通票（2026 年价格）</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>票种</th><th>成人</th><th>7 岁小孩</th><th>说明</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>地铁 / RER 单程</td><td class="nowrap">€2.55</td><td class="nowrap">€1.30</td><td>已取消分区概念，去凡尔赛、去迪士尼都是这个价。<strong>唯一例外是机场线。</strong></td></tr>
+                <tr><td>公交 / 电车单程</td><td class="nowrap">€2.05</td><td class="nowrap">€1.05</td><td>比地铁还便宜。</td></tr>
+                <tr><td>Navigo Jour 日票</td><td class="nowrap">€12.30</td><td class="nowrap">同价（待确认）</td><td>00:00 到 24:00，不是滚动 24 小时。<strong>一天坐满 5 次以上才回本。</strong></td></tr>
+                <tr><td>Navigo Easy 卡</td><td class="nowrap">工本费 €2</td><td class="nowrap">€2</td><td>可反复充值，最多存 20 张票。</td></tr>
+                <tr><td>Navigo Semaine 周票</td><td colspan="3">€32.40，但<strong>覆盖的是周一到周日的固定日历周，不是买后 7 天</strong>。你们周六到、周三就离开巴黎，<strong>完全不划算，别买。</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul>
+            <li><strong>结论：买 5 张 Navigo Easy（€2×5 = €10），按需充单程票。</strong>一张卡不能两个人同时用，所以必须一人一张。</li>
+            <li><strong>⚠️ 地铁票和公交票是两套独立系统</strong>：没有本地月卡的话，<strong>地铁换公交要各刷一张票</strong>（€2.55 + €2.05），不能免费换乘。卡里两种票都要备。</li>
+            <li><strong>⚠️ 小孩的优惠票不能和成人票存在同一张卡上</strong>，孩子必须单独一张卡。</li>
+            <li>4 岁以下全免票，<strong>4 岁到不满 10 岁半价</strong>，10 岁起全价。<strong>法国景点和交通一律没有老年优惠</strong>——70 岁和 40 岁同价，这点和国内、日本很不一样，预算时别按老年票算。</li>
+            <li>购票：官方 App「Île-de-France Mobilités」（可直接把票存手机刷手机进闸），或车站自动售票机。<strong>巴黎不能像伦敦那样直接刷银行卡过闸</strong>，必须先买票。建议<strong>老人用实体卡</strong>，不怕手机没电。</li>
+          </ul>
+          <div class="note">
+            <strong>老人在巴黎优先坐公交，不是地铁</strong>
+            巴黎地铁绝大多数车站<strong>没有电梯</strong>，换乘经常要上下好几段楼梯，1、4、7、9 号线的老站尤其糟。相比之下<strong>公交车全部是低地板、无台阶、有座位，还能看风景</strong>，票价还更便宜。观光价值高的线路：<strong>21、24、27、38、63、69、72、87 路</strong>。地铁里最无障碍的是 <strong>14 号线</strong>（全线电梯 + 站台门）。
+          </div>
+        </section>
+
+        <section class="card" id="days">
+          <h2>4. 逐日行程</h2>
+          <p class="lead">每天只安排「一个上午 + 一个下午」两个主项，剩下的留白。带老人和小孩，行程排满就等于行程崩掉。地名都能点开地图。</p>
+
+          <div class="day">
+            <div class="day-head">
+              <span class="day-date">9.25 周五</span>
+              <span class="day-city">上海 → 巴黎</span>
+              <span class="day-badge">飞行日</span>
+            </div>
+            <dl>
+              <dt>09:30</dt><dd>到 <a class="gmap" data-q="Shanghai Pudong International Airport Terminal 1">浦东机场 T1</a>（东航国际在 T1）。5 个人办票托运预留足够时间。</dd>
+              <dt>12:55</dt><dd>MU569 起飞。<strong>上飞机就把手表调成巴黎时间</strong>，按巴黎时间吃和睡，落地当晚才睡得着。</dd>
+              <dt>19:15</dt><dd>落地 <a class="gmap" data-q="Paris Charles de Gaulle Airport Terminal 2E">戴高乐机场 T2E</a>。<strong>⚠️ 从落地到走出航站楼，请按 2.5 到 3 小时预算</strong>，不是一小时。欧盟新的入境系统上线后戴高乐边检明显变慢，傍晚长途航班扎堆的时段 T2E 排两小时以上都有报道——而你们正好是傍晚这一波。</dd>
+              <dt>21:30–22:00</dt><dd>提前订好的 7 座商务车接机，直接送到酒店门口。</dd>
+              <dt>22:30</dt><dd>入住。<strong>直接睡，不要出去逛。</strong>第二天的早饭建议出发前就想好——这个点超市多半关门了，可以让司机在路上停一下，或者干脆睡到自然醒去咖啡馆吃。</dd>
+            </dl>
+            <div class="warn">
+              <strong>⚠️ 今晚从机场进城会堵，而且是有原因的堵</strong>
+              <p>教宗良十四世 9.25–9.26 访问巴黎。<strong>今晚 21:00 在法兰西体育场有青年守夜活动，预计 7.5 万人</strong>。法兰西体育场在圣但尼，正好卡在戴高乐机场到市区的 A1 高速旁边，同时 RER B 北段和地铁 13 号线也会爆满。</p>
+              <p>对策：<strong>一定要提前订好接机车</strong>（司机会跟踪航班、免费等 60 分钟），并跟司机说明当晚有大型活动、请走 A3 或其他绕行路线。今晚千万不要考虑 RER B。车程按 1 小时到 1 小时 30 分预留，别安排任何当晚的活动。</p>
+            </div>
+          </div>
+
+          <div class="warn">
+            <strong>🚨 9.26 周六：教宗在协和广场主持露天弥撒，预计 50 万人</strong>
+            <p>教宗良十四世 9.25–9.26 访问巴黎。<strong>9.26 下午 15:00 在 <a class="gmap" data-q="Place de la Concorde, Paris">协和广场</a> 加整条 <a class="gmap" data-q="Avenue des Champs-Élysées, Paris">香榭丽舍大道</a> 有露天弥撒，巴黎教区预计约 50 万人参加</strong>。已经官方确认的连带影响：</p>
+            <ul>
+              <li><strong>巴黎圣母院 9.24–9.26 三天不对游客开放</strong>，9.27 恢复。</li>
+              <li><strong>凯旋门 9.26 全天闭馆。</strong></li>
+            </ul>
+            <p>警察总局的正式封路封站令还没公布，<strong>9 月上旬请复查</strong> <a class="link" href="https://www.prefecturedepolice.interieur.gouv.fr/" target="_blank" rel="noopener">警察总局网站</a> 和 <a class="link" href="https://www.ratp.fr/" target="_blank" rel="noopener">RATP</a>。网上已有文章说「十几个市中心地铁站将关闭」，但没有官方来源，别当事实。</p>
+            <p><strong>结论：9.26 整天不要出现在巴黎市中心西部</strong>（协和广场、香榭丽舍、杜乐丽、西岱岛一带）。带两位 70 岁老人挤在 50 万人的安保围栏和改道人流里是真的危险。所以下面把 9.26 整天安排去了城外的凡尔赛——正好那天还是大喷泉音乐表演日。</p>
+          </div>
+
+          <div class="day">
+            <div class="day-head">
+              <span class="day-date">9.26 周六</span>
+              <span class="day-city">凡尔赛宫一日</span>
+              <span class="day-badge">重点日</span>
+              <span class="day-badge">避开教宗弥撒</span>
+            </div>
+            <dl>
+              <dt>08:00</dt><dd>出发。<strong>走 <a class="gmap" data-q="Gare Montparnasse, Paris">蒙帕纳斯站</a> 坐郊区火车到 Versailles Chantiers</strong>，不要走 RER C——RER C 沿塞纳河穿过市中心西部，正好是当天可能封站的区段。单程 €2.55（凡尔赛在法兰西岛内，适用全域统一票价）。</dd>
+              <dt>09:30</dt><dd><a class="gmap" data-q="Château de Versailles">凡尔赛宫</a> 宫殿部分。<strong>宫殿必须预约定时入场</strong>，国王寝宫 + 镜厅是核心，约 2 小时。<strong>10:30 之后镜厅的人流密度对老人很不友好，所以务必订上午早段。</strong>如果昨晚到得晚、想多睡一会儿，09:30 或 10:00 的时段也可以；但别订下午。</dd>
+              <dt>11:45</dt><dd><strong>坐园内小火车</strong>去特里亚农领地。宫殿北露台上车，全程一圈约 50 分钟、可随上随下。<strong>成人 €9，11 岁以下免费</strong>——宫殿走到小特里亚农要 25–30 分钟，这钱一定要花。</dd>
+              <dt>12:00</dt><dd><a class="gmap" data-q="Petit Trianon, Versailles">小特里亚农宫</a> 和 <a class="gmap" data-q="Hameau de la Reine, Versailles">王后的村庄</a>（12:00 才开门）。玛丽·安托瓦内特的仿农村小镇，有池塘、磨坊、小动物，<strong>是整个凡尔赛小孩最喜欢的地方</strong>，人也比主宫殿少得多。中间在小威尼斯或大运河边吃午饭。</dd>
+              <dt>14:30–15:15</dt><dd><strong>回花园看大喷泉全面喷发。</strong>周六周日是「大喷泉音乐表演」日，55 座喷泉、600 组水景全开，配吕利和亨德尔的巴洛克音乐。<strong>全园大喷发只有 14:30–15:15 和 16:00–16:45 两个时间窗</strong>，守住其中一个。</dd>
+              <dt>16:00</dt><dd>体力好就再守 16:00–16:45 那一轮，不行就直接回巴黎。第一个白天别硬撑，晚上早睡。</dd>
+            </dl>
+            <div class="note">
+              <strong>为什么把凡尔赛放在第一天</strong>
+              三个原因刚好叠在一起：① 9.26 市中心因为弥撒去不了，凡尔赛在城外不受影响；② <strong>周六是「大喷泉音乐表演」日</strong>（4.3–11.1 每周六日），喷泉全开，比周二到周五的「音乐花园」（喷泉不全开）值得多；③ <strong>凡尔赛周一闭馆</strong>，而你们只有 9.26–9.29 四天，周一要留给卢浮宫。<br><br>另外倒时差的方向也对：刚到欧洲的头两天会自然地早醒、晚上撑不住，正适合「早出发、下午收工」的一日游。
+            </div>
+            <p><strong>整日弹性替换</strong>：如果更想让小孩玩，可以把这天换成 <strong><a class="gmap" data-q="Disneyland Paris">巴黎迪士尼</a></strong>——<strong>万圣节季正好从 9.26 开始</strong>，而且园区在城东 32 公里外，同样避开弥撒，RER A 线直达约 45 分钟。代价是两位老人会很辛苦，可以考虑分头行动。但那样凡尔赛就只能挪到 9.27 周日（同样是大喷泉日，人更多）。</p>
+          </div>
+
+          <div class="day">
+            <div class="day-head">
+              <span class="day-date">9.27 周日</span>
+              <span class="day-city">巴黎：西岱岛</span>
+            </div>
+            <dl>
+              <dt>09:30</dt><dd><a class="gmap" data-q="Sainte-Chapelle, Paris">圣礼拜堂</a>，<strong>订当天第一个时段</strong>。整面墙的 13 世纪彩色玻璃，是我认为巴黎最被低估的地方。<strong>它在还在运作的司法宫里面，所有人要过和法院共用的反恐安检，就算有定时票也要单独排一次队，而队伍在露天、没有座位</strong>——所以订第一场，队最短。上层礼拜堂只能走一段约 30 级的旋转石梯，老人留意。</dd>
+              <dt>11:00</dt><dd><a class="gmap" data-q="Conciergerie, Paris">巴黎古监狱</a>，和圣礼拜堂买联票，走路 3 分钟。玛丽·安托瓦内特被关押和受审的地方。<strong>全程基本平层，配中文 HistoPad 平板导览</strong>，对老人比圣礼拜堂友好得多，小孩也玩得动。</dd>
+              <dt>12:30</dt><dd>岛上或左岸午餐。</dd>
+              <dt>14:30</dt><dd><a class="gmap" data-q="Cathédrale Notre-Dame de Paris">巴黎圣母院</a>——<strong>今天刚好恢复开放</strong>（9.24–26 因教宗访问关闭）。进堂完全免费。修复后的内部是亮米白色的，和火灾前完全不一样。</dd>
+              <dt>16:00</dt><dd><a class="gmap" data-q="Shakespeare and Company, Paris">莎士比亚书店</a>、拉丁区街巷，然后去 <a class="gmap" data-q="Jardin du Luxembourg, Paris">卢森堡公园</a> 让小孩玩帆船池和游乐场，老人在绿椅子上歇腿。</dd>
+            </dl>
+            <div class="warn">
+              <strong>⚠️ 巴黎圣母院的预约只能到了巴黎再抢，而且只有官网</strong>
+              <p>圣母院的免费预约<strong>只在参观前几小时到最多前两天开放</strong>（官网原话：前天、昨天或当天），<strong>所以在国内出发前根本约不了</strong>。到巴黎后用官方 App「Cathédrale Notre-Dame de Paris」或官网抢一个时段。</p>
+              <p>预约是自愿的、不约也能进，但现场队伍很长（教堂日均访客近 4 万）。<strong>任何第三方平台卖的「巴黎圣母院门票」都是骗局</strong>——进堂 100% 免费，只有官网能预约，这是官网首页的常驻警告。</p>
+              <p>另外<strong>钟楼要单独买票（€16）、只能网上买、现场完全不售票</strong>，而且是 <strong>424 级台阶、没有电梯、部分通道只有 45 厘米宽、要弯腰通过、全程没有厕所</strong>，官方明确不建议幼儿和有心脏问题的人上。<strong>这个项目建议整体放弃。</strong>想看地下遗迹可以去广场地下的考古地宫，<strong>有电梯、平层</strong>，对老人友好。</p>
+            </div>
+          </div>
+
+          <div class="day">
+            <div class="day-head">
+              <span class="day-date">9.28 周一</span>
+              <span class="day-city">巴黎：卢浮宫 + 蒙马特</span>
+              <span class="day-badge">重点日</span>
+            </div>
+            <dl>
+              <dt>09:00</dt><dd><a class="gmap" data-q="Musée du Louvre, Paris">卢浮宫</a>。<strong>周一开放、周二闭馆，所以只能今天</strong>（凡尔赛和奥赛今天都关门，安排得刚好）。带 7 岁小孩别贪：走「胜利女神像 → 蒙娜丽莎 → 米洛的维纳斯 → 汉谟拉比法典」这条精简线，2 小时出来，比逛 5 小时记住的更多。</dd>
+              <dt>09:05</dt><dd><strong>进门先去金字塔下的服务台，免费借两张折叠凳给老人</strong>（也借手杖、轮椅、电动代步椅）。卢浮宫动线极长，能随时坐下休息，体验差别很大。这条几乎没人知道。中文语音导览 €6，可以在买票时一起订。</dd>
+              <dt>12:00</dt><dd><a class="gmap" data-q="Jardin des Tuileries, Paris">杜乐丽花园</a> 午餐。园里有旋转木马和小摊，小孩跑一会儿，老人在绿椅子上晒太阳。</dd>
+              <dt>14:30</dt><dd><a class="gmap" data-q="Basilique du Sacré-Cœur de Montmartre">圣心堂</a>。<strong>不要爬那 200 多级台阶</strong>，走旁边的 <a class="gmap" data-q="Funiculaire de Montmartre">蒙马特缆车</a>，一张地铁票就能上，老人省一大截体力。堂前平台是巴黎最好的免费观景台。</dd>
+              <dt>16:00</dt><dd><a class="gmap" data-q="Place du Tertre, Paris">小丘广场</a> 画家村、<a class="gmap" data-q="Le Mur des Je t'aime, Paris">爱墙</a>，山下找晚饭。街巷上下坡多，慢慢走。</dd>
+            </dl>
+            <div class="warn">
+              <strong>⚠️ 蒙马特的手绳骗局</strong>
+              从 Anvers 地铁站往圣心堂走的那段台阶，常有人上来搭话、抓着你的手腕直接编绳，编完索要几十欧，人多时会围住你。<strong>对策：手插兜、不停步、不回应、不让任何人碰到手</strong>。提前跟老人和小孩说好：谁来搭话都别停下。
+            </div>
+          </div>
+
+          <div class="day">
+            <div class="day-head">
+              <span class="day-date">9.29 周二</span>
+              <span class="day-city">巴黎：铁塔 + 塞纳河 + 奥赛</span>
+            </div>
+            <dl>
+              <dt>09:30</dt><dd><a class="gmap" data-q="Tour Eiffel, Paris">埃菲尔铁塔</a>，提前订好的登顶电梯票，首场人最少、安检也快。<strong>顶层是露天高空、风大、空间窄，内外两层之间还有一小段楼梯</strong>，老人如果不适应，到二层就很好——二层的视野其实更能看清巴黎的街道肌理。</dd>
+              <dt>12:30</dt><dd><a class="gmap" data-q="Champ de Mars, Paris">战神广场</a> 附近午餐。</dd>
+              <dt>14:00</dt><dd><strong>塞纳河游船</strong>，1 小时。<strong>选 <a class="gmap" data-q="Bateaux Parisiens, Port de la Bourdonnais, Paris">Bateaux Parisiens</a>，登船口就在铁塔脚下，而且从码头下去有电梯</strong>——这是对老人最关键的一点。全程坐着，一次看完卢浮宫、奥赛、西岱岛的河岸面，是整趟行程「性价比最高的一小时」。</dd>
+              <dt>15:30</dt><dd><a class="gmap" data-q="Musée d'Orsay, Paris">奥赛博物馆</a>（RER C 三站直达，<strong>周一闭馆所以放在今天</strong>，周二正常开）。莫奈、梵高、雷诺阿都在这儿，老火车站改的建筑本身就好看。五楼印象派 + 大钟窗口是重点，两小时够。<strong>最后入馆 17:00</strong>，别晚到。</dd>
+              <dt>18:30</dt><dd>回酒店收行李，明早要赶火车。想看铁塔夜景就绕去 <a class="gmap" data-q="Place du Trocadéro, Paris">特罗卡德罗广场</a>——9 月末日落约 19:30，天黑后铁塔每到整点闪灯 5 分钟。</dd>
+            </dl>
+            <p><strong>弹性备选</strong>：<a class="gmap" data-q="Hôtel des Invalides, Paris">荣军院</a>（拿破仑墓）、<a class="gmap" data-q="Musée Rodin, Paris">罗丹美术馆</a>（花园很舒服，适合坐着歇腿）、<a class="gmap" data-q="Musée de l'Orangerie, Paris">橘园美术馆</a>（莫奈睡莲全景厅，全程平层、规模小、不累人，很适合老人）。</p>
+            <div class="note">
+              <strong>凯旋门今年就别登了</strong>
+              官网页首挂着公告：<strong>电梯正在维修，无限期，登顶只能走 284 级螺旋楼梯</strong>。对两位 70 岁老人来说这个项目基本可以直接放弃，在下面拍照就好。另外它 9.26 因教宗弥撒全天闭馆。去看的时候<strong>一定走地下通道过马路</strong>，别横穿那个 12 条路交汇的环岛。
+            </div>
+          </div>
+
+          <div class="day">
+            <div class="day-head">
+              <span class="day-date">9.30 周三</span>
+              <span class="day-city">巴黎 → 阿维尼翁</span>
+              <span class="day-badge">移动日</span>
+            </div>
+            <dl>
+              <dt>08:30</dt><dd>退房，打车去 <a class="gmap" data-q="Gare de Lyon, Paris">巴黎里昂站</a>。<strong>去南法都从里昂站发车</strong>，别跑错到蒙帕纳斯站。站内有大型电子屏，开车前约 20 分钟才公布站台号。</dd>
+              <dt>09:30–10:30</dt><dd>TGV 直达，2 小时 40 分。中途没有换乘，行李放好就能睡一觉。</dd>
+              <dt>12:30</dt><dd>到阿维尼翁。票买到 <a class="gmap" data-q="Gare d'Avignon Centre">Avignon Centre</a> 的话，直接换同站台的摆渡小火车 4 分钟进城。<strong>住老城墙里面</strong>，走路能到所有景点。</dd>
+              <dt>15:00</dt><dd><a class="gmap" data-q="Palais des Papes, Avignon">教皇宫</a>。14 世纪教廷从罗马搬到这里，是欧洲最大的哥特式宫殿之一。里面发的平板电脑（Histopad）能把空房间叠加成当年的样子，小孩会玩得很起劲。</dd>
+              <dt>17:00</dt><dd><a class="gmap" data-q="Pont Saint-Bénézet, Avignon">圣贝内泽断桥</a>（就是儿歌《在阿维尼翁桥上》唱的那座），以及 <a class="gmap" data-q="Place de l'Horloge, Avignon">钟楼广场</a> 吃晚饭。南法的晚饭时间比巴黎还晚，7 点半才陆续开门。</dd>
+            </dl>
+          </div>
+
+          <div class="day">
+            <div class="day-head">
+              <span class="day-date">10.1 周四</span>
+              <span class="day-city">普罗旺斯：吕贝隆山村</span>
+              <span class="day-badge">包车日</span>
+            </div>
+            <dl>
+              <dt>全天</dt><dd><strong>包车</strong>（为什么不自己租车、多少钱、怎么问价，见上面「普罗旺斯的一日游」）。今天和明天用同一个司机，可以谈一个两日打包价。<strong>吕贝隆的几个山村之间没有可用的公共交通</strong>——Zou! 的 915、917 路是当地通学线，绕道阿普特，不是旅游环线，所以这天没有车基本走不了。</dd>
+              <dt>09:00</dt><dd><a class="gmap" data-q="L'Isle-sur-la-Sorgue">索格河畔岛</a>。<strong>正好周四上午有集市</strong>（9:00–12:30，教堂周边），规模比周日那场小，但也就意味着不挤。镇子被索格河分成好几股水道，岸边还有转动的老水车，走起来很舒服，全程平路。</dd>
+              <dt>10:30</dt><dd><a class="gmap" data-q="Fontaine-de-Vaucluse">泉水镇</a>，离上一站只有十几分钟。索格河从山崖下的深潭涌出，枯水期是一潭幽绿、丰水期直接喷成瀑布。镇子小、路平。</dd>
+              <dt>12:30</dt><dd><a class="gmap" data-q="Gordes, Vaucluse">石头城 Gordes</a> 午餐，找有露台的。整座村子用灰白石头垒在悬崖上，<strong>进村前公路边的观景点是最经典的机位，先停车拍照再进村</strong>。</dd>
+              <dt>15:00</dt><dd><a class="gmap" data-q="Roussillon, Vaucluse">红土城 Roussillon</a>。赭石矿区，房子和土地都是橙红色，和石头城的灰白正好对照。村里有条短的赭石步道，<strong>红土会把鞋染色，别穿浅色鞋</strong>。</dd>
+              <dt>17:00</dt><dd>回阿维尼翁。<strong>10 月初正是葡萄采收季（vendanges）</strong>，顺路可以停一家 <a class="gmap" data-q="Châteauneuf-du-Pape">教皇新堡</a> 酒庄——<strong>多数要提前打电话或邮件预约，别直接上门</strong>，让司机帮你约。</dd>
+            </dl>
+          </div>
+
+          <div class="day">
+            <div class="day-head">
+              <span class="day-date">10.2 周五</span>
+              <span class="day-city">普罗旺斯：加尔桥 + 光影采石场</span>
+              <span class="day-badge">包车日</span>
+            </div>
+            <dl>
+              <dt>09:30</dt><dd><a class="gmap" data-q="Pont du Gard">加尔桥</a>。两千年前的罗马三层引水渠，49 米高，是这类工程里保存最好的。你们看过罗马，但这一座立在野外河谷里，气质完全不同。河边有平缓步道和小石滩，小孩能玩水。<strong>桥本身免费</strong>，停车 €9/车，展馆成人 €8、18 岁以下免费。<strong>顶层水道的导览要爬 80 级台阶，老人就别去了。</strong></dd>
+              <dt>12:30</dt><dd>往 <a class="gmap" data-q="Saint-Rémy-de-Provence">圣雷米</a> 方向午餐，梵高住过的疗养院就在这儿。</dd>
+              <dt>14:30</dt><dd><a class="gmap" data-q="Carrières des Lumières, Les Baux-de-Provence">光影采石场</a>。废弃石灰岩矿洞里的巨幕投影，整面石壁都是流动的画，配着音乐。<strong>2026 秋季放的是《毕加索：运动中的艺术》+《弗里达·卡罗》，展期到 10 月 8 日</strong>，你们刚好赶上最后一周。<strong>全程平地、有座位、洞里凉爽——老人最舒服、小孩最兴奋，一个点同时解决两头</strong>，我最推荐的一站。</dd>
+              <dt>16:30</dt><dd><a class="gmap" data-q="Les Baux-de-Provence">莱博村</a>（石头城），山顶的中世纪城堡废墟，能看到整片普罗旺斯平原。<strong>村子很陡，石板坡道坡度超过 6%</strong>。有个几乎没人知道的办法：<strong>村里的游客中心可以免费出借两台全地形电动轮椅</strong>，需要提前开口问。老人如果不想坐，就在半山咖啡馆等，风景一样好。</dd>
+            </dl>
+            <p><strong>备选</strong>：<a class="gmap" data-q="Arles, France">阿尔勒</a>，从阿维尼翁坐火车 20 分钟。你们刚看过罗马斗兽场，所以阿尔勒竞技场的震撼会打折——但今年多一个理由：<strong>阿尔勒国际摄影节（Rencontres d'Arles）展到 10 月 4 日</strong>，四十来个展览散布在罗马遗址、中世纪回廊和 Gehry 设计的 LUMA 塔里，这才是阿尔勒现在真正独特的地方。</p>
+          </div>
+
+          <div class="day">
+            <div class="day-head">
+              <span class="day-date">10.3 周六</span>
+              <span class="day-city">阿维尼翁 → 尼斯</span>
+              <span class="day-badge">移动日</span>
+            </div>
+            <dl>
+              <dt>09:30</dt><dd>阿维尼翁 TGV 站上车，直达尼斯约 3 小时 20 分。<strong>让小孩坐左侧靠窗</strong>（面朝行进方向的海侧），戛纳到尼斯那一段几乎贴着海开。</dd>
+              <dt>13:00</dt><dd>到 <a class="gmap" data-q="Gare de Nice-Ville">尼斯站</a>，入住。<strong>建议住老城或 Jean Médecin 一带</strong>，步行范围内解决吃饭和逛街。</dd>
+              <dt>15:00</dt><dd><a class="gmap" data-q="Vieux Nice">尼斯老城</a> 窄巷 + <a class="gmap" data-q="Cours Saleya, Nice">萨莱亚集市大道</a>。<strong>今天是周六，正好是花市和菜市</strong>（周一那天变成古董市集，所以今天来对了）。尝一下 socca——鹰嘴豆粉现烤的薄饼，是尼斯真正的街头小吃。</dd>
+              <dt>17:00</dt><dd><a class="gmap" data-q="Colline du Château, Nice">城堡山</a> 看日落。<strong>山脚有免费电梯直接上去</strong>（在老城东端海边），老人完全不用爬坡。俯瞰整个天使湾和老城红屋顶，是尼斯第一机位。</dd>
+              <dt>19:00</dt><dd><a class="gmap" data-q="Promenade des Anglais, Nice">英国人散步大道</a> 沿海走一段，找餐厅吃饭。</dd>
+            </dl>
+          </div>
+
+          <div class="day">
+            <div class="day-head">
+              <span class="day-date">10.4 周日</span>
+              <span class="day-city">昂蒂布 / 滨海自由城</span>
+              <span class="day-badge">留白日</span>
+            </div>
+            <dl>
+              <dt>上午</dt><dd><a class="gmap" data-q="Antibes, France">昂蒂布</a>（火车 15 分钟）：老城的 <a class="gmap" data-q="Marché Provençal, Antibes">普罗旺斯集市</a> 是买手信的好地方（香料、橄榄油、蜂蜜、马赛皂），<a class="gmap" data-q="Musée Picasso, Antibes">毕加索美术馆</a> 就在海边的格里马迪城堡里，规模小、不累人。<strong>这个馆周一闭馆，所以只能今天来</strong>；而且<strong>今天是当月第一个周日，法国不少博物馆免费开放</strong>。<br>更省力的选项：<a class="gmap" data-q="Villefranche-sur-Mer">滨海自由城</a>（火车 8 分钟），一个安静的深水小湾，彩色房子和小沙滩，是全程最轻松的半天。</dd>
+              <dt>下午</dt><dd>回尼斯，海边慢慢走。想再加一个点就去 <a class="gmap" data-q="Musée Marc Chagall, Nice">夏加尔美术馆</a>——<strong>今天是当月第一个周日，这个馆全员免费</strong>，而且它周二闭馆，所以今天正好。<a class="gmap" data-q="Musée Matisse, Nice">马蒂斯美术馆</a> 18 岁以下免费。</dd>
+              <dt>傍晚</dt><dd><strong>⚠️ 周日晚上是全欧洲最难找饭吃的时段</strong>——法国独立小餐馆周日晚普遍不开。<strong>今天的晚饭一定要提前订位</strong>，或者直接认准「brasserie（大众餐馆）」，那一类基本全天连续营业、每天都开。</dd>
+            </dl>
+            <p><strong>备选</strong>：<a class="gmap" data-q="Saint-Paul-de-Vence">圣保罗德旺斯</a>，中世纪石头小城、画廊密集，但要转公交、上下坡多，带老人不如去昂蒂布。想下海的话 10 月初尼斯水温还有 21–22℃，但<strong>尼斯是鹅卵石滩，光脚很痛，要穿沙滩鞋</strong>。</p>
+          </div>
+
+          <div class="day">
+            <div class="day-head">
+              <span class="day-date">10.5 周一</span>
+              <span class="day-city">摩纳哥 + 埃兹</span>
+              <span class="day-badge">重点日</span>
+            </div>
+            <dl>
+              <dt>09:00</dt><dd><strong>坐火车</strong>去 <a class="gmap" data-q="Monaco-Monte-Carlo railway station">摩纳哥</a>：约 20 分钟、单程约 €4.40、约 15 分钟一班。<strong>别坐 600 路大巴</strong>（就是以前的 100 路），虽然便宜（刷卡 €2.10）但要 50–70 分钟。摩纳哥火车站整个修在山体里，<strong>有电梯、坡道、无障碍厕所，还在不同高度分别开口通往各城区</strong>——对两位老人来说这个车站设计值太多了。</dd>
+              <dt>09:40</dt><dd><a class="gmap" data-q="Musée Océanographique de Monaco">海洋博物馆</a>（10:00 开门，10–12 月每天 10:00–18:00）。悬崖上的百年老馆，鲨鱼池、能上手的触摸池、地中海生物。<strong>这是整趟行程为 7 岁小孩准备的最大惊喜</strong>，安排两小时。成人 €22.50、4–17 岁 €14，五个人 €104——是全程最贵的一张门票，但值。</dd>
+              <dt>11:45</dt><dd><a class="gmap" data-q="Palais Princier de Monaco">王宫广场</a>，卫兵换岗<strong>每天 11:55</strong>，想看要提前到。<strong>王宫内部 10 月 1–4 日和 10 月 7 日都关闭，正好只有今天 10.5 开放</strong>——这也是我把摩纳哥放在周一的原因。旁边就是老城步行街和大教堂。</dd>
+              <dt>14:00</dt><dd><a class="gmap" data-q="Casino de Monte-Carlo">蒙特卡洛赌场</a> 外观和周边豪车街拍。<strong>进赌场要满 18 岁且有着装要求，带小孩就在外面看</strong>。摩纳哥高低落差极大，城内有多部<strong>免费公共电梯和扶梯</strong>连接上下城区，地图上标 “ascenseur public”，善用它们能省一半力气。</dd>
+              <dt>16:30</dt><dd>回程在 <a class="gmap" data-q="Èze Village">埃兹村</a> 停一下（Zou! 602 路连接摩纳哥和埃兹村）。悬崖上的鹰巢村，<a class="gmap" data-q="Jardin Exotique d'Èze">仙人掌花园</a> 在村子最高处，能俯瞰 400 米下方的海。<strong>村内全是上坡窄巷和台阶</strong>，老人可以只在村口平台看景。<strong>⚠️ 绝对不要从 Èze-sur-Mer 火车站步行上村</strong>——车站在海平面、村子在 429 米，那条尼采小径是陡峭登山路。要坐 83 路公交。</dd>
+              <dt>傍晚</dt><dd>回尼斯。<strong>今天务必把行李收好、该买的买完</strong>，明早 07:00 就要出门。超市里的巧克力、饼干、芥末酱比机场便宜一半。退税单据统一收进一个文件袋。</dd>
+            </dl>
+            <div class="note">
+              <strong>尼斯的交通卡，以及一个能省不少钱的小票种</strong>
+              <p>尼斯市内的 Lignes d'Azur <strong>已经取消纸质单程票</strong>，一切都要充在可充值卡上（「La Carte」，€2 可退押金）。单程 €1.70（74 分钟内可换乘）；<strong>「Multi voyages」多次票的一张卡可以给全家五个人在同一趟车上分别刷</strong>，是你们最方便的买法。每天坐三趟以上就买 <strong>「Pass 2 jours」€13</strong>，正好覆盖 10.4–10.5。机场往返票 €10。</p>
+              <p><strong>出尼斯市区（去摩纳哥、埃兹、昂蒂布）用的是省级的 Zou! 网络</strong>，那边有一张 <strong>「mini-groupe」团体票，5 个人一起只要 €5.60</strong>——你们正好 5 个人，这一张就把全家一趟的车费解决了，比单买划算很多，问售票窗口要 “billet mini-groupe”。</p>
+              <p><strong>不要买 Pass Sud Azur Explore（3 天 €35/人）</strong>：5 个人就是 €170，而你们两天按次买大概只要 €40–75。<strong>French Riviera Pass 同样不划算</strong>，而且完全不含公共交通。</p>
+            </div>
+          </div>
+
+          <div class="day">
+            <div class="day-head">
+              <span class="day-date">10.6 周二</span>
+              <span class="day-city">尼斯 → 巴黎 → 上海</span>
+              <span class="day-badge">飞行日</span>
+            </div>
+            <dl>
+              <dt>06:30</dt><dd>起床退房。前一晚就把行李收完、把退税单据理好。</dd>
+              <dt>07:00</dt><dd>去 <a class="gmap" data-q="Aéroport Nice Côte d'Azur">尼斯机场</a>。5 个人带行李直接打车（约 20 分钟）最省事；2 号有轨电车从市区直达航站楼约 30 分钟。<strong>托运行李里有要退税的东西，必须在尼斯办完海关盖章</strong>（因为行李从这里直挂上海，见落地实务）。</dd>
+              <dt>09:05</dt><dd>AF7301 飞巴黎，约 1 小时 35 分，10:40 降戴高乐 <strong>2F</strong>。联程票行李直挂上海，不用取行李，跟着 “Connecting flights / Correspondances” 指示走。</dd>
+              <dt>10:40–13:25</dt><dd>2F 转 2E，中途过申根离境边检 + 重新安检。有 2 小时 45 分，从容。在 2E 吃个午饭。</dd>
+              <dt>13:25</dt><dd>MU554 从戴高乐起飞，约 11 小时 35 分。</dd>
+              <dt>10.7 07:00</dt><dd>落地浦东。整个 10.7 白天都是缓冲，也够全家回家补一觉。</dd>
+            </dl>
+            <p><strong>如果改选 MU570（21:20 起飞、10.7 14:40 落地）</strong>：今天就不用早起，上午在尼斯老城吃个从容的早午饭、最后走一段海边，下午 3 点前后飞巴黎，晚上转机。代价是缓冲只剩 9 小时左右。</p>
+          </div>
+        </section>
+
+        <section class="card" id="family">
+          <h2>5. 老人 + 小孩专项</h2>
+          <p class="lead">这趟行程真正的难点不是路线，是体力分配。下面这些是我在查资料时专门挑出来的、对 70 岁和 7 岁最有用的具体条款。</p>
+
+          <h3>能坐着就不要站着：具体可用的省力条款</h3>
+          <ul>
+            <li><strong>卢浮宫免费借折叠凳和手杖。</strong>进门后在金字塔下的服务台就能借（也有轮椅和电动代步椅）。卢浮宫动线极长，能随时坐下休息，对老人是决定性的。这一条几乎没有攻略提。</li>
+            <li><strong>凡尔赛园内小火车：成人 €9，11 岁以下免费。</strong>宫殿走到小特里亚农要 25–30 分钟，领地有 800 公顷。一圈约 50 分钟、可随上随下、车厢有遮挡。这钱一定要花。</li>
+            <li><strong>蒙马特有缆车。</strong>上圣心堂不用爬 200 多级台阶，缆车一张地铁票就能上。</li>
+            <li><strong>尼斯城堡山有免费电梯。</strong>在老城东端海边，直接送到山顶观景台，完全不用爬坡。</li>
+            <li><strong>摩纳哥有多部免费公共电梯和扶梯</strong>连接上下城区，地图上标 “ascenseur public”。摩纳哥落差极大，用上这些能省一半力气。</li>
+            <li><strong>塞纳河游船选 Bateaux Parisiens</strong>，从码头下船有电梯；<strong>最便宜的新桥游船（Vedettes du Pont-Neuf）要走很陡的台阶下到河心岛尖端</strong>，对老人不友好。差价每人才 €3。</li>
+            <li><strong>巴黎优先坐公交而不是地铁</strong>（低地板无台阶），详见上面的交通票部分。</li>
+            <li><strong>火车买一等座 + 指定下层（salle basse）</strong>，不用爬楼梯，行李就在身边。</li>
+          </ul>
+
+          <h3>建议直接放弃的项目</h3>
+          <ul>
+            <li><strong>凯旋门登顶</strong>：电梯无限期维修中，只剩 284 级螺旋楼梯。</li>
+            <li><strong>巴黎圣母院钟楼</strong>：424 级台阶、无电梯、部分通道仅 45 厘米宽要弯腰通过、全程无厕所，官方明确不建议幼儿和心脏功能不佳者攀登。</li>
+            <li><strong>埃菲尔铁塔顶层（可选择性放弃）</strong>：官方说明顶层和楼梯不适合行动不便者。到二层的视野其实更适合看清城市肌理。</li>
+            <li><strong>圣保罗德旺斯</strong>：要转公交、上下坡多，同样时间去昂蒂布轻松得多。</li>
+          </ul>
+
+          <h3>给 7 岁小孩留的「记得住」的点</h3>
+          <p>大人看的东西小孩记不住，所以每个区域我都埋了一个孩子会真的兴奋的点：</p>
+          <ul>
+            <li><strong>巴黎</strong>：凡尔赛的<a class="gmap" data-q="Hameau de la Reine, Versailles">王后村庄</a>（池塘、磨坊、小动物）+ 大喷泉全开的那 45 分钟；卢森堡公园的帆船池。想再加码就是迪士尼（万圣节季 9.26 开始）。</li>
+            <li><strong>普罗旺斯</strong>：<a class="gmap" data-q="Carrières des Lumières, Les Baux-de-Provence">光影采石场</a>——废弃矿洞里整面石壁的巨幕投影，全程平地、有座位、凉爽，<strong>老人最舒服、小孩最兴奋，一个点同时解决两头</strong>；加尔桥下的河滩可以玩水。</li>
+            <li><strong>蔚蓝海岸</strong>：<a class="gmap" data-q="Musée Océanographique de Monaco">摩纳哥海洋博物馆</a>——悬崖上的百年老馆，鲨鱼池和能上手的触摸池。</li>
+            <li><strong>火车上</strong>：阿维尼翁到尼斯那段后半程贴着地中海开，让他靠窗坐。两段 TGV 加起来接近 6 小时，记得带贴纸书、拼图卡之类能安静玩的东西。</li>
+          </ul>
+
+          <h3>住宿：5 个人在法国基本要开两间房</h3>
+          <ul>
+            <li><strong>法国酒店房间大多严格限住 2 人</strong>，三人间和家庭房都很少。5 个人现实的选择是<strong>两间双人房 + 一张加床</strong>，或者直接订一套两卧的公寓（Airbnb / Adagio 这类 aparthotel）。公寓还有个好处：有厨房能烧热水、煮点粥面，对老人和小孩很实用。</li>
+            <li><strong>⚠️ 订房必须确认有电梯（ascenseur）。</strong>巴黎大量老楼是 5、6 层无电梯的 Haussmann 建筑，带两位老人和大箱子爬上去是灾难。订之前直接写信问酒店。</li>
+            <li>法国按人按晚收<strong>市政旅游税（taxe de séjour）</strong>，通常在前台另付、不含在房价里，<strong>未成年人免收</strong>。<strong>⚠️ 巴黎现在还叠加了 200% 的法兰西岛交通附加税</strong>——三星约 <strong>€5.53/成人/晚</strong>、四星 €8.45、没有星级的 Airbnb 按房价比例算可能超过 €10。巴黎 5 晚这一项按 <strong>€150–300</strong> 预算，别被结账时的数字惊到。南法通常只有 €0.5–3/人/晚。</li>
+            <li><strong>住哪个区</strong>：巴黎首选 <strong>5/6 区</strong>（中心、好走、餐馆开门早、有卢森堡公园）但贵；<strong>2/9 区（歌剧院、大林荫道）是我给你们的推荐</strong>——老佛爷和圣安娜街（亚洲餐馆街）都走得到，购物和给老人找中餐都方便；<strong>13 区（意大利广场、Olympiades）被低估了</strong>：楼新、真的有电梯、楼下就是华人区，代价是到主要景点要 20–30 分钟。<strong>玛黑区虽然好看，但巴黎最多的无电梯老楼和最窄的楼梯都在那儿</strong>，带老人别选。<strong>避开北站、Barbès、La Chapelle 一带</strong>，酒店便宜但环境不好。<br>阿维尼翁住<strong>老城墙内、钟楼广场附近</strong>；尼斯住 <strong>Carré d'Or / Jean Médecin / 马塞纳广场</strong>（楼新有电梯、路平、有电车），老城有味道但吵、石板路、全是无电梯的老楼。</li>
+            <li>另外问酒店两件事：要<strong>临街对面/背街的房间</strong>（巴黎老楼多是单层玻璃，很吵），以及<strong>要淋浴间而不是高边浴缸</strong>——对 70 岁的人来说浴缸是实实在在的跌倒风险。</li>
+          </ul>
+
+          <h3>倒时差的节奏</h3>
+          <p>上海比巴黎快 6 小时。选白天航班（9.25 落地 19:15 直接睡）之后，倒时差会顺得多。头两天的规律是：<strong>会自然地很早醒，但晚上撑不住</strong>。所以行程都按「早出发、下午收工、晚饭早吃、别熬夜」排——这也是我把凡尔赛这种早起型一日游放在第一天、把需要晚上活动的项目往后放的原因。</p>
+        </section>
+
+        <section class="card" id="tickets">
+          <h2>6. 门票与通票</h2>
+          <div class="warn">
+            <strong>⚠️ 一个必须提前知道的坏消息：法国主要景点开始对非欧盟游客加价了</strong>
+            <p><strong>卢浮宫从 2026 年 1 月 14 日起、圣礼拜堂从 1 月 12 日起实行差别定价</strong>：欧洲经济区居民一个价，非欧洲经济区访客另一个更高的价。<strong>中国护照 + 短期旅游签 = 非欧洲经济区</strong>，按高价计。凡尔赛也有类似的双轨价。</p>
+            <p>好消息是：<strong>18 岁以下所有国籍一律免费</strong>，所以你们家 7 岁的小孩几乎全程不用买门票（凡尔赛演出日的花园是唯一例外，见下）。</p>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>项目</th><th>成人单价（中国护照）</th><th>7 岁小孩</th><th>4 人 + 1 孩合计</th><th>预约要求</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>埃菲尔铁塔</strong>（电梯登顶）</td>
+                  <td class="nowrap">€36.70</td>
+                  <td class="nowrap">€9.20</td>
+                  <td class="nowrap"><strong>€156.00</strong></td>
+                  <td>不强制，但<strong>提前 60 天开售、登顶票最抢手</strong>。只到二层：成人 €23.50 / 儿童 €6.00，合计 €100。</td>
+                </tr>
+                <tr>
+                  <td><strong>凡尔赛宫</strong> Passeport 通票（旺季）</td>
+                  <td class="nowrap">€35</td>
+                  <td class="nowrap">€12</td>
+                  <td class="nowrap"><strong>€152.00</strong></td>
+                  <td><strong>宫殿必须预约定时入场</strong>，旺季上午热门时段会提前数周订满。</td>
+                </tr>
+                <tr>
+                  <td><strong>卢浮宫</strong></td>
+                  <td class="nowrap">€32</td>
+                  <td class="nowrap">免费</td>
+                  <td class="nowrap"><strong>€128.00</strong></td>
+                  <td>9 月<strong>不强制</strong>预约（只有 7、8 月强制），但仍建议提前订定时票。</td>
+                </tr>
+                <tr>
+                  <td><strong>圣礼拜堂 + 古监狱</strong> 联票</td>
+                  <td class="nowrap">€30</td>
+                  <td class="nowrap">免费</td>
+                  <td class="nowrap"><strong>€120.00</strong></td>
+                  <td><strong>圣礼拜堂必须预约日期和时段</strong>；小孩免费但也要占一个名额。联票比分开买省 €5，且只限当天用。</td>
+                </tr>
+                <tr>
+                  <td><strong>塞纳河游船</strong>（Bateaux Parisiens）</td>
+                  <td class="nowrap">€18</td>
+                  <td class="nowrap">€9</td>
+                  <td class="nowrap"><strong>€81.00</strong></td>
+                  <td>不用预约（20 人以下随到随上），线上买只是比现场省 €2/人。</td>
+                </tr>
+                <tr>
+                  <td><strong>奥赛博物馆</strong></td>
+                  <td class="nowrap">€16</td>
+                  <td class="nowrap">免费</td>
+                  <td class="nowrap"><strong>€64.00</strong></td>
+                  <td>不强制但强烈建议订定时票。<strong>奥赛目前没有非欧盟加价</strong>，只有一档 €16。</td>
+                </tr>
+                <tr>
+                  <td>凡尔赛园内小火车</td>
+                  <td class="nowrap">€9</td>
+                  <td class="nowrap">免费</td>
+                  <td class="nowrap">€36.00</td>
+                  <td>现场买，宫殿北露台售票亭可刷卡。</td>
+                </tr>
+                <tr>
+                  <td><strong>巴黎圣母院</strong></td>
+                  <td class="nowrap">免费</td>
+                  <td class="nowrap">免费</td>
+                  <td class="nowrap"><strong>€0</strong></td>
+                  <td>只能到巴黎后抢当天/前两天的免费时段，官网唯一渠道。</td>
+                </tr>
+                <tr>
+                  <td colspan="3"><strong>巴黎段门票小计</strong></td>
+                  <td class="nowrap"><strong>约 €737</strong></td>
+                  <td>≈ 5,900 元人民币，不含迪士尼和南法门票。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>官方购票入口（只用这些，别用第三方）</h3>
+          <ul>
+            <li>埃菲尔铁塔：<a class="link" href="https://ticket.toureiffel.paris/en" target="_blank" rel="noopener">ticket.toureiffel.paris</a>（唯一官方渠道）</li>
+            <li>卢浮宫：<a class="link" href="https://ticket.louvre.fr/en" target="_blank" rel="noopener">ticket.louvre.fr</a></li>
+            <li>凡尔赛宫：<a class="link" href="https://ticket.chateauversailles.fr" target="_blank" rel="noopener">ticket.chateauversailles.fr</a></li>
+            <li>奥赛博物馆：<a class="link" href="https://billetterie.musee-orsay.fr" target="_blank" rel="noopener">billetterie.musee-orsay.fr</a></li>
+            <li>圣礼拜堂 / 古监狱：<a class="link" href="https://www.monuments-nationaux.fr" target="_blank" rel="noopener">monuments-nationaux.fr</a>（法国国家古迹中心 CMN）</li>
+            <li>巴黎圣母院：<a class="link" href="https://www.notredamedeparis.fr" target="_blank" rel="noopener">notredamedeparis.fr</a> 或官方 App</li>
+          </ul>
+
+          <h3>博物馆通票（Paris Museum Pass）：你们不要买</h3>
+          <p>2 日通票 €85/人。对你们不划算，两个具体原因：</p>
+          <ul>
+            <li><strong>小孩本来就全程免票</strong>，通票省不到他身上。</li>
+            <li><strong>通票不含凡尔赛演出日的花园</strong>——而你们能去凡尔赛的每一天都是演出日（周一宫殿闭馆），所以持通票还要另付花园费。凡尔赛官网写得很明确。</li>
+            <li>而且持通票<strong>照样要单独预约卢浮宫、凡尔赛的定时入场名额</strong>，省不了操作。</li>
+          </ul>
+          <p>按上面的清单一项一项买，反而更省。</p>
+
+          <div class="note">
+            <strong>顺带两条</strong>
+            <strong>蓬皮杜中心已确认闭馆大修</strong>，这次去不了，别排进行程。<strong>迪士尼是完全动态定价</strong>，官方不公布价格表，同一天不同日期差很多，要去就直接上官网查你那天的实时价。
+          </div>
+        </section>
+
+        <section class="card" id="ground">
+          <h2>7. 落地实务</h2>
+
+          <h3>入境：2026 年的新流程，对你们其实更简单</h3>
+          <p>欧盟的入境出境系统（EES）自 2026 年 4 月 10 日起全面运行，取代护照盖章。但<strong>持签证的人比免签的人省事</strong>：</p>
+          <ul>
+            <li>你们申请签证时已经采集过指纹，指纹存在签证系统里，<strong>入境时不需要重新采集指纹，只采集面部照片</strong>。</li>
+            <li><strong>12 岁以下的小孩完全不采集指纹。</strong></li>
+            <li><strong>ETIAS 与你们无关</strong>——那是给免签国家的旅行授权，持签证者永远不需要，而且它目前还没上线。</li>
+            <li>从 2026 年 4 月 10 日起，<strong>航空公司有义务在出发机场做登机前预检</strong>，但只针对<strong>单次或两次入境</strong>的签证。如果你们拿到多次入境签，这一条不影响。另外承运人在 <strong>2026 年 10 月 6 日之前</strong>仍要查验护照章——正好卡在你们回程当天，护照别弄丢。</li>
+          </ul>
+          <div class="warn">
+            <strong>⚠️ 签证下来后，除了看「valid from」，也要看「until」</strong>
+            申根签证通常会在行程之外给几天缓冲期。<strong>但如果领馆没给缓冲，签证有效期正好写到 07-10-2026，那你们返程那天一点余量都没有</strong>——航班一延误到次日就成了逾期滞留。这种情况下务必<strong>买可改签的机票</strong>，并把保险买到 10 月 8 日以后。
+          </div>
+          <p><strong>随身包里要放的纸质件</strong>（边检偶尔会问，拿得出来就是几十秒的事）：全部酒店订单、返程机票行程单、保险单、行程表。别全放在托运行李里。</p>
+
+          <h3>钱：一句话——永远选欧元结账</h3>
+          <ul>
+            <li><strong>汇率</strong>：8 月下旬约 <strong>1 欧元 ≈ 7.9 人民币</strong>。给老人一个好记的锚：<strong>10 欧元 ≈ 79 元</strong>。</li>
+            <li><strong>⚠️ 刷卡时如果机器问你「用人民币还是欧元结账」，一定选欧元。</strong>选人民币叫 DCC（动态货币转换），商户帮你换汇，<strong>要多收 3%–7%</strong>。这是整趟行程最容易白花钱的地方，跟每个家庭成员都说一遍。</li>
+            <li><strong>必须带至少一张 Visa 或 Mastercard 信用卡</strong>，这是全程最重要的一个金钱决定。银联卡在大城市百货、机场、奢侈品店、大超市和多数 ATM 可以用，但<strong>在小店、面包房、市集摊位、街区餐馆和无人自动机器（火车站售票机、停车缴费机、加油机）上很不可靠</strong>。只带银联卡的家庭，一定会在某个 TGV 站台的售票机前卡住。</li>
+            <li><strong>支付宝和微信支付能用，但只是「旅游零售场景」，不是通用支付</strong>：Monoprix 这类连锁超市和主要百货、部分免税店支持，街边小店基本不行。别当主力。</li>
+            <li><strong>非接触式（拍卡）单笔上限 €50，超过要输密码</strong>，连续 5 笔或累计 €150 也会要密码。<strong>但 Apple Pay 和 Google Pay 不受这个 €50 限制</strong>（指纹/面容本身就算强认证），在法国是最顺手的支付方式。<strong>⚠️ 但一定要在上海就测试国内的卡能不能绑进 Apple Pay 并成功刷一笔，不要到了巴黎才发现绑不上。</strong></li>
+            <li>现金全家带 €300–500 作为周转（公共厕所、部分面包房、市集摊位、小费、里昂站的寄存柜都要现金）。<strong>取现去银行网点的 ATM</strong>（BNP Paribas、Société Générale、Crédit Agricole、LCL），避开街头独立的 Euronet 那种机器。</li>
+          </ul>
+
+          <h3>上网：出发前在国内办好</h3>
+          <ul>
+            <li><strong>中国移动「欧洲多国流量包」</strong>覆盖法国和摩纳哥。上海移动的结构是 <strong>1–14 天 28 元起，之后每天 +20 元</strong>，13 天大约 <strong>268 元/张卡</strong>（当前有促销更便宜）。通过「中国移动国际漫游」微信公众号或<strong>「无忧行」App</strong> 办理。<strong>⚠️ 促销价 2026 年 10 月 1 日恢复原价，正好在你们行程中间，出发前确认清楚。</strong></li>
+            <li><strong>用国内运营商漫游最大的好处是国内手机号继续可用</strong>——银行短信验证码、国内电话都能收到，这对要处理事情的人很重要。</li>
+            <li>联通和电信的欧洲包流量偏小（15 天 2–3 GB），一家人靠地图导航加视频通话根本不够，超出后很贵。</li>
+            <li>只要一个人的手机开热点给全家用，也可以只买一到两张卡。</li>
+            <li>微信、支付宝在法国都正常使用，不需要 VPN。<strong>高德和百度地图在法国基本没用，请用 Google 地图</strong>，并在酒店 Wi-Fi 下<strong>预先下载巴黎、阿维尼翁、尼斯的离线地图</strong>。</li>
+          </ul>
+
+          <h3>退税：你们的路线有一个特殊坑</h3>
+          <div class="warn">
+            <strong>⚠️ 10.6 从尼斯出发，退税必须在尼斯办，不能等到巴黎</strong>
+            <p>规则是「必须在托运行李之前完成海关验单」。你们的行李在尼斯就直挂上海了，<strong>所以退税单必须在尼斯机场、过安检之前、在值机柜台办托运之前，在海关柜台/PABLO 自助终端验完</strong>（尼斯机场的海关点在 46–47 号位置）。到了戴高乐再想办就来不及了，<strong>整笔退税会作废</strong>。这也是我在 10.6 那天把出门时间定在 07:00 的原因之一。</p>
+          </div>
+          <ul>
+            <li><strong>门槛</strong>：同一品牌（或同一集团）门店，<strong>3 天内累计超过 €100</strong>（严格大于，不是等于）。</li>
+            <li><strong>实际到手约 12%，不是 20%。</strong>法国增值税 20%，含税价里的税是 16.67%，再扣退税公司的手续费，百货公司的口径是净退 <strong>12%</strong>。别按 20% 算预期。</li>
+            <li><strong>流程</strong>：店里开带 PABLO 条码的退税单（bordereau）→ 机场 PABLO 自助终端扫码 → 屏幕显示 <strong>“OK Bordereau validé”</strong> 就等于盖了海关章 → 退款由退税公司/商家打给你，海关不管钱。不用寄任何东西。</li>
+            <li><strong>硬性要求</strong>：验单时<strong>所购商品要能随时出示</strong>（海关可能要看）；<strong>托运必须在实际离境当天办</strong>；<strong>退税人必须年满 16 岁</strong>，所以小孩不能作为退税人，东西要开在成人名下，而且<strong>只有单据上写名字的那个人能办</strong>。</li>
+            <li>期限：购买当月之后第三个月底前。商家<strong>没有义务</strong>提供退税服务，买之前先问一句 “Détaxe, s'il vous plaît?”。烟草制品不能退税。</li>
+            <li><strong>集中采购的最优解：<a class="gmap" data-q="Galeries Lafayette Haussmann, Paris">老佛爷百货 Haussmann 店</a>。</strong>它有专门面向亚洲客人的服务中心，退税部门有 <strong>27 台自助机</strong>、有中文店员，退款可以选店内现金（最多 €200）、信用卡、<strong>支付宝</strong>，或到机场领现金。而且它在「国际旅游区」内，<strong>周日 11:00–20:00 全年开门</strong>——正好解决法国周日商店普遍关门的问题。带两位老人，与其跑一整天来回的 La Vallée Village 奥特莱斯，不如在这里用一个下午把购物和退税单一次办完。</li>
+          </ul>
+
+          <h3>海关：带东西进出的红线</h3>
+          <ul>
+            <li><strong>🚫 进欧盟：肉类、奶制品一律禁止</strong>——包括真空包装的肉脯、香肠、火腿，以及<strong>含肉或蛋黄的月饼</strong>。查到直接没收并可能罚款。9 月底正好是中秋前后，这条要特别注意。</li>
+            <li><strong>现金申报门槛 €10,000 是按「全家合计」算的，不是每人</strong>。5 个人各带 €2,500 现金也算超标，需要申报。</li>
+            <li><strong>回国那头</strong>：个人物品免税额 5,000 元，超出部分要征税。<strong>高档化妆品、手表、首饰的综合税率是 50%</strong>——买贵重品时算一算，50% 的税可以直接把 12% 的退税吃光还倒亏。</li>
+          </ul>
+
+          <h3>吃饭：这是最容易毁掉一个晚上的事</h3>
+          <div class="warn">
+            <strong>⚠️ 法国餐馆不是全天营业，厨房中间是关的</strong>
+            <p>标准节奏是<strong>午餐 12:00–14:00，晚餐 19:00–22:00</strong>，<strong>大约 14:30 到 19:00 之间厨房关门</strong>。带着一个饿了的 7 岁小孩在 15:30 或 18:00 去找热饭吃，正经餐馆是不做的。</p>
+            <p><strong>周日和周一最难</strong>：周日晚上是全周最差的时段（独立小餐馆大量不开），周一是法国餐馆的传统休息日。</p>
+            <p><strong>可靠的类型按顺序是：brasserie（大众餐馆，基本全天连续营业、每天都开）→ 披萨店 → 亚洲餐馆 → 车站和景区附近的店。</strong>你们 10.4 周日晚上在尼斯，那顿一定要提前订位。</p>
+            <p>订位用 <strong>TheFork（LaFourchette）</strong> App，不用打电话，5 个人的位子也能订到。</p>
+          </div>
+          <ul>
+            <li>进店先说 <strong>“Bonjour”</strong>，这在法国不是客套而是基本礼节，不说会被明显区别对待。</li>
+            <li>要免费的自来水就说 <strong>“une carafe d'eau, s'il vous plaît”</strong>，不然会给你上收费瓶装水。</li>
+            <li>「menu」在法国指<strong>套餐</strong>，菜单叫「carte」。想看菜单要说 “la carte”。<strong>套餐几乎总是最划算的，而工作日午市套餐（formule midi）比晚上吃同样的东西便宜一大截</strong>——把正餐放在午饭吃，全程能省下不少。</li>
+            <li>面包免费、可以续，不收钱。冰块不是标配，也没有免费热水和茶。</li>
+            <li><strong>⚠️ 法国餐馆的厕所常在又窄又陡的旋转楼梯下面</strong>，带老人时值得先看一眼，或者优先选大一点的 brasserie。</li>
+            <li>服务费已含在价内，<strong>不需要按比例给小费</strong>，满意的话留几个硬币或凑个整数就行。</li>
+            <li>中餐补给：巴黎在 <a class="gmap" data-q="Quartier asiatique, 13e arrondissement, Paris">13 区亚洲城</a>、<a class="gmap" data-q="Belleville, Paris">美丽城</a> 和 <a class="gmap" data-q="Rue Sainte-Anne, Paris">圣安娜街</a>（日式为主）；尼斯和阿维尼翁老城也有中餐和越南餐。带老人出门，隔三四天吃一顿中餐能显著提升整趟行程的心情。</li>
+          </ul>
+
+          <h3>热水、插座、行李寄存</h3>
+          <ul>
+            <li><strong>法国酒店房间普遍不提供烧水壶</strong>，这对习惯喝热水的老人是个真问题。<strong>国内 220V 的小电热壶在法国 230V 可以正常用</strong>，只需要换插头，别带超过 1500W 的大功率壶。</li>
+            <li>法国是 <strong>230V / 法标 E 型插座</strong>（圆两脚带接地孔）。带 <strong>2–3 个转换头 + 一个国标多口排插</strong>，一个转换头就能给全家充电。</li>
+            <li>自来水可以直接喝。</li>
+            <li><strong>⚠️ 行李寄存别想当然。</strong>巴黎里昂站有自助寄存柜（3 号厅 N 站台下方，06:15–22:00，存包要过 X 光机），按 24 小时计价，小 €5.50 / 中 €7.50 / 大 €9.50——<strong>但它只收现金，不收银行卡</strong>，五个人的行李要两三个大柜、€19–28.50，一定要提前备好纸币硬币。<strong>尼斯站没有自助柜，但有人工寄存</strong>（€4/2 小时、€5.50/10 小时、€9.50/24 小时）。<strong>阿维尼翁中央站和图尔站完全没有 SNCF 寄存</strong>。<strong>最省事的办法其实是寄在酒店</strong>——法国酒店基本都免费给你存到退房之后，比火车站近也便宜。</li>
+            <li>公共厕所不多且常收费（€0.5–1），也常不备纸。<strong>随身带纸巾和免洗洗手液</strong>，看到麦当劳或百货公司就先去。</li>
+          </ul>
+        </section>
+
+        <section class="card" id="safety">
+          <h2>8. 安全与应急</h2>
+
+          <h3>扒手和骗局：具体的、这条路线上真会遇到的</h3>
+          <ul>
+            <li><strong>蒙马特的编手绳</strong>：Anvers 地铁站往圣心堂那段台阶。手插兜、不停步、不让人碰到手。（详见 9.28 那天）</li>
+            <li><strong>戴高乐机场到达厅主动搭话的「出租车」</strong>：基本都是黑车，有报道收到合法价的 4 倍。只在标「TAXIS」的官方候车区排队。</li>
+            <li><strong>出租车刷卡盗刷 + 伪造小票</strong>：这一条是中国驻法使馆自己的提醒——司机用改装的刷卡机盗刷，再给你一张假收据。<strong>对策：能给现金就给现金，刷卡时看清金额、自己按密码、收好小票，下车后留意账单。</strong>叫车用 G7 这类正规平台。</li>
+            <li><strong>别用手机或钱包在餐馆「占座」</strong>：这也是使馆特别点出来的中国游客习惯，在法国等于把东西送人。</li>
+            <li><strong>⚠️ 假警察是对老人最危险的一种</strong>：有人出示「证件」说要检查你的钱包或现金里有没有假钞。<strong>真正的法国警察不会做这种事。</strong>标准应对是说一句 <strong>“Je vous suis au commissariat.”</strong>（我跟你去警察局），骗子立刻就走。</li>
+            <li><strong>其他常见套路</strong>：拿着夹板让你「签名支持慈善」的（夹板挡住伸进你包里的手）、地上「捡到金戒指」问是不是你的、街头三张牌赌博、卢浮宫和铁塔外兜售「免排队门票」的（票是假的，只买官网）、ATM 旁边热心「帮你操作」的。<strong>统一原则：任何在街上主动接近你、要你停下来的人，都不要停。</strong></li>
+            <li><strong>出发前和两位老人把「三种拒绝」演练一遍</strong>——因为真到那一刻，他们的本能是讲礼貌。① 任何碰你手腕的人；② 任何拿着夹板过来的人；③ 任何亮证件要看你钱包的人。三种情况的答案都一样：<strong>继续走，什么都不要说。</strong></li>
+            <li><strong>高风险地点</strong>：地铁 1 号线（协和、卢浮宫、夏特雷一段）和 4 号线、夏特雷—大堂站、埃菲尔铁塔和圣心堂周边、北站一带、上下车关门瞬间的车门口。<strong>背包一律背在胸前</strong>，<strong>手机只在站定时拿出来、别在车门边玩手机</strong>（光这一条就避掉 1 号线上大部分风险）。</li>
+            <li><strong>分散风险</strong>：不要让任何一个人身上带着全部东西。护照、卡、现金分给两位成人，另留一张卡和护照复印件在酒店保险箱。老人用贴身腰包装护照和备用卡，当天零钱放前面口袋。</li>
+            <li><strong>带 7 岁小孩的具体做法</strong>：给他口袋里放一张卡片，写酒店地址和你们两位成人的手机号；每天早上给他拍一张当天穿着的照片；每到一个景点先约好走散了在哪里集合；上下地铁牵手，并且提前讲清一条规则——<strong>如果车门关了，谁在车上谁就在下一站下车、原地等，不要自己找回来</strong>。</li>
+            <li><strong>南法的犯罪形态不一样，是偷东西不是偷身上</strong>：<strong>砸车窗是蔚蓝海岸的标志性案件</strong>，车里不要留任何看得见的东西（哪怕是个空包），行李绝对不要放在后备厢里去逛景点。海滩上有人下水时被偷，<strong>一定要留一个人看东西</strong>。英国人散步大道上有摩托抢手机，别在靠马路那侧玩手机。</li>
+            <li><strong>万一真被偷了</strong>：先打 <strong>17</strong> 报警并<strong>一定要拿到报案回执（récépissé）</strong>——保险理赔和补办旅行证都要它，然后联系使领馆。</li>
+          </ul>
+
+          <h3>看病与买药</h3>
+          <ul>
+            <li>药店是<strong>绿色十字</strong>标志，药剂师是有资质的专业人员，可以直接问诊给建议。<strong>⚠️ 两个中国人常踩的坑：一是止痛退烧药（扑热息痛、布洛芬）都放在柜台后面，货架上找不到，必须开口问；二是法国的商品名完全不同</strong>——扑热息痛叫 Doliprane 或 Dafalgan，布洛芬叫 Advil 或 Nurofen。所以<strong>清单上一定要写成分通用名</strong>（paracétamol、oméprazole、amlodipine 这种），每个法国药剂师都认。夜间和节假日的值班药店打 <strong>3237</strong> 查。</li>
+            <li><strong>⚠️ 中国的处方在法国药房不能直接抓药</strong>——药剂师只认在法国或欧盟注册的医生开的处方。但中国处方仍然必须带，它有两个用途：过海关的合法凭证，以及给法国医生看、让他重新开一张法国处方。所以「老人药吃完了怎么办」的正确答案是：<strong>先看医生（家庭医生、SOS Médecins、社区诊所或医院急诊），出示中国处方和药盒，让他开法国处方</strong>。</li>
+            <li><strong>老人的常用药按「整个行程 ×1.5 倍」带足，放随身行李、分装在两个包里、保留原包装</strong>。再准备一张 A4 的用药清单（每位老人一张）：姓名、出生日期、诊断（写清楚，别只写缩写）、每种药的通用名+剂量、过敏史（没有就写「无」，空着会被当成不详）、保险公司 24 小时电话和保单号。</li>
+            <li><strong>带药进欧盟的规定</strong>：非管制类的自用药，数量不超过处方上的疗程，<strong>没有处方的话不超过 3 个月用量</strong>；<strong>麻醉/精神类药品必须随身携带，数量不超过处方或 1 个月，并且必须带处方原件</strong>（法国不需要额外的携带证明，但处方原件是强制的）。</li>
+            <li><strong>⚠️ 中药是真正有风险的一类，建议干脆别带。</strong>海关是按成分逐项判定的：植物类可能被归为药品或植物制品（法国禁止旅客随身带新鲜水果、花卉和植物入境），而<strong>任何含动物成分的——麝香、穿山甲、熊胆、海马、部分鹿制品——属于濒危物种公约管制</strong>，会没收、罚款甚至追究刑责，「这是传统药」不是抗辩理由。只带有原包装、有说明书的西药。</li>
+            <li><strong>就医的升级顺序</strong>：小毛病去药店 → 需要看医生找酒店前台、SOS Médecins 或打 116 117（自费后回来找保险报销）→ 紧急去医院 urgences → <strong>胸痛、中风迹象、呼吸困难、摔倒疑似骨折，直接打 15 或 112，绝对不要自己打车去</strong>。<strong>做任何一步之前先打保险公司的 24 小时救援电话</strong>，让他们指定一家可以直接结算的医院——对带两位 70 岁老人的家庭，把这个号码提前存进每个人手机，是整个出行准备里性价比最高的五分钟。</li>
+          </ul>
+
+          <div class="warn">
+            <strong>⚠️ 关于两位老人的保险，真正的问题不是 3 万欧门槛</strong>
+            申根要求的 €30,000 医疗保额，随便一份保单都能满足。真正会出事的是另外两条：<strong>① 很多国内申根险在 71 岁及以上把医疗保额直接砍半，② 大部分不保既往症的急性发作。</strong>而这恰恰是 70 岁人群最可能用到的。<br><br><strong>建议：给老人和给你们年轻人买不同的产品。</strong>买之前把这两条逐字确认清楚，别只看「保额 30 万欧」这种宣传语。
+          </div>
+
+          <h3>紧急联系方式（都已核实，建议打印一份放每位老人钱包里）</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>用途</th><th>号码 / 地址</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>欧洲通用紧急电话</strong></td><td><strong>112</strong>（有英语接线）</td></tr>
+                <tr><td>医疗急救 SAMU</td><td><strong>15</strong></td></tr>
+                <tr><td>报警</td><td><strong>17</strong></td></tr>
+                <tr><td>火警</td><td><strong>18</strong></td></tr>
+                <tr><td>非急诊值班医生</td><td>116 117</td></tr>
+                <tr><td>值班药店查询</td><td>3237</td></tr>
+                <tr>
+                  <td><strong>中国驻法国大使馆</strong><br>领事保护与协助（24 小时）</td>
+                  <td><strong>+33 1 53 75 88 40</strong><br>领事侨务处地址：<a class="gmap" data-q="11 Avenue George V, 75008 Paris">11 Avenue George V, 75008 Paris</a>（办护照、旅行证、公证的就是这里）<br>使馆馆址：20 Rue Monsieur, 75007 Paris</td>
+                </tr>
+                <tr>
+                  <td><strong>中国驻马赛总领馆</strong><br>领事保护与协助（24 小时）<br><span style="color:var(--muted)">普罗旺斯和蔚蓝海岸由马赛馆管辖，所以阿维尼翁和尼斯那几天出事找它</span></td>
+                  <td><strong>+33 4 91 32 00 19</strong><br>领侨处地址：<a class="gmap" data-q="16 Boulevard Carmagnole, 13008 Marseille">16 Boulevard Carmagnole, 13008 Marseille</a><br>护照公证咨询：+33 4 91 32 02 67（工作日 10:00–12:00、15:00–17:00）</td>
+                </tr>
+                <tr><td><strong>外交部全球领事保护热线 12308</strong>（24 小时）</td><td><strong>+86 10 12308</strong> 或 +86 10 65612308</td></tr>
+                <tr><td>法国海关咨询</td><td>+33 1 72 40 78 50（境外拨打）</td></tr>
+                <tr><td>你们的保险公司 24 小时救援电话</td><td>买完保险后填上，和上面几个一起打印</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>把 112、使馆的 +33 1 53 75 88 40、马赛馆的 +33 4 91 32 00 19、12308 和保险救援电话，存进每个家庭成员的手机，并打印一张小卡片放进两位老人的钱包。</strong>手机会被偷，卡片不会。另外出发前可以在「中国领事」App 上登记行程。</p>
+
+          <h3>要在出发前一周复查的几件事</h3>
+          <ul>
+            <li><strong>9 月上旬</strong>：查 <a class="link" href="https://www.prefecturedepolice.interieur.gouv.fr/" target="_blank" rel="noopener">巴黎警察总局</a> 和 <a class="link" href="https://www.ratp.fr/" target="_blank" rel="noopener">RATP</a> 关于 9.26 教宗弥撒的正式封路封站令。</li>
+            <li>法国罢工是常态，出发前查一下 SNCF 和 RATP 有没有预告的罢工日；TGV 票 7 天前可免费改签，正好用得上。</li>
+            <li>用 <a class="link" href="https://meteofrance.com" target="_blank" rel="noopener">Météo-France</a> 看南法的橙色/红色预警——普罗旺斯 10 月偶尔有短时暴雨。</li>
+            <li>各景点官网复核开放时间（尤其是有维修公告的）。</li>
+          </ul>
+        </section>
+
+        <section class="card" id="diff">
+          <h2>9. 与签证行程单的差异说明</h2>
+          <p class="lead">你递签用的行程单（见<a class="link" href="/france-schengen-2026.html">签证作战包</a>）和这份实操攻略有几处不同，先说清楚，免得入境时自己心里没底。</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>项目</th><th>签证行程单</th><th>实操建议</th><th>要紧吗</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>返程</td>
+                  <td>10.6 住巴黎，10.7 飞上海</td>
+                  <td>10.6 晚从巴黎起飞，10.7 落地上海</td>
+                  <td><strong>要改</strong>。按行程单飞会 10.8 才到上海，和你「10.7 必须回来」冲突。提前回国不违反任何签证规定。</td>
+                </tr>
+                <tr>
+                  <td>抵达日</td>
+                  <td>9.26 抵达巴黎</td>
+                  <td>若签证 9.25 起生效，改乘白天航班 9.25 抵达</td>
+                  <td>看签证有效期起始日。落在有效期内就没问题。</td>
+                </tr>
+                <tr>
+                  <td>巴黎住宿</td>
+                  <td>9.26–9.29（4 晚）</td>
+                  <td>9.25–9.29（5 晚）</td>
+                  <td>不要紧，多住一晚只需重订酒店。</td>
+                </tr>
+                <tr>
+                  <td>卢瓦尔河谷</td>
+                  <td>图尔/昂布瓦斯 2 晚</td>
+                  <td>取消，改为巴黎多留 1 晚 + 普罗旺斯、尼斯各多 1 晚</td>
+                  <td>不要紧。行程内部调整不需要向领馆报备，也不影响入境。</td>
+                </tr>
+                <tr>
+                  <td>最后一晚</td>
+                  <td>10.6 巴黎</td>
+                  <td>取消，10.5 住尼斯，10.6 直接走</td>
+                  <td>不要紧。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="note">
+            <strong>原则</strong>
+            申根签证只在意两件事：不早于生效日入境、不晚于失效日离境、不超过允许停留天数。行程内部怎么调整、提前几天回国，都不影响。但<strong>务必把最终版的机票和酒店订单打印一份放随身包</strong>，边检偶尔会问，拿得出来就是几十秒的事。
+          </div>
+        </section>
+
+        <section class="card" id="pack">
+          <h2>10. 打包清单</h2>
+          <h3>证件包（随身，不托运）</h3>
+          <ul>
+            <li>护照（含签证页）+ 全家护照首页复印件一套</li>
+            <li>机票行程单、全部酒店订单、火车票——各打印一份纸质</li>
+            <li>申根保险单（保额 ≥ 3 万欧的那份），纸质 + 电子</li>
+            <li>老人的常用药清单（中英文对照，写通用名不写商品名）+ 病历/处方复印件</li>
+            <li>小孩的出生证明或户口本复印件（同一家庭出行的佐证）</li>
+            <li>2 张证件照备用</li>
+          </ul>
+
+          <h3>电子与充电</h3>
+          <ul>
+            <li>法国是 <strong>230V / 法标 E 型插座</strong>（圆两脚带接地孔）。国标插头插不进去，必须带转换头，按人头带，5 个人至少 3 个。</li>
+            <li>一个带多口 USB 的排插，一个转换头就够全家充电。</li>
+            <li>充电宝按航司规定随身，不能托运。</li>
+            <li>eSIM 或流量包出发前在国内就装好激活（详见落地实务）。</li>
+          </ul>
+
+          <h3>衣物（9 月末 10 月初）</h3>
+          <ul>
+            <li>巴黎白天 18–21℃、早晚 10–12℃；普罗旺斯和尼斯白天还有 22–25℃，太阳很晒。<strong>南北温差就是这趟行程最容易穿错的地方</strong>：按「洋葱式」带，薄羽绒/夹棉外套 1 件 + 抓绒或薄毛衣 + 长袖 T 恤若干。</li>
+            <li><strong>⚠️ 南法的雨和巴黎的雨不是一回事。</strong>巴黎是细雨绵绵，一把折叠伞够用；<strong>普罗旺斯 9 月约 105 毫米降雨集中在 5 天多、尼斯 10 月约 128 毫米集中在 7 天多</strong>——也就是大部分时间晴朗，但下起来是短时暴雨。<strong>要带一件真正防水的带帽外套，不要只带伞。</strong></li>
+            <li><strong>鞋是重点</strong>：巴黎和南法老城全是石板路，凹凸不平。老人必须穿有包裹和缓冲的运动鞋，别穿新鞋、别穿皮鞋硬底鞋。每人一双主鞋 + 一双备用。</li>
+            <li>尼斯的海还能下水（水温 21–22℃），想游泳就带泳衣；尼斯是鹅卵石海滩，需要沙滩鞋。</li>
+            <li>太阳镜、帽子、防晒霜——南法 10 月紫外线依然可观。</li>
+          </ul>
+
+          <h3>别忘了的小东西</h3>
+          <ul>
+            <li><strong>折叠电热水壶或保温杯</strong>：法国酒店房间普遍不提供热水壶，老人要喝热水会很不方便。国内 220V 的小壶在法国 230V 可用（功率略高一点，问题不大），但要配转换头，且别用超过 1500W 的大功率壶。</li>
+            <li>常用药：感冒药、退烧药（大小两份剂量）、止泻药、创可贴、晕车药；老人的处方药按行程的 1.5 倍带足，放随身、分两个包、留原包装。</li>
+            <li><strong>给两位老人各准备一双医用弹力袜（压力袜），飞机上穿。</strong>12 小时的长途飞行，<strong>深静脉血栓是 70 岁人群这趟行程里最可能发生的严重医疗事件</strong>，而它基本可以靠弹力袜加每小时起来走一趟舱来预防。这一条比任何行李清单上的东西都重要。</li>
+            <li>老人另外带：分格药盒 + 手机闹钟提醒（<strong>出发前就定好吃药是跟着北京时间还是巴黎时间，别到了再临时决定</strong>）、家里在用的话带血压计、备用老花镜和验光单、太阳帽和墨镜（南法用）。保险卡和 24 小时救援电话放<strong>口袋里，不要放包里</strong>。</li>
+            <li>每人一个可重复灌的水壶。<strong>法国自来水可以直接喝</strong>，巴黎街头有几百个免费饮水点（包括绿色铸铁的 Wallace 泉），五个人 12 天买瓶装水既贵又重。</li>
+            <li>小孩：水壶、零食、一两样能在火车上安静玩的东西（贴纸书、拼图卡）。两段 TGV 接近 6 小时，加上包车日的车程，这个很有用。</li>
+            <li>折叠购物袋 2 个（法国超市不免费给袋子）+ 一个空的软行李袋（回程装东西）。</li>
+            <li>湿巾、免洗洗手液、纸巾（法国公共厕所常不备纸）。</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <footer>Tea X · France Family Trip 2026 · 不含任何个人隐私信息</footer>
+  </div>
+
+  <script>
+    // Turn every [data-q] into a Google Maps search link.
+    document.querySelectorAll('a.gmap[data-q]').forEach(function (el) {
+      el.href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(el.dataset.q);
+      el.target = '_blank';
+      el.rel = 'noopener';
+      if (!el.title) el.title = el.dataset.q;
+    });
+
+    // Persist booking-checklist state locally.
+    var KEY = 'teax-fr-trip-2026';
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { saved = {}; }
+    document.querySelectorAll('.todo input[type="checkbox"][id]').forEach(function (box) {
+      box.checked = !!saved[box.id];
+      box.addEventListener('change', function () {
+        saved[box.id] = box.checked;
+        try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) { /* ignore */ }
+      });
+    });
+  </script>
+  <script src="/js/theme-icons.js"></script>
+</body>
+</html>

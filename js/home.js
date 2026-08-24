@@ -400,6 +400,17 @@
   if (typeof SKI_RESORTS !== 'undefined') { const s = SKI_RESORTS[dayIdx%SKI_RESORTS.length]; const el=$('#dSki'); if(el) el.textContent=`推荐: ${s.nameZh}`; }
   if (typeof SURF_SPOTS !== 'undefined') { const s = SURF_SPOTS[dayIdx%SURF_SPOTS.length]; const el=$('#dSurf'); if(el) el.textContent=`推荐: ${s.nameZh}`; }
 
+  // Countdown to the next trip
+  (() => {
+    const el = $('#dTravel');
+    if (!el) return;
+    const depart = new Date(2026, 8, 25), back = new Date(2026, 9, 7), DAY = 86400000;
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    if (today < depart) el.textContent = `法国 · 还有 ${Math.round((depart - today) / DAY)} 天出发`;
+    else if (today <= back) el.textContent = `法国 · 第 ${Math.round((today - depart) / DAY) + 1} 天`;
+    else el.textContent = '法国 · 行程回顾';
+  })();
+
   // ===== Daily Quote =====
   const QUOTES = [
     {text:"每个人都有属于自己的一片森林。迷失的人迷失了，相逢的人会再相逢。",from:"村上春树「挪威的森林」"},
