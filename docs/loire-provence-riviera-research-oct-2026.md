@@ -308,13 +308,27 @@ Sources: https://www.sudvaldeloire.fr/destination-sud-val-de-loire/zoo-parc-de-b
 · https://lescoteauxdulac.com/zoo-de-beauval/ (autumn closing time is third-party,
 **[UNVERIFIED against the official hours page]**)
 
-**Giant pandas in 2026 — yes, but this is the last season.** The parents Huan Huan and
-Yuan Zi returned to China in November 2025. The twins **Huanlili and Yuandudu remain at
-Beauval until January 2027**. The panda enclosure closes earlier than the rest of the
-park in some seasons, so see them first thing at 9:00.
-Source: https://origin.holiday/zoo-de-beauval-guide-complet/ — this is a third-party
-guide. **[UNVERIFIED against an official Beauval announcement — please reconfirm, as it
-is likely to be the main reason this family would choose Beauval at all.]**
+**Giant pandas in 2026 — yes, and this is confirmed by Beauval itself. But it is the last
+season.** The parents Huan Huan and Yuan Zi returned to China on 25 November 2025, after
+13 years. Their daughters, the twins **Huanlili and Yuandudu (born at Beauval on
+2 August 2021), remain at the ZooParc until the end of the cooperation period in
+January 2027** — Beauval's own announcement says so explicitly, and a France–China letter
+of intent signed in Beijing on 4 December 2025 confirms they stay "at least until
+January 2027", with a new breeding pair to be entrusted to Beauval in early 2027.
+
+They are the **only two giant pandas in France**, in the "Hauteurs de Chine" / Asia zone,
+and the enclosure is wheelchair-accessible. Expect a **30–45 minute queue in high season**;
+go first thing (9:00–11:00) or late afternoon.
+
+Sources (official Beauval):
+https://actus.zoobeauval.com/en/the-first-giant-pandas-to-be-housed-at-beauval-huan-huan-and-yuan-zi-are-soon-to-return-to-china/
+· https://actus.zoobeauval.com/renouvellement-pandas-beauval-france-chine/
+Queue times and best-time advice are third-party: https://www.zooparcmania.fr/animaux-zoo-beauval/panda-beauval/
+**[queue estimate UNVERIFIED]**
+
+This is a genuinely time-limited draw, and for a Chinese family the panda-diplomacy angle
+may or may not be a selling point — they can see pandas at home. Weigh that honestly
+before spending a whole Loire day and two taxi legs on it.
 
 **How long:** the park is 45 hectares with 35,000 animals. Official advice and every
 guide agree that **one full day (9:00 to closing) covers the essentials and two days is
@@ -469,8 +483,28 @@ liO ticket, which they wouldn't have).
 The guided tour crosses the Roman water channel at the top of the bridge — **reached by
 80 steps**. That rules it out for the seniors.
 
-**Hours in October: [UNVERIFIED]** — I could not pin down the October 2026 site and
-museum hours on the official pages. Reconfirm at https://pontdugard.fr/fr/venir
+**Hours in October 2026 — now confirmed on the official site:**
+
+| | October |
+|---|---|
+| **The site and car parks** | **08:00–00:00, every day of the year** |
+| **Cultural spaces** (Musée, Ciné, Ludo, temporary exhibition) | **09:00–18:00** |
+| **Ticket office** | **09:00–17:30** |
+
+The cultural spaces **close on Monday mornings for maintenance** (the Musée opens from
+12:00 on Mondays) — irrelevant for a Friday or Saturday visit, but it would matter if they
+moved the day. The winter closure of the cultural spaces starts 2 November 2026. The site
+recommends presenting yourself at the ticket office **at least 50 minutes before closing**.
+
+The temporary exhibition running during their visit is **"Guerre et paix — COMBAS",
+29 May – 1 November 2026, 10:00–13:00 / 14:00–18:00**, in the left-bank temporary
+exhibition hall, included in the discovery-spaces ticket.
+
+Note also that the evening illumination of the monument runs only 15 May – 20 September
+2026, so there is **no lit-up bridge in October**.
+
+Sources: https://pontdugard.fr/fr/horaires · https://pontdugard.fr/fr/venir ·
+2026 programme PDF: https://pontdugard.fr/sites/default/files/2026-04/DDP%202026_1.pdf
 
 **Getting there from Avignon without a car:** **liO bus line 115** (Alès – Uzès –
 Avignon) stops at **"Rond Point Pont du Gard" in Vers-Pont-du-Gard**. From a recent
@@ -484,12 +518,33 @@ Sources: https://www.uzes-pontdugard.com/app/uploads/2025/08/lio-115-sep-dec-202
 https://transitapp.com/fr/region/occitanie/lio/bus-115 ·
 https://www.cc-pontdugard.fr/169-horaires-de-bus.htm
 
-**Warning:** "Rond Point Pont du Gard" is a **roundabout, not the site entrance**.
-**[UNVERIFIED distance from the stop to the left-bank reception — plan on a walk of
-roughly 1–1.5 km. Confirm before committing five people including two seniors to this
-bus.]** Pontdugard.fr does state that "shuttle buses are available from Nîmes centre and
-Avignon", which may be a better-targeted service. Worth an email to
+**The walk from the bus stop — now confirmed, and it is manageable.** "Rond-Point du Pont
+du Gard" is a roundabout, not the site entrance, but it is **about a 10-minute walk to the
+left-bank reception**, following the road signs from the roundabout. The Grand Avignon
+destination board and Nîmes Tourisme both give the same figure. The site address is
+400 route du Pont du Gard, 30210 Vers-Pont-du-Gard.
+
+Sources: https://www.grandavignon-destinations.fr/la-provence/pont-du-gard/ ·
+https://nimes-tourisme.com/actualites/nimes-et-sa-destination-sans-voiture/ ·
+https://pontdugard.fr/fr/venir
+
+**Two warnings that matter more than the walk:**
+
+1. **The return stop is on the other side of the roundabout.** Traveller reports describe
+   families waiting at the wrong stop and watching their bus leave. With only a handful of
+   services a day, that is a stranding risk. Walk to the correct side and confirm the
+   direction before the bus is due.
+2. **Buses are infrequent.** Check the outbound and return times together before setting
+   out, and treat the last return of the day as the hard deadline.
+
+Pontdugard.fr also states that "shuttle buses are available from Nîmes centre and Avignon",
+which may be a better-targeted service than the scheduled liO route. Worth an email to
 reservation@pontdugard.fr.
+
+An alternative, if they were coming from the other direction: **liO line 121 from Nîmes
+gare routière** to the same stop, ~40–45 minutes, ~€2 one way / €3.10 return, running all
+year including weekends and public holidays (no service 1 May).
+Source: https://www.tourisme-occitanie.com/rail-tour/car/ligne-121-lio-car/
 
 The site itself is entirely pedestrian, and the cultural areas and the Terrasses
 restaurant have lifts. Entry to the cultural areas is free for disabled visitors.
@@ -842,10 +897,18 @@ Official site: https://www.musee-matisse-nice.org/fr/informations-pratiques/
 - **12 €** individual. **9 €** per person for groups of 10+ (booking a slot compulsory
   for groups, by email to musee.matisse@ville-nice.fr).
 - **4-day Nice Museums Pass: 15 €** — access to all municipal museums and galleries.
-- One third-party source quotes €10 full with free entry for under-18s, students,
-  jobseekers and disabled visitors. The official site does not list those free
-  categories. **[The under-18 free entry is plausible but UNVERIFIED — ask at the desk
-  for the 7-year-old.]** Source of the discrepancy: https://nissactu.fr/musee-matisse-nice/
+- **Under-18s go free — now confirmed.** The official practical-information page lists a
+  "Gratuité" section granting free entry, on proof, to **under-18s**, students, jobseekers,
+  RSA/ASS/ASPA recipients, and disabled visitors plus one companion for holders of a
+  "mobilité inclusion — invalidité" card. **So the 7-year-old pays nothing**, and the party
+  pays 4 × €12 = **€48**, not €60.
+- Payment: cards, cash, cheques, chèques-vacances. A free download of the **Bloomberg
+  Connects** app gives expert commentary — bring earphones.
+- Access for reduced mobility: enter the Jardin des Arènes via the gate at 164 avenue des
+  Arènes or the boulevard de Cimiez gate, then the museum via the **south forecourt of the
+  villa**, not the main staircase. The standard individual entrance is at level −2 **down
+  the big staircase of the modern wing**, so the seniors should use the villa forecourt
+  route instead.
 - Located in Cimiez, in the Jardin des Arènes — note that a Météo-France storm alert
   closed the garden and hence the museum on 20 August 2026, so weather closures happen.
 
@@ -1258,11 +1321,39 @@ come from 2026 sources; **[the discrepancy is UNVERIFIED — treat €2.10–2.5
 for the Monaco bus.]**
 
 Zou! multi-day passes:
-- **Pass Sud Azur**: unlimited train, tram and bus on the Alpes-Maritimes **and Monaco**
-  networks, for 3, 7, 14, 30 or 365 days. **[Price UNVERIFIED — this is the most
-  promising single ticket for their Riviera leg. Check zou.maregionsud.fr.]**
+- **Pass Sud Azur Explore** — the tourist version, now priced. Unlimited travel on **every
+  network in the Alpes-Maritimes plus Monaco** (bus, tram, train, coach):
+
+| Duration | Full | Under 18 accompanied by an adult |
+|---|---|---|
+| **3 days** | **35 €** | **30 €** |
+| 7 days | 50 € | 40 € |
+| 14 days | 80 € | 65 € |
+
+  Sold on an anonymous smartcard (€2 refundable deposit at Lignes d'Azur tram machines) or
+  a personal ZOU! card, at tram-station machines, SNCF station machines (top-up only), and
+  agencies in Nice, Monaco, Antibes, Cannes, Menton and elsewhere.
+  Sources: https://zou.maregionsud.fr/pass-sud-azur-explore · https://www.zestbus.fr/pass-sud-azur
+  · https://www.lignesdazur.com/fr/pass-multimodal
+- The **monthly** Pass Sud Azur is a calendar-month season ticket (zone 4 = Lignes d'Azur
+  and the Nice-area TER stations, €44–53/month; all 7 zones including Monaco, €88/month).
+  Useless for a 3-day stay.
 - Pass Journée (train only): from 20 € + 5 € per companion, up to 8 people.
 - Pass 3 or 7 days (train only, whole region): from 60 € + 20 € per companion.
+
+**Does the 3-day Pass Sud Azur Explore pay off for this family? No — pay as you go.**
+Five 3-day passes cost 4 × €35 + €30 = **€170**. Their actual Riviera movements are modest:
+
+| Day | Movement | Pay-as-you-go cost for 5 |
+|---|---|---|
+| 4 Oct | A few Nice tram/bus hops | ~€10–17 (cheaper on a 10-trip Multi) |
+| 5 Oct | Monaco return by bus 600 | ~€21–25, or **€11.20 using two mini-group tickets** |
+| 6 Oct | Tram line 2 to the airport | €8.50 on single tickets, or €50 on Aéro returns |
+
+That totals roughly **€40–75**, less than half the pass. The pass only wins if they add
+Èze, Antibes and Menton by bus and train on top — which their two days do not allow.
+**[This comparison is my own arithmetic from the verified fares above, not an official
+statement.]**
 
 ### French Riviera Pass — probably not worth it
 
@@ -1508,14 +1599,14 @@ child's and a senior's energy curve.
 | Arles amphitheatre + theatre | 22 € | 22 € | free | **44 €** |
 | Fondation Van Gogh, Arles | 20 € | 16 € | free | **36 €** |
 | Musée Chagall, Nice (4 Oct) | free | free | free | **0 €** |
-| Musée Matisse, Nice | 24 € | 24 € | 12 € ? | **48–60 €** |
+| Musée Matisse, Nice | 24 € | 24 € | free | **48 €** |
 | Oceanographic Museum, Monaco | 45 € | 45 € | 14 € | **104 €** |
 | Prince's Palace, Monaco | 26 € | 26 € | 8 € | **60 €** |
 | Jardin Exotique, Èze | 20 € | 20 € | free | **40 €** |
 
-Notes: the Matisse child price is **[UNVERIFIED]** — the official site lists no free
-under-18 category, a third-party source does. Chambord assumes non-EEA nationality and
-residency; if any family member holds EEA residency the rate drops to €21.
+Notes: Matisse under-18 free entry is confirmed on the official site. Chambord assumes
+non-EEA nationality and residency; if any family member holds EEA residency the rate drops
+to €21.
 
 **A suggested no-regrets Loire selection** — Chenonceau (€85) + boats (€25) + Amboise
 (€80.20) + Clos Lucé (€95) = **€285.20**, versus Chambord + Beauval = **€312** for two
@@ -1525,23 +1616,35 @@ sites with far worse logistics.
 
 # F. Open items to verify before departure
 
-1. **Beauval's giant pandas.** The twins Huanlili and Yuandudu remaining until
-   January 2027 is from a third-party guide. Confirm on zoobeauval.com if this is the
-   reason for the visit.
-2. **Chambord and Chenonceau timed slots** — whether mandatory in October.
-3. **Château d'Amboise October 2026 hours**, and the size of the SNCF/Rémi ticket discount.
-4. **Pont du Gard October hours**, and **the walking distance from the liO 115 bus stop to
-   the site entrance** — this is the one that could strand two seniors.
-5. **liO line 115 2026 timetable** (my source is the Sep–Dec 2025 edition).
-6. **Rémi line 2 (Chambord) 2026 timetable** (my source is the Nov 2025 edition).
-7. **Pass Sud Azur price** — potentially the best single Riviera ticket.
-8. **Colline du Château October hours** — the city and the tourist office disagree.
-9. **Musée Matisse under-18 admission.**
-10. **Arles Saturday market** — widely reported, not confirmed on arlestourisme.com.
-11. **Rencontres d'Arles 2026 dates and pass price** on rencontres-arles.com.
-12. **Nice airport check-in guidance** on nice.aeroport.fr, and which terminal the
-    6 October flight uses.
-13. **Balloon operator height minimum** against the child's actual height (1.30 m).
-14. **Family-friendly Châteauneuf-du-Pape estates** — contact Brotte, La Nerthe and
+### Resolved since the first draft — no longer open
+
+- ~~Beauval's giant pandas.~~ **Confirmed by Beauval's own press releases:** the twins stay
+  until January 2027. See A.4.
+- ~~Pont du Gard October hours.~~ **Confirmed:** site 08:00–00:00 daily; cultural spaces
+  09:00–18:00; ticket office to 17:30. See B.2.
+- ~~Walking distance from the liO bus stop to the Pont du Gard entrance.~~ **About
+  10 minutes on foot** from the Rond-Point du Pont du Gard stop. The real risk is the
+  **return stop on the opposite side of the roundabout**. See B.2.
+- ~~Musée Matisse under-18 admission.~~ **Free**, confirmed on the official site. See C.1.
+- ~~Pass Sud Azur price.~~ **€35 for 3 days (€30 under 18)** — and the arithmetic says
+  **pay as you go instead**, saving roughly €100. See C.6.
+
+### Still open
+
+1. **Chambord and Chenonceau timed slots** — whether mandatory in October.
+2. **Château d'Amboise October 2026 hours**, and the size of the SNCF/Rémi ticket discount.
+3. **liO line 115 2026 timetable** (my source is the Sep–Dec 2025 edition). Confirm on
+   https://www.mestrajets.lio.laregion.fr/ — and ask reservation@pontdugard.fr about the
+   direct Avignon shuttle, which would remove the roundabout problem entirely.
+4. **Rémi line 2 (Chambord) 2026 timetable** (my source is the Nov 2025 edition).
+5. **Colline du Château October hours** — the city and the tourist office disagree.
+6. **Arles Saturday market** — widely reported, not confirmed on arlestourisme.com.
+7. **Rencontres d'Arles 2026 dates and pass price** on rencontres-arles.com.
+8. **Nice airport check-in guidance** on nice.aeroport.fr, and which terminal the
+   6 October flight uses.
+9. **Balloon operator height minimum** against the child's actual height (1.30 m).
+10. **Family-friendly Châteauneuf-du-Pape estates** — contact Brotte, La Nerthe and
     Janasse directly to confirm an October family formula.
-15. **Nice and Monaco event calendars** a fortnight out, for one-off road closures.
+11. **Beauval autumn closing time** — "around 18:00" is third-party; and the panda queue
+    estimate of 30–45 minutes is also third-party.
+12. **Nice and Monaco event calendars** a fortnight out, for one-off road closures.
