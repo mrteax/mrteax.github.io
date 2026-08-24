@@ -1,7 +1,7 @@
-# France Trip Research — Chinese Family, 25 Sept – 7 Oct 2026
+# France Trip Research — Chinese Travellers, 25 Sept – 7 Oct 2026
 
-Compiled 24 August 2026. Party: 5 Chinese passport holders (2 adults ~40, 2 seniors ~70 one on
-regular medication, 1 child ~7). Departing Shanghai. French Schengen visa in progress.
+Compiled 24 August 2026. Audience: Chinese travellers using a France-issued Schengen visa and
+departing Shanghai. Includes generic guidance for child visitors, medication needs, and lower walking intensity.
 
 Every claim is tagged:
 
@@ -26,7 +26,7 @@ replaced by an electronic record.
 - https://commission.europa.eu/news-and-media/news/more-secure-efficient-and-convenient-way-travelling-non-eu-nationals-2026-04-10_en
 - https://www.eulisa.europa.eu/news-and-events/news/entryexit-system-fully-deployed-across-eu
 
-### 1.2 What actually happens at CDG for a visa-holding Chinese family
+### 1.2 What actually happens at CDG for visa-holding Chinese travellers
 
 This is the single most misunderstood point, and the answer is *better* than most blog posts say.
 
@@ -37,9 +37,9 @@ area, your fingerprints will already be stored in the Visa Information System (V
 stored again in the EES."
 - https://travel-europe.europa.eu/ees/data-held-by-ees
 
-So the family's first EES contact at CDG is: passport scan → **live facial image** → entry record
+The first EES contact at CDG is: passport scan → **live facial image** → entry record
 created. The four-finger enrolment scan that visa-exempt travellers (Americans, British) must do
-does not apply to them.
+does not apply to short-stay visa holders.
 
 **[V]** Border guards may still *verify* fingerprints directly against VIS as part of the check
 (EES Regulation Art. 23 / VIS Regulation Art. 18). Practically: expect to be asked to place fingers
@@ -49,7 +49,7 @@ on a reader for a one-to-one match. That is verification, not enrolment, and is 
 **[V]** Refusing biometrics = refusal of entry. There is no opt-out.
 - https://travel-europe.europa.eu/ees/data-held-by-ees
 
-**[V] Child under 12:** the 7-year-old is **exempt from fingerprinting** but still has passport
+**[V] Child under 12:** child visitors under 12 are **exempt from fingerprinting** but still have their passport
 scanned and a facial image taken. EES Regulation Art. 17(3): "Children under the age of 12 shall be
 exempt from the requirement to give fingerprints." The EU technical guide for border equipment
 repeats it: "Travellers under the age of 12 no fingerprints are captured."
@@ -74,8 +74,8 @@ slower, afternoon 2E is worst) and the exact hours as indicative.
 
 **[A] Planning consequence:** budget **2.5–3 hours** from wheels-down at CDG to being outside the
 terminal, and do not book anything tight on arrival day — no same-day TGV under 4 hours after
-landing, no timed museum entry. Because this family is visa-holding (facial image only, no
-enrolment), they should move faster than the American/British travellers around them, but they are
+landing, no timed museum entry. Because short-stay visa holders need a facial image only, with no
+enrolment), visa holders should move faster than the American/British travellers around them, but they are
 in the same physical queue.
 
 **[?]** Reports mention that Member States may temporarily suspend biometric collection until
@@ -98,16 +98,16 @@ not expose travel history and does not check remaining days.
 6 October 2026."**
 - https://www.eulisa.europa.eu/activities/carriers
 
-That date falls *inside* this trip (they fly home 7 October). So at Shanghai Pudong check-in the
+That date falls *inside* the researched schedule (return on 7 October). So at Shanghai Pudong check-in the
 airline may still eyeball passport stamps in addition to running the electronic query.
 
-**[A] Practical meaning at the counter:** nothing for them to do actively, but two consequences:
+**[A] Practical meaning at the counter:** nothing for travellers to do actively, but two consequences:
 
 1. This check happens at **check-in/boarding, in Shanghai** — a "Not OK" means being denied
    boarding in China, not turned around in Paris. If it happens it will be because the visa's entry
    count is wrong or the visa is not valid for the arrival date. Arrive early enough at PVG (3 hours
    for a long-haul) to argue it out at the ticket desk.
-2. If the consulate issues a **single-entry** visa, they must not leave the Schengen area at all
+2. If the consulate issues a **single-entry** visa, the holder must not leave the Schengen area at all
    mid-trip. A France-only itinerary is fine. But a side trip to, say, London or Switzerland
    (Switzerland is Schengen; the UK is not) would burn the entry.
 
@@ -131,15 +131,14 @@ meeting in September 2026.
 - https://www.independent.co.uk/travel/news-and-advice/etias-travel-permit-launch-date-delayed-b3032506.html
 - https://www.cntraveler.com/story/traveling-to-europe-this-year-you-wont-need-etias-yet
 
-**[A]** Ignore any website offering to sell them an ETIAS. There is no legitimate ETIAS application
+**[A]** Ignore any website offering an ETIAS to visa-holding Chinese travellers. There is no legitimate ETIAS application
 today, and there never will be one for Chinese passport holders travelling on a visa.
 
 ### 1.5 Documents to carry in **hand luggage** (not checked bags) for border control
 
 **[A]** French border police can ask any Schengen entrant to substantiate the conditions of entry
 (Schengen Borders Code Art. 6). Nobody is asked for all of this, but the cost of having it is a
-folder and the cost of not having it is missing a train. One printed set per family, carried by an
-adult:
+folder and the cost of not having it is missing a train. Carry one printed set per booking:
 
 - Passports with the visa (obviously) — plus **photocopies/phone photos of the passport bio page
   and visa page kept separately**, explicitly recommended by the Chinese Embassy in Paris.
@@ -156,7 +155,7 @@ adult:
   there probably is none, and its absence is not a problem.
 - The medication list and prescriptions (see §7) — these belong in hand luggage anyway.
 
-**[A]** Keep the seniors' medication in hand luggage, in original boxes, never in the hold.
+**[A]** Keep all medication in hand luggage, in original boxes, never in the hold.
 
 ---
 
@@ -186,7 +185,7 @@ So the *expected* outcome for a 25 Sept – 7 Oct trip is a sticker reading some
 **from 25-09-26 until 22-10-26, duration of stay 13 days** — a 13-day allowance inside a ~28-day
 window.
 
-**[A] What each scenario means for them:**
+**[A] What each scenario means for travellers:**
 
 | Sticker | Reading | Risk |
 | --- | --- | --- |
@@ -216,7 +215,7 @@ days from each day of your stay and the total must not exceed 90.
 multi-entry and they return within six months. Worth noting: **EES now computes this automatically**
 at the border, so the era of miscounting stamps is over — and so is the era of getting away with it.
 
-**[V]** Their previous Italy trip is only relevant if it was within the last 180 days (i.e. after
+**[V]** A previous Italy trip is only relevant if it was within the last 180 days (i.e. after
 ~29 March 2026). If so, those days count against the 90. Free official calculator (Check mode):
 - https://home-affairs.ec.europa.eu/policies/schengen/border-crossing/short-stay-calculator_en
 
@@ -239,7 +238,7 @@ application must still be lodged at the primary destination's consulate.
 - https://home-affairs.ec.europa.eu/document/download/dae5e071-1564-4a5d-9714-2147f7641781_en?filename=FAQs.pdf
 
 **[A]** So a France-issued visa used to enter via Frankfurt or Amsterdam is perfectly lawful, and
-German or Dutch border police will admit them. What *is* true is the softer point: since France was
+German or Dutch border police can admit the traveller. What *is* true is the softer point: since France was
 declared the main destination, the itinerary should still show France as the bulk of the trip. A
 France-only itinerary entering at CDG is the cleanest possible case and no border conversation
 should arise. If they do transit another Schengen airport, EES enrolment (facial image) happens at
@@ -267,7 +266,7 @@ consular officers cannot waive it.
 
 **[A]** €30,000 is the *visa* threshold, not a *sufficiency* threshold. It is roughly CNY 235,000 at
 today's rate. A hip fracture in a French private clinic plus a medical-escort repatriation flight for
-a 70-year-old runs well past that. For the seniors specifically, buy real cover, not the pass-the-visa
+an older traveller can run well past that. For older travellers specifically, buy real cover, not the pass-the-visa
 minimum.
 
 ### 3.2 Chinese insurers and the over-70 trap
@@ -313,26 +312,26 @@ per person at mid tiers, CNY 140–300 for a 7-day trip, with 60+ insureds surch
 market range, not a quote.
 - https://m.jiemian.com/article/14570109.html
 
-### 3.3 What to actually buy for this family
+### 3.3 What to buy for different traveller profiles
 
-**[A]** Buy **two different products**: one for the three under-50s (cheap compliant tier is fine)
-and a deliberately better one for the two 70-year-olds. Splitting the purchase is normal — insurers
+**[A]** Compare products by traveller profile: a basic compliant tier may suit younger travellers,
+while older travellers or those with pre-existing conditions may need deliberately better cover. Splitting a multi-person purchase is normal — insurers
 issue a separate policy per insured person anyway (平安's own FAQ says "我们将为每位被保险人单独出具保单").
 
-**[A]** For the seniors, check these five things in the policy wording, in this order:
+**[A]** For older travellers, check these five things in the policy wording, in this order:
 
 1. **Is the medical sum insured reduced at 71+?** Read the age-band table, not the headline number.
    This is the difference between CNY 400,000 and CNY 200,000 of cover, and it is where the cheap
    products fail.
-2. **Acute onset of pre-existing conditions (既往症急性发作).** The senior on regular medication
-   almost certainly has a documented chronic condition. Most standard policies exclude anything
+2. **Acute onset of pre-existing conditions (既往症急性发作).** Travellers on regular medication
+   may have a documented chronic condition. Most standard policies exclude anything
    related to it. Some 安联 and 京东安联 plans extend to acute episodes of hypertension and
-   diabetes. Without this extension, the most likely claim this family will ever make is the one
+   diabetes. Without this extension, a likely claim may be the one
    that is excluded.
 3. **Medical repatriation and repatriation of remains**, named explicitly. Required by Art. 15 and
    also the genuinely expensive item.
 4. **Direct billing (医疗直付) in France**, with a 24h Chinese-language assistance number. A
-   70-year-old in a Marseille emergency department should not be asked to front CNY 100,000 on a
+   traveller in a Marseille emergency department should not be asked to front CNY 100,000 on a
    credit card. 安联's PLUS line advertises direct billing at 90%+ of European hospitals;
    平安 advertises a bilingual own-operated hotline.
 5. **Policy dates padded by 1–2 days at each end.** Both the insurers and the Chinese market guides
@@ -348,7 +347,7 @@ A4, no dot-matrix or inkjet.
 
 - **Visa refusal is excluded from ordinary trip-cancellation cover** as a rule. A few Chinese
   Schengen products include a token 签证拒签补偿 — reported at around **CNY 500** on 安联's PLUS
-  line. That is a gesture toward the application fee, not protection for five air tickets.
+  line. That is a gesture toward the application fee, not protection for air tickets.
   - https://m.jiemian.com/article/14570109.html and http://www.investorscn.com/2026/08/03/135130/ **[S]**
 - The effective hedge is **refundable/changeable bookings**: book hotels on free-cancellation rates
   (cancellable up to 24–48h before), and either buy changeable air tickets or hold them on a
@@ -373,7 +372,7 @@ roughly 7.78–7.86. 2026 range so far: high 8.3592 (27 Jan), low 7.7135 (21 Jul
 - https://www.valutafx.com/history/eur-cny-2026
 
 **[A]** Round to **€1 ≈ CNY 7.9** for mental arithmetic, and re-check the ECB page the week before
-departure. A useful anchor for the seniors: **€10 ≈ CNY 79**.
+departure. A useful mental-arithmetic anchor is **€10 ≈ CNY 79**.
 
 ### 4.2 Card acceptance
 
@@ -391,8 +390,8 @@ petrol, Vélib'). Amex is accepted at hotels, department stores and mid/upper re
 by a great many small merchants because of the fee.
 
 **[A]** Carry at least **one Visa or Mastercard** (credit, not just a UnionPay debit card) as the
-primary instrument. This is the single most impactful money decision in the trip. A UnionPay-only
-family will be stuck at a TGV platform ticket machine at some point.
+primary instrument. This is the single most impactful money decision in the trip.
+UnionPay-only travellers may be stuck at a TGV platform ticket machine.
 
 ### 4.3 Alipay and WeChat Pay in France
 
@@ -414,7 +413,7 @@ duty-free.
 
 **[A]** Treat Alipay/WeChat Pay as a **bonus at large stores, never as the plan**. Bakeries, cafés,
 buses, museums, taxis, pharmacies and the Loire Valley and Provence generally will not take it. Do
-not let anyone in the family leave the hotel with only a phone wallet.
+do not let any traveller leave the hotel with only a phone wallet.
 
 ### 4.4 Contactless limits and Apple Pay
 
@@ -441,8 +440,8 @@ depending on the issuer — **test it in Shanghai, not in Paris**.
 
 ### 4.5 Cash, ATMs and DCC
 
-**[A] How much cash.** €300–500 for the family for the whole trip is plenty as a working float,
-topped up from ATMs. Cash is genuinely needed for: public toilets, some bakeries, market stalls,
+**[A] How much cash.** A working float of cash, topped up from ATMs, is useful. Cash is genuinely
+needed for: public toilets, some bakeries, market stalls,
 church donations, tips, luggage lockers (**the Gare de Lyon consigne does not accept bank cards** —
 see §14), and small rural cafés. It is *not* needed in bulk, and the Chinese Embassy has repeatedly
 warned that large cash holdings make Chinese tourists a target.
@@ -464,7 +463,7 @@ de change appliqué."
 **[A]** The marketing is exactly backwards from the customer's interest. When a terminal or ATM
 asks whether to charge in **CNY or EUR — always choose EUR**. Choosing CNY hands the exchange rate
 to the merchant's DCC provider, typically 3–7% worse than the card network rate, and it is a one-way
-choice made in three seconds at a counter. Teach the two seniors one sentence: *if the screen offers
+choice made in three seconds at a counter. Teach every traveller one sentence: *if the screen offers
 你的货币 / 人民币, press EUR / 欧元 refuse.* Also watch for it silently pre-selected on hotel
 check-out folios and on Nice/Paris airport terminals.
 
@@ -499,8 +498,8 @@ https://signal.conso.gouv.fr).
 3. **aged 16 or over**.
 - https://www.douane.gouv.fr/fiche/la-detaxe-en-france-pour-les-touristes-pablo
 
-**[A]** The 7-year-old cannot be a détaxe beneficiary. Purchases must be invoiced to, and claimed
-by, an adult in the party — and **only the person named on the bordereau can claim it**.
+**[A]** Minors under 16 cannot be détaxe beneficiaries. Purchases must be invoiced to, and claimed
+by, an eligible traveller — and **only the person named on the bordereau can claim it**.
 
 **[V]** Threshold: purchases must exceed **€100 including tax**, and the current démarche page and
 the DGDDI PABLO leaflet state it as "**dans une même enseigne ou un groupement d'enseignes, réalisés
@@ -590,7 +589,7 @@ abroad +33 1 72 40 78 50**.
 *(Note: Galeries Lafayette's Chinese page still prints an obsolete customs number 0 811 20 44 44.
 Use the official 0 800 94 40 40.)*
 
-**[A] Time to allow:** 45–60 minutes at CDG on top of normal check-in time if they have several
+**[A] Time to allow:** 45–60 minutes at CDG on top of normal check-in time when validating several
 bordereaux, more if the manned desk is needed or a cash refund is wanted. At Nice, 30 minutes. The
 kiosks are before security and there is no going back.
 
@@ -615,8 +614,8 @@ This is the trap in the itinerary, and French customs answers it explicitly in t
 security. Two reasons. First, point 48 (the only rule sending you to the stopover airport) is
 written for a stopover "dans un autre **État membre**" — CDG is the same Member State as Nice, so it
 does not apply, leaving points 46/47, which both point to the departure airport. Second, in practice
-they will check bags through to Shanghai at Nice, so the goods stop being presentable the moment
-they drop the bags — and validation must precede baggage check-in.
+bags will be checked through to Shanghai at Nice, so the goods stop being presentable the moment
+the bags are dropped — and validation must precede baggage check-in.
 
 **[V]** Nice Côte d'Azur PABLO kiosk locations, from the airport's own page — **landside, arrivals
 hall, before the security checkpoint (PIF)**:
@@ -628,7 +627,7 @@ the Global Exchange desk.
 - https://www.nice.aeroport.fr/guide/douane-et-detaxe
 
 **[A]** Keep every détaxe purchase in **hand luggage** for the Nice departure so the goods can be
-presented on request, and do the kiosks *first*, before checking in. If they buy anything at CDG
+presented on request, and do the kiosks *first*, before checking in. Any purchase at CDG
 duty-free on the way out, that is a separate airside purchase and needs no détaxe.
 
 ### 5.5 Chinese-language services in the shops
@@ -661,9 +660,9 @@ to 90% of the VAT paid, but require invoices issued in the operator's name at ea
 cumulative €100.01 across the whole France trip.
 - https://zapptax.com/zh/blog/la-vallee-village-outlet-shopping-tax-refund-guide-zh
 
-**[A]** For a family with two seniors and a child, La Vallée Village is a full day round-trip
-including RER A. Galeries Lafayette in one afternoon achieves the same shopping with the détaxe done
-in-store, and is far kinder on 70-year-old legs.
+**[A]** For travellers seeking lower walking intensity or child-friendly options, La Vallée Village is a full day
+round-trip including RER A. Galeries Lafayette in one afternoon achieves the same shopping with the
+détaxe done in-store and requires less travel.
 
 ---
 
@@ -693,13 +692,13 @@ daily caps of CNY 30/60/90; voice to mainland China is CNY 0.39/min for France.
 - https://10086.cn/roaming/zizhu/myzn/
 
 **[S]** China Unicom is reported at ~CNY 398 for a 15-day Europe pack with only **2 GB**, and China
-Telecom ~CNY 498 for 15 days with 3 GB — both badly undersized for a family navigating with maps
+Telecom ~CNY 498 for 15 days with 3 GB — both badly undersized for travellers navigating with maps
 and video-calling home, with expensive overage.
 - https://simology.io/zh/blog/2026-san-da-yun-ying-shang-guo-ji-man-you-fei-yong-dui-bi-esim-jing-ji-xuan-ze
 
 **[A]** The decisive advantage of carrier roaming is that **the Chinese number keeps working** —
 which matters a great deal, because Chinese banks, Alipay, WeChat security checks, and the airline
-all send SMS codes to it. Do not let the seniors' primary Chinese numbers go dark.
+all send SMS codes to it. Keep any primary Chinese numbers available for calls and verification codes.
 
 ### 6.2 French SIM / eSIM
 
@@ -720,17 +719,17 @@ hotspot. Holafly's "unlimited" plans carry a fair-use policy and restricted teth
 - https://news.travel.orange.com/en/multi-country-esim-europe
 - https://news.travel.orange.com/en/best-esim-for-france
 
-**[A] Recommended configuration for this family:**
+**[A] Example configuration for a multi-person booking:**
 
-- **One Orange Travel eSIM with a French number and 20 GB+, on one adult's phone**, used as the
-  family hotspot and the callable French number for hotels, restaurant bookings and taxis. A French
+- **One Orange Travel eSIM with a French number and 20 GB+, on one traveller's phone**, used as the
+  shared hotspot and the callable French number for hotels, restaurant bookings and taxis. A French
   number is disproportionately useful — French hotels and restaurants call back, and TheFork/SNCF
   send SMS.
-- **China Mobile 欧洲多国流量包 on the other adult's phone**, keeping the Chinese number live for
+- **China Mobile 欧洲多国流量包 on another traveller's phone**, keeping the Chinese number live for
   bank/Alipay/WeChat SMS codes and as a redundant connection if the eSIM misbehaves.
-- **Seniors and child: no data plan.** Put them on the hotspot. Instead, make sure the seniors'
-  Chinese numbers can still receive calls (roaming enabled, voice only) and that each senior carries
-  a card with the hotel address and the adults' French and Chinese numbers written on it. **[A]**
+- **Other travellers:** a separate data plan may not be necessary if hotspot coverage is reliable.
+  Keep voice roaming available where needed, and give child visitors or visitors seeking assistance
+  a card with the hotel address and two contact numbers. **[A]**
 - **eSIM caveat:** confirm each handset is eSIM-capable and carrier-unlocked **before leaving
   China**. Older or China-market-locked phones often are not. Install and activate the eSIM while
   still on home Wi-Fi — activation needs internet, which is exactly what you lack on landing.
@@ -753,7 +752,7 @@ and photos home, voice/video calls, and Alipay all work over any French data con
 - Chinese **bank and Alipay security flows** may demand an SMS code to the Chinese number, or may
   flag a foreign IP. Keep the Chinese number reachable (see above) and expect an extra
   verification step.
-- **[A]** If they want mainland streaming on the trip, install and test a China-bound VPN *before*
+- **[A]** If mainland streaming is wanted on the trip, install and test a China-bound VPN *before*
   leaving. This is a comfort item, not a necessity, and nothing about the trip requires a VPN.
 
 ---
@@ -789,7 +788,7 @@ the French health system for minor problems, and the pharmacist is a qualified p
 triage, advise and sell — expect real advice, not shelf-stacking. Many central Paris pharmacies have
 English-speaking staff; Chinese-speaking pharmacists exist in the 13th arrondissement and Belleville.
 
-**[A]** What matters for this family:
+**[A]** What matters for Chinese travellers:
 
 - **Very little is on open shelves.** Paracetamol, ibuprofen and most analgesics are **behind the
   counter** — you must ask. This surprises Chinese visitors used to self-service. Point at a written
@@ -813,14 +812,14 @@ practise in France or the EU. A Chinese ordonnance is not that.
 
 - **Customs and border control** — it is the legal document proving lawful personal medicine
   (see §7.5). Essential.
-- **Evidence for a French doctor.** If a senior runs out of medication or needs a refill, the route
+- **Evidence for a French doctor.** If a traveller runs out of medication or needs a refill, the route
   is: see a French GP (or SOS Médecins / a walk-in clinic / the hospital urgences), show the Chinese
   prescription and the medication boxes, and the French doctor writes a French prescription. That
-  works well, and is the actual answer to "what if grandma runs out of her pills".
+  works well, and is the actual answer to "what if prescribed medicine runs out".
 - For **emergency treatment**, doctors need the drug names and doses far more than they need the
   prescription's legal form.
 
-### 7.4 If a senior needs a doctor — the practical escalation
+### 7.4 If a traveller needs a doctor — the practical escalation
 
 **[A]** In order of severity:
 
@@ -837,9 +836,9 @@ practise in France or the EU. A Chinese ordonnance is not that.
    collapse): **15** or **112** immediately. Do not take a taxi to hospital for these.
 
 **[A]** Before any of it, **call the insurer's 24h assistance hotline** — a good policy will direct
-them to a direct-billing hospital and arrange payment, which avoids fronting a five-figure bill. Put
-that number in every family member's phone and on the paper card. This is the single highest-value
-five minutes of trip preparation for a party with two 70-year-olds.
+the traveller to a direct-billing hospital and arrange payment, which avoids fronting a five-figure bill.
+Put that number in every traveller's phone and on a paper card. This is one of the highest-value
+pieces of trip preparation for anyone with medication needs.
 
 ### 7.5 Bringing Chinese prescription medicine and TCM into the EU — the rules
 
@@ -895,12 +894,12 @@ tradition. Concretely:
 **[A] Recommendation:** bring **Western-pharmacology prescription medicine only**, in original
 labelled boxes, with prescriptions. Leave TCM at home — especially anything unlabelled, loose, in
 unmarked bags, or containing animal ingredients. Two weeks is a short trip; the downside of a customs
-problem with a 70-year-old in the party dwarfs the benefit.
+problem for an older traveller dwarfs the benefit.
 
 ### 7.6 The medication list — do it, in English and French
 
 **[A]** Yes, absolutely carry one, and make it a proper document rather than a note. One A4 sheet per
-senior, printed twice (one in each adult's bag), plus a phone photo:
+traveller with medication needs, printed twice and stored separately, plus a phone photo:
 
 - Patient name as printed in the passport, date of birth, blood type if known.
 - Diagnoses in plain English (e.g. "hypertension", "type 2 diabetes").
@@ -910,7 +909,7 @@ senior, printed twice (one in each adult's bag), plus a phone photo:
 - Known drug allergies — write **"Allergies : aucune"** if none, because a blank field reads as
   unknown.
 - Treating doctor and hospital, with phone number.
-- Emergency contacts: family in China, and the insurer's 24h assistance number and policy number.
+- Emergency contacts in China, and the insurer's 24h assistance number and policy number.
 - **[A]** Add the two French sentences that do the work:
   *"Je suis diabétique / hypertendu·e."* and
   *"Voici la liste de mes médicaments. Merci d'appeler mon assurance : [number]."*
@@ -973,7 +972,7 @@ biscuits, sweets, plain 方便米饭, coffee, seasoning powders, and vacuum-pack
   cover one expensive item.
 - https://www.douane.gouv.fr/sites/default/files/uploads/files/Documentations-Brochures/Langues-etrangeres/Trouble-free-travel-with-french-customs.pdf
 
-**[A]** So the two seniors and two adults each have a €430 allowance inbound; the 7-year-old has
+**[A]** Travellers aged 15+ arriving by air have a €430 allowance inbound; travellers under 15 have
 €150 and no tobacco/alcohol allowance. Irrelevant for an inbound tourist trip, but it becomes
 relevant on the way *home* — see §8.4.
 
@@ -988,11 +987,11 @@ total of the amounts carried by the group in question exceeds the 10,000-euro th
 Declaration is online (Dalia) or on Cerfa form **13426*04**.
 - https://www.douane.gouv.fr/sites/default/files/uploads/files/Documentations-Brochures/Langues-etrangeres/Trouble-free-travel-with-french-customs.pdf
 
-**[A]** This is the rule most likely to catch this family out, precisely because of the family
-aggregation. Five people each carrying a "safe" €2,500 is €12,500 and **must be declared**. False or
-missing declarations trigger duties, taxes and customs penalties. Given §4, they should not be
-carrying anything near this anyway — but if grandparents have been given cash by relatives, count the
-family total, not the individual amounts. China also has its own outbound cash rules (commonly cited
+**[A]** This rule can catch related travellers because it aggregates cash carried by couples and
+families. For example, amounts below €10,000 per person can still exceed the threshold when aggregated
+and **must be declared**. False or missing declarations trigger duties, taxes and customs penalties.
+Count the legally defined family or couple total, not only individual amounts. China also has its own
+outbound cash rules (commonly cited
 as USD 5,000 / CNY 20,000 per person without declaration) — **[?]** I did not verify these against a
 primary Chinese source; check with 海关总署 before departure if they intend to carry significant cash.
 
@@ -1037,7 +1036,7 @@ duty-free allowance.
 - https://www.mofcom.gov.cn/zcfb/zgdwjjmywg/art/2025/art_4adf716bf28542fdbffe5510b30d8ed9.html
 
 **[V]** **Restricted categories:** frequent border-crossers and **minors under 18** get duty-free
-release only for items **necessary for the journey** — so the 7-year-old does **not** carry a
+release only for items **necessary for the journey** — so a minor traveller does **not** carry a
 CNY 5,000 allowance.
 - https://www.gov.cn/zhengce/zhengceku/202411/P020241129805840429474.pdf
 
@@ -1102,7 +1101,7 @@ France) and anti-fraud booklets, downloadable via its consular pages and its Xia
 avoid carrying large amounts of cash, do not display valuables, **leave nothing visible in a parked
 car** (car windows get smashed), keep passport copies separate from originals, and if a passport is
 lost contact the consulate for a replacement travel document. It also flags strong sun, and advises
-that seniors doing anything strenuous be accompanied by family.
+that older travellers doing anything strenuous be accompanied by another traveller.
 - https://www.chinaqw.com/hdfw/2025/06-03/393951.shtml
 - https://marseille.china-consulate.gov.cn/chn/yqts/
 
@@ -1146,7 +1145,7 @@ committed by an unseen accomplice:
   your wallet, cash or passport for "counterfeit currency". Real French police do not do this. Do not
   hand over anything; say *"Je vous suis au commissariat"* (I'll come with you to the police station)
   and they leave. **This is the pattern the embassy's fraud warnings map onto** and the one most
-  dangerous to a trusting 70-year-old.
+  dangerous to a trusting visitor.
 - **Gold ring** — someone "finds" a ring at your feet, offers it to you, then asks for money.
 - **Three-card / shell game (bonneteau)** — near Sacré-Cœur and along the Seine. Always rigged, the
   "winners" are shills, and the crowd around it contains the pickpockets. Never stop to watch.
@@ -1172,31 +1171,30 @@ committed by an unseen accomplice:
 - **Marseille**: if the itinerary touches it, avoid the areas north of the Vieux-Port after dark;
   the consulate's advice is to avoid higher-risk areas generally.
 
-### 9.5 Concrete precautions for two seniors and a child
+### 9.5 Concrete precautions for visitors seeking assistance and child visitors
 
 **[A]** Ordered by how much risk they remove:
 
-1. **Money belts or under-clothing pouches for the seniors' passports and spare cards** — worn, not
-   in a bag. Day cash in a front trouser pocket. This is the single most effective measure and
-   seniors tolerate it better than younger travellers do.
-2. **Nobody carries everything.** Split passports, cards and cash across two adults. Leave one
+1. **Money belts or under-clothing pouches for passports and spare cards** — worn, not
+   in a bag. Day cash in a front trouser pocket. This is one of the most effective measures.
+2. **Nobody carries everything.** Split passports, cards and cash across multiple travellers. Leave one
    card and the passport copies in the hotel safe. If one bag goes, the trip continues.
 3. **Cross-body bags worn in front, zipped, hand resting on the zip** in metro, queues and crowds.
    No backpacks worn on the back on the Métro — the embassy says this explicitly. No rear trouser
    pockets, ever.
 4. **Phones out only when stopped and away from doors.** Agree that navigation happens with backs to
    a wall, not while walking near metro doors. This one habit defeats most of Line 1.
-5. **Brief the seniors on exactly three refusals**, rehearsed before departure, because in the moment
-   they will default to politeness: *anyone who touches your wrist* (bracelet), *anyone with a
+5. **Brief visitors seeking assistance on exactly three refusals**, rehearsed before departure:
+   *anyone who touches your wrist* (bracelet), *anyone with a
    clipboard* (petition), *anyone showing a badge and asking for your wallet* (fake police). The
    answer to all three is keep walking and say nothing.
-6. **The child**: a card in their pocket with the hotel name/address and both adults' French and
-   Chinese phone numbers; a photo of the child taken each morning (for a description if separated);
+6. **Child visitors**: a card in their pocket with the hotel name/address and two contact
+   numbers; a current photo (for a description if separated);
    an agreed meeting point at each site; hold hands boarding and leaving metro trains — **doors
-   closing between a child and the family is a real and terrifying failure mode.** Agree the rule:
+   closing between a child and their responsible adult is a real and terrifying failure mode.** Agree the rule:
    whoever is on the train gets off at the next stop and comes straight back.
-7. **Avoid the RER B with all the luggage.** For five people plus suitcases arriving at CDG after a
-   long-haul flight and an EES queue, take a pre-booked van transfer or two taxis. It removes the
+7. **Avoid the RER B with substantial luggage.** For multi-person bookings arriving at CDG after a
+   long-haul flight and an EES queue, consider a pre-booked van transfer or taxis. It removes the
    single highest-exposure hour of the trip (§9.2), and the fixed-price CDG taxi tariffs to Paris are
    regulated. Take a **licensed taxi from the official rank**, never an approach inside the terminal
    — the embassy warns specifically about airport touts ("在机场和车站勿理会'黑车'司机揽客").
@@ -1220,12 +1218,12 @@ most often have a bad time in France, so it is worth being precise.
   being turned away from six restaurants in a row is the classic first-day-in-Paris experience.
 - **This is the most important cultural adjustment on the list**, and it collides badly with two
   things: jet lag from Shanghai (they will be hungry at odd hours for the first two or three days),
-  and seniors who are used to eating dinner at 18:00.
+  and travellers who are used to eating dinner at 18:00.
 - **What is open in the gaps**: brasseries and cafés in tourist areas advertising *service continu*;
   bakeries (*boulangerie*) for sandwiches, quiche and tarts; department-store food halls;
   supermarkets; crêperies; Asian restaurants (§11), which often keep longer hours than French ones.
-- **Plan an early dinner deliberately**: book for 19:00, the first sitting, which also suits a
-  7-year-old's bedtime and gets a calmer dining room.
+- **Plan an early dinner deliberately**: book for 19:00, the first sitting, which also suits many
+  child visitors and gets a calmer dining room.
 
 ### 10.2 Sunday and Monday closures
 
@@ -1265,7 +1263,7 @@ Outside ZTIs, the Mayor may authorise up to **12 Sundays a year**.
   **"Excusez-moi"** to get attention (never a raised hand or a shout), **"Pardon"** to pass someone,
   **"S'il vous plaît"** on every request.
 - Address staff as **Madame** / **Monsieur**.
-- **[A]** Teach the seniors just these six words. The change in how they are treated is
+- **[A]** Teach every traveller just these six words. The change in how they are treated is
   disproportionate to the effort, and it is the highest-return five minutes of French anyone can
   learn.
 - Speak quietly. French restaurants and metro carriages are markedly quieter than Chinese ones, and
@@ -1276,7 +1274,7 @@ Outside ZTIs, the Mayor may authorise up to **12 Sundays a year**.
 - **Service is included by law** — menus and bills say *service compris*. There is no obligation to
   tip and no social penalty for not tipping. Nothing like a US 20% expectation exists.
 - Normal practice: round up, or leave **€1–2 per person** for a good café/bistro meal, **5%** in a
-  nicer restaurant if genuinely pleased. €2–5 for a hotel porter handling five people's luggage.
+  nicer restaurant if genuinely pleased. €2–5 for a hotel porter handling luggage.
   Round up a taxi fare to the nearest euro or two.
 - **Leave tips in cash.** French card terminals generally have no tip prompt.
 - **[A]** Do not over-tip out of anxiety. It is not expected, and 20% marks you as a target in
@@ -1286,7 +1284,7 @@ Outside ZTIs, the Mayor may authorise up to **12 Sundays a year**.
 
 - **Tap water is free and safe, and you are entitled to ask for it.** The phrase is
   **"une carafe d'eau, s'il vous plaît"**. If you just say "water", you will be brought bottled
-  mineral water at €4–7 a bottle. For five people over two weeks, that difference is real money.
+  mineral water at €4–7 a bottle. For multi-person bookings over two weeks, that difference is material.
 - **Bread** is free and unlimited, brought automatically, and not charged. If a "couvert" or bread
   charge appears in a tourist-area restaurant, it is unusual — query it.
 - **Ice is not standard** and drinks are served less cold than in China. Ask for *"avec des glaçons"*.
@@ -1297,37 +1295,37 @@ Outside ZTIs, the Mayor may authorise up to **12 Sundays a year**.
   list of dishes ask for **"la carte"**. **Menu du jour** / *plat du jour* is the daily special —
   freshest and cheapest, and often the only thing available at a busy lunch.
 - **Formule midi** — weekday lunch set menus are dramatically cheaper than the same food at dinner.
-  For a family of five, eating the main meal at lunch and lighter in the evening can cut the food
+  For multi-person bookings, eating the main meal at lunch and lighter in the evening can cut the food
   budget substantially.
 
 ### 10.6 Booking, high chairs, and children
 
-- **Book dinner ahead** — for five people, essentially always. French restaurants are small; a party
-  of five is a large booking that needs two tables joined. Walk-ins for five at 20:00 in central
-  Paris will fail. Use **TheFork/LaFourchette** (§15), the hotel concierge, or Google Maps' booking
+- **Book dinner ahead** for multi-person bookings. French restaurants are small, and larger bookings
+  may need tables joined. Walk-ins at 20:00 in central Paris can fail. Use **TheFork/LaFourchette**
+  (§15), the hotel concierge, or Google Maps' booking
   link. Booking also gets around the language barrier.
-- **Yes, restaurants accommodate a 7-year-old.** French children eat in restaurants routinely.
+- **Yes, restaurants accommodate child visitors.** French children eat in restaurants routinely.
   Expect a *menu enfant* in brasseries and family restaurants (not in gastronomic ones), typically
-  a main plus dessert. A 7-year-old is old enough that a child's menu may not even be needed —
+  a main plus dessert. Older child visitors may not need a child's menu —
   splitting an adult dish is normal and accepted.
-- **High chair**: **"une chaise haute, s'il vous plaît"** — ask when booking, not on arrival. At 7
-  they will not need one, but if a stroller/buggy is in play, mention it when booking: many small
+- **High chair**: **"une chaise haute, s'il vous plaît"** — ask when booking, not on arrival. If a
+  stroller/buggy is in play, mention it when booking: many small
   Paris dining rooms genuinely cannot fit one.
 - **Expectation to set**: French children are expected to sit at the table for the duration of the
   meal, which is long (90 minutes+). Bring something quiet for the child. Running between tables
   will be received badly.
 - **Sitting outside** (*en terrasse*) is usually easier with a child and a stroller than inside.
 - **Water and toilets**: ask *"où sont les toilettes ?"* — restaurant toilets are often down a
-  narrow spiral staircase, which is worth knowing with seniors.
+  narrow spiral staircase, which is worth knowing for visitors seeking lower walking intensity.
 
 ---
 
-## 11. Food logistics for a Chinese family
+## 11. Food logistics for Chinese travellers
 
 ### 11.1 Chinese and Asian food
 
-**[A]** Paris has genuinely good Chinese food, which matters on a 13-day trip with two 70-year-olds
-who will tire of bread and cheese around day four.
+**[A]** Paris has genuinely good Chinese food, which matters on a longer trip for travellers who
+will tire of bread and cheese.
 
 - **13th arrondissement (Quartier Asiatique / Les Olympiades)** — the largest Asian quarter in
   Europe, centred on Avenue d'Ivry, Avenue de Choisy and the Olympiades esplanade. Métro **Tolbiac,
@@ -1341,8 +1339,8 @@ who will tire of bread and cheese around day four.
   **Belleville** (Lines 2/11).
 - **Rue Sainte-Anne (1st/2nd, near Opéra and the Louvre)** — the Japanese/Korean street, dense with
   ramen, udon, katsu and Korean places. **Strategically the most useful of the three**: it is a
-  short walk from the Louvre, the Palais Royal and Galeries Lafayette, so it solves "the seniors want
-  rice tonight and we're in the 1st". Expect queues at peak.
+  short walk from the Louvre, the Palais Royal and Galeries Lafayette, so it provides familiar food
+  near major sights. Expect queues at peak.
 - **Also**: Rue au Maire / Arts et Métiers (3rd) for Wenzhou food; Avenue de Choisy for Vietnamese
   phở; Chinese bakeries in the 13th for familiar breakfast.
 
@@ -1384,8 +1382,7 @@ around bringing supplies from Paris.
 
 **[A] Correct as stated in the question: most French hotels do NOT provide a kettle in the room.**
 This is a genuine difference from China, Japan and the UK, and it is a daily irritation for Chinese
-travellers who expect to make tea, instant noodles or 冲剂 medicine, or to have warm water for
-seniors and children.
+travellers who expect to make tea, instant noodles or 冲剂 medicine, or to have warm water.
 
 - 3-star and budget French hotels: usually **no kettle**. Some 4-star and international chains
   (Ibis, Novotel, Mercure, Marriott) and most newer hotels do provide a *courtesy tray* / *plateau de
@@ -1395,7 +1392,7 @@ seniors and children.
 - **Reception will often provide hot water** if asked (*"de l'eau chaude, s'il vous plaît"*), and
   breakfast service always has it.
 - **Apartments and aparthotels** (Airbnb, Adagio, Citadines) have a kitchen and therefore a kettle,
-  a hob and a fridge. For 13 days with two seniors and a child, this is a strong argument for
+  a hob and a fridge. For a longer stay, this is a strong argument for
   apartments over hotel rooms (§12).
 
 **[A] Will a Chinese kettle work in France? Usually yes electrically, but the plug will not fit.**
@@ -1414,9 +1411,9 @@ seniors and children.
 - **[A] Recommendation:** bring a **small dedicated travel kettle** (0.5–0.8 L, 800–1,000 W,
   dual-voltage 100–240 V, foldable handle) plus **two good Type E adapters and one multi-socket power
   strip with Chinese sockets**. The power strip is the trick that solves everything: one adapter into
-  the French wall, then all five phones, both cameras and the kettle plug into familiar Chinese
+  the French wall, then phones, cameras and the kettle plug into familiar Chinese
   sockets. It weighs little and removes an entire category of daily friction.
-- **[A]** Also worth packing: a **vacuum flask** (保温杯) each for the seniors — fill it in the
+- **[A]** Also worth packing for travellers who prefer warm water: a **vacuum flask** (保温杯) — fill it in the
   morning, and the "no hot water anywhere" problem largely disappears. Instant noodles, 麦片, tea
   bags, and any powdered medicine that needs warm water.
 - **[A]** Do **not** bring a rice cooker or an induction plate. Wattage, weight and hotel wiring all
@@ -1426,35 +1423,34 @@ seniors and children.
 
 ## 12. Accommodation
 
-### 12.1 Why five people means two rooms
+### 12.1 Occupancy and multi-person bookings
 
 **[A] The occupancy rule is real and strictly applied.** French hotel rooms are sold for a declared
 number of occupants, and the limit is enforced for fire-safety and licensing reasons — not as an
-upsell. Travellers have been refused at check-in for arriving with an extra child. **You must book
-for the actual number of people**, including the 7-year-old.
+upsell. Travellers have been refused at check-in for arriving with an undeclared child visitor.
+**You must book for every occupant**, including minors.
 
 **[A]** Compounding this: **central Paris hotel rooms are small** because the buildings are 19th
 century, so many hotels only have singles and doubles. Triples exist but are uncommon; quadruples
-are scarce; **rooms for five in central Paris are close to nonexistent**. Some hotels have withdrawn
+are scarce; **rooms for larger bookings in central Paris are hard to find**. Some hotels have withdrawn
 triples entirely and offer connecting rooms instead.
 
-**[A] So the realistic options for this family of five:**
+**[A] Realistic options for multi-person bookings:**
 
 1. **Two hotel rooms** — ideally **connecting/communicating (chambres communicantes)** or at least
-   adjacent. Ask explicitly; do not rely on "we'll try". Natural split: seniors in one, adults +
-   child in the other. Two rooms also means **two bathrooms**, which for two 70-year-olds and a child
-   on a 13-day trip is worth more than it costs.
+   adjacent. Ask explicitly; do not rely on "we'll try". Two rooms also means **two bathrooms**,
+   which may be valuable for visitors seeking lower walking intensity or child-friendly arrangements.
 2. **An apartment** (Airbnb, or aparthotel: Adagio, Citadines, Résidence). **This is probably the
-   right answer for the Paris and Nice legs.** A 2-bedroom apartment sleeps five legitimately, and
+   right answer for the Paris and Nice legs.** A 2-bedroom apartment supports multi-person bookings and
    brings a kitchen (kettle! rice! §11.3), a washing machine, a fridge for medication, and a living
-   room where a jet-lagged family awake at 04:00 does not have to sit in the dark. Cost per night is
+   room where jet-lagged travellers awake at 04:00 do not have to sit in the dark. Cost per night is
    usually below two hotel rooms.
 3. **A "chambre familiale" / family room** — exists more readily **outside** Paris (Loire Valley,
    Provence, chain hotels near stations, and countryside hotels), where buildings are bigger. Worth
    searching for the Tours/Amboise and Avignon legs.
 
-**[A]** When booking, enter **5 guests with the child's age (7)** in the search, not "2 adults" —
-otherwise the platform shows rooms they cannot legally occupy, and the price shown will be wrong.
+**[A]** When booking, enter **every guest and each child visitor's age** in the search — otherwise
+the platform shows rooms the booking cannot legally occupy, and the price shown will be wrong.
 
 ### 12.2 Tourist tax (taxe de séjour)
 
@@ -1486,13 +1482,12 @@ regional 15% and the **Île-de-France Mobilités 200%** additional levy introduc
 by the number of travellers **including minors**.
 - https://files.parisjetaime.com/pro/taxe-de-sejour-paris-2026.pdf
 
-**[A] What this costs them.** In a Paris 3-star, 4 adults × €5.53 = **€22.12 per night** (the child
-is free) — about €155 over 7 nights. In a 4-star, €33.80/night. **In an unclassified Airbnb it can be
-much more**: a €300/night apartment for five is €60 per person pre-tax, ×16.25% ≈ €9.75 per adult per
-night = €39/night. The Île-de-France 200% surcharge makes Paris tourist tax genuinely material for a
-family — budget **€150–300** for the Paris leg alone, and check whether the platform quoted it or
-whether it is collected on arrival (Airbnb usually collects it; small hotels often charge cash at
-checkout).
+**[A] Cost calculation.** Multiply the published per-adult nightly rate by the number of liable
+adults and nights; minors are exempt. For an unclassified Airbnb, divide the total nightly price by
+all occupants (including minors), then apply the published percentage to each liable adult, subject
+to the cap. The Île-de-France 200% surcharge makes Paris tourist tax genuinely material, so check
+whether the platform quoted it or whether it is collected on arrival (Airbnb usually collects it;
+small hotels often charge cash at checkout).
 
 **[A]** Outside Paris the tax is set by each commune and is much lower — typically €0.50–3.00 per
 adult per night in Tours, Amboise, Avignon and Nice, with no 200% transport levy. Rates are published
@@ -1504,9 +1499,9 @@ on each commune's or tourist office's site.
 so small it takes one person and no suitcase.** Older Paris buildings were built without them, and
 the reception is often up a few steps from the street too.
 
-- **For two 70-year-olds with luggage this is the single most consequential booking decision** — more
-  than location or price. A charming 2-star on the fourth floor of a Marais walk-up will ruin the
-  trip.
+- **For visitors seeking lower walking intensity with luggage this is the single most consequential
+  booking decision** — more than location or price. A charming 2-star on the fourth floor of a
+  Marais walk-up can ruin the trip.
 - **Filter for "lift/elevator" (ascenseur) explicitly** on the booking platform, and then **email
   the hotel** to confirm: (a) there is a lift, (b) it reaches the room floor, (c) it fits a large
   suitcase, and (d) how many steps there are from the street to reception. Small Paris hotels answer
@@ -1516,7 +1511,7 @@ the reception is often up a few steps from the street too.
   matters more than cooling by early October in Paris and the Loire.
 - **[A]** Also ask about: a room away from the street (Paris streets are noisy and windows are
   single-glazed in older buildings), a bath vs walk-in shower (a high-sided bathtub is a fall risk
-  for a 70-year-old — request *"douche à l'italienne"* / walk-in if possible), and a lower floor as a
+  for visitors with limited mobility — request *"douche à l'italienne"* / walk-in if possible), and a lower floor as a
   fallback if there is no lift.
 
 ### 12.4 Booking platforms
@@ -1526,7 +1521,7 @@ here (**lift, family rooms, number of guests including child age, kettle, air co
 connecting rooms**) plus free-cancellation rates that solve the visa-pending problem (§3.4). Airbnb
 for apartments. Direct hotel websites sometimes beat the platforms and give you an email address for
 the lift questions. Ctrip/携程 and Fliggy/飞猪 are worth price-checking, offer Chinese-language
-support and Chinese payment methods, and are easier for the seniors to understand — but be careful
+support and Chinese payment methods, and may be easier for Chinese-speaking travellers to understand — but be careful
 that their cancellation terms are often stricter, which matters while the visa is pending.
 
 ### 12.5 Where to stay
@@ -1534,9 +1529,9 @@ that their cancellation terms are often stricter, which matters while the visa i
 **[A] Paris.** Prioritise, in order: **step-free access and a lift**, then **a Métro station within
 5 minutes on a useful line**, then neighbourhood charm.
 
-- **5th (Latin Quarter) / 6th (Saint-Germain)** — the best all-round choice for this family. Central,
+- **5th (Latin Quarter) / 6th (Saint-Germain)** — a strong all-round choice. Central,
   walkable, safe, full of restaurants that open earlier than average, close to Notre-Dame and the
-  Luxembourg gardens (excellent for a 7-year-old). Expensive.
+  Luxembourg gardens (excellent for child visitors). Expensive.
 - **7th (Eiffel Tower / Invalides)** — quiet, safe, handsome, good for the Eiffel Tower and Orsay.
   Fewer cheap restaurants; slightly further from the Métro in places.
 - **2nd / 9th (Opéra, Grands Boulevards)** — excellent value and transport, walking distance to
@@ -1547,8 +1542,8 @@ that their cancellation terms are often stricter, which matters while the visa i
   and narrowest staircases in Paris — check the lift twice.
 - **13th (Olympiades/Place d'Italie)** — cheaper, modern buildings that actually have lifts, and the
   Chinese quarter on the doorstep. Trade-off: less pretty, and ~20–30 minutes from the main sights.
-  For a family whose seniors want familiar food daily, this is an underrated choice.
-- **[A] Avoid** for this party: the immediate area around **Gare du Nord / Barbès / La Chapelle**
+  For travellers wanting familiar food daily, this is an underrated choice.
+- **[A] Avoid** for visitors prioritising comfort: the immediate area around **Gare du Nord / Barbès / La Chapelle**
   (18th, 10th) despite the cheap hotels and rail convenience — it is the least comfortable part of
   central Paris after dark and features in every pickpocket list; and anything in the outer suburbs
   requiring an RER change with luggage.
@@ -1561,12 +1556,12 @@ choice for dinner and near-zero Asian food. For châteaux without a car, Tours w
 **[A] Avignon.** **Inside the walls (intra-muros)**, near **Place de l'Horloge** or the **Palais des
 Papes**, ideally within walking distance of **Avignon Centre** station. Note there are two stations:
 **Avignon TGV** (out of town, TGV from Paris) and **Avignon Centre** (in the walls), linked by a
-short shuttle train — factor this in with luggage and seniors. Cobbles are heavy here (§13).
+short shuttle train — factor this in with luggage or lower walking tolerance. Cobbles are heavy here (§13).
 
-**[A] Nice.** The best of the four for this family. **Carré d'Or / Jean Médecin / near Place Massena**
+**[A] Nice.** **Carré d'Or / Jean Médecin / near Place Massena** is the most convenient of these areas
 for modern buildings with lifts and air conditioning, flat streets, trams and walkability. **Promenade
 des Anglais** for sea views at a premium. **Vieux Nice** is atmospheric but noisy at night, cobbled
-and full of walk-ups — appealing but hard on 70-year-olds. Staying near **Nice-Ville station** is
+and full of walk-ups — appealing but hard for visitors seeking lower walking intensity. Staying near **Nice-Ville station** is
 convenient for the Riviera day trips (Monaco, Èze, Antibes, Cannes are all short train rides) but
 less pleasant in the evening.
 
@@ -1622,8 +1617,8 @@ valley; representative of the Avignon climate.
 
 **[A]** Also: **daylight is shrinking fast.** By early October Paris sunset is around 19:15 and Nice
 around 19:00, versus ~19:50 in late September. Late-afternoon sightseeing windows are shorter than
-the family may expect, and evening walks will be in the dark — relevant for both the seniors' footing
-and the pickpocket advice in §9.
+travellers may expect, and evening walks will be in the dark — relevant for footing and the
+pickpocket advice in §9.
 
 **[?]** These are 30-year normals, not a forecast for 2026. Check Météo-France 10 days out.
 Individual years vary widely — Paris has hit 28.9 °C on 1 October and Orange 31.8 °C in October.
@@ -1638,25 +1633,25 @@ Individual years vary widely — Paris has hit 28.9 °C on 1 October and Orange 
   most useful item for Paris/Loire in October, and it compresses to nothing for the Nice leg.
 - Shell: a **genuinely waterproof, hooded, breathable jacket** each. Not a fashion trench. This
   covers both Paris drizzle and a Riviera downpour.
-- **A compact umbrella per adult** (two for five people is enough) — useful in Paris, inadequate
+- **A compact umbrella per adult** — useful in Paris, inadequate
   alone in the south.
 - Trousers: long trousers throughout; one pair of light trousers or a skirt for Nice. Shorts are
   plausible in Nice, marginal elsewhere, and read as odd in Paris in October.
 - **Scarf** each — the highest warmth-per-gram item and what French people actually use in October.
-- A warm hat and light gloves **for the seniors only**: at 9 °C in a Loire château courtyard at
-  10:00, or on an open TGV platform, they will want them and nobody else will.
+- A warm hat and light gloves for travellers sensitive to cold: at 9 °C in a Loire château courtyard
+  at 10:00, or on an open TGV platform, they may be useful.
 - Swimwear for Nice — the sea is around 21–22 °C in late September and people do still swim.
 - One smart-casual outfit each: French restaurants are not formal but are neater than tourist
-  athleisure, and it makes the seniors feel comfortable rather than conspicuous.
+  athleisure.
 
-**[A] Shoes — the item that decides whether the seniors enjoy the trip.**
+**[A] Shoes — especially important for visitors seeking lower walking intensity.**
 
 - Cobblestones are everywhere and they are worse than photographs suggest: Montmartre, the Marais,
   Vieux Nice, Avignon intra-muros, Amboise, and every château courtyard. Uneven, often domed, and
   slippery when wet.
 - **Everyone: closed, cushioned, grippy, rubber-soled walking shoes or trainers, already broken in.**
   Nothing new. Expect 12,000–20,000 steps a day.
-- **Seniors: this is a fall-prevention decision.** Supportive walking shoes with a firm heel counter,
+- **Visitors at risk of falls:** supportive walking shoes with a firm heel counter,
   good ankle support and a non-slip sole. No smooth leather soles, no backless shoes, no new shoes,
   no heels of any kind. A **walking pole or cane** if either normally uses one at home — more useful
   on cobbles and château staircases than anywhere in Shanghai.
@@ -1664,12 +1659,12 @@ Individual years vary widely — Paris has hit 28.9 °C on 1 October and Orange 
   no tumble dryer, this is not a luxury.
 - Sandals only for Nice, and not for a day of walking on cobbles.
 
-**[A] Anything else specific to the seniors:**
+**[A] Additional guidance for older travellers or those with medication needs:**
 
 - **Medication in hand luggage**, original boxes, with the bilingual list (§7.6) and prescriptions
   (§7.5) — plus 1.5× the trip's supply.
-- **Compression stockings** for the ~11-hour Shanghai–Paris flight, and instructions to walk the
-  cabin hourly. Deep-vein thrombosis risk is real at 70 and it is the most likely serious medical
+- **Compression stockings** for the ~11-hour Shanghai–Paris flight when medically appropriate, and
+  instructions to walk the cabin hourly. Deep-vein thrombosis risk rises with age and can be a serious
   event of the whole trip.
 - **A pill organiser plus an alarm**, because the 6–7 hour time difference will disrupt fixed dosing
   schedules. Decide before departure whether medication follows Beijing time or Paris time, and write
@@ -1681,9 +1676,8 @@ Individual years vary widely — Paris has hit 28.9 °C on 1 October and Orange 
 - **Insurance card and 24h assistance number in a pocket, not in a bag** (§3.3, §7.4).
 - Blister plasters, and their usual over-the-counter remedies from home (the French equivalents exist
   but finding them costs a pharmacy conversation, §7.2).
-- **[A]** Build **one genuinely slow day into each city** — a park, a café, a short museum. Two
-  70-year-olds cannot do 20,000 steps for 13 consecutive days, and the itinerary is the thing most
-  likely to hurt them.
+- **[A]** Build **one genuinely slow day into each city** — a park, a café, a short museum.
+  Travellers seeking lower walking intensity should not plan repeated 20,000-step days.
 
 ---
 
@@ -1710,16 +1704,16 @@ street fountains and in old buildings and trains.
 
 **[A]** Paris has **hundreds of free public drinking fountains** (*fontaines Wallace*, the green
 cast-iron ones, plus modern fountains including sparkling-water ones in some parks). Bring a
-refillable bottle each — with five people over 13 days, buying bottled water is both expensive and a
-carrying burden for the seniors.
+refillable bottle each — for multi-person bookings, buying bottled water is both expensive and a
+carrying burden.
 
 **[A]** Tap water in Paris and the Loire is **hard** (calcaire) — harmless, but tea will taste
-different and the seniors may notice. Nothing to do about it.
+different. Nothing to do about it.
 
 ### 14.3 Public toilets
 
-**[A]** Genuinely worth planning for with two seniors and a 7-year-old, because availability is
-patchier than in Chinese cities.
+**[A]** Genuinely worth planning for visitors seeking lower walking intensity or child-friendly
+options, because availability is patchier than in Chinese cities.
 
 - **Paris has free self-cleaning street toilets (*sanisettes*)** — the grey oval units, **free since
   2006**, roughly 400 of them, most open 06:00–22:00 (some 24h). They are wheelchair-accessible and
@@ -1728,8 +1722,8 @@ patchier than in Chinese cities.
 - **Department stores** (Galeries Lafayette, Printemps, BHV), **museums** (free once inside with a
   ticket), and **large bookshops** have proper toilets — the most reliable option in central Paris.
 - **Cafés and brasseries**: toilets are for customers. Buying an espresso (€2–3) buys toilet access
-  for the family and a place to sit — this is the standard, socially accepted tactic and by far the
-  best one. Often down a narrow spiral stair, which matters for seniors.
+  for all customers and a place to sit — this is the standard, socially accepted tactic and by far
+  the best one. Toilets are often down a narrow spiral stair, which matters for visitors with limited mobility.
 - **Railway stations**: Gare de Lyon, Gare du Nord, Montparnasse etc. have toilets, typically
   **€1–2** and card-accepting. Airport toilets are free.
 - **Some museums, monuments and shopping centres** charge €0.50–1.
@@ -1778,9 +1772,9 @@ may close at short notice for security reasons or works.
 
 **[A] Consequences for this itinerary:**
 
-- **Bring cash to Gare de Lyon.** Five people's luggage in 2–3 large lockers is €19–28.50, and the
-  machine will not take a card. This is exactly the kind of small failure that strands a family with
-  two seniors on a station concourse.
+- **Bring cash to Gare de Lyon.** Lockers cost **€5.50 / €7.50 / €9.50 each per 24 hours**, and the
+  machine will not take a card. This is exactly the kind of small failure that can strand travellers
+  with luggage on a station concourse.
 - **For Avignon and Tours, do not assume a consigne exists** — check the partner-consigne page for
   each station before planning a bags-free afternoon, or book accommodation that will hold luggage.
   **Hotels will almost always store bags free before check-in and after check-out**, which is
@@ -1796,8 +1790,8 @@ may close at short notice for security reasons or works.
 
 **[V] SNCF Connect** — https://www.sncfconnect.com — official app/site for TGV, TER and Intercités
 booking, live times, platform numbers and e-tickets. Essential for Paris → Tours, Tours → Avignon,
-Avignon → Nice. **[A]** Book TGVs **well in advance**; French rail is yield-priced and five seats
-together on a popular TGV get expensive and then unavailable. Reserved seating is compulsory on TGV.
+Avignon → Nice. **[A]** Book TGVs **well in advance**; French rail is yield-priced and multiple
+seats together on a popular TGV get expensive and then unavailable. Reserved seating is compulsory on TGV.
 
 **[V] Île-de-France Mobilités** — https://www.iledefrance-mobilites.fr — official Paris-region
 operator, app sells and holds tickets. **Bonjour RATP** (https://www.bonjour-ratp.fr) is the RATP
@@ -1825,18 +1819,17 @@ card**) or carried in a phone app / **Apple Wallet**.
 - https://www.tzen4.iledefrance-mobilites.fr/titres-et-tarifs/detail/ticket-metro-train-rer
 - https://parisbytrain.com/paris-airport-train-ticket/
 
-**[A] What to buy for this family.** Because full-fare and reduced-fare tickets cannot coexist on one
-Navigo Easy, and the child (4–9) qualifies for the reduced fare, buy **separate cards**: one per
-adult at full fare, one for the child at reduced. Five Navigo Easy cards cost €10 and remove all
-ticketing friction for the week. **[A]** For the CDG arrival, the €14 airport ticket ×5 = €70 — versus
-a pre-booked van transfer, which for five people with luggage after an EES queue is comparable in
-cost and far better in practice (§9.5). **[A]** The **Navigo Semaine (€32.40)** runs **Monday to
+**[A] What to buy.** Because full-fare and reduced-fare tickets cannot coexist on one Navigo Easy,
+buy **separate cards for each traveller**, loading the appropriate fare category on each card.
+Each Navigo Easy card costs €2. **[A]** Compare the **€14 per-person airport ticket** with a pre-booked van
+transfer for multi-person bookings with luggage after an EES queue (§9.5). **[A]** The
+**Navigo Semaine (€32.40)** runs **Monday to
 Sunday only**, so for a Friday 25 September arrival it is poor value for the first weekend; buying
 Métro-Train-RER tickets in books on Navigo Easy is more flexible.
 
 **[A] Citymapper** — the best Paris transit app, better than Google Maps for metro routing, exits,
 disruptions and step-free options. Has a Chinese interface. **[A]** Its step-free/accessibility
-routing is worth using with two seniors: many Paris metro stations have long stair-only interchanges
+routing is worth using for visitors seeking lower walking intensity: many Paris metro stations have long stair-only interchanges
 (Châtelet is notorious) and Citymapper will route around them.
 
 **[A] Google Maps** — best general navigation, walking directions and opening hours in France.
@@ -1850,12 +1843,12 @@ apps, not street approaches (§4.6, §9.1).
 ### 15.2 Food, shopping and daily life
 
 **[A] TheFork / LaFourchette** — https://www.thefork.com — the dominant French restaurant-booking
-app, with discounts and, critically, **booking without a phone call**. Solves the "party of five at
-20:00" problem in §10.6.
+app, with discounts and, critically, **booking without a phone call**. Useful for multi-person
+bookings at peak dinner times (§10.6).
 
 **[A] Too Good To Go** — https://www.toogoodtogo.com — surplus food from bakeries, supermarkets and
 restaurants at ~€3–5 a bag, collected in a set window. Widely used in France. Fun, cheap, and a
-plausible way to feed a family a bakery haul — but the contents are a surprise, which makes it poor
+plausible way to buy a shared bakery haul — but the contents are a surprise, which makes it poor
 for anyone with dietary needs and unsuitable as a planned meal.
 
 **[V] 3237** — https://www.3237.fr — on-call pharmacy locator (§7.1).
@@ -1932,8 +1925,8 @@ https://signal.conso.gouv.fr
 - https://marseille.china-consulate.gov.cn/chn/yqts/
 
 **[A]** Put **112**, the embassy line **+33 1 53 75 88 40**, the Marseille line **+33 4 91 32 00 19**,
-**12308**, and the insurer's 24h assistance number into **every** family member's phone, and on a
-printed card in each senior's wallet. Phones get stolen; the card does not.
+**12308**, and the insurer's 24h assistance number into **every traveller's phone**, and on printed
+cards carried separately. Phones get stolen; the card does not.
 
 **[V] Before departure**, register with / follow the embassy's consular notices: China Consular
 Service Network https://cs.mfa.gov.cn, the embassy's consular pages, and download
@@ -1944,33 +1937,32 @@ Service Network https://cs.mfa.gov.cn, the embassy's consular pages, and downloa
 
 ## Summary of the most consequential findings
 
-1. **EES is far less onerous for them than for visa-exempt travellers.** As short-stay visa holders,
-   their fingerprints stay in VIS and are not re-enrolled; only a facial image is captured. The
-   7-year-old gives no fingerprints at all. **[V]**
+1. **EES is far less onerous for short-stay visa holders than for visa-exempt travellers.** Their
+   fingerprints stay in VIS and are not re-enrolled; only a facial image is captured. Children
+   under 12 give no fingerprints. **[V]**
 2. **The carrier check happens in Shanghai, not Paris**, and only affects single/double-entry visas.
    Carriers must also still check passport stamps until 6 October 2026 — inside this trip. **[V]**
 3. **ETIAS is irrelevant, now and permanently, for Chinese passport holders travelling on a visa.**
    It is also not operational at all. **[V]**
-4. **Check the visa's "until" date.** If the grace period was withheld and it reads 07-10-2026, they
-   have zero margin on their return flight and should hold a changeable ticket. **[V/A]**
+4. **Check the visa's "until" date.** If the grace period was withheld and it reads 07-10-2026,
+   travellers have zero margin on the return flight and should hold a changeable ticket. **[V/A]**
 5. **The insurance decision that matters is not the €30,000 threshold — it is whether the policy
    halves the medical sum insured at age 71+, and whether it covers acute episodes of pre-existing
-   conditions.** Most cheap Chinese Schengen policies fail both. Buy different products for the
-   seniors and the under-50s. **[S/A]**
+   conditions.** Most cheap Chinese Schengen policies fail both. Compare different products for
+   different age bands and medical needs. **[S/A]**
 6. **Détaxe for a Nice departure must be validated at Nice, landside, before check-in and before
    security** — French customs points 46–47. Getting this wrong forfeits the whole refund. **[V]**
 7. **Always pay in EUR, never in CNY.** DCC is offered as a customer service and costs 3–7%. **[V/A]**
 8. **No meat, no dairy, no mooncakes with meat or egg yolk** — banned outright, confiscated and
-   fined. And the **€10,000 cash declaration threshold applies to the family total, not per
-   person**. **[V]**
+   fined. The **€10,000 cash declaration threshold aggregates couples, families and domestic
+   partnerships rather than applying only per person**. **[V]**
 9. **Coming home, high-end cosmetics, watches and jewellery attract a 50% composite tax above the
    CNY 5,000 allowance** — which can wipe out the détaxe saving. **[V]**
-10. **Book two rooms or an apartment, and verify the lift by email.** French rooms are sold for a
-    declared occupancy and enforced; central Paris rooms for five effectively do not exist; and a
-    lift-less fourth floor is the fastest way to ruin the trip for two 70-year-olds. **[A]**
+10. **For multi-person bookings, compare connecting rooms with an apartment and verify the lift by
+    email.** French rooms are sold for a declared occupancy and enforced; larger rooms in central
+    Paris are scarce, and a lift-less fourth floor is unsuitable for visitors with limited mobility. **[A]**
 11. **Paris tourist tax now carries a 200% Île-de-France Mobilités surcharge** — €5.53/adult/night in
-    a 3-star, and potentially €10+ in an unclassified Airbnb. Budget €150–300 for the Paris
-    leg. **[V]**
+    a 3-star, and potentially €10+ per liable adult in an unclassified Airbnb. **[V]**
 12. **The south's rain is not Paris's rain**: Orange 105 mm in September over 5.4 days, Nice 128 mm in
     October over 7.5 days. Mostly sunny, occasionally torrential. Pack a real waterproof, not just an
     umbrella. **[V]**

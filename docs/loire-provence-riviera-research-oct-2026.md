@@ -2,7 +2,7 @@
 
 **Trip dates:** 30 September – 6 October 2026
 **Research date:** 24 August 2026
-**Party:** 5 people — 2 adults (~40), 2 seniors (~70), 1 child (~7)
+**Audience:** Chinese travellers using a France-issued Schengen visa, including visitors seeking lower walking intensity and child-friendly options
 **Bases:** Tours or Amboise (30 Sep – 1 Oct) · Avignon (2–3 Oct) · Nice (4–5 Oct) · fly home from Nice via Paris 6 Oct
 
 Every price and opening time below is sourced. Anything I could not confirm on an
@@ -33,8 +33,7 @@ is exactly 273 days later (273 = 39 × 7), so 1 October 2026 is also a Thursday.
 1. **Chambord now charges €31 per adult to visitors who are not nationals or residents
    of the European Economic Area.** From 14 January 2026 the château runs an
    experimental two-tier price: €31 reference rate, €21 for EEA nationals/residents on
-   proof. For a Chinese family that is 4 × €31 = **€124** for the two adults and two
-   seniors (the 7-year-old is free). Source:
+   proof. Visitors under 18 enter free. Source:
    https://www.chambord.org/fr/preparer-ma-visite/horaires-et-tarifs/
 2. **The Chambord horse-and-raptor show does not run on their dates.** The 2026 season
    is 4 April – 27 September, then 17 October – 1 November. Their Loire days
@@ -105,7 +104,7 @@ tickets and hours: https://www.chambord.org/fr/preparer-ma-visite/horaires-et-ta
 | 18–25 EEA nationals/residents | Free |
 | Disabled visitor + 1 companion | Free |
 
-There is **no senior discount**. The two seniors pay the same as the two adults.
+There is **no senior discount**; all liable adult visitors pay the applicable residency-based rate.
 There is no "family ticket" for the base entry; the combined tickets are with other
 sites (Chambord + Chenonceau + Clos Lucé, Chambord + Amboise, Chambord + Beauval), sold
 online only.
@@ -130,7 +129,7 @@ terminals; cash only 9:00–16:30 (17:30 in high season). Bicycle parking is fre
 
 **How long to allow:** **[ESTIMATE]** 2–3 hours for the château and the French gardens.
 The double-helix staircase and the roof terraces involve a lot of stair climbing, which
-is a real concern for the seniors.
+is a real concern for visitors seeking lower walking intensity.
 
 **Getting there without a car — this is the problem.** The shuttle runs from **Blois**,
 not from Tours or Amboise. Rémi coach line 2, Blois-Chambord station → Château de
@@ -151,12 +150,12 @@ timetable PDF: https://bo.remi-centrevaldeloire.fr/sites/default/files/2025-10/L
 (the PDF is the Nov-2025 edition; the Rémi and Chambord pages both present these as the
 2026 times, but **reconfirm closer to travel**)
 
-**Verdict on Chambord for this family:** the combination of €124 in entry fees for four
-adults, no equestrian show, a lot of stairs, and a car-free day built around two bus
-departures from a town they aren't staying in makes this the weakest of the Loire
-options. Chenonceau delivers more for less effort.
+**Verdict on Chambord for travellers seeking lower walking intensity:** the combination
+of the €31 non-EEA adult unit price, no equestrian show, a lot of stairs, and a car-free
+day built around two bus departures makes this the weakest of the Loire options.
+Chenonceau delivers more for less effort.
 
-## A.2 Château de Chenonceau — the best Loire choice for this family
+## A.2 Château de Chenonceau — a strong lower-intensity Loire choice
 
 Official site: https://www.chenonceau.com/ ·
 prices: https://www.chenonceau.com/infos-pratiques/tarifs/ ·
@@ -172,17 +171,14 @@ hours: https://www.chenonceau.com/en/practical-information/opening-times/
 | Child 7–18 | **15.00 €** | 20.00 € |
 | Child under 7 | Free | not available |
 
-Family offer (from 3 paying children aged 7–18): 15.00 € per family member. This family
-has one child, so it does not apply.
-
-**Cost for this party: 2 × 19 + 2 × 16 + 1 × 15 = 85 €.** Chenonceau is one of the few
-Loire châteaux with a real senior rate.
+Family offer (from 3 paying children aged 7–18): 15.00 € per family member.
+Chenonceau is one of the few Loire châteaux with a real senior rate.
 
 **October hours:** 28 September – 1 November, **9:00 to 17:30**. Those times are the
 ticket-office last-access times; the monument closes 30 minutes later and the gardens a
 further 30 minutes after that.
 
-**Why it works for a 7-year-old:** the château is built across the river Cher on
+**Why it works for child visitors:** the château is built across the river Cher on
 arches, so the whole thing reads as a bridge-castle — visually striking in a way a child
 registers immediately. There are **rowing boats on the Cher, 5 € per person, daily**,
 which is the single easiest "fun thing" in the Loire for this trip. The gardens (Diane
@@ -223,7 +219,7 @@ prices: https://www.chateau-amboise.com/tarifs/
 **The Histopad augmented-reality tablet is included in the price and is available in
 Chinese** (12 languages: French, English, German, Spanish, Italian, Dutch, Russian,
 Polish, Portuguese, Chinese, Japanese, Korean). That is a genuine advantage for this
-family over an audioguide-only site.
+audience over an audioguide-only site.
 
 Discounts include large-family (−2 € per paying child) and — usefully — **holders of an
 SNCF train ticket, a Rémi coach ticket, or a Pass Rémi Découverte dated within the last
@@ -262,17 +258,17 @@ before the site. Open every day of the year except 1 January and 25 December.
 Sources: http://www.closluce-education.com/infos-pratiques/horaires-et-acces/ ·
 https://leschateauxdelaloire.org/chateauxparcs-jardins/chateau-du-clos-luce-parc-leonardo-da-vinci-2/
 
-**Is Clos Lucé worth it for a 7-year-old? Yes — more than any other Loire château
+**Is Clos Lucé worth it for child visitors? Yes — more than any other Loire château
 interior.** The park contains 40-odd full-scale working models built from Leonardo's
 drawings, which children are allowed to touch and operate, plus translucent
 reproductions of the paintings. It is an outdoor, hands-on site rather than a
-walk-through-the-rooms site, which suits both the child and the seniors' walking pace.
+walk-through-the-rooms site, which suits child visitors and a lower-intensity walking pace.
 The trade-off: at €20 an adult it is more expensive than the royal château next door,
 and the park has gravel paths and some slopes.
 
-**Doing both in one day** costs 2 × 17.30 + 2 × 20 + 11 + 15 = **€109.60** for the
-family (assuming no transport discount), and is a comfortable full day from Amboise
-station on foot. Clos Lucé is 400 m from the royal château.
+**Doing both in one day** is a comfortable full day from Amboise station on foot.
+Use the unit prices above and any transport-ticket discount to calculate the booking
+cost. Clos Lucé is 400 m from the royal château.
 
 ## A.4 ZooParc de Beauval
 
@@ -289,9 +285,8 @@ tickets: https://www.zoobeauval.com/billetterie
 | 2 days, child 3–10 | from 52 € | 59 € |
 | Under 3 | Free | Free |
 
-The 7-year-old pays the child rate. **Cost for this party at gate prices:
-4 × 43 + 36 = €208; buying dated tickets online: 4 × 39 + 32 = €188.** Present a Rémi
-coach ticket or Pass Rémi at the ticket desk for **a further €2 off per entry**.
+Children aged 3–10 pay the child rate. Present a Rémi coach ticket or Pass Rémi at the
+ticket desk for **a further €2 off per entry**.
 Source for the Rémi discount: https://www.zoobeauval.com/preparez-votre-visite/acces
 
 Some third-party guides quote €37/€30 online. The official ticketing page says dated
@@ -326,13 +321,13 @@ https://actus.zoobeauval.com/en/the-first-giant-pandas-to-be-housed-at-beauval-h
 Queue times and best-time advice are third-party: https://www.zooparcmania.fr/animaux-zoo-beauval/panda-beauval/
 **[queue estimate UNVERIFIED]**
 
-This is a genuinely time-limited draw, and for a Chinese family the panda-diplomacy angle
-may or may not be a selling point — they can see pandas at home. Weigh that honestly
+This is a genuinely time-limited draw, and for Chinese travellers the panda-diplomacy
+angle may or may not be a selling point. Weigh that honestly
 before spending a whole Loire day and two taxi legs on it.
 
 **How long:** the park is 45 hectares with 35,000 animals. Official advice and every
 guide agree that **one full day (9:00 to closing) covers the essentials and two days is
-recommended with children**. With two 70-year-olds and a moderate walking pace, one day
+recommended with children**. For visitors seeking lower walking intensity, one day
 will be tiring; the "Nuage de Beauval" cable car is included in the entry price and
 saves a long walk.
 
@@ -361,18 +356,16 @@ minibus:
 
 Source: https://www.zoobeauval.com/preparez-votre-visite/acces
 
-**Is Beauval realistic as a car-free day trip on their dates? Only with a pre-booked
-taxi at both ends.** Two 8 km taxi legs for five people, plus a 45-minute train each
-way, plus a full day on foot in a 45-hectare park, on one of only two Loire days. It is
-doable but it consumes the day completely and leaves no margin. Cost is also the highest
-of any Loire option (~€190–210 in entry alone).
+**Is Beauval realistic as a car-free day trip on these dates? Only with a pre-booked
+taxi at both ends.** Two 8 km taxi legs, plus a 45-minute train each way, plus a full day
+on foot in a 45-hectare park, consume the day completely and leave no margin.
 
 **My read:** if the pandas are the draw, Beauval is worth the day and the taxi bookings,
-because January 2027 ends giant pandas in France. If the child would be equally happy
-with the Chenonceau rowing boats and the Clos Lucé machines, skip Beauval — those two
-cost a fraction and fit the seniors' pace far better.
+because January 2027 ends giant pandas in France. If child visitors would be equally
+happy with the Chenonceau rowing boats and the Clos Lucé machines, skip Beauval — those
+two cost less and better suit visitors seeking lower walking intensity.
 
-## A.5 Other family activities worth pre-booking
+## A.5 Other child-friendly activities worth pre-booking
 
 ### Hot-air balloon over the châteaux
 Flights operate **April to October**, at sunrise or late afternoon; about 1 hour aloft
@@ -385,15 +378,15 @@ Monday–Friday, morning flights, excluding public holidays); child under 12: 16
 a family/friends rate of about 199 € per person applies from 3–4 tickets.
 
 **Minimum age 6 and minimum height 1.30 m** so the child can see over the basket edge,
-and under-12s must be accompanied. **Check the 7-year-old's height** — 1.30 m is tall
-for a first-grader and may well be disqualifying. Flights need wind under about
+and under-12s must be accompanied. **Check each child visitor's height** — the 1.30 m
+minimum may be disqualifying. Flights need wind under about
 15 km/h, so cancellations are common; tickets are valid 18–24 months.
 
 Sources: https://www.airtouraine.fr/en/montgolfiere/vol-en-montgolfiere-chateau-de-la-loire/vol-en-montgolfiere-chateau-de-la-loire/
 · https://montgolfiere-sensation.com/acheter-vol-en-montgolfiere/vol-en-montgolfiere-a-amboise-envol-des-chateaux-de-la-loire-indre-et-loire-37/
 · https://www.tourainevaldeloire.com/offres/amboise-montgolfiere-chenonceaux-amboise-fr-5151891/
 
-With two 70-year-olds this needs thought: operators require passengers to be able to
+This needs thought for visitors with limited mobility: operators require passengers to
 step over the basket wall and hold a bent-leg landing position for about 10 seconds.
 
 ### Troglodyte caves — Cave des Roches, Bourré
@@ -407,7 +400,7 @@ Official site: https://www.le-champignon.com/visite-guidee/
 - **From 1 October to 11 November:** guided visits at **11:00, 15:00 and 16:00 only**
   (the April–September schedule has six daily slots). Arrive 10 minutes early.
 - Constant 12 °C underground — bring a layer.
-- **Cost for this family: 4 × 12 + 7.50 = €55.50.**
+- Use the adult and child unit prices above to calculate a multi-person booking.
 
 Bourré is near Montrichard, in the Cher valley between Chenonceaux and Saint-Aignan.
 **[UNVERIFIED: public transport access to Bourré. Assume a car or taxi is needed.]**
@@ -432,8 +425,7 @@ prices and hours: https://palais-des-papes.com/tarifs/
 | **Palais des Papes + papal gardens + Pont d'Avignon (combined)** | **19.50 €** | 16 € | **12 €** |
 | Palais des Papes only | 16 € | 13 € | 10 € |
 
-**Free for children under 10** — so the 7-year-old is free. **There is no senior rate.**
-Cost for this party on the combined ticket: **4 × 19.50 = €78**, child free.
+**Free for children under 10. There is no senior rate.**
 
 Avignon City Pass: 24 h for 24 €, 48 h for 32 €. **[UNVERIFIED what it includes — worth
 checking whether it beats €19.50 for a two-day Avignon stay.]**
@@ -444,7 +436,7 @@ closing.** Open every day, all year.
 **Histopad:** the standard route uses the Histopad tablet, **provided free at the
 entrance**, in 7 languages **including Chinese**. Augmented reality reconstructs the
 rooms as they were in the 14th century. This is the single best-value feature of the
-visit for a non-French-speaking family.
+visit for non-French-speaking travellers.
 
 **Important caveat for 2026–2027:** the Palais is mid-transformation. From 1 May 2026 new
 interpretive routes opened and previously unseen rooms became accessible, but **the works
@@ -476,12 +468,12 @@ https://pontdugard.fr/fr/FAQ/tarifs-et-billetterie
 spaces cost 6 € instead of 8 €, and the guided tour 13 € instead of 15 €.** Since they'd
 arrive by liO bus anyway, this applies. Source: https://pontdugard.fr/en/venir
 
-**Cost for this family arriving by bus:** 4 × 6 = **€24** for the museum spaces, child
-free, no parking charge. Arriving by car it would be €9 parking + €32 (or €24 with a
-liO ticket, which they wouldn't have).
+Visitors arriving by bus can show a liO ticket for the **€6 reduced unit price** for the
+museum spaces, with no parking charge. Visitors arriving by car pay **€9 per vehicle**
+for parking and use the applicable admission price.
 
 The guided tour crosses the Roman water channel at the top of the bridge — **reached by
-80 steps**. That rules it out for the seniors.
+80 steps**. That rules it out for visitors who cannot manage stairs.
 
 **Hours in October 2026 — now confirmed on the official site:**
 
@@ -568,9 +560,6 @@ plus "Frida Kahlo, en plein cœur" (short programme), running 13 February – 8 
 | **Under 7** | **Free** | **Free** |
 | Family (2 adults + 2 young 7–17) | 46 € | 58 € |
 
-**Cost for this party on the Pass Baux-de-Provence: 2 × 21 + 2 × 19.50 + 16 = €97.**
-On the Carrières alone: 2 × 16.50 + 2 × 15.50 + 13 = €77.
-
 **October hours:** 9:30–19:00, open every day including public holidays. **Last entry
 1 hour before closing.**
 
@@ -581,11 +570,11 @@ The Pass also gives 50 % off the Musée Yves Brayer. Note that tickets bought on
 **[UNVERIFIED]** — book online regardless, since it is a single-venue show with a fixed
 loop and capacity limits.
 
-**Why it suits this family:** the Carrières are a flat, cool, disused limestone quarry
+**Why it suits travellers seeking lower walking intensity or child-friendly options:**
+the Carrières are a flat, cool, disused limestone quarry
 with images projected 14 m up the walls and a soundtrack. No stairs, no reading, nothing
-to explain in a foreign language. It works for a 7-year-old and for a 70-year-old
-simultaneously — probably the single best-matched attraction in the whole Provence
-section.
+to explain in a foreign language. It works across age groups and mobility levels —
+probably the single best-matched attraction in the whole Provence section.
 
 ### Château des Baux-de-Provence
 Official site: https://chateau-baux-provence.com/venir-au-chateau-chateau/
@@ -620,9 +609,9 @@ https://chateau-baux-provence.com/chateau-des-baux-de-provence-faq/ ·
 https://provence-alpes-cotedazur.com/que-faire/culture-et-patrimoine/lieux/chateau-des-baux-de-provence-les-baux-de-provence-fr-2857879/
 
 **Practical advice:** paved lanes at 6 %+ plus the château's own exposed ruins (open
-towers, uneven rock-cut ground, wind) are a lot for two 70-year-olds. **Do the Carrières
-and skip the château**, or park close and let the seniors sit in the village while the
-others climb. Ask the tourist office about a quadrix in advance if mobility is a real
+towers, uneven rock-cut ground, wind) are a lot for visitors with limited mobility.
+**Do the Carrières and skip the château**, or let visitors seeking lower intensity stay
+in the village while others climb. Ask the tourist office about a quadrix in advance if mobility is a real
 constraint.
 
 ## B.4 Luberon hill villages
@@ -682,7 +671,7 @@ experience (Provençal produce, crowds, colour) without a 4-hour detour on a tra
 
 ## B.5 Arles — is it still worth it after Rome?
 
-**Yes, but not for the Roman monuments.** If the family has already stood in the
+**Yes, but not for the Roman monuments.** If travellers have already stood in the
 Colosseum, the Arles amphitheatre will read as a smaller version of the same thing. What
 Arles has that Rome does not is Van Gogh, and in 2026 it has something better still.
 
@@ -720,9 +709,7 @@ Official site: https://www.fondation-vincentvangogh-arles.org/venir/
 
 - **Open 22 May – 18 October 2026, daily 10:00–18:00**, last entry 45 minutes before
   closing. (Note it closes for the season on 18 October, so their dates work.)
-- **10 €** full, **8 €** reduced (**including seniors 65+**), **free under 26** — so both
-  the child and, at the reduced rate, the seniors benefit. Cost for this family:
-  2 × 10 + 2 × 8 = **€36**, child free.
+- **10 €** full, **8 €** reduced (**including seniors 65+**), **free under 26**.
 - **Free for everyone on the first Sunday of the month** (except July and August) — that
   is 4 October 2026, their transfer day.
 - Holders of a Rencontres de la photographie ticket get the reduced rate.
@@ -771,8 +758,8 @@ Source: https://provence-alpes-cotedazur.com/que-faire/activites/visite-et-degus
 **Vignobles Famille Quiot** — 4×4 tour of the three terroirs (rolled pebbles, white
 rock, sandy soils), then the cellar, then a tasting of three Châteauneuf crus. **50 €,
 maximum 4 people, Friday mornings only at 10:00, booking 48 hours ahead.** Free parking.
-Closed Sundays and public holidays. **The 4-person cap rules this out for a party of
-five**, and a 4×4 vineyard tour is not a child activity.
+Closed Sundays and public holidays. **The 4-person cap rules this out for bookings above
+that size**, and a 4×4 vineyard tour is not a child activity.
 Source: https://provence-alpes-cotedazur.com/que-faire/activites/famille-quiot-visite-a-la-decouverte-du-terroir-chateauneuf-du-pape-fr-2881001/
 
 **Estates reported to run family formulas with children's activities and non-alcoholic
@@ -782,7 +769,7 @@ typically run 90 minutes so children don't get bored.
 Sources: https://www.circuitduravin.fr/decouvrir-les-vignobles-en-famille-avec-circuit-chateauneuf-et-degustation-sans-alcool-enfants/
 · https://www.winedering.com/... (as above)
 **[Both third-party. Contact the estates directly to confirm they run a family formula in
-October 2026 and that a 7-year-old is welcome.]**
+October 2026 and that child visitors are welcome.]**
 
 Average price of a tasting with a winery visit in the appellation is around €40, ranging
 €10–70. Source: winedering.com (as above).
@@ -853,8 +840,8 @@ The **Promenade du Paillon extension ("season 2"), 8 hectares of urban forest, w
 inaugurated on 18 October 2025 and is fully open**, linking the Promenade des Anglais
 through to the Palais des Expositions. Combined with the original Paillon park through
 Place Masséna, this gives a continuous, flat, shaded, traffic-free green corridor from
-the seafront into the city — the best possible walking route for two seniors and a
-child, with playgrounds and water features along the way.
+the seafront into the city — an excellent route for visitors seeking lower walking
+intensity and child visitors, with playgrounds and water features along the way.
 Source: https://www.nicematin.com/societe/vie-locale/extension-de-la-promenade-du-paillon-la-foret-urbaine-qui-offre-8-hectares-de-nature-en-ville-a-ete-inauguree-10653042
 
 ### Colline du Château — yes, there is a free lift
@@ -900,15 +887,14 @@ Official site: https://www.musee-matisse-nice.org/fr/informations-pratiques/
 - **Under-18s go free — now confirmed.** The official practical-information page lists a
   "Gratuité" section granting free entry, on proof, to **under-18s**, students, jobseekers,
   RSA/ASS/ASPA recipients, and disabled visitors plus one companion for holders of a
-  "mobilité inclusion — invalidité" card. **So the 7-year-old pays nothing**, and the party
-  pays 4 × €12 = **€48**, not €60.
+  "mobilité inclusion — invalidité" card.
 - Payment: cards, cash, cheques, chèques-vacances. A free download of the **Bloomberg
   Connects** app gives expert commentary — bring earphones.
 - Access for reduced mobility: enter the Jardin des Arènes via the gate at 164 avenue des
   Arènes or the boulevard de Cimiez gate, then the museum via the **south forecourt of the
   villa**, not the main staircase. The standard individual entrance is at level −2 **down
-  the big staircase of the modern wing**, so the seniors should use the villa forecourt
-  route instead.
+  the big staircase of the modern wing**, so visitors seeking step-free access should use
+  the villa forecourt route instead.
 - Located in Cimiez, in the Jardin des Arènes — note that a Météo-France storm alert
   closed the garden and hence the museum on 20 August 2026, so weather closures happen.
 
@@ -958,8 +944,8 @@ the Cours Saleya, the Promenade, or the Colline du Château — not a museum.
 **Take the train.** It is three times faster for about €2 more per person, and Monaco's
 station is deliberately built with lifts, ramps, adapted toilets and the free SNCF
 "Accès Plus" assistance service (bookable 48 h ahead), with exits at several levels
-towards Fontvieille, La Condamine, Monte-Carlo and the Jardin Exotique. For two seniors
-that station design is worth a great deal.
+towards Fontvieille, La Condamine, Monte-Carlo and the Jardin Exotique. For visitors
+seeking lower walking intensity that station design is worth a great deal.
 
 **Note the old line 100 has been renumbered 600** (it replaced lines 607 and 608 in
 April 2024). Lignes d'Azur urban tickets are valid on the 600 **only if you stay between
@@ -989,14 +975,14 @@ https://www.oceano.org/wp-content/uploads/2026/04/20260424-informations-tarifs-i
 | **Child under 4** | Free |
 | Disabled visitor / carer | 11 € |
 
-**No senior rate.** Cost for this family: **4 × 22.50 + 14 = €104**. That is the most
-expensive single admission on the whole trip.
+**No senior rate.** Use the **€22.50 adult** and **€14 child** unit prices above to
+calculate a multi-person booking.
 
 **October hours: open every day, 10:00–18:00** (October–December). Last entry and ticket
 office close 30 minutes before. Closed only 25 December and the Formula 1 Grand Prix
 weekend.
 
-**Is it good for a 7-year-old? Yes — it is the best child attraction on the Riviera.**
+**Is it good for child visitors? Yes — it is one of the best child attractions on the Riviera.**
 The ticket covers the aquarium, the museum, the permanent and temporary exhibitions, the
 "Odyssée des Tortues Marines" sea-turtle sanctuary and the panoramic terrace. Optional
 add-ons, bookable separately: the "Animaux du bord de mer" seashore handling session
@@ -1004,9 +990,9 @@ add-ons, bookable separately: the "Animaux du bord de mer" seashore handling ses
 listing — **[figures conflict, UNVERIFIED]**; weekends and school holidays only outside
 holiday periods, meet at the Animations desk in the entrance hall, max 10 participants,
 and **every participant including the accompanying adult needs a museum ticket**), and a
-virtual-reality experience for ages 12+ (10 €/person — so not for the 7-year-old).
+virtual-reality experience for ages 12+ (10 €/person).
 
-**Allow about 2 hours**, or a half-day as a family.
+**Allow about 2 hours**, or a half-day for a multi-person booking.
 Source for duration: https://www.portpalace.com/actualites/musee-oceanographique-monaco-guide
 
 **Buy online** — it avoids the ticket desk entirely, and one guide reports it typically
@@ -1023,8 +1009,8 @@ that let you walk straight in.
 - **Closure dates: the morning of 23 August (to 12:15), the afternoon of 25 September
   (from 15:00), 1 to 4 October inclusive, and 7 October.** Also closed for the F1 Grand
   Prix weekend.
-- **Prices: adult 13 €, student 11 €, child 6–17 8 €, under 6 free.** Cost for this
-  family: 4 × 13 + 8 = **€60**. Audio guide in 11 languages. Visit duration about 40
+- **Prices: adult 13 €, student 11 €, child 6–17 8 €, under 6 free.** Audio guide in
+  11 languages. Visit duration about 40
   minutes for the apartments, 1 h–1 h 30 in total.
 
 Sources: https://www.visitepalaisdemonaco.com/ ·
@@ -1065,14 +1051,14 @@ https://www.montecarlosbm.com/fr/casino-monaco/casino-monte-carlo/salon-jeux/sal
 https://www.montecarlosbm.com/fr/casino-monaco/casino-monte-carlo/salon-jeux/salle-des-ameriques ·
 https://www.lejsd.com/casinos-monaco-tout-quil-faut-savoir-visiter/ (prices)
 
-**For this family: take the morning audio tour if the building interests them, or just
-look at the façade and the Place du Casino from outside.** With a 7-year-old, the gaming
-rooms are a non-starter.
+**For visitors with minors:** take the morning audio tour if the building is of interest,
+or just look at the façade and the Place du Casino from outside. The gaming rooms are
+restricted to visitors aged 18+.
 
 ### Monaco's free public lifts — the key to the hills
 
 Monaco is built in vertical layers and has **79 public lifts, 35 escalators and 8 moving
-walkways, all free**. For this family two things matter:
+walkways, all free**. Two things matter for visitors seeking lower walking intensity:
 
 1. **To reach Le Rocher (Monaco-Ville) without climbing:** take the **free public lift
    from the Parking des Pêcheurs**, reached from the Quai Antoine 1er. It delivers you
@@ -1083,7 +1069,7 @@ walkways, all free**. For this family two things matter:
    The Rocher is 62 m above the sea over about 19 hectares.
 
 **Citymapper works in Monaco and includes all the public lifts in its route
-calculations** — genuinely useful advice for a family that would otherwise walk up ramps.
+calculations** — genuinely useful advice for travellers who would otherwise walk up ramps.
 
 Sources: https://www.portpalace.com/actualites/monaco-ville-rocher-guide ·
 https://www.portpalace.com/actualites/parking-monaco-guide ·
@@ -1098,7 +1084,7 @@ streets. Access to Le Rocher itself is free.
 
 **One practical warning:** Monaco is not in the EU roaming zone in the way France is.
 Several guides advise switching off mobile data at the border to avoid large charges.
-**[Depends entirely on the family's carrier — verify with their operator, but download
+**[Depends entirely on the traveller's carrier — verify with the operator, but download
 offline maps as insurance.]**
 
 ## C.3 Èze village
@@ -1135,19 +1121,16 @@ Official site: https://jardinexotique-eze.fr/informations/
 | Group (12+ with a guide) | 6 € |
 | Guided visit | 15 € |
 
-**Cost for this family: 4 × 10 = €40**, child free.
-
 **October hours: 09:00–18:30 daily, last entry 18:00.**
 
 **Price discrepancy:** the metropolitan tourist office lists the 12–17/student rate as
 **4 €** (and €1.50 for school groups from 12), while the garden's own site says **6 €**.
-The garden's own site should win, but it does not affect this family since the child is
-under 12 and free. Source of the discrepancy:
+The garden's own site should win. Child visitors under 12 enter free. Source of the discrepancy:
 https://www.explorenicecotedazur.com/culture/jardin-exotique-deze/
 
 The garden accepts the French Riviera Pass.
 
-### How hard is the climb for seniors? — Harder than the numbers suggest.
+### How hard is the climb for visitors with limited mobility? — Harder than the numbers suggest.
 
 The **Jardin Exotique sits at the very top of the medieval village, at 429 m, on the site
 of the old castle**. From the bus stop at Èze Village it is about a **5-minute walk** —
@@ -1159,7 +1142,8 @@ roulant" — not wheelchair accessible.**
 Source: https://provence-alpes-cotedazur.com/que-faire/culture-et-patrimoine/lieux/jardin-exotique-deze-eze-fr-2851957/
 
 **Recommendation:** Èze village itself is the attraction — the lanes, the views over the
-Mediterranean, the stone houses. The seniors can enjoy the village and a café terrace.
+Mediterranean and the stone houses. Visitors seeking lower intensity can enjoy the
+village and a café terrace.
 The garden at the top, with its steps and its 429 m exposure to the wind, is optional and
 best treated as such. If they only do one perched village, note that the mobile signal at
 the top of the village is close to non-existent, so **buy tickets online in advance or
@@ -1169,7 +1153,7 @@ carry cash**.
 
 **Recommendation: neither, on this itinerary — but if forced to choose, Antibes.** With
 one full day in Nice (Monday 5 October) already committed to Monaco, adding a third town
-is unrealistic for this party.
+is unrealistic for this schedule.
 
 Here is the comparison in case the plan changes.
 
@@ -1186,7 +1170,7 @@ Here is the comparison in case the plan changes.
 Sources: https://antibes-info.fr/musee-picasso-antibes/ ·
 https://www.bestofniceblog.com/transport-in-nice/train/
 
-**Antibes is closed for this family on Monday 5 October: the Picasso Museum shuts on
+**Antibes is a poor fit on Monday 5 October: the Picasso Museum shuts on
 Mondays and so does the market.** That is decisive.
 
 ### Saint-Paul-de-Vence
@@ -1232,8 +1216,8 @@ option for the departure morning of Tuesday 6 October**, when both Nice museums 
 closed — assuming the flight is late enough.
 
 **[UNVERIFIED: the Villefranche station is above the harbour, so there is a descent to
-the waterfront and a corresponding climb back. Check the gradient if the seniors'
-mobility is a hard constraint.]**
+the waterfront and a corresponding climb back. Check the gradient if mobility is a hard
+constraint.]**
 
 ## C.6 Nice public transport in 2026
 
@@ -1259,8 +1243,8 @@ if lost). Buy before boarding. Also purchasable through the Lignes d'Azur Ticket
 (iOS and Android).
 Source: https://www.lignesdazur.com/fr/telecharger-le-guide-tarifaire
 
-**Best buy for this family:** one **"La Carte"** loaded with **Multi voyages** — because
-a single Multi voyages card can be validated by all five travellers on the same trip.
+**Best buy for a multi-person booking:** one **"La Carte"** loaded with **Multi voyages**
+can be validated by multiple travellers on the same trip.
 Alternatively, if they'll make three or more journeys a day, the **Pass 2 jours at €13**
 covers exactly their 4–5 October window.
 
@@ -1292,10 +1276,10 @@ Sources: https://www.lignesdazur.com/fr/aeroport · https://flynice.fr/transport
 https://nissactu.fr/tramway-aeroport-nice-centre-ville/ ·
 https://www.european-traveler.com/n24/travel-by-tram-2-to-nice-cote-dazur-airport-nce/
 
-**For five people with luggage on 4 October arrival: 5 × €10 = €50 for Aéro returns, or
-5 × €1.70 = €8.50 each way using a card bought at Grand Arénas.** The card route saves
-about €30 for the price of one extra platform stop. But note **"La Carte" is €2 deposit**
-and only one card is needed for the group if using Multi voyages.
+For multi-person bookings with luggage, compare the **€10 per-person Aéro return** with
+the **€1.70 per-person standard fare each way** using a card bought at Grand Arénas.
+Note **"La Carte" has a €2 deposit**, and one card can serve multiple travellers using
+Multi voyages.
 
 ### Zou! regional flat fare (buses outside Nice)
 
@@ -1307,9 +1291,8 @@ Zou! splits into two families:
 
 **Flat single fare: 2.20 €** per the June 2026 tariff leaflet. A "1 voyage" with the
 **ZOU! Malin card** (20 €/year, 30 % off, also for one companion) is **1.50 €**. A
-**mini-group** ticket covers 5 people for **5.60 €**, 6 for 6.60 €, up to 10 people —
-that is **€1.12 per person for a party of five**, the cheapest way for this family to
-move on a Zou! proximity line. **A 10-journey book is 15.40 €.**
+**mini-group** ticket covers 5 people for **5.60 €**, 6 for 6.60 €, up to 10 people.
+**A 10-journey book is 15.40 €.**
 **Free under 4; 50 % off the single ticket for ages 4–11 on Express lines.**
 There is a **0.40 € surcharge for buying on board**, so buy in advance.
 
@@ -1341,19 +1324,12 @@ Zou! multi-day passes:
 - Pass Journée (train only): from 20 € + 5 € per companion, up to 8 people.
 - Pass 3 or 7 days (train only, whole region): from 60 € + 20 € per companion.
 
-**Does the 3-day Pass Sud Azur Explore pay off for this family? No — pay as you go.**
-Five 3-day passes cost 4 × €35 + €30 = **€170**. Their actual Riviera movements are modest:
-
-| Day | Movement | Pay-as-you-go cost for 5 |
-|---|---|---|
-| 4 Oct | A few Nice tram/bus hops | ~€10–17 (cheaper on a 10-trip Multi) |
-| 5 Oct | Monaco return by bus 600 | ~€21–25, or **€11.20 using two mini-group tickets** |
-| 6 Oct | Tram line 2 to the airport | €8.50 on single tickets, or €50 on Aéro returns |
-
-That totals roughly **€40–75**, less than half the pass. The pass only wins if they add
-Èze, Antibes and Menton by bus and train on top — which their two days do not allow.
-**[This comparison is my own arithmetic from the verified fares above, not an official
-statement.]**
+**Does the 3-day Pass Sud Azur Explore pay off?** Compare its per-person prices
+(**€35 full / €30 under 18**) with the verified pay-as-you-go unit fares above. A short
+stay using only a few Nice hops, one Monaco return and one airport journey is unlikely to
+recover the pass price. It becomes more competitive if adding Èze, Antibes and Menton by
+bus and train. **[This comparison is advice based on the verified unit fares above, not
+an official statement.]**
 
 ### French Riviera Pass — probably not worth it
 
@@ -1366,9 +1342,9 @@ statement.]**
 
 Source: https://www.frenchrivierapass.com/en/your-pass/french-rivierapass-all-inclusive/
 
-**The arithmetic for this family:** the 48 h pass is €45 per person, so €180 for the four
-adults (children's pricing **[UNVERIFIED]**). Against that, on 4–5 October their actual
-paid sites are Chagall (**free on 4 October anyway**) and, if they go, Matisse (€12). The
+**Pass comparison:** the 48 h pass is €45 per person; children's pricing is
+**[UNVERIFIED]**. Against that, Chagall is **free on 4 October anyway** and Matisse is
+€12. The
 Monaco sites — the Oceanographic Museum and the Prince's Palace, which are their two
 biggest tickets — are **in Monaco and not covered**.
 
@@ -1380,8 +1356,8 @@ on their arrival day and their main spending in Monaco, the pass cannot recover 
 **How early to arrive for a domestic morning flight: at least 1 h 30 before
 departure.**
 **[This is the standard recommendation I found; it is not from an official Aéroports de
-la Côte d'Azur page. Verify at nice.aeroport.fr, and add margin for a party of five with
-checked bags, and again for a Paris connection onwards.]**
+la Côte d'Azur page. Verify at nice.aeroport.fr, and add margin for multi-person bookings
+with checked bags, and again for a Paris connection onwards.]**
 
 **Terminal layout:** two terminals, T1 and T2. **A free tram (lines 2 and B) connects
 them in about 3 minutes**, and the ride between T1, T2 and Grand Arénas is free with no
@@ -1420,7 +1396,7 @@ Source: https://meteo-quotidien.com/france/nice/sea_temperature/october
 **[Third-party sea-temperature data. Directionally reliable — 20–22 °C in early October
 is consistent across sources — but not an official measurement.]**
 
-Nice's beaches are pebble, not sand, which matters for a 7-year-old and for bare feet.
+Nice's beaches are pebble, not sand, which matters for child visitors and bare feet.
 Water shoes are worth packing.
 
 Note that October is also a month of heavy episodic rain on this coast — the October
@@ -1483,7 +1459,7 @@ https://www.arlestourisme.com/fr/assets/pdf/patrimoine/HORAIRE%20ET%20TARIFS%20M
 | to **8 Oct** | **Carrières des Lumières: "Picasso, l'art en mouvement" + "Frida Kahlo, en plein cœur"** | 13 Feb – 8 Oct 2026. Closes 5 days after they leave Provence. |
 | to **15 Oct** | **Prince's Palace of Monaco, State Apartments** | Season 30 March – 15 October 2026 |
 | to **18 Oct** | **Fondation Vincent van Gogh, Arles** | Season 22 May – 18 October 2026 |
-| **3 Oct** (Sat) | **Fanfares & Bodega, Avignon** | 18:30–01:00, Jardin du lycée Saint-Joseph, rue des Teinturiers, in the Teinturiers quarter. Six brass bands, grill and bar, free entry, drinks paid. A genuinely local, festive evening — good for a family, though it runs late. https://www.provenceguide.com/fetes-et-manifestations/avignon/fanfares-bodega/provence-4794945-1.html |
+| **3 Oct** (Sat) | **Fanfares & Bodega, Avignon** | 18:30–01:00, Jardin du lycée Saint-Joseph, rue des Teinturiers, in the Teinturiers quarter. Six brass bands, grill and bar, free entry, drinks paid. A genuinely local, festive evening, though it runs late. https://www.provenceguide.com/fetes-et-manifestations/avignon/fanfares-bodega/provence-4794945-1.html |
 | **4 Oct** (Sun) | **Grande Fête des Véloroutes on the ViaRhôna** | 10:00–17:00, free, across nine Vaucluse communes including Avignon, Sorgues and Châteauneuf-du-Pape, with Sorgues as the hub. https://avignon-tourisme.com/offres/la-grande-fete-des-veloroutes-sur-la-viarhona-avignon-fr-6673073/ |
 
 ### Closures to know about
@@ -1562,7 +1538,7 @@ the other sources, but treat the percentages below as indicative.]**
 - **Monday 5 October, Nice, after a full day in Monaco.** Monday evening is the second
   worst. **Book in advance**, or target a brasserie.
 - **Peak dining time is 19:30–20:30.** For a quieter room and faster service, sit down at
-  **18:30–19:15** — which also suits a 7-year-old's bedtime — or after 21:00.
+  **18:30–19:15** — which also suits many child visitors — or after 21:00.
 - **Booking:** for anywhere good, phone or book online at least 48 hours ahead. About
   30 % of restaurants that open on Sunday will not take a last-minute telephone booking.
   TheFork and Zenchef have "open Sunday" filters and give instant confirmation.
@@ -1575,42 +1551,37 @@ the other sources, but treat the percentages below as indicative.]**
 
 ### One more habit worth flagging
 Lunch is the cheap meal in France. The weekday *formule* or *menu du jour* at lunch is
-often half the price of the same kitchen's dinner. For a party of five, eating the main
-meal at lunch and something light in the evening is both cheaper and better matched to a
-child's and a senior's energy curve.
+often half the price of the same kitchen's dinner. For multi-person bookings, eating the
+main meal at lunch and something light in the evening is both cheaper and better matched
+to varied energy levels.
 
 ---
 
-# E. Summary of costs for this party (entry fees only)
+# E. Unit-price summary (entry fees only)
 
-| Site | Adults ×2 | Seniors ×2 | Child (7) | Total |
-|---|---|---|---|---|
-| Chambord (non-EEA rate) | 62 € | 62 € | free | **124 €** |
-| Chenonceau | 38 € | 32 € | 15 € | **85 €** |
-| Chenonceau rowing boats | — | — | — | 25 € (5 × 5 €) |
-| Château d'Amboise | 34.60 € | 34.60 € | 11 € | **80.20 €** |
-| Clos Lucé | 40 € | 40 € | 15 € | **95 €** |
-| Beauval (online dated) | 78 € | 78 € | 32 € | **188 €** |
-| Cave des Roches | 24 € | 24 € | 7.50 € | **55.50 €** |
-| Palais des Papes + Pont d'Avignon | 39 € | 39 € | free | **78 €** |
-| Pont du Gard discovery spaces (with liO ticket) | 12 € | 12 € | free | **24 €** |
-| Pass Baux-de-Provence (Carrières + Château) | 42 € | 39 € | 16 € | **97 €** |
-| Carrières des Lumières only | 33 € | 31 € | 13 € | **77 €** |
-| Arles amphitheatre + theatre | 22 € | 22 € | free | **44 €** |
-| Fondation Van Gogh, Arles | 20 € | 16 € | free | **36 €** |
-| Musée Chagall, Nice (4 Oct) | free | free | free | **0 €** |
-| Musée Matisse, Nice | 24 € | 24 € | free | **48 €** |
-| Oceanographic Museum, Monaco | 45 € | 45 € | 14 € | **104 €** |
-| Prince's Palace, Monaco | 26 € | 26 € | 8 € | **60 €** |
-| Jardin Exotique, Èze | 20 € | 20 € | free | **40 €** |
+| Site | Adult | Reduced / senior | Child |
+|---|---|---|---|
+| Chambord (non-EEA rate) | 31 € | 28.50 € reduced | under 18 free |
+| Chenonceau | 19 € | 16 € senior | 15 € ages 7–18; under 7 free |
+| Chenonceau rowing boats | 5 € per person | 5 € per person | 5 € per person |
+| Château d'Amboise | 17.30 € | 14.40 € student | 11 € ages 7–18; under 7 free |
+| Clos Lucé | 20 € | 15 € reduced | 15 € ages 7–18 |
+| Beauval (online dated) | from 39 € | — | from 32 € ages 3–10 |
+| Cave des Roches | 12 € | — | 7.50 € under 16; under 7 free |
+| Palais des Papes + Pont d'Avignon | 19.50 € | 16 € | 12 € ages 10–17; under 10 free |
+| Pont du Gard discovery spaces (with liO ticket) | 6 € | 6 € | under 18 free |
+| Pass Baux-de-Provence | 21 € | 19.50 € senior | 16 € ages 7–17; under 7 free |
+| Carrières des Lumières only | 16.50 € | 15.50 € senior | 13 € ages 7–17; under 7 free |
+| Arles amphitheatre + theatre | 11 € | 9 € | under 18 free |
+| Fondation Van Gogh, Arles | 10 € | 8 € senior | under 26 free |
+| Musée Chagall, Nice (4 Oct) | free | free | free |
+| Musée Matisse, Nice | 12 € | — | under 18 free |
+| Oceanographic Museum, Monaco | 22.50 € | — | 14 € ages 4–17 |
+| Prince's Palace, Monaco | 13 € | 11 € student | 8 € ages 6–17; under 6 free |
+| Jardin Exotique, Èze | 10 € | 6 € ages 12–17/student | under 12 free |
 
 Notes: Matisse under-18 free entry is confirmed on the official site. Chambord assumes
-non-EEA nationality and residency; if any family member holds EEA residency the rate drops
-to €21.
-
-**A suggested no-regrets Loire selection** — Chenonceau (€85) + boats (€25) + Amboise
-(€80.20) + Clos Lucé (€95) = **€285.20**, versus Chambord + Beauval = **€312** for two
-sites with far worse logistics.
+non-EEA nationality and residency; eligible EEA nationals or residents pay €21.
 
 ---
 
@@ -1626,8 +1597,8 @@ sites with far worse logistics.
   10 minutes on foot** from the Rond-Point du Pont du Gard stop. The real risk is the
   **return stop on the opposite side of the roundabout**. See B.2.
 - ~~Musée Matisse under-18 admission.~~ **Free**, confirmed on the official site. See C.1.
-- ~~Pass Sud Azur price.~~ **€35 for 3 days (€30 under 18)** — and the arithmetic says
-  **pay as you go instead**, saving roughly €100. See C.6.
+- ~~Pass Sud Azur price.~~ **€35 for 3 days (€30 under 18)**; compare with pay-as-you-go
+  unit fares for the planned movements. See C.6.
 
 ### Still open
 
@@ -1642,7 +1613,7 @@ sites with far worse logistics.
 7. **Rencontres d'Arles 2026 dates and pass price** on rencontres-arles.com.
 8. **Nice airport check-in guidance** on nice.aeroport.fr, and which terminal the
    6 October flight uses.
-9. **Balloon operator height minimum** against the child's actual height (1.30 m).
+9. **Balloon operator height minimum** for child visitors (1.30 m).
 10. **Family-friendly Châteauneuf-du-Pape estates** — contact Brotte, La Nerthe and
     Janasse directly to confirm an October family formula.
 11. **Beauval autumn closing time** — "around 18:00" is third-party; and the panda queue
