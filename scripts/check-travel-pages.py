@@ -58,7 +58,7 @@ REQUIRED_MAP_QUERIES = {
     "Musée du Louvre, Paris",
     "Palais Garnier, Paris",
     "Eiffel Tower, Paris",
-    "Budapest Parliament",
+    "Budapest Ferenc Liszt International Airport",
 }
 EXPECTED_BOOKING_IDS = {
     "book-ams-stay",
@@ -67,7 +67,6 @@ EXPECTED_BOOKING_IDS = {
     "book-budapest-stay",
     "book-ams-nce",
     "book-nice-paris",
-    "book-paris-budapest-change",
     "book-rijksmuseum",
     "book-bellet",
     "book-picasso",
@@ -270,9 +269,9 @@ if itinerary:
             f"found {len(tables)}"
         )
     rows = itinerary.with_class("schedule-row", "tr")
-    if len(rows) != 12:
+    if len(rows) != 10:
         errors.append(
-            "france-itinerary-2026.html: expected 12 schedule-row elements, "
+            "france-itinerary-2026.html: expected 10 schedule-row elements, "
             f"found {len(rows)}"
         )
     expected_dates = {
@@ -300,20 +299,10 @@ if itinerary:
                 f"schedule row {index} cells need mobile data-label attributes"
             )
     scenario_rows = itinerary.with_class("scenario-row", "tr")
-    scenario_pairs = {
-        date: {
-            row.attrs.get("data-scenario")
-            for row in scenario_rows
-            if row.attrs.get("data-date") == date
-        }
-        for date in ("10.6", "10.7")
-    }
-    if len(scenario_rows) != 4 or any(
-        scenarios != {"a", "b"} for scenarios in scenario_pairs.values()
-    ):
+    if scenario_rows:
         errors.append(
-            "france-itinerary-2026.html: expected A/B scenario rows "
-            f"for 10.6 and 10.7, found {scenario_pairs}"
+            "france-itinerary-2026.html: final route must not contain "
+            f"scenario rows, found {len(scenario_rows)}"
         )
     restaurant_links = itinerary.with_class("restaurant-link", "a")
     if len(restaurant_links) < 6:
@@ -351,6 +340,12 @@ if itinerary:
         if route_text not in itinerary_text:
             errors.append(
                 f"france-itinerary-2026.html: missing route city {route_text}"
+            )
+    for final_transport_text in ("10.7 16:40", "FR4230", "18:50"):
+        if final_transport_text not in itinerary_text:
+            errors.append(
+                "france-itinerary-2026.html: missing confirmed transport "
+                f"{final_transport_text}"
             )
     if (
         "https://www.google.com/maps/search/?api=1&query=" not in itinerary_text
@@ -501,6 +496,17 @@ if planning:
         errors.append(
             "france-planning-2026.html: missing clear no-advance-reservation coverage note"
         )
+
+for filename in (
+    "france.html",
+    "france-planning-2026.html",
+    "france-itinerary-2026.html",
+):
+    if filename not in texts:
+        continue
+    for stale in ("方案 A", "方案 B", "双方案", "改签后确认"):
+        if stale in texts[filename]:
+            errors.append(f"{filename}: stale route state {stale}")
 
 travel = documents.get("travel.html")
 if travel:
