@@ -1,6 +1,6 @@
 # Shanghai → France, 25 Sep – 7 Oct 2026: air, rail and ground transport research
 
-**Research date: 24 August 2026.** Party: 5 people — 2 adults (~40), 2 seniors (~70), 1 child (age 7). Chinese passports, French Schengen visa in progress. Hard constraint: back in Shanghai on 7 October 2026, so the long-haul return must leave France on 6 October.
+**Research date: 24 August 2026.** Audience: Chinese travellers using a France-issued Schengen visa. The schedule requires arrival in Shanghai on 7 October 2026, so the long-haul return must leave France on 6 October.
 
 Every claim below is tagged:
 
@@ -20,10 +20,10 @@ Every claim below is tagged:
 
 **[V]** The State Council's official 2026 holiday notice (国办发明电〔2025〕7号, 4 Nov 2025) sets National Day as **1–7 October 2026 (7 days)**, not 1–8 October, with 20 September (Sun) and 10 October (Sat) as make-up working days. It also sets **Mid-Autumn as 25–27 September (3 days)**, separate from National Day. Source: <https://www.gov.cn/zhengce/content/202511/content_7047090.htm>, mirrored at <https://paper.people.com.cn/rmrb/pc/content/202511/05/content_30113226.html>.
 
-Two consequences the family should absorb now:
+Two consequences travellers should absorb now:
 
-- Their **outbound date, 25 September, is the first day of the Mid-Autumn holiday.** It is not a quiet shoulder-season Friday; it is the start of a three-day national break. Outbound demand and fares will be elevated.
-- Their **return date, 7 October, is the final day of Golden Week** — the single heaviest inbound travel day of the Chinese autumn. See §4.
+- The **outbound date, 25 September, is the first day of the Mid-Autumn holiday.** It is not a quiet shoulder-season Friday; it is the start of a three-day national break. Outbound demand and fares will be elevated.
+- The **return date, 7 October, is the final day of Golden Week** — the single heaviest inbound travel day of the Chinese autumn. See §4.
 
 ---
 
@@ -53,7 +53,7 @@ Two consequences the family should absorb now:
 - MU553, daily 00:15 → 06:30, 777-300ER, valid 29 Mar – 24 Oct 2026, arriving CDG **Terminal 2E**. <https://info.flightmapper.net/flight/China_Eastern_MU_553>
 - MU569, **Tue + Thu–Sun** 12:55 → 19:15, 777-300ER, same validity, also 2E. <https://info.flightmapper.net/flight/China_Eastern_MU_569>
 
-So the answers to the two specific questions asked: **yes, China Eastern's overnight PVG–CDG departs around 00:10–00:15** (live tracking pages show both times being used on different dates, e.g. <https://flight-status.com/china-eastern/mu-553>), and **yes, China Eastern also has a daytime option — MU569 at 12:55**, which is arguably the single best outbound for this family (see below).
+So the answers to the two specific questions asked: **yes, China Eastern's overnight PVG–CDG departs around 00:10–00:15** (live tracking pages show both times being used on different dates, e.g. <https://flight-status.com/china-eastern/mu-553>), and **yes, China Eastern also has a daytime option — MU569 at 12:55**, which is arguably the best outbound for travellers seeking a daytime flight (see below).
 
 ### What actually operates on Friday 25 September
 
@@ -62,9 +62,9 @@ So the answers to the two specific questions asked: **yes, China Eastern's overn
 - ✅ **MU553** 00:15 → 06:30 same day
 - ✅ **MU569** 12:55 → 19:15 same day
 
-**[E] Recommendation for the outbound.** For two 70-year-olds and a 7-year-old, **MU569 (12:55 → 19:15)** is the standout: a civilised midday departure from Shanghai, a 12h20m flight, and arrival in Paris at 19:15 in time for a hotel and a night's sleep — no red-eye, no 00:15 check-in, no jet-lagged 06:00 arrival with nowhere to go. If they can shift the outbound to **Saturday 26 September**, AF117 (10:30 → 19:00, A350-900) gives the same day-flight shape on a newer aircraft.
+**[E] Recommendation for the outbound.** For travellers seeking lower fatigue or child-friendly timings, **MU569 (12:55 → 19:15)** is the standout: a civilised midday departure from Shanghai, a 12h20m flight, and arrival in Paris at 19:15 in time for a hotel and a night's sleep — no red-eye, no 00:15 check-in, no jet-lagged 06:00 arrival with nowhere to go. Travellers able to shift the outbound to **Saturday 26 September** can use AF117 (10:30 → 19:00, A350-900), which gives the same day-flight shape on a newer aircraft.
 
-The worst option for this party is MU553: a 00:15 departure means being at Pudong around 21:30 on 24 September, then landing at 06:30 and facing a full day with no hotel check-in.
+The least comfortable option is MU553: a 00:15 departure means being at Pudong around 21:30 on 24 September, then landing at 06:30 and facing a full day with no hotel check-in.
 
 ### The Russian airspace penalty — this is the real story in the table
 
@@ -75,7 +75,7 @@ The worst option for this party is MU553: a 00:15 departure means being at Pudon
 
 **[V] The cause is Russian airspace.** Russia banned EU carriers from its airspace in February 2022 in retaliation for EU sanctions; Chinese carriers retain access. Air France-KLM CEO Ben Smith stated publicly in October 2025 that skirting Russia "adds between two and two-and-a-half hours to flights between Europe and Asia," and that Chinese airlines face no such detour. Reuters via <https://www.globalbankingandfinance.com/air-france-russia-china-six/>; see also <https://www.ch-aviation.com/news/159687-af-klm-lufthansa-ask-eu-to-ban-russia-transit-for-rivals> and Air France-KLM's Greater China GM on the same point at <https://www.caixinglobal.com/2024-06-27/russia-detour-hinders-revival-of-european-carriers-china-flights-executive-says-102210596.html>.
 
-**[E]** For this party the practical read is simple: choosing China Eastern buys back roughly two hours of sitting in a seat in each direction — about four hours over the round trip. With two septuagenarians aboard, that is a genuine comfort argument, not a rounding error. The counter-argument is product: AF117/AF112 are A350-900s, which are newer and quieter than China Eastern's 777-300ERs. **[S]** Aircraft assignments per AeroRoutes and Air France as cited above.
+**[E]** The practical read is simple: choosing China Eastern buys back roughly two hours of sitting in a seat in each direction — about four hours over the round trip. That is a genuine comfort argument for travellers seeking lower fatigue, not a rounding error. The counter-argument is product: AF117/AF112 are A350-900s, which are newer and quieter than China Eastern's 777-300ERs. **[S]** Aircraft assignments per AeroRoutes and Air France as cited above.
 
 ---
 
@@ -130,7 +130,7 @@ Air France's own morning flight numbers, valid 29 Mar – 24 Oct 2026:
 | AF7321 06:00 → 07:35 | MU570 21:20 | ~13h45m | Absurd; don't |
 | Any morning NCE flight | AF116 23:30 | 14h+ | Take an evening NCE flight instead |
 
-**AF7301 → MU554 with 2h45m is the recommendation.** It clears any plausible minimum connecting time with a large cushion, it does not require a 04:00 wake-up in Nice with a 7-year-old and two seniors, and it still lands in Shanghai at 07:00 on 7 October.
+**AF7301 → MU554 with 2h45m is the recommendation.** It clears any plausible minimum connecting time with a large cushion, avoids a 04:00 wake-up in Nice, and still lands in Shanghai at 07:00 on 7 October.
 
 ### Terminals: 2F → 2E, and the border crossing nobody plans for
 
@@ -171,22 +171,22 @@ Source: <https://www.parisaeroport.fr/docs/default-source/professionnel-fichiers
 
 Source: <https://wwws.airfrance.fr/en/information/aeroport/conseils-correspondances-paris-cdg-ory>
 
-**[E] Translated into what it means for this family**, booking NCE–CDG–PVG as one multi-city / open-jaw ticket on Air France or China Eastern buys four distinct things:
+**[E] For travellers**, booking NCE–CDG–PVG as one multi-city / open-jaw ticket on Air France or China Eastern buys four distinct things:
 
-1. **Protected connection.** If the Nice flight is late and they miss the long-haul, the carrier rebooks them at its own cost. On separate tickets, a missed long-haul means five brand-new one-way tickets bought at the counter during Golden Week — realistically a five-figure CNY event.
-2. **Baggage checked through** from Nice to Pudong. No reclaiming five suitcases at CDG, no re-entering the terminal, no re-checking. With two 70-year-olds and a child, this is the single biggest practical gain.
-3. **The booking engine validates the connection** against the filed MCT, so an illegal connection simply cannot be sold to them.
+1. **Protected connection.** If the Nice flight is late and the long-haul is missed, the carrier rebooks affected travellers at its own cost. On separate tickets, a missed long-haul can mean replacement one-way tickets bought at the counter during Golden Week — potentially a five-figure CNY event for a multi-person booking.
+2. **Baggage checked through** from Nice to Pudong. There is no reclaiming luggage at CDG, re-entering the terminal or re-checking, which is a major practical gain for visitors seeking lower walking intensity.
+3. **The booking engine validates the connection** against the filed MCT, so an illegal connection cannot be sold.
 4. **The Schengen exit is handled airside** on the transfer circuit rather than by exiting into the public terminal and coming back through.
 
 **[E] Practical booking note:** the natural constructions are (a) all-Air France — AF NCE→CDG plus AF116, one carrier, maximum simplicity, but lands Shanghai 18:00 on 7 Oct; or (b) an AF-operated NCE→CDG plus MU554, priced as a single SkyTeam itinerary, landing 07:00 on 7 Oct. Option (b) is better on timing, and the existence of the AF7313/MU1516 codeshare shows the inventory exists. Book it on **ceair.com** or **airfrance.com.cn** as a multi-city search (PVG→CDG out, NCE→PVG back), not as two separate bookings.
 
-**⚠️ Do not connect off easyJet.** easyJet lands in Terminal 2D, does not interline with Air France or China Eastern, and cannot be sold on a through ticket. A missed long-haul would be entirely the family's problem.
+**⚠️ Do not connect off easyJet.** easyJet lands in Terminal 2D, does not interline with Air France or China Eastern, and cannot be sold on a through ticket. A missed long-haul would be entirely the traveller's responsibility.
 
 ### The low-risk alternative worth pricing
 
 **[S]** There are direct TGVs from **Nice Ville to Paris Gare de Lyon in 5h36m–5h55m, roughly 7 direct services a day**, first departure 05:58, per SNCF Connect (<https://www.sncf-connect.com/en-en/train/timetables/nice/paris>) and Trainline (<https://www.thetrainline.com/en-us/train-times/nice-ville-to-paris-gare-de-lyon>).
 
-**[E]** Travelling Nice→Paris by TGV on **5 October**, sleeping near CDG, and flying out relaxed on the 6th eliminates the connection risk entirely, removes a flight from the itinerary, and is far kinder to seniors than a 06:00 airport start. It costs one hotel night. For a party with a hard, non-negotiable arrival deadline, this is the option I would price first.
+**[E]** Travelling Nice→Paris by TGV on **5 October**, sleeping near CDG, and flying out relaxed on the 6th eliminates the connection risk entirely, removes a flight from the itinerary, and is far kinder to visitors seeking lower walking intensity than a 06:00 airport start. It costs one hotel night. For travellers with a hard, non-negotiable arrival deadline, this is the option I would price first.
 
 ---
 
@@ -202,7 +202,7 @@ I have to be blunt here: **I could not obtain live, date-specific fare quotes fo
 
 **[E] My read for these specific dates: expect CNY 7,000–10,000 per adult round-trip, and treat anything under CNY 6,500 as a good deal worth booking on the spot.** Reasoning: the outbound falls on day one of the Mid-Autumn break and the return lands on the final day of Golden Week — both are demand peaks, and they stack. This is an estimate built on the ranges above, not a quote.
 
-**[E] Total air budget, order of magnitude: CNY 35,000–50,000 for five people** (the 7-year-old will pay a child fare, typically 75% of the adult fare on long-haul, plus full taxes — **[E]**, verify at booking). Add the NCE–CDG sector.
+**[E] Unit air-budget guidance:** expect CNY 7,000–10,000 per adult round trip. A child fare is typically 75% of the adult fare on long-haul, plus full taxes — **[E]**, verify at booking. Add the NCE–CDG sector per traveller.
 
 ### Is the 6–7 October return expensive or sold out?
 
@@ -210,9 +210,9 @@ I have to be blunt here: **I could not obtain live, date-specific fare quotes fo
 
 7 October is the last day of a 7-day national holiday **[V]**. Every Chinese traveller who went abroad for Golden Week is trying to be home for work on 8 October. Demand on Europe→China flights arriving 6–7 October is concentrated into a two-day spike. Simultaneously the outbound date sits on day one of Mid-Autumn.
 
-**[E] Booking urgency: high, and the return leg is the binding constraint.** Today is 24 August — six weeks out from the return. For a party of five, the issue is not whether *a* seat exists but whether **five seats exist in the same fare bucket on the same flight**. Long-haul aircraft typically hold only a handful of seats in the cheapest classes; a five-passenger booking exhausts a bucket and rolls the whole party up to the next price point. On a peak-return date six weeks out, the cheap buckets on MU554 for 6 October are likely already gone.
+**[E] Booking urgency: high, and the return leg is the binding constraint.** Today is 24 August — six weeks out from the return. For multi-person bookings, the issue is not whether *a* seat exists but whether **all required seats exist in the same fare bucket on the same flight**. Long-haul aircraft typically hold only a handful of seats in the cheapest classes; a larger booking can exhaust a bucket and roll every traveller up to the next price point. On a peak-return date six weeks out, the cheap buckets on MU554 for 6 October are likely already gone.
 
-**[E] Concrete advice:** price it today, book within days, and if five seats at an acceptable fare are not available on MU554, take AF116 on 6 October rather than moving the date. Also check the **PVG–CDG outbound and the CDG/NCE–PVG return as one multi-city ticket** versus two one-ways — on peak dates the round-trip construction is frequently cheaper, and it delivers the connection protection described in §3.
+**[E] Concrete advice:** price it today, book within days, and if all required seats at an acceptable fare are not available on MU554, take AF116 on 6 October rather than moving the date. Also check the **PVG–CDG outbound and the CDG/NCE–PVG return as one multi-city ticket** versus two one-ways — on peak dates the round-trip construction is frequently cheaper, and it delivers the connection protection described in §3.
 
 ---
 
@@ -231,7 +231,7 @@ Source: SNCF Connect timetables, <https://www.sncf-connect.com/en-en/train/timet
 
 **[S] Fares:** SNCF Connect displays lead-in prices from **€30** on TGV inOui; Trainline lists tickets from about **$12 / £11** for the cheapest advance buckets. <https://www.sncf-connect.com/en-en/train/route/paris/tours>, <https://www.thetrainline.com/en-us/train-times/paris-montparnasse-to-tours>
 
-**[E] For a party of five with luggage, book a direct TGV inOui into Tours Centre even if it costs a few euros more and takes 20 minutes longer.** Dragging five suitcases across a platform at SPDC for a 5-minute TER hop, with an 8-minute connection, is exactly the kind of thing that goes wrong with seniors and a child.
+**[E] For multi-person bookings with luggage, book a direct TGV inOui into Tours Centre even if it costs a few euros more and takes 20 minutes longer.** Moving luggage across a platform at SPDC for a 5-minute TER hop, with an 8-minute connection, is exactly the kind of thing that goes wrong for visitors seeking lower walking intensity.
 
 ### 5.2 Tours / Saint-Pierre-des-Corps → Avignon: the hard leg
 
@@ -243,21 +243,21 @@ This is the weakest link in the whole rail plan, and the honest answer is more n
 
 **[S] Commercial planners say "no direct."** Trainline states flatly: *"No, there are no direct train services from St-Pierre-des-Corps to Avignon TGV… a minimum of 1 change,"* fastest 4h31m, ~19 journeys/day. <https://www.thetrainline.com/en/train-times/st-pierre-des-corps-to-avignon-tgv>
 
-**[E] Reconciling this: a through TGV inOui SPDC → Avignon TGV in about 4h25m exists on limited days (Friday appears to be one), and on most other days the journey requires a change at Lyon Part-Dieu and takes 5–6 hours.** The family must check their *exact* date on SNCF Connect. If a through service runs, take it; if not, choose between the two routings below.
+**[E] Reconciling this: a through TGV inOui SPDC → Avignon TGV in about 4h25m exists on limited days (Friday appears to be one), and on most other days the journey requires a change at Lyon Part-Dieu and takes 5–6 hours.** Travellers must check their *exact* date on SNCF Connect. If a through service runs, take it; if not, choose between the two routings below.
 
 **Routing A — change at Lyon Part-Dieu (no Paris involved).** SPDC → Massy TGV → Lyon Part-Dieu on one train, then a second TGV to Avignon TGV. **[V]** ~5–6h total per SNCF Connect. **[E]** Advantage: one platform change inside a single station, no metro, no city crossing, luggage stays with you. Disadvantage: long, and a missed connection at Lyon means a long wait.
 
 **Routing B — back through Paris with a station change.** SPDC → Paris Montparnasse (~1h00), cross Paris to Gare de Lyon, then Gare de Lyon → Avignon TGV. **[V]** SNCF Connect itself offers this, e.g. *SPDC 12:25 → Montparnasse 13:36 → [1h02 connection] → Gare de Lyon → Avignon TGV 17:17* — about **4h50m door to door**. **[V]** Avignon Congrès states Paris–Avignon TGV is **2h40m**. <https://avignon-congres-expo.com/congres-et-seminaires/acces/>
 
-**[E] How bad is the Paris station change with luggage? Bad enough that I would avoid it with this party.** The specifics:
+**[E] How bad is the Paris station change with luggage? Bad enough that I would avoid it for travellers seeking lower walking intensity.** The specifics:
 
 - **[S]** Metro Montparnasse-Bienvenüe → Gare de Lyon is **18–30 minutes** of actual travel, via Line 4 to Châtelet then Line 14 (one stop), or Line 6 to Bercy then Line 14 (one stop). <https://www.itineraire-metro.fr/subway/trajet-Montparnasse-Bienvenue-vers-Gare+de+Lyon.html>
 - **[S] Montparnasse-Bienvenüe is a notoriously punishing station.** ShowMeTheJourney: the Line 4 platforms are reached by *"long passage ways. So long, that despite the travellators, it takes 8–10 minutes to make the transfer… You will experience a 'will I ever get there' feeling and between the travellator and the Metro platform you'll also have to negotiate stairs — so it's awkward if you have luggage."* <https://showmethejourney.com/train-travel-info/countries/france/cities/paris/rail-stations/paris-montparnasse/>
 - **[S] Line 14 is the only 100% step-free line on the Paris metro**, with street-to-platform lifts at all 21 stations — which is why both recommended routings end on it. <https://tips4trip.com/5-essential-steps-to-navigate-the-paris-metro-with-luggage/>
-- **[S]** The **bus 91** runs directly between the two stations and avoids stairs entirely; ShowMeTheJourney and the Rick Steves forum both flag it as the luggage-friendly option, with the caveat of finding space for five suitcases on a city bus.
+- **[S]** The **bus 91** runs directly between the two stations and avoids stairs entirely; ShowMeTheJourney and the Rick Steves forum both flag it as the luggage-friendly option, with the caveat that a city bus may not have space for a multi-person booking's luggage.
 - **[S]** Driving time Montparnasse → Gare de Lyon is about **14 minutes** with no traffic; taxi fares are cited around **€20–30**. Add the taxi queue at Montparnasse, which is unpredictable. <https://community.ricksteves.com/travel-forum/to-the-west/58658>, <https://community.ricksteves.com/travel-forum/france/changing-train-stations-in-paris-181597db-0760-4e3f-a33f-dc160a210c8e>
 
-**[E] Verdict:** if they go via Paris, take **two taxis** (5 people + luggage will not fit in one Parisian taxi) and allow a **full 90 minutes** between trains — not the 60 minutes SNCF's own planner will sell them. Budget **€50–70** for the two taxis. **[E]** The metro with five suitcases, two 70-year-olds and a 7-year-old through Montparnasse-Bienvenüe's corridors is not a plan I would endorse.
+**[E] Verdict:** if travelling via Paris, use taxis and allow a **full 90 minutes** between trains — not the 60 minutes SNCF's own planner will sell. A standard Paris taxi may not fit a multi-person booking plus luggage, so more than one vehicle may be required; the cited unit fare is **€20–30 per taxi**. **[E]** The metro through Montparnasse-Bienvenüe's corridors is not a plan I would endorse for travellers with substantial luggage or lower walking tolerance.
 
 **[E] Overall recommendation for this leg:** check SNCF Connect for a through 5300/5306 on the actual date. If it exists, book it. If not, prefer **Routing A (change at Lyon Part-Dieu)** despite the extra hour — one indoor platform change beats crossing Paris. Consider breaking the journey with a night in Lyon, which turns the worst travel day of the trip into a pleasant one.
 
@@ -297,7 +297,7 @@ Sources: <https://www.thetrainline.com/en/train-times/avignon-tgv-to-nice>, <htt
 
 **[V] What SNCF Connect accepts:** CB, **Visa**, Visa Electron, **Mastercard**, **American Express**, Maestro, plus PayPal, Apple Pay, Google Pay and Chèques-Vacances. Source: <https://www.sncf-connect.com/en-en/help/payment-methods-accepted-pay-your-ticket>
 
-**⚠️ [V] UnionPay is not on that list.** A China-issued UnionPay-only card will not work on SNCF Connect. The family needs a **dual-currency Visa or Mastercard**, or a workaround.
+**⚠️ [V] UnionPay is not on that list.** A China-issued UnionPay-only card will not work on SNCF Connect. Travellers need a **dual-currency Visa or Mastercard**, or a workaround.
 
 **[S] The wider, well-documented problem:** SNCF Connect and Ouigo have a long-standing reputation for rejecting non-French cards, driven by **3-D Secure** authentication that many non-European issuers cannot complete. Because the transaction is short-circuited before it reaches the issuing bank, **the bank never sees a declined charge and cannot fix it.** Reports span Brazilian, US, Canadian, Australian and even some EU cards. Sources: <https://minimalist.travel/travel-prep/france-train-tickets-international-credit-card/>, <https://minimalist.travel/transport/trains/sncf-website-problems/>, <https://community.ricksteves.com/travel-forum/france/difficulty-using-credit-card-on-snfc-official-site>
 
@@ -323,7 +323,7 @@ Sources: <https://www.thetrainline.com/en/train-times/avignon-tgv-to-nice>, <htt
 
 Sources: <https://www.sncf-connect.com/aide/placement-a-bord-trains>, <https://www.tgvinoui.sncf/voyager/voyager-avec-tgv-inoui/classes-de-confort>
 
-**[E] For a party of five this is a real argument for 1st class on the long legs** — being able to place five specific seats together, rather than hoping the allocator keeps the group intact, is worth money when two of the five are 70 and one is 7.
+**[E] For multi-person bookings this is a real argument for 1st class on the long legs** — being able to select specific seats together, rather than hoping the allocator keeps the booking intact, may be worth the premium.
 
 **[V] Family space:** TGV inOui offers an **"Espace Famille"** — a priority family area near the nursery corner, a **free option, bookable in 2nd class only**, and available **at weekends (Friday 14:00 to Sunday afternoon), during school holidays and on public holidays**. Source: <https://www.sncf-voyageurs.com/fr/voyagez-avec-nous/preparez-votre-voyage/voyagez-avec-un-bebe/>
 
@@ -335,7 +335,7 @@ Sources: <https://www.sncf-connect.com/aide/placement-a-bord-trains>, <https://w
 
 **[V] Under 4:** travels **free on a lap** on TGV inOui, TER and Intercités, with no reserved seat, but **must be declared at booking**. For a dedicated seat, the **Forfait Bambin costs a flat €9**. On OUIGO, under-4s are free on a lap, or €8 (Grande Vitesse) / €5 (Train Classique) for their own seat. <https://www.sncf-connect.com/aide/l-offre-pour-les-enfants-et-les-familles>, <https://www.sncf-voyageurs.com/fr/voyagez-avec-nous/preparez-votre-voyage/voyagez-avec-un-bebe/>
 
-**[V] Ages 4–11 — which is the relevant band for this 7-year-old:** there is **no automatic child discount without a card**. The route to a discount is the **Carte Avantage Adulte**:
+**[V] Ages 4–11:** there is **no automatic child discount without a card**. The route to a discount is the **Carte Avantage Adulte**:
 
 - **€49, valid 1 year**
 - **−30% for the cardholder** on all TGV inOui and Intercités, 2nd and 1st class
@@ -346,11 +346,11 @@ Sources: <https://www.sncf-voyageurs.com/fr/voyagez-avec-nous/en-france/tarifs-g
 
 **[S]** A secondary guide describes the no-card 4–11 discount as "≈50%" (<https://www.kombo.co/blog/fr/tarif-enfant-sncf-2026/>), but **[E]** I could not confirm a standing 50% child discount on SNCF's own pages — the official material routes 4–11 pricing through the Carte Avantage. Treat the 50% figure as unverified.
 
-**⚠️ On "Carte Avantage Famille": [E] I found no product by that name in SNCF's current catalogue.** The relevant products are the **Carte Avantage Adulte** (above) and the separate **Carte Familles Nombreuses**, which SNCF's FAQ describes as being for families with **3 or more children** — so it does not apply to this party (one child).
+**⚠️ On "Carte Avantage Famille": [E] I found no product by that name in SNCF's current catalogue.** The relevant products are the **Carte Avantage Adulte** (above) and the separate **Carte Familles Nombreuses**, which SNCF's FAQ describes as being for families with **3 or more children**.
 
-**[E] Does buying a card pay off here?** One €49 Carte Avantage Adulte would give one adult −30% and the 7-year-old −60% on every TGV inOui leg. Across three substantial legs (Paris→Tours, Tours→Avignon, Avignon→Nice) at rough second-class full fares, that is plausibly €80–150 of savings against a €49 outlay — **[E] likely worth it, but run the numbers on the actual quoted fares**, because deep-discount Prems fares may already undercut the Avantage price and the discount is calculated off full fare.
+**[E] Does buying a card pay off here?** One €49 Carte Avantage Adulte gives its holder −30% and up to three accompanying children aged 4–11 a −60% discount when the eligibility rules above are met. **[E] Run the numbers on the actual quoted fares**, because deep-discount Prems fares may already undercut the Avantage price and the discount is calculated off full fare.
 
-**⚠️ [V] Age proof:** SNCF requires a *livret de famille* and ID to prove a child's age. **[E] A Chinese family will not have a French livret de famille** — the child's passport showing date of birth should suffice, but this is worth confirming with SNCF, and the child should carry their own passport on every train.
+**⚠️ [V] Age proof:** SNCF requires a *livret de famille* and ID to prove a child's age. **[E] Chinese travellers generally will not have a French livret de famille** — a child visitor's passport showing date of birth should suffice, but this is worth confirming with SNCF, and each child visitor should carry their own passport on every train.
 
 ### 5.9 Luggage rules — real, recent, and enforced by a fine
 
@@ -380,11 +380,11 @@ Additionally, **€150** for obstructing aisles or improperly occupying a seat o
 
 **[V] Cross-border variation:** the same rules apply on TGV inOui to/from **Spain, Belgium, Freiburg-im-Breisgau and Luxembourg**. On **TGV Lyria (Switzerland)** and TGV inOui/ICE to/from **Germany with DB**, there is **no restriction on the number or weight** of bags (you must still carry them yourself), with a max dimension of 90 × 130 × 50 cm. Italy has its own specific rules.
 
-**[E] Is it enforced?** SNCF published a formal fine schedule with per-bag escalation and keeps the page current, which is not what an unenforced policy looks like. My honest read: **enforcement is real but discretionary** — crews are far more likely to act on bags blocking an aisle or occupying a paid seat than to audit a family's suitcase count. I did not find enforcement statistics, so this is an inference, not a fact.
+**[E] Is it enforced?** SNCF published a formal fine schedule with per-bag escalation and keeps the page current, which is not what an unenforced policy looks like. My honest read: **enforcement is real but discretionary** — crews are far more likely to act on bags blocking an aisle or occupying a paid seat than to audit a booking's suitcase count. I did not find enforcement statistics, so this is an inference, not a fact.
 
-**[E] Practical implication for this family: they are fine, with room to spare.** Five passengers × 2 large bags = **10 large bags allowed**, plus 5 hand items. A family of five on a 12-day trip will not approach that. The binding constraint is not the allowance but the physical one — *carry everything yourself in a single trip* — and the aisle-obstruction fine. **[E] Recommendation: five medium suitcases rather than three enormous ones**, so nothing exceeds 70 × 90 × 50 cm and every family member can manage their own bag. And **label every bag** — it is free, it is mandatory, and it is the one rule most likely to be checked.
+**[E] Practical implication:** the allowance is generous because it is calculated per passenger. The binding constraint is not the allowance but the physical one — *carry everything yourself in a single trip* — and the aisle-obstruction fine. **[E] Recommendation: prefer medium suitcases to enormous ones**, keep each within 70 × 90 × 50 cm and make sure each traveller can manage their own bag. And **label every bag** — it is free, it is mandatory, and it is the one rule most likely to be checked.
 
-### 5.10 First vs second class for the seniors, and where the luggage goes
+### 5.10 First vs second class for comfort, and where the luggage goes
 
 **[V] What 1st class actually buys on TGV inOui:**
 
@@ -395,7 +395,7 @@ Additionally, **€150** for obstructing aisles or improperly occupying a seat o
 
 Second class: reclining seats in duo or *carré* configuration, described by SNCF as "particularly suited to families and groups." Source: <https://www.tgvinoui.sncf/voyager/voyager-avec-tgv-inoui/classes-de-confort>
 
-**[E] Recommendation: 1st class for the two legs over three hours (Tours→Avignon, Avignon→Nice); 2nd class is fine for Paris→Tours (~1 hour).** The reasoning for the seniors is not luxury but four concrete things: a wider seat and footrest over 3–4½ hours, a quieter car, the ability to place all five seats deliberately, and less passenger churn past their seats. **[E]** The differential on French domestic TGV is typically modest when booked in advance — often 30–50% over second class rather than a multiple — which makes this a cheap upgrade on the legs where it counts. Verify against actual quotes.
+**[E] Recommendation:** travellers seeking lower fatigue may prefer 1st class for legs over three hours; 2nd class is usually adequate for Paris→Tours (~1 hour). The reasons are practical rather than luxurious: a wider seat and footrest over 3–4½ hours, a quieter car, seat-map selection and less passenger churn. **[E]** The differential on French domestic TGV is typically modest when booked in advance — often 30–50% over second class rather than a multiple. Verify against actual quotes.
 
 **[V] Where luggage goes — SNCF's own instructions:**
 
@@ -405,17 +405,17 @@ Second class: reclining seats in duo or *carré* configuration, described by SNC
 
 Source: <https://www.tgvinoui.sncf/voyager/informations-pratiques/politique-bagages>, <https://www.tgvinoui.sncf/voyager/informations-pratiques/bord-de-tgv-inoui>
 
-**[E] Two practical notes.** First, SNCF's advice to take bags to the upper deck is a warning in disguise: bags left in the downstairs rack are out of sight from an upper-deck seat. If they book the **lower deck (*salle basse*)**, luggage stays near them and there are no stairs — a double win with seniors. **[E] Request *salle basse* explicitly at booking.** Second, luggage space is **shared and first-come**; boarding early matters more than the class of ticket. **[V]** Boarding on TGV inOui closes **5 minutes** before departure, and SNCF advises arriving **30 minutes** ahead (<https://www.sncf-connect.com/fr-ch/tgv-inoui>) — **[E]** with five people and five bags, take the 30 minutes seriously.
+**[E] Two practical notes.** First, SNCF's advice to take bags to the upper deck is a warning in disguise: bags left in the downstairs rack are out of sight from an upper-deck seat. Booking the **lower deck (*salle basse*)** keeps luggage nearby and avoids stairs — useful for visitors seeking lower walking intensity. **[E] Request *salle basse* explicitly at booking.** Second, luggage space is **shared and first-come**; boarding early matters more than the class of ticket. **[V]** Boarding on TGV inOui closes **5 minutes** before departure, and SNCF advises arriving **30 minutes** ahead (<https://www.sncf-connect.com/fr-ch/tgv-inoui>) — **[E]** multi-person bookings with luggage should take the 30 minutes seriously.
 
 ---
 
-## 6. Car rental in France for five people
+## 6. Car rental in France for multi-person bookings
 
 ### 6.1 What class of vehicle
 
-**[E]** Five people plus five suitcases **does not fit in a standard 5-seat car** and does not comfortably fit a compact 7-seater either, because the rearmost seats in a Grand Scénic-class MPV occupy the boot. The realistic choices:
+**[E]** A multi-person booking with substantial luggage may not fit in a standard 5-seat car and may not comfortably fit a compact 7-seater either, because the rearmost seats in a Grand Scénic-class MPV occupy the boot. The realistic choices:
 
-- **7–9 seat van** (Toyota Proace Combi, Renault Trafic, VW Caravelle, Mercedes Vito class) — 5 passengers in the first two rows, luggage in the back. **[E] This is what they need.**
+- **7–9 seat van** (Toyota Proace Combi, Renault Trafic, VW Caravelle, Mercedes Vito class) — passengers in the first rows, luggage in the back. **[E] This is the practical category for larger bookings.**
 - **[S]** Europcar explicitly lists the **Renault Grand Scenic** and **Toyota Proace Combi** at Nice Airport as carrying "up to 7 and 9 passengers." <https://www.europcar.fr/fr-fr/places/location-voiture-france/nice/nice-cote-d-azur-aeroport>
 
 **⚠️ [E]** A 9-seat van is a large vehicle for Provençal village lanes and Riviera corniche roads, and parking in Gordes or Èze with one is genuinely unpleasant. This is a real argument for §7's private-driver option.
@@ -426,7 +426,7 @@ Source: <https://www.tgvinoui.sncf/voyager/informations-pratiques/politique-baga
 
 **⚠️ [S] The trap: China does not issue International Driving Permits.** China is not a party to the 1949 Geneva or 1968 Vienna road-traffic conventions, so no legitimate IDP exists for a mainland Chinese licence. Documents sold by third-party apps as "international driving permits" for Chinese licences are **not** IDPs. Sources: <https://worlddrivingpermit.com/driving-licence-translation/china>, <https://bestcarrentals.co.uk/en/blog/uk-chinese-license-guide>, <https://www.advantura.com/post/can-i-drive-in-spain-with-a-chinese-license-2026-tourist-guide>
 
-**[E] So of the three routes French law allows, only one is open to them: an official French translation.** Get either (a) a translation by a **traducteur assermenté** registered with a French cour d'appel, or (b) a translation issued by the **Chinese embassy/consulate in France**, or (c) a translation done in China that is then **legalised or apostilled**. **[E] Option (a) is the most reliably accepted at rental counters** and can be arranged remotely before departure.
+**[E] So of the three routes French law allows, only one is open to mainland Chinese licence holders: an official French translation.** Get either (a) a translation by a **traducteur assermenté** registered with a French cour d'appel, or (b) a translation issued by the **Chinese embassy/consulate in France**, or (c) a translation done in China that is then **legalised or apostilled**. **[E] Option (a) is the most reliably accepted at rental counters** and can be arranged remotely before departure.
 
 **[V] What the rental companies say:**
 
@@ -434,7 +434,7 @@ Source: <https://www.tgvinoui.sncf/voyager/informations-pratiques/politique-baga
 - **Hertz:** *"Si le permis n'est pas rédigé en alphabet latin, un permis de conduire international (PCI) peut être exigé."* Also requires the licence held **at least 1 year**. <https://www.hertz.fr/p/location-de-voiture/france>
 - **Carrefour Location** accepts either an international permit **or** a **traduction certifiée conforme** by an authorised translator or the issuing country's embassy in France. Also: **minimum age 21**, licence held **at least 3 years**, ID, and a payment card in the driver's own name. <https://location.carrefour.fr/bien-louer/conduire-en-france-avec-un-permis-etranger>
 
-**⚠️ [E] The gap is Sixt's "Aucune exception" wording versus the fact that no Chinese IDP exists.** Taken literally it would make Sixt unrentable for Chinese licence holders. Their own text elsewhere permits an official translation, so this is probably sloppy drafting — but **[E] the family should not gamble a €1,000 prepaid rental on which reading a specific counter agent takes.** Concrete advice: **email the specific branch in advance**, in writing, describing exactly what they will present (original Chinese licence + sworn French translation + passport + credit card in the driver's name), and **carry the printed reply to the counter**.
+**⚠️ [E] The gap is Sixt's "Aucune exception" wording versus the fact that no Chinese IDP exists.** Taken literally it would make Sixt unrentable for Chinese licence holders. Their own text elsewhere permits an official translation, so this is probably sloppy drafting — but **[E] travellers should not gamble a €1,000 prepaid rental on which reading a specific counter agent takes.** Concrete advice: **email the specific branch in advance**, in writing, describing exactly what will be presented (original Chinese licence + sworn French translation + passport + credit card in the driver's name), and **carry the printed reply to the counter**.
 
 **[V] Also required at pickup, universally:** original licence (**no photocopies, no photos, no digital images**), passport, and a **credit card in the main driver's name** — the same card used for the booking. Any additional driver must appear in person with their own licence. Sources: Hertz, Sixt and Europcar pages above.
 
@@ -448,7 +448,7 @@ Source: <https://www.tgvinoui.sncf/voyager/informations-pratiques/politique-baga
 
 **[V] Deposit / *caution*:** taken as a **pre-authorisation hold on a credit card**, not a debit — funds are frozen, not charged, and released at the end of the rental. **The amount varies by vehicle category and location** and neither Sixt nor Europcar publishes a single figure. <https://www.sixt.fr/location-voiture/france/nice/aeroport-nice-cote-azur/>, <https://www.europcar.fr/fr-fr/places/location-voiture-france/nice/nice-cote-d-azur-aeroport>
 
-**[E] For a 9-seat van, expect a hold of €1,000–2,500.** This has a specific consequence for a Chinese family: **the credit card must have enough available limit to absorb the hold on top of trip spending**, and it must be a true credit card in the driver's name. **[E] Debit cards are frequently refused for large vans** — verify with the branch.
+**[E] For a 9-seat van, expect a hold of €1,000–2,500.** The credit card must have enough available limit to absorb the hold on top of trip spending, and it must be a true credit card in the driver's name. **[E] Debit cards are frequently refused for large vans** — verify with the branch.
 
 **[V] Franchise (excess/deductible):** the rental includes a damage excess which you can buy down. **Avis** markets *"l'assurance tous risques Avis Inclusive… zéro franchise"* as an add-on. <https://www.avis.com/fr/locations/eur/fr/nice/aeroport-de-nice-cote-d-azur-t2>
 
@@ -514,13 +514,13 @@ Sources: <https://www.flotauto.com/zfe-conseil-constitutionnel-decision/>, <http
 | **Marseille** | **No permanent ZFE.** Restrictions apply only during pollution episodes. (One source describes Marseille as Crit'Air 0/1/2 only — **[E] the sources conflict; the "pollution episodes only" account is the more detailed and more recent.**) |
 | **Nice** | Listed among permanent ZFEs where a sticker is required year-round, typically weekdays 08:00–20:00. **[E] Exact restricted Crit'Air classes for Nice not verified.** |
 
-**[E] What this means in practice, and the reassuring part:** a 2026-fleet rental car from a major agency will be **Crit'Air 1 or 2** — the cleanest classes — and admitted to every French ZFE. **[S]** <https://travelinformation.eu/france/low-emission-zones/> **[E] So the family's realistic exposure is not "wrong sticker" but "no sticker,"** which is a rental-company failure they should verify against at pickup. Two additional notes: **[E]** the transit motorways matter — the A86 around Paris and the A6/A7 through Lyon are *inside* permanent ZFEs, so even driving past those cities counts; and **[E]** since they should not be driving in Paris at all (§6.4), the Paris ZFE should be irrelevant.
+**[E] What this means in practice, and the reassuring part:** a 2026-fleet rental car from a major agency will be **Crit'Air 1 or 2** — the cleanest classes — and admitted to every French ZFE. **[S]** <https://travelinformation.eu/france/low-emission-zones/> **[E] The realistic exposure is not "wrong sticker" but "no sticker,"** which is a rental-company failure travellers should verify against at pickup. Two additional notes: **[E]** the transit motorways matter — the A86 around Paris and the A6/A7 through Lyon are *inside* permanent ZFEs, so even driving past those cities counts; and **[E]** since visitors should not be driving in Paris at all (§6.4), the Paris ZFE should be irrelevant.
 
 ---
 
 ## 7. Alternatives to self-driving: private drivers and minibus day tours
 
-**[E] Given §6.2 (no Chinese IDP exists, sworn translation required, counter-level discretion), §6.3 (scarce automatic 9-seaters, €1,000–2,500 card hold) and the practical reality of parking a 9-seat van in Gordes with two 70-year-olds aboard, I think a private driver-guide is the better answer for this family for the regional day trips — not merely an "alternative."** The cost comparison is closer than it looks once you add the van's daily rate, zero-excess insurance, fuel, tolls and parking, and it removes the licence risk entirely.
+**[E] Given §6.2 (no Chinese IDP exists, sworn translation required, counter-level discretion), §6.3 (scarce automatic 9-seaters, €1,000–2,500 card hold) and the practical reality of parking a 9-seat van in Gordes, a private driver-guide is the better answer for travellers seeking lower walking intensity on regional day trips — not merely an "alternative."** The cost comparison is closer than it looks once the van's daily rate, zero-excess insurance, fuel, tolls and parking are included, and it removes the licence risk entirely.
 
 ### 7.1 Chinese-speaking driver-guides (中文司导)
 
@@ -533,7 +533,7 @@ Sources: <https://www.flotauto.com/zfe-conseil-constitutionnel-decision/>, <http
 | **欧法旅游 / Oufa Travel** (oufa-travel.com) | Provence & Côte d'Azur charter, 5- or 9-seat van / minibus | **From €600**, covering **10 hours / 250 km**. First child seat free, €15 each thereafter. Overtime **€50/hour**, excess distance **€1.50/km**. Excludes admissions and meals; **driver service fee €20/vehicle/day**, driver meal €30, and driver accommodation outside Nice. <http://www.oufa-travel.com/trip/page20382> |
 | **EuropeDIY** (europediy.com) | Chinese-language charters incl. Paris → Loire Valley châteaux day trips | Rates not published; enquiry-based. Markets 24/7 Chinese-language support, child seats, luggage help. <https://europediy.com/travel/france> |
 
-**[S] Ctrip / 携程 operates a dedicated charter channel (携程包车游)** at <https://m.ctrip.com/tangram/localguide>, which is the natural booking route for a Shanghai-based family paying in CNY with domestic payment methods. **[E] I could not extract France-specific day rates from Ctrip's app-driven pages** — the family should search 法国包车 there directly.
+**[S] Ctrip / 携程 operates a dedicated charter channel (携程包车游)** at <https://m.ctrip.com/tangram/localguide>, which is a natural booking route for Shanghai-based travellers paying in CNY with domestic payment methods. **[E] I could not extract France-specific day rates from Ctrip's app-driven pages** — search 法国包车 there directly.
 
 **⚠️ [E] Read the exclusions carefully.** Oufa's structure is the clearest illustration: a €600 headline covers 10h/250 km, but a Luberon loop from Avignon can exceed 250 km, and overtime is €50/h with €1.50/km beyond. Add the €20/day driver service fee and €30 driver meal and a "€600" day becomes €700+. **[E] Ask for an all-in quote naming the exact itinerary, total km and total hours, in writing.**
 
@@ -541,7 +541,7 @@ Sources: <https://www.flotauto.com/zfe-conseil-constitutionnel-decision/>, <http
 
 **Loire Valley (from Tours / Amboise / Saint-Pierre-des-Corps station):**
 
-- **[S] France Guided Tours** — private day tour, Chenonceau + Chambord, licensed guide, chauffeured minivan (max 8 passengers), 9 hours, admissions and winemaker lunch included. Published sliding scale by group size: **€929 (1 pax) / €508 (2) / €368 (3) / €298 (4) / €256 (5) / €228 (6) / €208 (7) / €193 (8)** per person. **[E] At 5 passengers that is €256pp ≈ €1,280 total** — the most expensive option listed, but it includes a licensed guide, both château admissions and lunch. <https://www.france-guided-tours.com/en/home/98-loire-valley-private-day-tour-exclusive-guide-transportation-chateaus-of-chenonceau-chambord-caves-ambacia-tour-tasting-162984964030.html>
+- **[S] France Guided Tours** — private day tour, Chenonceau + Chambord, licensed guide, chauffeured minivan (max 8 passengers), 9 hours, admissions and winemaker lunch included. Published per-person sliding scale by group size: **€929 (1 pax) / €508 (2) / €368 (3) / €298 (4) / €256 (5) / €228 (6) / €208 (7) / €193 (8)**. **[E]** It is the most expensive option listed, but includes a licensed guide, both château admissions and lunch. <https://www.france-guided-tours.com/en/home/98-loire-valley-private-day-tour-exclusive-guide-transportation-chateaus-of-chenonceau-chambord-caves-ambacia-tour-tasting-162984964030.html>
 - **[S] Viator** — "Loire Valley Most Visited Castles Private Tour from Tours or Amboise," 9 hours, private, hotel pickup in Tours/Amboise/Blois **or local train stations**, A/C minivan, professional local guide, wine tasting, admissions to Chenonceau and Chambord. **From US$564.48**, price varies by group size. <https://www.viator.com/tours/Tours/Private-tour-of-Loire-Valley-most-visited-castles/d5092-19170P16>
 - **[S] Travel Buddies / Viator** — Loire Valley wine region private full day from Tours, English-speaking guide, 3 wineries, lunch: **US$775.52 per group, max 8**. Winery tasting fees €30pp payable on site. <https://travel-buddies.com/loire-valley-wine-region-private-full-day-tour-from-tours/>
 - **[S] Ophorus** — small-group (max 8) Chambord + Chenonceau day trip from Tours, premium A/C minivan, English-speaking driver-guide, both admissions included; per-person pricing, and handles private groups on request. <https://www.ophorus.com/product/898/a-loire-valley-day-trip-from-tours-to-chenonceau-chambord-castles>
@@ -552,7 +552,7 @@ Sources: <https://www.flotauto.com/zfe-conseil-constitutionnel-decision/>, <http
 - **[S] A La Française Provence** — private full-day Luberon from Avignon, Aix or Marseille: **8 hours, 200 km included, 8-seater A/C minivan, professional driver-guide** (English/French), minimum 2 people. Extra fees beyond 200 km. Price on request. <https://www.alafrancaise.fr/en/provence/1029-private-tour-luberon-full-day>
 - **[S] Viator** — full-day Luberon villages small-group tour from Avignon (Fontaine de Vaucluse, Ménerbes, Roussillon, Gordes, Sénanque Abbey, Lavender Museum), 9h, **max 8 travellers**, includes driver/guide, hotel pickup, A/C minivan, admissions and lunch. Wheelchair and stroller accessible; infant seats available. <https://www.viator.com/tours/Avignon/Full-Day-Luberon-Villages-Walking-Tour-from-Avignon/d483-37445P4>
 
-**[E] Indicative day rates for a private van with English-speaking driver-guide, 5 passengers, 8–10 hours:**
+**[E] Indicative day rates for a private van with English-speaking driver-guide, 8–10 hours:**
 
 | Region | Private van + driver-guide, per group per day |
 | --- | --- |
@@ -560,11 +560,11 @@ Sources: <https://www.flotauto.com/zfe-conseil-constitutionnel-decision/>, <http
 | Provence from Avignon | **€500–700** transport + driver-guide, admissions and meals extra |
 | French Riviera from Nice | **€400–650** (Chinese-language operators, 10h) |
 
-**[E] These are inferred from the published figures above, converted to a 5-passenger private-group basis. They are estimates, not quotes.**
+**[E] These are inferred from the published figures above. They are estimates, not quotes.**
 
 ### 7.3 Booking platforms
 
-**[S]** **Viator** (viator.com — strongest inventory of private Loire and Provence day tours, English), **GetYourGuide** (referenced across the operator ecosystem), **Ctrip/携程 包车游** (<https://m.ctrip.com/tangram/localguide> — Chinese-language, CNY payment, the natural fit for this family), plus direct booking with **Ophorus**, **A La Française**, **Itinerary France**, **蓝普旅行**, **欧法旅游** and **EuropeDIY**.
+**[S]** **Viator** (viator.com — strongest inventory of private Loire and Provence day tours, English), **GetYourGuide** (referenced across the operator ecosystem), **Ctrip/携程 包车游** (<https://m.ctrip.com/tangram/localguide> — Chinese-language and CNY payment), plus direct booking with **Ophorus**, **A La Française**, **Itinerary France**, **蓝普旅行**, **欧法旅游** and **EuropeDIY**.
 
 **[E] Klook** was not verified as carrying France private-van products in this research — **flag as unverified**; it is stronger in Asia-Pacific than in France.
 
@@ -595,14 +595,14 @@ Sources: <https://www.flotauto.com/zfe-conseil-constitutionnel-decision/>, <http
 
 ## 9. Do these things this week
 
-1. **[E] Price and book the flights now.** The return on 6 October landing 7 October is the binding constraint (final day of Golden Week, five seats needed in one bucket). Target MU554; fall back to AF116 rather than moving the date.
+1. **[E] Price and book the flights now.** The return on 6 October landing 7 October is the binding constraint (final day of Golden Week, with all required seats needed in one bucket). Target MU554; fall back to AF116 rather than moving the date.
 2. **[V] Book as a single multi-city ticket** including NCE–CDG. Air France's own policy makes the carrier responsible for rerouting only on a through ticket.
 3. **[V] Book the TGV legs now** — they have been on sale since 11 March 2026, and TGV inOui tickets are free to change or refund up to 7 days before departure. There is no upside to waiting.
 4. **[E] Sort out payment before trying to book rail.** UnionPay is not accepted by SNCF Connect. Have a dual-currency Visa/Mastercard ready; if it fails twice, go to Trainline with PayPal.
 5. **[E] Do not plan around AF112 (return) or AF117 (outbound).** Neither operates on their dates.
 6. **[E] If they still want to self-drive: start the sworn licence translation now**, and get written confirmation from the specific rental branch that the original Chinese licence plus a sworn French translation will be accepted. There is no such thing as a Chinese IDP.
 7. **[E] Otherwise, book private driver-guides now** — especially any Chinese-speaking one, where the supply is thin.
-8. **[V] Pack five medium suitcases, not three huge ones**, and label every bag. The allowance is generous (10 large bags for five people); the real rules are the 70 × 90 × 50 cm limit, carrying everything unaided in one trip, and the €50–150 fine schedule.
+8. **[V] Prefer medium suitcases to huge ones**, and label every bag. The allowance is per passenger; the binding rules are the 70 × 90 × 50 cm limit, carrying everything unaided in one trip, and the €50–150 fine schedule.
 
 ---
 
@@ -618,7 +618,7 @@ Listed explicitly so nothing here is mistaken for established fact.
 6. **Whether a tall 9-seat van is tolled as Class 1 or Class 2.** This changes the toll budget by 50–90%.
 7. **Nice's exact ZFE restricted Crit'Air classes**, and the conflicting accounts of Marseille (permanent ZFE vs pollution-episode-only).
 8. **Whether SNCF will accept a Chinese passport as proof of a child's age** in place of a *livret de famille*.
-9. **Whether the family's dates qualify for TGV inOui's "Espace Famille"** (weekends / French school holidays / public holidays only).
+9. **Whether the travel dates qualify for TGV inOui's "Espace Famille"** (weekends / French school holidays / public holidays only).
 10. **Quiet coaches on TGV inOui** — no current official product found. Do not plan around one.
 11. **Klook's France private-van inventory** — not verified.
 12. **Ctrip/携程 France charter day rates** — the channel exists but rates were not extractable.
