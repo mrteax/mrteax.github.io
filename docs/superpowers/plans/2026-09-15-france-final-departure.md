@@ -31,3 +31,13 @@
 - [ ] Commit and push the final content.
 - [ ] Run the structural checker, browser table/mobile tests, official-link audit, and `git diff --check`.
 - [ ] Publish the verified commit to `master` and verify GitHub Pages deployment.
+
+### Task 4: Improve mobile navigation and switch to Van Gogh Museum
+
+- [ ] Update the checker to require the Van Gogh booking ID and map destination, ten mobile date links, and bottom navigation on both itinerary and planning pages.
+- [ ] Confirm the checker fails on the Rijksmuseum content and missing mobile navigation.
+- [ ] Replace the 30 September Rijksmuseum visit and booking task with the Van Gogh Museum at 15:00.
+- [ ] Add a mobile-only sticky date strip linking to each dated row.
+- [ ] Add a mobile-only bottom switch between itinerary and planning pages.
+- [ ] Increase mobile booking-link tap targets and verify no horizontal overflow at 390 pixels.
+- [ ] Commit, verify, publish to `master`, and confirm the Pages deployment.
