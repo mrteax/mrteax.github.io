@@ -52,30 +52,31 @@ FRANCE_CONTENT_TARGETS = {
     "/france-itinerary-2026.html",
 }
 REQUIRED_MAP_QUERIES = {
-    "Gare de Versailles Chantiers",
-    "Place de l'Horloge, Avignon",
-    "Promenade des Anglais, Nice",
-    "Monaco-Ville",
+    "Rijksmuseum, Amsterdam",
+    "Cours Saleya, Nice",
+    "Marché Provençal, Antibes",
+    "Musée du Louvre, Paris",
+    "Palais Garnier, Paris",
+    "Eiffel Tower, Paris",
+    "Budapest Parliament",
 }
 EXPECTED_BOOKING_IDS = {
-    "book-air",
-    "book-stay",
-    "book-airport-transfer",
-    "book-rail",
-    "book-driver",
-    "book-eiffel",
-    "book-versailles",
-    "book-louvre",
-    "book-orsay",
-    "book-cmn",
-    "book-notredame",
-    "book-cruise",
-    "book-avignon",
-    "book-carrieres",
-    "book-winery",
+    "book-ams-stay",
+    "book-nice-stay",
+    "book-paris-stay",
+    "book-budapest-stay",
+    "book-ams-nce",
+    "book-nice-paris",
+    "book-paris-budapest-change",
+    "book-rijksmuseum",
+    "book-bellet",
     "book-picasso",
-    "book-oceanographic",
-    "book-dinner",
+    "book-orsay",
+    "book-louvre",
+    "book-garnier",
+    "book-eiffel",
+    "book-sainte-chapelle",
+    "book-seine-cruise",
 }
 PHRASING_TAGS = {
     "a",
@@ -265,10 +266,10 @@ if itinerary:
     days = itinerary.with_class("day", "section")
     dated_days = itinerary.with_class("day-date")
     day_count = len(days)
-    if day_count != 12 or len(dated_days) != 12:
+    if day_count != 10 or len(dated_days) != 10:
         errors.append(
-            "france-itinerary-2026.html: expected exactly 12 day sections "
-            f"and 12 dates, found {day_count} sections and {len(dated_days)} dates"
+            "france-itinerary-2026.html: expected exactly 10 day sections "
+            f"and 10 dates, found {day_count} sections and {len(dated_days)} dates"
         )
     for index, day in enumerate(days, start=1):
         dates = [
@@ -290,9 +291,9 @@ if itinerary:
 
     map_links = itinerary.with_class("map-link")
     map_count = len(map_links)
-    if map_count < 50:
+    if map_count < 30:
         errors.append(
-            f"france-itinerary-2026.html: expected at least 50 map links, found {map_count}"
+            f"france-itinerary-2026.html: expected at least 30 map links, found {map_count}"
         )
     for index, link in enumerate(map_links, start=1):
         if link.tag != "a" or not link.attrs.get("data-q", "").strip():
@@ -307,6 +308,34 @@ if itinerary:
             f"{sorted(REQUIRED_MAP_QUERIES - map_queries)}"
         )
     itinerary_text = texts["france-itinerary-2026.html"]
+    for route_text in ("阿姆斯特丹", "尼斯", "巴黎", "布达佩斯"):
+        if route_text not in itinerary_text:
+            errors.append(
+                f"france-itinerary-2026.html: missing route city {route_text}"
+            )
+    scenario_days = [
+        day for day in days
+        if any(
+            child.has_class("day-date")
+            and child.text().startswith(("10.6 ", "10.7 "))
+            for child in day.descendants()
+        )
+    ]
+    if len(scenario_days) != 2:
+        errors.append(
+            "france-itinerary-2026.html: expected scenario days for 10.6 and 10.7"
+        )
+    else:
+        for day in scenario_days:
+            scenarios = [
+                child for child in day.descendants()
+                if child.has_class("scenario-card")
+            ]
+            if len(scenarios) != 2:
+                errors.append(
+                    "france-itinerary-2026.html: each scenario day needs "
+                    f"two scenario-card elements, found {len(scenarios)}"
+                )
     if (
         "https://www.google.com/maps/search/?api=1&query=" not in itinerary_text
         or "encodeURIComponent(link.dataset.q)" not in itinerary_text
@@ -510,7 +539,7 @@ else:
 
 if (
     "france-planning-2026.html" in texts
-    and "teax-france-2026-planning" not in texts["france-planning-2026.html"]
+    and "teax-france-2026-v2-planning" not in texts["france-planning-2026.html"]
 ):
     errors.append("france-planning-2026.html: missing checklist localStorage key")
 
