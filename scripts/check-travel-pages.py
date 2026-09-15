@@ -52,7 +52,7 @@ FRANCE_CONTENT_TARGETS = {
     "/france-itinerary-2026.html",
 }
 REQUIRED_MAP_QUERIES = {
-    "Rijksmuseum, Amsterdam",
+    "Van Gogh Museum, Amsterdam",
     "Cours Saleya, Nice",
     "Marché Provençal, Antibes",
     "Musée du Louvre, Paris",
@@ -67,7 +67,7 @@ EXPECTED_BOOKING_IDS = {
     "book-budapest-stay",
     "book-ams-nce",
     "book-nice-paris",
-    "book-rijksmuseum",
+    "book-vangogh",
     "book-bellet",
     "book-picasso",
     "book-orsay",
@@ -310,6 +310,28 @@ if itinerary:
             "france-itinerary-2026.html: expected at least six restaurant links, "
             f"found {len(restaurant_links)}"
         )
+    mobile_day_navs = itinerary.with_class("mobile-day-nav", "nav")
+    mobile_day_links = (
+        [
+            child for child in mobile_day_navs[0].descendants()
+            if child.tag == "a"
+        ]
+        if len(mobile_day_navs) == 1
+        else []
+    )
+    expected_day_hrefs = {
+        "#day-0929", "#day-0930", "#day-1001", "#day-1002", "#day-1003",
+        "#day-1004", "#day-1005", "#day-1006", "#day-1007", "#day-1008",
+    }
+    if (
+        len(mobile_day_navs) != 1
+        or {link.attrs.get("href") for link in mobile_day_links}
+        != expected_day_hrefs
+    ):
+        errors.append(
+            "france-itinerary-2026.html: mobile day navigation must link "
+            "all ten dated rows"
+        )
 
     map_links = itinerary.with_class("map-link")
     map_count = len(map_links)
@@ -347,6 +369,11 @@ if itinerary:
                 "france-itinerary-2026.html: missing confirmed transport "
                 f"{final_transport_text}"
             )
+    if "Rijksmuseum" in itinerary_text or "国立博物馆" in itinerary_text:
+        errors.append(
+            "france-itinerary-2026.html: Rijksmuseum should be replaced "
+            "by the Van Gogh Museum"
+        )
     if (
         "https://www.google.com/maps/search/?api=1&query=" not in itinerary_text
         or "encodeURIComponent(link.dataset.q)" not in itinerary_text
@@ -507,6 +534,25 @@ for filename in (
     for stale in ("方案 A", "方案 B", "双方案", "改签后确认"):
         if stale in texts[filename]:
             errors.append(f"{filename}: stale route state {stale}")
+
+for filename in ("france-planning-2026.html", "france-itinerary-2026.html"):
+    document = documents.get(filename)
+    if not document:
+        continue
+    bottom_navs = document.with_class("mobile-bottom-nav", "nav")
+    if len(bottom_navs) != 1:
+        errors.append(f"{filename}: expected one mobile-bottom-nav")
+        continue
+    hrefs = {
+        child.attrs.get("href")
+        for child in bottom_navs[0].descendants()
+        if child.tag == "a"
+    }
+    if hrefs != {
+        "/france-planning-2026.html",
+        "/france-itinerary-2026.html",
+    }:
+        errors.append(f"{filename}: mobile bottom navigation targets mismatch")
 
 travel = documents.get("travel.html")
 if travel:
