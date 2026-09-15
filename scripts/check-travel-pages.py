@@ -263,31 +263,64 @@ itinerary = documents.get("france-itinerary-2026.html")
 day_count = 0
 map_count = 0
 if itinerary:
-    days = itinerary.with_class("day", "section")
-    dated_days = itinerary.with_class("day-date")
-    day_count = len(days)
-    if day_count != 10 or len(dated_days) != 10:
+    tables = itinerary.with_class("itinerary-table", "table")
+    if len(tables) != 1:
         errors.append(
-            "france-itinerary-2026.html: expected exactly 10 day sections "
-            f"and 10 dates, found {day_count} sections and {len(dated_days)} dates"
+            "france-itinerary-2026.html: expected exactly one itinerary-table, "
+            f"found {len(tables)}"
         )
-    for index, day in enumerate(days, start=1):
-        dates = [
-            child for child in day.descendants() if child.has_class("day-date")
-        ]
-        if len(dates) != 1 or not re.fullmatch(
-            r"\d{1,2}\.\d{1,2}\s+周.", dates[0].text() if dates else ""
-        ):
+    rows = itinerary.with_class("schedule-row", "tr")
+    if len(rows) != 12:
+        errors.append(
+            "france-itinerary-2026.html: expected 12 schedule-row elements, "
+            f"found {len(rows)}"
+        )
+    expected_dates = {
+        "9.29", "9.30", "10.1", "10.2", "10.3",
+        "10.4", "10.5", "10.6", "10.7", "10.8",
+    }
+    dates = {row.attrs.get("data-date", "") for row in rows}
+    day_count = len(dates)
+    if dates != expected_dates:
+        errors.append(
+            "france-itinerary-2026.html: schedule dates mismatch; "
+            f"missing {sorted(expected_dates - dates)}, "
+            f"unexpected {sorted(dates - expected_dates)}"
+        )
+    for index, row in enumerate(rows, start=1):
+        cells = [child for child in row.children if child.tag == "td"]
+        if len(cells) != 6:
             errors.append(
-                f"france-itinerary-2026.html: day {index} lacks one dated day-date"
+                "france-itinerary-2026.html: "
+                f"schedule row {index} needs six cells, found {len(cells)}"
             )
-        summaries = [
-            child for child in day.descendants() if child.has_class("day-summary")
-        ]
-        if len(summaries) != 1 or len(summaries[0].text()) < 18:
+        if not all(cell.attrs.get("data-label", "").strip() for cell in cells):
             errors.append(
-                f"france-itinerary-2026.html: day {index} needs a concise day-summary"
+                "france-itinerary-2026.html: "
+                f"schedule row {index} cells need mobile data-label attributes"
             )
+    scenario_rows = itinerary.with_class("scenario-row", "tr")
+    scenario_pairs = {
+        date: {
+            row.attrs.get("data-scenario")
+            for row in scenario_rows
+            if row.attrs.get("data-date") == date
+        }
+        for date in ("10.6", "10.7")
+    }
+    if len(scenario_rows) != 4 or any(
+        scenarios != {"a", "b"} for scenarios in scenario_pairs.values()
+    ):
+        errors.append(
+            "france-itinerary-2026.html: expected A/B scenario rows "
+            f"for 10.6 and 10.7, found {scenario_pairs}"
+        )
+    restaurant_links = itinerary.with_class("restaurant-link", "a")
+    if len(restaurant_links) < 6:
+        errors.append(
+            "france-itinerary-2026.html: expected at least six restaurant links, "
+            f"found {len(restaurant_links)}"
+        )
 
     map_links = itinerary.with_class("map-link")
     map_count = len(map_links)
@@ -319,29 +352,6 @@ if itinerary:
             errors.append(
                 f"france-itinerary-2026.html: missing route city {route_text}"
             )
-    scenario_days = [
-        day for day in days
-        if any(
-            child.has_class("day-date")
-            and child.text().startswith(("10.6 ", "10.7 "))
-            for child in day.descendants()
-        )
-    ]
-    if len(scenario_days) != 2:
-        errors.append(
-            "france-itinerary-2026.html: expected scenario days for 10.6 and 10.7"
-        )
-    else:
-        for day in scenario_days:
-            scenarios = [
-                child for child in day.descendants()
-                if child.has_class("scenario-card")
-            ]
-            if len(scenarios) != 2:
-                errors.append(
-                    "france-itinerary-2026.html: each scenario day needs "
-                    f"two scenario-card elements, found {len(scenarios)}"
-                )
     if (
         "https://www.google.com/maps/search/?api=1&query=" not in itinerary_text
         or "encodeURIComponent(link.dataset.q)" not in itinerary_text
