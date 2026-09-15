@@ -1085,9 +1085,7 @@ pre.template {
   .itinerary-table td,
   .itinerary-table td:first-child {
     position: static;
-    display: grid;
-    grid-template-columns: 92px minmax(0, 1fr);
-    gap: 10px;
+    display: block;
     width: auto;
     padding: 13px 14px;
     border-right: 0;
@@ -1100,6 +1098,8 @@ pre.template {
   }
 
   .itinerary-table td::before {
+    display: block;
+    margin-bottom: 7px;
     color: var(--text-3);
     content: attr(data-label);
     font-family: var(--mono);
