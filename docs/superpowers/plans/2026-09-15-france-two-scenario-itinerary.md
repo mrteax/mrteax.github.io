@@ -228,3 +228,48 @@ git commit -m "feat: update France itinerary with two departure options"
 Run: `git push -u origin cursor/france-trip-guide-2026-25b2`
 
 Update the PR title and description to describe the current route, two scenarios, shared reservation dates, and privacy-safe content.
+
+---
+
+### Task 5: Convert the daily timeline to a table
+
+**Files:**
+- Modify: `scripts/check-travel-pages.py`
+- Modify: `france-itinerary-2026.html`
+- Modify: `css/travel.css`
+
+**Interfaces:**
+- Consumes: the verified route, restaurant research, existing map-link JavaScript, and reservation cards.
+- Produces: one `.itinerary-table`, 12 `.schedule-row` records covering 10 unique dates, four scenario rows, and responsive card rendering.
+
+- [ ] **Step 1: Update the checker before changing markup**
+
+Require one `.itinerary-table`, 12 `.schedule-row` elements, the 10 unique `data-date` values from `9.29` through `10.8`, four `.scenario-row` elements, and at least six `.restaurant-link` elements.
+
+- [ ] **Step 2: Run the checker and verify RED**
+
+Run: `python3 scripts/check-travel-pages.py`
+
+Expected: FAIL because the current page still uses timeline sections and scenario cards.
+
+- [ ] **Step 3: Replace timeline markup**
+
+Use six table columns:
+
+```text
+日期与住宿 | 交通 | 上午 | 下午 | 晚上与餐厅 | 需要预约
+```
+
+Use one shared row per date and A/B child rows for 6 and 7 October.
+
+- [ ] **Step 4: Add researched restaurant recommendations**
+
+Use The Pantry, Chez Acchiardo, Marché Provençal, Bouillon Pigalle, Au Petit Riche, Ô Chateau, and Menza. Include recommended dishes, current price bands, opening-day compatibility, and map or official links.
+
+- [ ] **Step 5: Add responsive styling**
+
+Keep a sticky header and first column on desktop. Below 760 pixels, hide the table header and display each row as a labeled card using `td::before { content: attr(data-label); }`.
+
+- [ ] **Step 6: Verify and publish**
+
+Run the static checker, desktop and 390-pixel browser assertions, official-link audit, and `git diff --check`; commit, push, update the PR, and publish the verified revision to `master`.
