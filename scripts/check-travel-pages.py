@@ -308,6 +308,12 @@ if itinerary:
             f"{sorted(REQUIRED_MAP_QUERIES - map_queries)}"
         )
     itinerary_text = texts["france-itinerary-2026.html"]
+    route_stops = itinerary.with_class("route-stop")
+    if len(route_stops) != 8:
+        errors.append(
+            "france-itinerary-2026.html: expected 8 route-stop elements "
+            f"for the complete round trip, found {len(route_stops)}"
+        )
     for route_text in ("阿姆斯特丹", "尼斯", "巴黎", "布达佩斯"):
         if route_text not in itinerary_text:
             errors.append(

@@ -391,7 +391,7 @@ td {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: auto minmax(18px, 1fr) auto minmax(18px, 1fr) auto minmax(18px, 1fr) auto minmax(18px, 1fr) auto minmax(18px, 1fr) auto;
+  grid-template-columns: auto minmax(12px, 1fr) auto minmax(12px, 1fr) auto minmax(12px, 1fr) auto minmax(12px, 1fr) auto minmax(12px, 1fr) auto minmax(12px, 1fr) auto minmax(12px, 1fr) auto;
   align-items: center;
   gap: 8px;
   margin-top: 34px;
@@ -800,7 +800,7 @@ pre.template {
   }
 
   .route-line {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .route-line i {
