@@ -272,7 +272,7 @@ if itinerary:
             child.text() for child in tables[0].descendants()
             if child.tag == "th"
         ]
-        expected_headers = ["日期 / 住宿", "行程", "交通", "餐饮", "预约"]
+        expected_headers = ["日期 / 地点", "行程", "交通", "餐饮", "预约"]
         if headers != expected_headers:
             errors.append(
                 "france-itinerary-2026.html: functional headers mismatch; "
@@ -307,6 +307,23 @@ if itinerary:
             errors.append(
                 "france-itinerary-2026.html: "
                 f"schedule row {index} cells need mobile data-label attributes"
+            )
+    expected_location_labels = {
+        "9.29": "上海 → 广州",
+        "9.30": "广州 → 阿姆斯特丹",
+        "10.1": "阿姆斯特丹 → 尼斯",
+        "10.3": "尼斯 → 巴黎",
+        "10.7": "巴黎 → 布达佩斯",
+        "10.8": "布达佩斯 → 广州",
+    }
+    for row in rows:
+        date = row.attrs.get("data-date")
+        expected = expected_location_labels.get(date)
+        cells = [child for child in row.children if child.tag == "td"]
+        if expected and (not cells or expected not in cells[0].text()):
+            errors.append(
+                "france-itinerary-2026.html: "
+                f"{date} location cell must show {expected}"
             )
     scenario_rows = itinerary.with_class("scenario-row", "tr")
     if scenario_rows:
