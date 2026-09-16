@@ -72,7 +72,6 @@ EXPECTED_BOOKING_IDS = {
     "book-picasso",
     "book-orsay",
     "book-louvre",
-    "book-garnier",
     "book-eiffel",
     "book-sainte-chapelle",
     "book-seine-cruise",
@@ -268,6 +267,17 @@ if itinerary:
             "france-itinerary-2026.html: expected exactly one itinerary-table, "
             f"found {len(tables)}"
         )
+    else:
+        headers = [
+            child.text() for child in tables[0].descendants()
+            if child.tag == "th"
+        ]
+        expected_headers = ["日期 / 住宿", "行程", "交通", "餐饮", "预约"]
+        if headers != expected_headers:
+            errors.append(
+                "france-itinerary-2026.html: functional headers mismatch; "
+                f"expected {expected_headers}, found {headers}"
+            )
     rows = itinerary.with_class("schedule-row", "tr")
     if len(rows) != 10:
         errors.append(
@@ -288,10 +298,10 @@ if itinerary:
         )
     for index, row in enumerate(rows, start=1):
         cells = [child for child in row.children if child.tag == "td"]
-        if len(cells) != 6:
+        if len(cells) != 5:
             errors.append(
                 "france-itinerary-2026.html: "
-                f"schedule row {index} needs six cells, found {len(cells)}"
+                f"schedule row {index} needs five cells, found {len(cells)}"
             )
         if not all(cell.attrs.get("data-label", "").strip() for cell in cells):
             errors.append(
