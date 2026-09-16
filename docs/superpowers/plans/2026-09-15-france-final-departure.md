@@ -41,3 +41,12 @@
 - [ ] Add a mobile-only bottom switch between itinerary and planning pages.
 - [ ] Increase mobile booking-link tap targets and verify no horizontal overflow at 390 pixels.
 - [ ] Commit, verify, publish to `master`, and confirm the Pages deployment.
+
+### Task 5: Group the itinerary by function
+
+- [ ] Update the checker to require five table cells and the headers `日期 / 住宿`, `行程`, `交通`, `餐饮`, `预约`.
+- [ ] Confirm the old six-column table fails the new requirement.
+- [ ] Merge morning, afternoon, and evening activity text into one vertical `day-flow` in each row.
+- [ ] Keep transport, restaurant, and booking information in their own functional columns.
+- [ ] Adjust desktop widths and verify the same five labels on mobile.
+- [ ] Commit, run browser and link checks, publish to `master`, and verify deployment.
