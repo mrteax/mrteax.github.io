@@ -362,12 +362,23 @@ if itinerary:
             f"{sorted(REQUIRED_MAP_QUERIES - map_queries)}"
         )
     itinerary_text = texts["france-itinerary-2026.html"]
-    route_stops = itinerary.with_class("route-stop")
-    if len(route_stops) != 8:
+    compact_heads = itinerary.with_class("compact-page-head", "header")
+    if len(compact_heads) != 1:
         errors.append(
-            "france-itinerary-2026.html: expected 8 route-stop elements "
-            f"for the complete round trip, found {len(route_stops)}"
+            "france-itinerary-2026.html: expected one compact-page-head"
         )
+    for redundant_class in (
+        "itinerary-hero",
+        "route-line",
+        "transport-board",
+        "booking-spotlight",
+        "decision-note",
+    ):
+        if itinerary.with_class(redundant_class):
+            errors.append(
+                "france-itinerary-2026.html: redundant module remains "
+                f"{redundant_class}"
+            )
     for route_text in ("阿姆斯特丹", "尼斯", "巴黎", "布达佩斯"):
         if route_text not in itinerary_text:
             errors.append(
@@ -564,6 +575,15 @@ for filename in (
     for stale in ("方案 A", "方案 B", "双方案", "改签后确认"):
         if stale in texts[filename]:
             errors.append(f"{filename}: stale route state {stale}")
+
+for filename in (
+    "travel.html",
+    "france.html",
+    "france-planning-2026.html",
+    "france-itinerary-2026.html",
+):
+    if filename in texts and "欧洲十日行" in texts[filename]:
+        errors.append(f"{filename}: oversized/public trip-duration title remains")
 
 for filename in ("france-planning-2026.html", "france-itinerary-2026.html"):
     document = documents.get(filename)
