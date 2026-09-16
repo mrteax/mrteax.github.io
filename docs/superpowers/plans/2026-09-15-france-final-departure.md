@@ -50,3 +50,12 @@
 - [ ] Keep transport, restaurant, and booking information in their own functional columns.
 - [ ] Adjust desktop widths and verify the same five labels on mobile.
 - [ ] Commit, run browser and link checks, publish to `master`, and verify deployment.
+
+### Task 6: Remove redundant itinerary chrome
+
+- [ ] Update the checker to reject the large hero, route line, transport board, booking spotlight, decision note, and “欧洲十日行” copy.
+- [ ] Confirm the current page fails those compact-page requirements.
+- [ ] Replace the hero with a compact page heading and date.
+- [ ] Remove all repeated modules so the date navigation and itinerary table become the primary content.
+- [ ] Simplify the travel and France hub labels.
+- [ ] Verify the first table row appears near the top on desktop and mobile, then publish to `master`.
