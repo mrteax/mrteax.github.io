@@ -369,6 +369,26 @@ if itinerary:
                 "france-itinerary-2026.html: missing confirmed transport "
                 f"{final_transport_text}"
             )
+    rows_by_date = {row.attrs.get("data-date"): row for row in rows}
+    day_six = rows_by_date.get("10.6")
+    day_seven = rows_by_date.get("10.7")
+    if not day_six or not all(
+        text in day_six.text()
+        for text in ("圣礼拜堂", "巴黎圣母院", "Pont Neuf")
+    ):
+        errors.append(
+            "france-itinerary-2026.html: 10.6 must contain the Cité "
+            "and Pont Neuf plan"
+        )
+    if (
+        not day_seven
+        or any(text in day_seven.text() for text in ("圣礼拜堂", "巴黎圣母院"))
+        or not all(text in day_seven.text() for text in ("11:30", "退房", "取行李"))
+    ):
+        errors.append(
+            "france-itinerary-2026.html: 10.7 must be a checkout "
+            "and Beauvais transfer morning without timed attractions"
+        )
     if "Rijksmuseum" in itinerary_text or "国立博物馆" in itinerary_text:
         errors.append(
             "france-itinerary-2026.html: Rijksmuseum should be replaced "
@@ -610,6 +630,17 @@ if (
     and "teax-france-2026-v2-planning" not in texts["france-planning-2026.html"]
 ):
     errors.append("france-planning-2026.html: missing checklist localStorage key")
+if "france-planning-2026.html" in texts:
+    planning_text = texts["france-planning-2026.html"]
+    for booking_text in (
+        "10.6 14:00 · 圣礼拜堂",
+        "10.6 17:30 · 塞纳河游船",
+    ):
+        if booking_text not in planning_text:
+            errors.append(
+                "france-planning-2026.html: missing finalized booking "
+                f"{booking_text}"
+            )
 
 for filename in PRIVACY_FILES:
     path = ROOT / filename
