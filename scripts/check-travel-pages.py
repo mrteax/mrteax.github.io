@@ -72,6 +72,7 @@ EXPECTED_BOOKING_IDS = {
     "book-picasso",
     "book-orsay",
     "book-louvre",
+    "book-garnier",
     "book-eiffel",
     "book-sainte-chapelle",
     "book-seine-cruise",
@@ -408,15 +409,33 @@ if itinerary:
                 f"{final_transport_text}"
             )
     rows_by_date = {row.attrs.get("data-date"): row for row in rows}
+    day_four = rows_by_date.get("10.4")
+    day_five = rows_by_date.get("10.5")
     day_six = rows_by_date.get("10.6")
     day_seven = rows_by_date.get("10.7")
-    if not day_six or not all(
-        text in day_six.text()
-        for text in ("圣礼拜堂", "巴黎圣母院", "Pont Neuf")
+    if not day_four or not all(
+        text in day_four.text()
+        for text in ("卢浮宫", "圣礼拜堂", "巴黎圣母院")
     ):
         errors.append(
-            "france-itinerary-2026.html: 10.6 must contain the Cité "
-            "and Pont Neuf plan"
+            "france-itinerary-2026.html: 10.4 must contain Louvre "
+            "and the Cité plan"
+        )
+    if not day_five or not all(
+        text in day_five.text()
+        for text in ("蒙马特", "加尼叶宫")
+    ):
+        errors.append(
+            "france-itinerary-2026.html: 10.5 must contain Montmartre "
+            "and Palais Garnier"
+        )
+    if not day_six or not all(
+        text in day_six.text()
+        for text in ("埃菲尔铁塔", "塞纳河游船", "奥赛博物馆")
+    ):
+        errors.append(
+            "france-itinerary-2026.html: 10.6 must contain Eiffel Tower, "
+            "Seine cruise, and Orsay"
         )
     if (
         not day_seven
@@ -680,8 +699,11 @@ if (
 if "france-planning-2026.html" in texts:
     planning_text = texts["france-planning-2026.html"]
     for booking_text in (
-        "10.6 14:00 · 圣礼拜堂",
-        "10.6 17:30 · 塞纳河游船",
+        "10.4 09:30 · 卢浮宫",
+        "10.4 14:30 · 圣礼拜堂",
+        "10.5 14:30 · 巴黎歌剧院加尼叶宫",
+        "10.6 12:30 · 塞纳河游船",
+        "10.6 14:30 · 奥赛博物馆",
     ):
         if booking_text not in planning_text:
             errors.append(
