@@ -70,7 +70,6 @@ EXPECTED_BOOKING_IDS = {
     "book-nice-paris",
     "book-vangogh",
     "book-bellet",
-    "book-picasso",
     "book-orsay",
     "book-louvre",
     "book-garnier",
@@ -313,8 +312,8 @@ if itinerary:
     expected_location_labels = {
         "9.29": "上海 → 广州",
         "9.30": "广州 → 阿姆斯特丹",
-        "10.1": "阿姆斯特丹 → 尼斯",
-        "10.3": "尼斯 → 巴黎",
+        "10.1": "阿姆斯特丹 → 尼斯 → Juan-les-Pins",
+        "10.3": "Juan-les-Pins → 昂蒂布 → 尼斯 → 巴黎",
         "10.7": "巴黎 → 布达佩斯",
         "10.8": "布达佩斯 → 广州",
     }
@@ -414,6 +413,32 @@ if itinerary:
     day_five = rows_by_date.get("10.5")
     day_six = rows_by_date.get("10.6")
     day_seven = rows_by_date.get("10.7")
+    day_one = rows_by_date.get("10.1")
+    day_two = rows_by_date.get("10.2")
+    day_three = rows_by_date.get("10.3")
+    if not day_one or "Juan-les-Pins" not in day_one.text():
+        errors.append(
+            "france-itinerary-2026.html: 10.1 must end at Juan-les-Pins"
+        )
+    if not day_two or not all(
+        text in day_two.text() for text in ("Juan-les-Pins", "尼斯", "Bellet")
+    ):
+        errors.append(
+            "france-itinerary-2026.html: 10.2 must be the Nice day trip "
+            "from Juan-les-Pins"
+        )
+    if (
+        not day_three
+        or not all(
+            text in day_three.text()
+            for text in ("Juan-les-Pins", "昂蒂布普罗旺斯市场", "老城", "14:57")
+        )
+        or "毕加索博物馆" in day_three.text()
+    ):
+        errors.append(
+            "france-itinerary-2026.html: 10.3 must use the short Antibes "
+            "market/old-town stop without the Picasso museum"
+        )
     if not day_four or not all(
         text in day_four.text()
         for text in ("卢浮宫", "杜乐丽", "香榭丽舍", "凯旋门")
@@ -711,6 +736,10 @@ if (
     errors.append("france-planning-2026.html: missing checklist localStorage key")
 if "france-planning-2026.html" in texts:
     planning_text = texts["france-planning-2026.html"]
+    if "book-picasso" in planning_text or "毕加索博物馆" in planning_text:
+        errors.append(
+            "france-planning-2026.html: Picasso museum booking should be removed"
+        )
     for booking_text in (
         "10.4 09:30 · 卢浮宫",
         "10.4 18:00 · 凯旋门登顶",
