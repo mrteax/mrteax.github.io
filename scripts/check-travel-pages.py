@@ -341,6 +341,48 @@ if itinerary:
             "france-itinerary-2026.html: expected at least six restaurant links, "
             f"found {len(restaurant_links)}"
         )
+    base_links = itinerary.with_class("base-link", "a")
+    expected_base_queries = {
+        "9.30": "52.365771,4.897448",
+        "10.1": "43.569824,7.111292",
+        "10.2": "43.569824,7.111292",
+        "10.3": "48.874142,2.315952",
+        "10.4": "48.874142,2.315952",
+        "10.5": "48.874142,2.315952",
+        "10.6": "48.874142,2.315952",
+        "10.7": "47.498418,19.056624",
+    }
+    found_base_queries = {}
+    for row in rows:
+        links = [
+            child for child in row.descendants()
+            if child.tag == "a" and child.has_class("base-link")
+        ]
+        if links:
+            found_base_queries[row.attrs.get("data-date")] = links[0].attrs.get(
+                "data-q"
+            )
+        for link in links:
+            if (
+                link.text() != "返回点"
+                or not link.has_class("map-link")
+                or not re.fullmatch(
+                    r"-?\d{1,3}\.\d+,-?\d{1,3}\.\d+",
+                    link.attrs.get("data-q", ""),
+                )
+            ):
+                errors.append(
+                    "france-itinerary-2026.html: return-point links must use "
+                    "a neutral label and coordinate query"
+                )
+    if (
+        len(base_links) != len(expected_base_queries)
+        or found_base_queries != expected_base_queries
+    ):
+        errors.append(
+            "france-itinerary-2026.html: expected neutral return-point links "
+            f"{expected_base_queries}, found {found_base_queries}"
+        )
     mobile_day_navs = itinerary.with_class("mobile-day-nav", "nav")
     mobile_day_links = (
         [
