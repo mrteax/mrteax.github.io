@@ -419,6 +419,15 @@ if itinerary:
     day_one = rows_by_date.get("10.1")
     day_two = rows_by_date.get("10.2")
     day_three = rows_by_date.get("10.3")
+    amsterdam_day = rows_by_date.get("9.30")
+    if not amsterdam_day or not all(
+        text in amsterdam_day.text()
+        for text in ("De Wallen", "20:00", "禁止拍摄")
+    ):
+        errors.append(
+            "france-itinerary-2026.html: 9.30 must contain the respectful "
+            "De Wallen evening walk"
+        )
     if not day_one or "Juan-les-Pins" not in day_one.text():
         errors.append(
             "france-itinerary-2026.html: 10.1 must end at Juan-les-Pins"
@@ -453,7 +462,7 @@ if itinerary:
         )
     if not day_five or not all(
         text in day_five.text()
-        for text in ("蒙马特", "巴黎歌剧院", "疯马秀", "20:00")
+        for text in ("蒙马特", "巴黎歌剧院")
     ):
         errors.append(
             "france-itinerary-2026.html: 10.5 must contain Montmartre "
@@ -469,7 +478,9 @@ if itinerary:
             "奥赛博物馆",
             "15:00",
             "塞纳河游船",
-            "18:00",
+            "17:30",
+            "疯马秀",
+            "20:00",
         )
     ):
         errors.append(
@@ -478,8 +489,8 @@ if itinerary:
         )
     expected_bars = {
         "10.4": ("Bar Nouveau", "Little Red Door"),
-        "10.5": ("疯马秀", "Danico"),
-        "10.6": ("The Cambridge Public House",),
+        "10.5": ("Danico",),
+        "10.6": ("疯马秀", "The Cambridge Public House"),
     }
     for date, bars in expected_bars.items():
         row = rows_by_date.get(date)
@@ -762,14 +773,18 @@ if "france-planning-2026.html" in texts:
         "10.6 09:30 · 圣礼拜堂",
         "10.6 12:00 · Alliance午餐",
         "10.6 15:00 · 奥赛博物馆",
-        "10.6 18:00 · 塞纳河游船",
-        "10.5 20:00 · 疯马秀",
+        "10.6 17:30 · 塞纳河游船",
+        "10.6 20:00 · 疯马秀",
     ):
         if booking_text not in planning_text:
             errors.append(
                 "france-planning-2026.html: missing finalized booking "
                 f"{booking_text}"
             )
+    if "10.5 20:00 · 疯马秀" in planning_text:
+        errors.append(
+            "france-planning-2026.html: unavailable 10.5 Crazy Horse time remains"
+        )
     for replaced in ("Chez Acchiardo", "Au Petit Riche", "奥赛11:00"):
         if replaced in planning_text:
             errors.append(
