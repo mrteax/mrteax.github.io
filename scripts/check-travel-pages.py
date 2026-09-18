@@ -78,6 +78,7 @@ EXPECTED_BOOKING_IDS = {
     "book-sainte-chapelle",
     "book-seine-cruise",
     "book-alliance",
+    "book-crazy-horse",
 }
 PHRASING_TAGS = {
     "a",
@@ -452,7 +453,7 @@ if itinerary:
         )
     if not day_five or not all(
         text in day_five.text()
-        for text in ("蒙马特", "巴黎歌剧院")
+        for text in ("蒙马特", "巴黎歌剧院", "疯马秀", "20:00")
     ):
         errors.append(
             "france-itinerary-2026.html: 10.5 must contain Montmartre "
@@ -477,7 +478,7 @@ if itinerary:
         )
     expected_bars = {
         "10.4": ("Bar Nouveau", "Little Red Door"),
-        "10.5": ("Danico",),
+        "10.5": ("疯马秀", "Danico"),
         "10.6": ("The Cambridge Public House",),
     }
     for date, bars in expected_bars.items():
@@ -762,6 +763,7 @@ if "france-planning-2026.html" in texts:
         "10.6 12:00 · Alliance午餐",
         "10.6 15:00 · 奥赛博物馆",
         "10.6 18:00 · 塞纳河游船",
+        "10.5 20:00 · 疯马秀",
     ):
         if booking_text not in planning_text:
             errors.append(
