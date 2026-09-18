@@ -465,6 +465,40 @@ if itinerary:
                 f"{final_transport_text}"
             )
     rows_by_date = {row.attrs.get("data-date"): row for row in rows}
+    expected_flight_times = {
+        "CZ3504": (
+            "起飞 上海虹桥 T2｜本地 9.29 19:50｜北京 9.29 19:50",
+            "落地 广州白云 T2｜本地 9.29 22:30｜北京 9.29 22:30",
+        ),
+        "CZ307": (
+            "起飞 广州白云 T2｜本地 9.30 00:30｜北京 9.30 00:30",
+            "落地 阿姆斯特丹｜本地 9.30 06:35｜北京 9.30 12:35",
+        ),
+        "CZ650": (
+            "起飞 布达佩斯｜本地 10.8 12:45｜北京 10.8 18:45",
+            "落地 广州｜本地 10.9 05:30｜北京 10.9 05:30",
+        ),
+        "CZ3550": (
+            "起飞 广州白云 T2｜本地 10.9 10:30｜北京 10.9 10:30",
+            "落地 上海浦东 T2｜本地 10.9 12:55｜北京 10.9 12:55",
+        ),
+    }
+    flight_time_blocks = itinerary.with_class("flight-time-block")
+    found_flights = {
+        block.attrs.get("data-flight"): block for block in flight_time_blocks
+    }
+    if set(found_flights) != set(expected_flight_times):
+        errors.append(
+            "france-itinerary-2026.html: international flight time blocks "
+            f"mismatch; found {sorted(found_flights)}"
+        )
+    for flight, expected_lines in expected_flight_times.items():
+        block = found_flights.get(flight)
+        if not block or not all(line in block.text() for line in expected_lines):
+            errors.append(
+                "france-itinerary-2026.html: "
+                f"{flight} must show local and Beijing takeoff/landing times"
+            )
     day_four = rows_by_date.get("10.4")
     day_five = rows_by_date.get("10.5")
     day_six = rows_by_date.get("10.6")
@@ -839,6 +873,19 @@ if "france-planning-2026.html" in texts:
         errors.append(
             "france-planning-2026.html: superseded Van Gogh time remains"
         )
+    for flight_time_text in (
+        "CZ3504：本地/北京 9.29 19:50 起飞，22:30 落地",
+        "CZ307：本地/北京 9.30 00:30 起飞；阿姆斯特丹本地 06:35",
+        "对应北京 12:35",
+        "CZ650：布达佩斯本地 10.8 12:45 起飞，对应北京 18:45",
+        "广州本地/北京 10.9 05:30 落地",
+        "CZ3550：本地/北京 10.9 10:30 起飞，12:55 落地浦东 T2",
+    ):
+        if flight_time_text not in planning_text:
+            errors.append(
+                "france-planning-2026.html: missing local/Beijing flight time "
+                f"{flight_time_text}"
+            )
     if "10.5 20:00 · 疯马秀" in planning_text:
         errors.append(
             "france-planning-2026.html: unavailable 10.5 Crazy Horse time remains"

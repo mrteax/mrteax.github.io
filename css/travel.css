@@ -704,6 +704,33 @@ td {
   font-weight: 700;
 }
 
+.flight-time-block {
+  display: grid;
+  gap: 6px;
+}
+
+.flight-time-block + .flight-time-block {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+
+.flight-time-block > strong {
+  color: var(--accent2);
+  font-family: var(--mono);
+  font-size: .76rem;
+}
+
+.flight-time-block p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.flight-time-block + .subtle {
+  display: block;
+  margin-top: 8px;
+}
+
 .row-tag {
   display: inline-flex;
   padding: 3px 7px;
