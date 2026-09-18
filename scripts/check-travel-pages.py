@@ -70,12 +70,14 @@ EXPECTED_BOOKING_IDS = {
     "book-nice-paris",
     "book-vangogh",
     "book-bellet",
+    "book-plongeoir",
     "book-orsay",
     "book-louvre",
     "book-garnier",
     "book-arc",
     "book-sainte-chapelle",
     "book-seine-cruise",
+    "book-alliance",
 }
 PHRASING_TAGS = {
     "a",
@@ -421,7 +423,8 @@ if itinerary:
             "france-itinerary-2026.html: 10.1 must end at Juan-les-Pins"
         )
     if not day_two or not all(
-        text in day_two.text() for text in ("Juan-les-Pins", "尼斯", "Bellet")
+        text in day_two.text()
+        for text in ("Juan-les-Pins", "尼斯", "Le Plongeoir", "15:30", "Bellet")
     ):
         errors.append(
             "france-itinerary-2026.html: 10.2 must be the Nice day trip "
@@ -457,7 +460,16 @@ if itinerary:
         )
     if not day_six or not all(
         text in day_six.text()
-        for text in ("巴黎圣母院", "圣礼拜堂", "奥赛博物馆", "塞纳河游船")
+        for text in (
+            "巴黎圣母院",
+            "圣礼拜堂",
+            "Alliance",
+            "12:00",
+            "奥赛博物馆",
+            "15:00",
+            "塞纳河游船",
+            "18:00",
+        )
     ):
         errors.append(
             "france-itinerary-2026.html: 10.6 must contain the Cité, "
@@ -741,17 +753,26 @@ if "france-planning-2026.html" in texts:
             "france-planning-2026.html: Picasso museum booking should be removed"
         )
     for booking_text in (
+        "10.2 12:00 · Le Plongeoir",
+        "10.2 15:30 · Château de Bellet",
         "10.4 09:30 · 卢浮宫",
         "10.4 18:00 · 凯旋门登顶",
         "10.5 15:00 · 巴黎歌剧院",
         "10.6 09:30 · 圣礼拜堂",
-        "10.6 11:00 · 奥赛博物馆",
-        "10.6 17:00 · 塞纳河游船",
+        "10.6 12:00 · Alliance午餐",
+        "10.6 15:00 · 奥赛博物馆",
+        "10.6 18:00 · 塞纳河游船",
     ):
         if booking_text not in planning_text:
             errors.append(
                 "france-planning-2026.html: missing finalized booking "
                 f"{booking_text}"
+            )
+    for replaced in ("Chez Acchiardo", "Au Petit Riche", "奥赛11:00"):
+        if replaced in planning_text:
+            errors.append(
+                "france-planning-2026.html: replaced plan remains "
+                f"{replaced}"
             )
 
 for filename in PRIVACY_FILES:
