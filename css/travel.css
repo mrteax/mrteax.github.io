@@ -665,7 +665,8 @@ td {
   background: var(--bg-input);
 }
 
-.itinerary-table td > time {
+.itinerary-table td > time,
+.itinerary-table td:first-child > .base-link > time {
   display: block;
   color: var(--accent2);
   font-family: var(--mono);

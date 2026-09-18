@@ -363,8 +363,15 @@ if itinerary:
                 "data-q"
             )
         for link in links:
+            linked_times = [
+                child for child in link.descendants() if child.tag == "time"
+            ]
             if (
-                link.text() != "返回点"
+                link.parent is not row.children[0]
+                or len(linked_times) != 1
+                or not linked_times[0].text().startswith(
+                    row.attrs.get("data-date", "")
+                )
                 or not link.has_class("map-link")
                 or not re.fullmatch(
                     r"-?\d{1,3}\.\d+,-?\d{1,3}\.\d+",
@@ -372,16 +379,20 @@ if itinerary:
                 )
             ):
                 errors.append(
-                    "france-itinerary-2026.html: return-point links must use "
-                    "a neutral label and coordinate query"
+                    "france-itinerary-2026.html: linked dates must stay in the "
+                    "date cell and use a coordinate query"
                 )
     if (
         len(base_links) != len(expected_base_queries)
         or found_base_queries != expected_base_queries
     ):
         errors.append(
-            "france-itinerary-2026.html: expected neutral return-point links "
+            "france-itinerary-2026.html: expected date map links "
             f"{expected_base_queries}, found {found_base_queries}"
+        )
+    if "返回点" in texts["france-itinerary-2026.html"]:
+        errors.append(
+            "france-itinerary-2026.html: date links must not show a return-point label"
         )
     mobile_day_navs = itinerary.with_class("mobile-day-nav", "nav")
     mobile_day_links = (
@@ -464,11 +475,11 @@ if itinerary:
     amsterdam_day = rows_by_date.get("9.30")
     if not amsterdam_day or not all(
         text in amsterdam_day.text()
-        for text in ("De Wallen", "20:00", "禁止拍摄")
+        for text in ("梵高博物馆", "09:00", "De Wallen", "20:00", "禁止拍摄")
     ):
         errors.append(
             "france-itinerary-2026.html: 9.30 must contain the respectful "
-            "De Wallen evening walk"
+            "09:00 Van Gogh visit and De Wallen evening walk"
         )
     if not day_one or "Juan-les-Pins" not in day_one.text():
         errors.append(
@@ -807,6 +818,7 @@ if "france-planning-2026.html" in texts:
             "france-planning-2026.html: Picasso museum booking should be removed"
         )
     for booking_text in (
+        "9.30 09:00 · 梵高博物馆",
         "10.2 12:00 · Le Plongeoir",
         "10.2 15:30 · Château de Bellet",
         "10.4 09:30 · 卢浮宫",
@@ -823,6 +835,10 @@ if "france-planning-2026.html" in texts:
                 "france-planning-2026.html: missing finalized booking "
                 f"{booking_text}"
             )
+    if "9.30 15:00 · 梵高博物馆" in planning_text:
+        errors.append(
+            "france-planning-2026.html: superseded Van Gogh time remains"
+        )
     if "10.5 20:00 · 疯马秀" in planning_text:
         errors.append(
             "france-planning-2026.html: unavailable 10.5 Crazy Horse time remains"
