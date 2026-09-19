@@ -604,12 +604,41 @@ if itinerary:
     if (
         not day_seven
         or any(text in day_seven.text() for text in ("圣礼拜堂", "巴黎圣母院"))
-        or not all(text in day_seven.text() for text in ("11:30", "退房", "取行李"))
+        or not all(
+            text in day_seven.text()
+            for text in (
+                "11:30",
+                "退房",
+                "取行李",
+                "Porte Maillot",
+                "12:30",
+                "13:10",
+                "A01",
+                "1小时15分",
+                "提前网购",
+                "按票面时间为准",
+            )
+        )
     ):
         errors.append(
             "france-itinerary-2026.html: 10.7 must be a checkout "
-            "and Beauvais transfer morning without timed attractions"
+            "and detailed Porte Maillot A01 transfer without timed attractions"
         )
+    if day_seven:
+        airport_bus_links = [
+            child for child in day_seven.descendants()
+            if child.tag == "a"
+            and child.attrs.get("href")
+            == (
+                "https://www.aeroportparisbeauvais.com/en/access-parking/"
+                "paris-airport-shuttle"
+            )
+        ]
+        if len(airport_bus_links) != 1:
+            errors.append(
+                "france-itinerary-2026.html: 10.7 needs one official "
+                "Beauvais A01 booking link"
+            )
     if "Rijksmuseum" in itinerary_text or "国立博物馆" in itinerary_text:
         errors.append(
             "france-itinerary-2026.html: Rijksmuseum should be replaced "
