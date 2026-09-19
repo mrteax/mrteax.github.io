@@ -559,8 +559,13 @@ if itinerary:
                 "13:00",
                 "Bouillon Pigalle",
                 "14:15",
-                "17:30",
+                "17:00",
                 "蒙马特",
+                "塞纳河游船",
+                "18:30",
+                "21:45",
+                "疯马秀",
+                "22:30",
             )
         )
         or day_five.text().index("巴黎歌剧院")
@@ -570,29 +575,30 @@ if itinerary:
             "france-itinerary-2026.html: 10.5 must schedule the 11:00 Paris "
             "Opera before lunch and the afternoon Montmartre visit"
         )
-    if not day_six or not all(
-        text in day_six.text()
-        for text in (
-            "巴黎圣母院",
-            "圣礼拜堂",
-            "Alliance",
-            "12:00",
-            "奥赛博物馆",
-            "15:00",
-            "塞纳河游船",
-            "17:30",
-            "疯马秀",
-            "20:00",
+    if (
+        not day_six
+        or not all(
+            text in day_six.text()
+            for text in (
+                "巴黎圣母院",
+                "圣礼拜堂",
+                "Alliance",
+                "12:00",
+                "奥赛博物馆",
+                "15:00",
+                "Danico",
+            )
         )
+        or any(text in day_six.text() for text in ("塞纳河游船", "疯马秀"))
     ):
         errors.append(
             "france-itinerary-2026.html: 10.6 must contain the Cité, "
-            "Orsay, and Seine cruise"
+            "Orsay, and relaxed Danico evening without the cruise or show"
         )
     expected_bars = {
         "10.4": ("Bar Nouveau", "Little Red Door"),
-        "10.5": ("Danico",),
-        "10.6": ("疯马秀", "The Cambridge Public House"),
+        "10.5": ("疯马秀",),
+        "10.6": ("Danico", "The Cambridge Public House"),
     }
     for date, bars in expected_bars.items():
         row = rows_by_date.get(date)
@@ -905,8 +911,8 @@ if "france-planning-2026.html" in texts:
         "10.6 09:30 · 圣礼拜堂",
         "10.6 12:00 · Alliance午餐",
         "10.6 15:00 · 奥赛博物馆",
-        "10.6 17:30 · 塞纳河游船",
-        "10.6 20:00 · 疯马秀",
+        "10.5 18:30 · 塞纳河游船",
+        "10.5 22:30 · 疯马秀",
     ):
         if booking_text not in planning_text:
             errors.append(
@@ -930,9 +936,19 @@ if "france-planning-2026.html" in texts:
                 "france-planning-2026.html: missing local/Beijing flight time "
                 f"{flight_time_text}"
             )
-    if "10.5 20:00 · 疯马秀" in planning_text:
+    for stale_booking in (
+        "10.6 17:30 · 塞纳河游船",
+        "10.6 20:00 · 疯马秀",
+        "10.5 20:00 · 疯马秀",
+    ):
+        if stale_booking in planning_text:
+            errors.append(
+                "france-planning-2026.html: superseded evening booking "
+                f"remains {stale_booking}"
+            )
+    if "10.5 · Danico" in planning_text or "10.6 · 疯马秀" in planning_text:
         errors.append(
-            "france-planning-2026.html: unavailable 10.5 Crazy Horse time remains"
+            "france-planning-2026.html: Paris evening cards remain on old dates"
         )
     if "10.5 15:00 · 巴黎歌剧院" in planning_text:
         errors.append(
