@@ -547,13 +547,28 @@ if itinerary:
             "france-itinerary-2026.html: 10.4 must contain the Louvre "
             "to Arc de Triomphe axis"
         )
-    if not day_five or not all(
-        text in day_five.text()
-        for text in ("蒙马特", "巴黎歌剧院")
+    if (
+        not day_five
+        or not all(
+            text in day_five.text()
+            for text in (
+                "10:40",
+                "11:00",
+                "12:30",
+                "巴黎歌剧院",
+                "13:00",
+                "Bouillon Pigalle",
+                "14:15",
+                "17:30",
+                "蒙马特",
+            )
+        )
+        or day_five.text().index("巴黎歌剧院")
+        > day_five.text().index("蒙马特")
     ):
         errors.append(
-            "france-itinerary-2026.html: 10.5 must contain Montmartre "
-            "and the Paris Opera"
+            "france-itinerary-2026.html: 10.5 must schedule the 11:00 Paris "
+            "Opera before lunch and the afternoon Montmartre visit"
         )
     if not day_six or not all(
         text in day_six.text()
@@ -857,7 +872,7 @@ if "france-planning-2026.html" in texts:
         "10.2 15:30 · Château de Bellet",
         "10.4 09:30 · 卢浮宫",
         "10.4 18:00 · 凯旋门登顶",
-        "10.5 15:00 · 巴黎歌剧院",
+        "10.5 11:00 · 巴黎歌剧院",
         "10.6 09:30 · 圣礼拜堂",
         "10.6 12:00 · Alliance午餐",
         "10.6 15:00 · 奥赛博物馆",
@@ -889,6 +904,10 @@ if "france-planning-2026.html" in texts:
     if "10.5 20:00 · 疯马秀" in planning_text:
         errors.append(
             "france-planning-2026.html: unavailable 10.5 Crazy Horse time remains"
+        )
+    if "10.5 15:00 · 巴黎歌剧院" in planning_text:
+        errors.append(
+            "france-planning-2026.html: superseded Opera visit time remains"
         )
     for replaced in ("Chez Acchiardo", "Au Petit Riche", "奥赛11:00"):
         if replaced in planning_text:
