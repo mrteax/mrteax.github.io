@@ -26,7 +26,6 @@ REQUIRED_HTML = (
     "https://www.google.com/maps/search/?api=1&query=",
     "https://tickets.vangoghmuseum.com/",
     "https://ticket.louvre.fr/en",
-    "https://reservation.lecrazy.com/en",
     "https://www.aeroportparisbeauvais.com/en/access-parking/paris-airport-shuttle",
 )
 FORBIDDEN_HTML = (
@@ -37,9 +36,21 @@ FORBIDDEN_HTML = (
     "/france-visa-2026.html",
     "mobile-bottom-nav",
     "page-nav",
+    "family-hidden",
     "Tea X",
     "github.com",
     "theme-icons.js",
+    "De Wallen",
+    "红灯区",
+    "疯马秀",
+    "Crazy Horse",
+    "Bar Nouveau",
+    "Little Red Door",
+    "Danico",
+    "The Cambridge Public House",
+    "barnouveau.fr",
+    "reservation.lecrazy.com",
+    "daroco.com/en/danico",
 )
 
 

@@ -37,6 +37,17 @@ def remove_nav(text, class_name):
     return updated
 
 
+def remove_family_hidden(text):
+    pattern = re.compile(
+        r'<(?P<tag>p|span) class="family-hidden">.*?</(?P=tag)>',
+        flags=re.DOTALL,
+    )
+    updated, count = pattern.subn("", text)
+    if count == 0:
+        raise ValueError("expected family-hidden itinerary content")
+    return updated
+
+
 def family_html():
     html = SOURCE_HTML.read_text(encoding="utf-8")
     html = replace_once(
@@ -68,6 +79,7 @@ def family_html():
 
     html = remove_nav(html, "page-nav")
     html = remove_nav(html, "mobile-bottom-nav")
+    html = remove_family_hidden(html)
     html = replace_once(
         html,
         '  <script src="/js/theme-icons.js"></script>\n',
