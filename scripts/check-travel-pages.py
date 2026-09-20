@@ -586,10 +586,24 @@ if itinerary:
                 "12:00",
                 "奥赛博物馆",
                 "15:00",
+                "17:15",
+                "皇家宫殿",
+                "布伦柱",
+                "18:05",
+                "薇薇安拱廊",
+                "18:50",
+                "全景廊街",
+                "巴黎证券交易所",
+                "19:30",
+                "Daroco Bourse",
+                "21:00",
                 "Danico",
             )
         )
-        or any(text in day_six.text() for text in ("塞纳河游船", "疯马秀"))
+        or any(
+            text in day_six.text()
+            for text in ("塞纳河游船", "疯马秀", "橘园美术馆", "罗丹博物馆")
+        )
     ):
         errors.append(
             "france-itinerary-2026.html: 10.6 must contain the Cité, "
@@ -949,6 +963,11 @@ if "france-planning-2026.html" in texts:
     if "10.5 · Danico" in planning_text or "10.6 · 疯马秀" in planning_text:
         errors.append(
             "france-planning-2026.html: Paris evening cards remain on old dates"
+        )
+    if "皇家宫殿、薇薇安拱廊和全景廊街" not in planning_text:
+        errors.append(
+            "france-planning-2026.html: 10.6 Danico card missing the approved "
+            "evening walk"
         )
     if "10.5 15:00 · 巴黎歌剧院" in planning_text:
         errors.append(
