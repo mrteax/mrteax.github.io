@@ -609,6 +609,25 @@ if itinerary:
             "france-itinerary-2026.html: 10.6 must contain the Cité, "
             "Orsay, and relaxed Danico evening without the cruise or show"
         )
+    if day_six:
+        notre_dame_links = [
+            child for child in day_six.descendants()
+            if child.tag == "a"
+            and child.attrs.get("href")
+            == (
+                "https://resa.notredamedeparis.fr/en/"
+                "reservationindividuelle/tickets"
+            )
+        ]
+        if (
+            len(notre_dame_links) != 1
+            or "免费预约" not in notre_dame_links[0].text()
+            or "提前0–2天" not in day_six.text()
+        ):
+            errors.append(
+                "france-itinerary-2026.html: 10.6 must link the official "
+                "free Notre-Dame reservation with its late release window"
+            )
     expected_bars = {
         "10.4": ("Bar Nouveau", "Little Red Door"),
         "10.5": ("疯马秀",),
