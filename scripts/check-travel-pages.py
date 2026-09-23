@@ -521,12 +521,39 @@ if itinerary:
         )
     if not day_two or not all(
         text in day_two.text()
-        for text in ("Juan-les-Pins", "尼斯", "Le Plongeoir", "15:30", "Bellet")
+        for text in (
+            "Juan-les-Pins",
+            "尼斯",
+            "Café de Turin",
+            "10:00",
+            "6只生蚝",
+            "无需线上预约",
+            "Le Plongeoir",
+            "15:30",
+            "Bellet",
+        )
     ):
         errors.append(
             "france-itinerary-2026.html: 10.2 must be the Nice day trip "
-            "from Juan-les-Pins"
+            "from Juan-les-Pins with a morning oyster stop"
         )
+    if day_two:
+        oyster_links = [
+            child for child in day_two.descendants()
+            if child.tag == "a"
+            and child.attrs.get("href") == "https://www.cafedeturin.fr/"
+        ]
+        if (
+            len(oyster_links) != 1
+            or day_two.text().index("Café de Turin")
+            > day_two.text().index("城堡山")
+            or day_two.text().index("城堡山")
+            > day_two.text().index("Le Plongeoir")
+        ):
+            errors.append(
+                "france-itinerary-2026.html: 10.2 oyster stop must link the "
+                "official Café de Turin site before Castle Hill and lunch"
+            )
     if (
         not day_three
         or not all(

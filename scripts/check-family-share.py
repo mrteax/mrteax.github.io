@@ -25,6 +25,7 @@ REQUIRED_HTML = (
     '<script src="./js/travel-theme.js"></script>',
     "https://www.google.com/maps/search/?api=1&query=",
     "https://tickets.vangoghmuseum.com/",
+    "https://www.cafedeturin.fr/",
     "https://ticket.louvre.fr/en",
     "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets",
     "https://www.aeroportparisbeauvais.com/en/access-parking/paris-airport-shuttle",
