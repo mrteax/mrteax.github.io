@@ -675,8 +675,7 @@ else:
         "FR4230", "CZ650", "CZ3550",
         "Tue 29 Sep 2026", "Fri 9 Oct 2026",
         "Amsterdam", "Juan-les-Pins", "Paris", "Budapest",
-        "Travel insurance",
-        "Passport No.",
+        "booking confirmations are enclosed",
     ):
         if required not in border_text:
             errors.append(f"{BORDER_ITINERARY}: missing {required}")
@@ -691,6 +690,14 @@ else:
         errors.append(
             f"{BORDER_ITINERARY}: expected 11 dated plan rows, found {len(days)}"
         )
+    for personal_field in (
+        "Passport No.", "Full name", "Visa No.", "Booking ref.",
+        "Hotel name", "Policy No.", "Emergency contact", "<td></td>",
+    ):
+        if personal_field in border_text:
+            errors.append(
+                f"{BORDER_ITINERARY}: must not ask for personal details ({personal_field})"
+            )
     for adult_only in (
         "De Wallen", "Red Light", "Crazy Horse", "Bar Nouveau",
         "Little Red Door", "Danico", "Cambridge", "cocktail",
