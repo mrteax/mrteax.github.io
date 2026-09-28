@@ -9,12 +9,14 @@ HTML_FILES = [
     "portal.html",
     "travel.html",
     "france.html",
+    "france-itinerary-2026.html",
+]
+RETIRED_PAGES = (
     "france-visa-2026.html",
     "france-planning-2026.html",
-    "france-itinerary-2026.html",
     "france-schengen-2026.html",
     "france-trip-2026.html",
-]
+)
 TRAVEL_THEME_FILES = HTML_FILES[1:]
 PRIVACY_FILES = HTML_FILES + [
     "docs/france-2026-transport-research.md",
@@ -46,11 +48,7 @@ FORBIDDEN = [
     r"\b13-day first trip\b",
     r"\b(?:a|the)\s+(?:previous|prior|earlier)\s+Italy trip\b",
 ]
-FRANCE_CONTENT_TARGETS = {
-    "/france-visa-2026.html",
-    "/france-planning-2026.html",
-    "/france-itinerary-2026.html",
-}
+FRANCE_CONTENT_TARGETS = ["/france-itinerary-2026.html"]
 REQUIRED_MAP_QUERIES = {
     "Van Gogh Museum, Amsterdam",
     "Cours Saleya, Nice",
@@ -61,82 +59,6 @@ REQUIRED_MAP_QUERIES = {
     "Arc de Triomphe, Paris",
     "Budapest Ferenc Liszt International Airport",
 }
-EXPECTED_BOOKING_IDS = {
-    "book-ams-stay",
-    "book-nice-stay",
-    "book-paris-stay",
-    "book-budapest-stay",
-    "book-ams-nce",
-    "book-nice-paris",
-    "book-vangogh",
-    "book-bellet",
-    "book-plongeoir",
-    "book-orsay",
-    "book-louvre",
-    "book-garnier",
-    "book-arc",
-    "book-sainte-chapelle",
-    "book-seine-cruise",
-    "book-alliance",
-    "book-crazy-horse",
-}
-PHRASING_TAGS = {
-    "a",
-    "abbr",
-    "audio",
-    "b",
-    "bdi",
-    "bdo",
-    "br",
-    "button",
-    "canvas",
-    "cite",
-    "code",
-    "data",
-    "datalist",
-    "del",
-    "dfn",
-    "em",
-    "embed",
-    "i",
-    "iframe",
-    "img",
-    "input",
-    "ins",
-    "kbd",
-    "label",
-    "map",
-    "mark",
-    "math",
-    "meter",
-    "noscript",
-    "object",
-    "output",
-    "picture",
-    "progress",
-    "q",
-    "ruby",
-    "s",
-    "samp",
-    "script",
-    "select",
-    "slot",
-    "small",
-    "span",
-    "strong",
-    "sub",
-    "sup",
-    "svg",
-    "template",
-    "textarea",
-    "time",
-    "u",
-    "var",
-    "video",
-    "wbr",
-}
-
-
 class Element:
     def __init__(self, tag, attrs, parent=None):
         self.tag = tag
@@ -221,17 +143,6 @@ class Document(HTMLParser):
         ]
 
 
-def contains_class(element, name):
-    return any(descendant.has_class(name) for descendant in element.descendants())
-
-
-def has_ancestor(element, ancestor):
-    current = element.parent
-    while current:
-        if current is ancestor:
-            return True
-        current = current.parent
-    return False
 
 
 errors = []
@@ -255,10 +166,10 @@ france = documents.get("france.html")
 if france:
     content_cards = france.with_class("content-card", "a")
     targets = [card.attrs.get("href") for card in content_cards]
-    if len(content_cards) != 3 or set(targets) != FRANCE_CONTENT_TARGETS:
+    if targets != FRANCE_CONTENT_TARGETS:
         errors.append(
-            "france.html: expected exactly three content-card links to "
-            f"{sorted(FRANCE_CONTENT_TARGETS)}, found {targets}"
+            "france.html: expected only the itinerary content card "
+            f"{FRANCE_CONTENT_TARGETS}, found {targets}"
         )
 
 itinerary = documents.get("france-itinerary-2026.html")
@@ -718,151 +629,8 @@ if itinerary:
             "france-itinerary-2026.html: missing Google Maps URL generation code"
         )
 
-schengen = documents.get("france-schengen-2026.html")
-if schengen:
-    target = "/france-visa-2026.html"
-    links = {element.attrs.get("href") for element in schengen.find("a")}
-    canonicals = {
-        element.attrs.get("href")
-        for element in schengen.find("link", rel="canonical")
-    }
-    refreshes = [
-        element.attrs.get("content", "") for element in schengen.find("meta")
-        if element.attrs.get("http-equiv", "").lower() == "refresh"
-    ]
-    if (
-        target not in links
-        or target not in canonicals
-        or not any(target in refresh for refresh in refreshes)
-    ):
-        errors.append(
-            "france-schengen-2026.html: compatibility gateway must link, "
-            "canonicalize, and refresh to /france-visa-2026.html"
-        )
-
-trip_gateway = documents.get("france-trip-2026.html")
-if trip_gateway:
-    links = {element.attrs.get("href") for element in trip_gateway.find("a")}
-    expected = {"/france-planning-2026.html", "/france-itinerary-2026.html"}
-    if not expected.issubset(links):
-        errors.append(
-            f"france-trip-2026.html: missing compatibility targets {sorted(expected - links)}"
-        )
-
-planning = documents.get("france-planning-2026.html")
-booking_count = 0
-if planning:
-    booking_items = planning.with_class("booking-item", "li")
-    booking_count = len(booking_items)
-    booking_ids = set()
-    if not booking_items:
-        errors.append("france-planning-2026.html: no booking items found")
-    for index, item in enumerate(booking_items, start=1):
-        descendants = list(item.descendants())
-        checkboxes = [
-            node
-            for node in descendants
-            if node.tag == "input"
-            and node.attrs.get("type", "").lower() == "checkbox"
-            and node.attrs.get("id")
-        ]
-        booking_ids.update(node.attrs["id"] for node in checkboxes)
-        labels = [node for node in descendants if node.tag == "label"]
-        contents = [
-            node for node in descendants if node.has_class("booking-content")
-        ]
-        if len(checkboxes) != 1:
-            errors.append(
-                f"france-planning-2026.html: booking item {index} needs one checkbox with id"
-            )
-        if len(labels) != 1:
-            errors.append(
-                f"france-planning-2026.html: booking item {index} needs one label"
-            )
-        elif checkboxes and labels[0].attrs.get("for") != checkboxes[0].attrs["id"]:
-            errors.append(
-                f"france-planning-2026.html: booking item {index} label/checkbox mismatch"
-            )
-        if labels:
-            invalid = [
-                node.tag
-                for node in labels[0].descendants()
-                if node.tag not in PHRASING_TAGS
-            ]
-            if invalid:
-                errors.append(
-                    "france-planning-2026.html: "
-                    f"booking item {index} label contains non-phrasing tags {invalid}"
-                )
-        if len(contents) != 1 or (labels and contents[0].parent is not labels[0].parent):
-            errors.append(
-                "france-planning-2026.html: "
-                f"booking item {index} needs one booking-content sibling of its label"
-            )
-            continue
-        content = contents[0]
-        required_classes = {
-            "priority",
-            "booking-window",
-            "booking-rule",
-            "booking-price",
-        }
-        for class_name in required_classes:
-            if not contains_class(content, class_name):
-                errors.append(
-                    "france-planning-2026.html: "
-                    f"booking item {index} missing {class_name}"
-                )
-        official_links = [
-            node
-            for node in content.descendants()
-            if node.tag == "a" and node.has_class("official-link")
-        ]
-        if not official_links:
-            errors.append(
-                f"france-planning-2026.html: booking item {index} missing official link"
-            )
-        for link in official_links:
-            rel = link.attrs.get("rel", "").split()
-            if (
-                not link.attrs.get("href", "").startswith("https://")
-                or link.attrs.get("target") != "_blank"
-                or "noopener" not in rel
-            ):
-                errors.append(
-                    "france-planning-2026.html: "
-                    f"booking item {index} has invalid official direct link"
-                )
-        if labels and any(has_ancestor(link, labels[0]) for link in official_links):
-            errors.append(
-                "france-planning-2026.html: "
-                f"booking item {index} official links must be outside label"
-            )
-        what = [
-            node
-            for node in content.children
-            if node.has_class("place-what")
-        ]
-        if len(what) != 1 or len(what[0].text()) < 18:
-            errors.append(
-                "france-planning-2026.html: "
-                f"booking item {index} needs a concise place-what description"
-            )
-    if booking_ids != EXPECTED_BOOKING_IDS:
-        errors.append(
-            "france-planning-2026.html: booking inventory mismatch; "
-            f"missing {sorted(EXPECTED_BOOKING_IDS - booking_ids)}, "
-            f"unexpected {sorted(booking_ids - EXPECTED_BOOKING_IDS)}"
-        )
-    coverage = planning.with_class("reservation-coverage")
-    if len(coverage) != 1 or "无需提前预约" not in coverage[0].text():
-        errors.append(
-            "france-planning-2026.html: missing clear no-advance-reservation coverage note"
-        )
-
 for filename in (
     "france.html",
-    "france-planning-2026.html",
     "france-itinerary-2026.html",
 ):
     if filename not in texts:
@@ -874,30 +642,25 @@ for filename in (
 for filename in (
     "travel.html",
     "france.html",
-    "france-planning-2026.html",
     "france-itinerary-2026.html",
 ):
     if filename in texts and "欧洲十日行" in texts[filename]:
         errors.append(f"{filename}: oversized/public trip-duration title remains")
 
-for filename in ("france-planning-2026.html", "france-itinerary-2026.html"):
-    document = documents.get(filename)
-    if not document:
-        continue
-    bottom_navs = document.with_class("mobile-bottom-nav", "nav")
-    if len(bottom_navs) != 1:
-        errors.append(f"{filename}: expected one mobile-bottom-nav")
-        continue
-    hrefs = {
-        child.attrs.get("href")
-        for child in bottom_navs[0].descendants()
-        if child.tag == "a"
-    }
-    if hrefs != {
-        "/france-planning-2026.html",
-        "/france-itinerary-2026.html",
-    }:
-        errors.append(f"{filename}: mobile bottom navigation targets mismatch")
+for filename in RETIRED_PAGES:
+    if (ROOT / filename).exists():
+        errors.append(f"{filename}: retired page must be removed")
+for path in sorted(ROOT.glob("*.html")) + sorted((ROOT / "js").glob("*.js")):
+    text = path.read_text(encoding="utf-8")
+    for filename in RETIRED_PAGES:
+        if filename.removesuffix(".html") in text:
+            errors.append(f"{path.relative_to(ROOT)}: still references {filename}")
+for removed_nav in ("topbar-secondary", "page-nav", "mobile-bottom-nav"):
+    if removed_nav in texts.get("france-itinerary-2026.html", ""):
+        errors.append(
+            "france-itinerary-2026.html: navigation to retired pages "
+            f"remains ({removed_nav})"
+        )
 
 travel = documents.get("travel.html")
 if travel:
@@ -950,82 +713,6 @@ else:
             "js/travel-theme.js: must honor saved theme and system preference"
         )
 
-if (
-    "france-planning-2026.html" in texts
-    and "teax-france-2026-v2-planning" not in texts["france-planning-2026.html"]
-):
-    errors.append("france-planning-2026.html: missing checklist localStorage key")
-if "france-planning-2026.html" in texts:
-    planning_text = texts["france-planning-2026.html"]
-    if "book-picasso" in planning_text or "毕加索博物馆" in planning_text:
-        errors.append(
-            "france-planning-2026.html: Picasso museum booking should be removed"
-        )
-    for booking_text in (
-        "9.30 09:00 · 梵高博物馆",
-        "10.2 12:00 · Le Plongeoir",
-        "10.2 15:30 · Château de Bellet",
-        "10.4 09:30 · 卢浮宫",
-        "10.4 18:00 · 凯旋门登顶",
-        "10.5 11:00 · 巴黎歌剧院",
-        "10.6 09:30 · 圣礼拜堂",
-        "10.6 12:00 · Alliance午餐",
-        "10.6 15:00 · 奥赛博物馆",
-        "10.5 18:30 · 塞纳河游船",
-        "10.5 22:30 · 疯马秀",
-    ):
-        if booking_text not in planning_text:
-            errors.append(
-                "france-planning-2026.html: missing finalized booking "
-                f"{booking_text}"
-            )
-    if "9.30 15:00 · 梵高博物馆" in planning_text:
-        errors.append(
-            "france-planning-2026.html: superseded Van Gogh time remains"
-        )
-    for flight_time_text in (
-        "CZ3504：本地/北京 9.29 19:50 起飞，22:30 落地",
-        "CZ307：本地/北京 9.30 00:30 起飞；阿姆斯特丹本地 06:35",
-        "对应北京 12:35",
-        "CZ650：布达佩斯本地 10.8 12:45 起飞，对应北京 18:45",
-        "广州本地/北京 10.9 05:30 落地",
-        "CZ3550：本地/北京 10.9 10:30 起飞，12:55 落地浦东 T2",
-    ):
-        if flight_time_text not in planning_text:
-            errors.append(
-                "france-planning-2026.html: missing local/Beijing flight time "
-                f"{flight_time_text}"
-            )
-    for stale_booking in (
-        "10.6 17:30 · 塞纳河游船",
-        "10.6 20:00 · 疯马秀",
-        "10.5 20:00 · 疯马秀",
-    ):
-        if stale_booking in planning_text:
-            errors.append(
-                "france-planning-2026.html: superseded evening booking "
-                f"remains {stale_booking}"
-            )
-    if "10.5 · Danico" in planning_text or "10.6 · 疯马秀" in planning_text:
-        errors.append(
-            "france-planning-2026.html: Paris evening cards remain on old dates"
-        )
-    if "皇家宫殿、薇薇安拱廊和全景廊街" not in planning_text:
-        errors.append(
-            "france-planning-2026.html: 10.6 Danico card missing the approved "
-            "evening walk"
-        )
-    if "10.5 15:00 · 巴黎歌剧院" in planning_text:
-        errors.append(
-            "france-planning-2026.html: superseded Opera visit time remains"
-        )
-    for replaced in ("Chez Acchiardo", "Au Petit Riche", "奥赛11:00"):
-        if replaced in planning_text:
-            errors.append(
-                "france-planning-2026.html: replaced plan remains "
-                f"{replaced}"
-            )
-
 for filename in PRIVACY_FILES:
     path = ROOT / filename
     if not path.exists():
@@ -1041,6 +728,7 @@ if errors:
     sys.exit(1)
 print(
     "travel page structure: OK "
-    f"(3 France cards, {day_count} days, {map_count} map links, "
-    f"{booking_count} booking actions, {len(HTML_FILES)} balanced HTML pages)"
+    f"(1 France card, {day_count} days, {map_count} map links, "
+    f"{len(HTML_FILES)} balanced HTML pages, "
+    f"{len(RETIRED_PAGES)} retired pages removed)"
 )

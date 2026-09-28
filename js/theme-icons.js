@@ -13,7 +13,6 @@
   const path = location.pathname.split('/').pop() || 'index.html';
   const pageKey = path
     .replace('.html', '')
-    .replace(/france-schengen-2026$/, 'france')
     .replace(/cursor-usage-bookmarklet$/, 'cursor') || 'index';
   const pageIcon = PAGE_ICONS[pageKey] || '•';
 

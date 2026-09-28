@@ -26,17 +26,6 @@ def replace_once(text, old, new, label):
     return text.replace(old, new, 1)
 
 
-def remove_nav(text, class_name):
-    pattern = re.compile(
-        rf"\n\s*<nav class=\"{re.escape(class_name)}\".*?</nav>",
-        flags=re.DOTALL,
-    )
-    updated, count = pattern.subn("", text, count=1)
-    if count != 1:
-        raise ValueError(f"expected exactly one {class_name} navigation")
-    return updated
-
-
 def remove_family_hidden(text):
     pattern = re.compile(
         r'<(?P<tag>p|span) class="family-hidden">.*?</(?P=tag)>',
@@ -77,8 +66,6 @@ def family_html():
     if topbar_count != 1:
         raise ValueError("expected exactly one topbar navigation")
 
-    html = remove_nav(html, "page-nav")
-    html = remove_nav(html, "mobile-bottom-nav")
     html = remove_family_hidden(html)
     html = replace_once(
         html,
