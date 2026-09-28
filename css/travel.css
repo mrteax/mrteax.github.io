@@ -117,7 +117,6 @@
   color: var(--text-3);
 }
 
-.page-nav,
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -126,7 +125,6 @@
   margin-bottom: 16px;
 }
 
-.page-nav a,
 .topbar a,
 .button-link {
   display: inline-flex;
@@ -971,8 +969,7 @@ td {
   background: var(--text);
 }
 
-.mobile-day-nav,
-.mobile-bottom-nav {
+.mobile-day-nav {
   display: none;
 }
 
@@ -1050,10 +1047,6 @@ pre.template {
 }
 
 @media (max-width: 760px) {
-  .itinerary-shell {
-    padding-bottom: calc(92px + env(safe-area-inset-bottom));
-  }
-
   .mobile-day-nav {
     position: sticky;
     top: 0;
@@ -1084,10 +1077,6 @@ pre.template {
     min-height: 44px;
   }
 
-  .topbar-secondary {
-    display: none !important;
-  }
-
   .mobile-day-nav::-webkit-scrollbar {
     display: none;
   }
@@ -1107,51 +1096,6 @@ pre.template {
     font-family: var(--mono);
     font-size: .75rem;
     text-decoration: none;
-  }
-
-  .mobile-bottom-nav {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 30;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 9px 12px calc(9px + env(safe-area-inset-bottom));
-    border-top: 1px solid var(--border);
-    background: color-mix(in srgb, var(--bg-card) 94%, transparent);
-    box-shadow: 0 -10px 30px color-mix(in srgb, var(--text) 12%, transparent);
-    backdrop-filter: blur(16px);
-  }
-
-  .mobile-bottom-nav a {
-    display: grid;
-    min-height: 50px;
-    place-content: center;
-    border-radius: var(--radius-sm);
-    color: var(--text-3);
-    text-align: center;
-    text-decoration: none;
-  }
-
-  .mobile-bottom-nav a.active {
-    color: var(--text);
-    background: var(--accent-bg);
-  }
-
-  .mobile-bottom-nav span {
-    font-size: .65rem;
-  }
-
-  .mobile-bottom-nav strong {
-    font-size: .82rem;
-  }
-
-  .page-nav {
-    display: none;
   }
 
   .itinerary-table-wrap {
@@ -1261,7 +1205,6 @@ pre.template {
 
 @media print {
   .topbar,
-  .page-nav,
   .theme-btn,
   .decision-note .button-link {
     display: none !important;

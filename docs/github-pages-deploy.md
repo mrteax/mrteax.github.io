@@ -51,7 +51,7 @@ The script will:
 ## Useful Links
 
 - Homepage: <https://mrteax.github.io/>
-- France Schengen guide: <https://mrteax.github.io/france-schengen-2026.html>
+- France itinerary: <https://mrteax.github.io/france-itinerary-2026.html>
 
 ## Privacy Rule
 
