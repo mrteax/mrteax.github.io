@@ -440,13 +440,17 @@ if itinerary:
             "6只生蚝",
             "无需线上预约",
             "Le Plongeoir",
-            "15:30",
+            "Caprioglio",
             "Bellet",
+            "自由城",
+            "ZOU! 600",
+            "Cocteau",
         )
-    ):
+    ) or (day_two and "Château de Bellet" in day_two.text()):
         errors.append(
             "france-itinerary-2026.html: 10.2 must be the Nice day trip "
-            "from Juan-les-Pins with a morning oyster stop"
+            "from Juan-les-Pins with a morning oyster stop, Old Nice wine "
+            "shop and Villefranche afternoon instead of the vineyard"
         )
     if day_two:
         oyster_links = [
