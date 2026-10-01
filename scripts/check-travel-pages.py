@@ -52,7 +52,7 @@ FRANCE_CONTENT_TARGETS = ["/france-itinerary-2026.html"]
 REQUIRED_MAP_QUERIES = {
     "Van Gogh Museum, Amsterdam",
     "Cours Saleya, Nice",
-    "Marché Provençal, Antibes",
+    "Sentier de Tire-Poil, Cap d'Antibes",
     "Musée du Louvre, Paris",
     "Palais Garnier, Paris",
     "Eiffel Tower, Paris",
@@ -227,7 +227,7 @@ if itinerary:
         "9.29": "上海 → 广州",
         "9.30": "广州 → 阿姆斯特丹",
         "10.1": "阿姆斯特丹 → 尼斯 → Juan-les-Pins",
-        "10.3": "Juan-les-Pins → 昂蒂布 → 尼斯 → 巴黎",
+        "10.3": "Juan-les-Pins → 尼斯 → 巴黎",
         "10.7": "巴黎 → 布达佩斯",
         "10.8": "布达佩斯 → 广州",
     }
@@ -434,74 +434,63 @@ if itinerary:
             "france-itinerary-2026.html: 10.1 must add the Cap d'Antibes "
             "Tire-Poil walk and Antibes old-town dinner before Juan-les-Pins"
         )
-    day_two_flow = (
-        [child for child in day_two.children if child.tag == "td"][1].text()
-        if day_two
-        else ""
-    )
-    if "Caprioglio" in day_two_flow and "自由城" in day_two_flow:
-        if day_two_flow.index("Caprioglio") < day_two_flow.index("自由城"):
-            errors.append(
-                "france-itinerary-2026.html: 10.2 wine purchase must come "
-                "after Villefranche so bottles are not carried all day"
-            )
-    if day_three and not all(
-        text in day_three.text() for text in ("早午餐", "当场吃")
-    ):
-        errors.append(
-            "france-itinerary-2026.html: 10.3 market food must be eaten "
-            "there as brunch"
-        )
-    if not day_two or not all(
-        text in day_two.text()
+    def flow_text(row):
+        cells = [child for child in row.children if child.tag == "td"] if row else []
+        return cells[1].text() if len(cells) > 1 else ""
+
+    def in_order(text, *parts):
+        positions = [text.find(part) for part in parts]
+        return all(pos >= 0 for pos in positions) and positions == sorted(positions)
+
+    day_one_flow = flow_text(day_one)
+    day_two_flow = flow_text(day_two)
+    day_three_flow = flow_text(day_three)
+    if not all(
+        text in day_two.text() if day_two else False
         for text in (
-            "Juan-les-Pins",
-            "尼斯",
-            "Café de Turin",
-            "10:00",
-            "6只生蚝",
-            "无需线上预约",
-            "Le Plongeoir",
-            "Caprioglio",
-            "Bellet",
-            "自由城",
-            "ZOU! 600",
-            "Cocteau",
+            "自由城", "ZOU! 600", "Cocteau", "Le Plongeoir",
+            "城堡山", "Juan-les-Pins", "日落",
         )
-    ) or (day_two and "Château de Bellet" in day_two.text()):
-        errors.append(
-            "france-itinerary-2026.html: 10.2 must be the Nice day trip "
-            "from Juan-les-Pins with a morning oyster stop, Old Nice wine "
-            "shop and Villefranche afternoon instead of the vineyard"
-        )
-    if day_two:
-        oyster_links = [
-            child for child in day_two.descendants()
-            if child.tag == "a"
-            and child.attrs.get("href") == "https://www.cafedeturin.fr/"
-        ]
-        if (
-            len(oyster_links) != 1
-            or day_two.text().index("Café de Turin")
-            > day_two.text().index("城堡山")
-            or day_two.text().index("城堡山")
-            > day_two.text().index("Le Plongeoir")
-        ):
-            errors.append(
-                "france-itinerary-2026.html: 10.2 oyster stop must link the "
-                "official Café de Turin site before Castle Hill and lunch"
-            )
-    if (
-        not day_three
-        or not all(
-            text in day_three.text()
-            for text in ("Juan-les-Pins", "昂蒂布普罗旺斯市场", "老城", "14:57")
-        )
-        or "毕加索博物馆" in day_three.text()
+    ) or any(
+        text in day_two_flow
+        for text in ("Café de Turin", "Caprioglio", "萨莱亚", "尼斯老城", "Château de Bellet")
     ):
         errors.append(
-            "france-itinerary-2026.html: 10.3 must use the short Antibes "
-            "market/old-town stop without the Picasso museum"
+            "france-itinerary-2026.html: 10.2 must be the Villefranche and "
+            "Nice seafront day ending at Juan-les-Pins, leaving Old Nice for 10.3"
+        )
+    if not in_order(day_two_flow, "自由城", "Le Plongeoir", "城堡山"):
+        errors.append(
+            "france-itinerary-2026.html: 10.2 must run Villefranche, "
+            "Le Plongeoir lunch, then Castle Hill"
+        )
+    if not day_three or not all(
+        text in day_three.text()
+        for text in (
+            "Bagmobile", "萨莱亚市场", "当场吃", "Café de Turin", "6只生蚝",
+            "无需线上预约", "Caprioglio", "Bellet", "14:27", "14:57",
+        )
+    ) or any(text in day_three_flow for text in ("昂蒂布", "毕加索博物馆")):
+        errors.append(
+            "france-itinerary-2026.html: 10.3 must be an Old Nice morning "
+            "with luggage at Nice-Ville, market brunch, oysters and wine"
+        )
+    if not in_order(day_three_flow, "萨莱亚市场", "Café de Turin", "Caprioglio"):
+        errors.append(
+            "france-itinerary-2026.html: 10.3 must buy wine last, after "
+            "the market brunch and oysters"
+        )
+    oyster_links = [
+        child for child in (day_three.descendants() if day_three else [])
+        if child.tag == "a" and child.attrs.get("href") == "https://www.cafedeturin.fr/"
+    ]
+    if len(oyster_links) != 1:
+        errors.append(
+            "france-itinerary-2026.html: 10.3 must link the official Café de Turin site"
+        )
+    if "昂蒂布" in day_two_flow or "昂蒂布" in day_three_flow or "昂蒂布老城" not in day_one_flow:
+        errors.append(
+            "france-itinerary-2026.html: Antibes should be visited only on 10.1"
         )
     if not day_four or not all(
         text in day_four.text()
