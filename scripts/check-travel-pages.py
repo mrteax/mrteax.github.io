@@ -426,9 +426,31 @@ if itinerary:
             "france-itinerary-2026.html: 9.30 must contain the respectful "
             "09:00 Van Gogh visit and De Wallen evening walk"
         )
-    if not day_one or "Juan-les-Pins" not in day_one.text():
+    if not day_one or not all(
+        text in day_one.text()
+        for text in ("Juan-les-Pins", "Tire-Poil", "Garoupe", "昂蒂布老城", "19:13")
+    ):
         errors.append(
-            "france-itinerary-2026.html: 10.1 must end at Juan-les-Pins"
+            "france-itinerary-2026.html: 10.1 must add the Cap d'Antibes "
+            "Tire-Poil walk and Antibes old-town dinner before Juan-les-Pins"
+        )
+    day_two_flow = (
+        [child for child in day_two.children if child.tag == "td"][1].text()
+        if day_two
+        else ""
+    )
+    if "Caprioglio" in day_two_flow and "自由城" in day_two_flow:
+        if day_two_flow.index("Caprioglio") < day_two_flow.index("自由城"):
+            errors.append(
+                "france-itinerary-2026.html: 10.2 wine purchase must come "
+                "after Villefranche so bottles are not carried all day"
+            )
+    if day_three and not all(
+        text in day_three.text() for text in ("早午餐", "当场吃")
+    ):
+        errors.append(
+            "france-itinerary-2026.html: 10.3 market food must be eaten "
+            "there as brunch"
         )
     if not day_two or not all(
         text in day_two.text()
