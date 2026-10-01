@@ -52,7 +52,7 @@ FRANCE_CONTENT_TARGETS = ["/france-itinerary-2026.html"]
 REQUIRED_MAP_QUERIES = {
     "Van Gogh Museum, Amsterdam",
     "Cours Saleya, Nice",
-    "Sentier de Tire-Poil, Cap d'Antibes",
+    "43.545771,7.137223",
     "Musée du Louvre, Paris",
     "Palais Garnier, Paris",
     "Eiffel Tower, Paris",
