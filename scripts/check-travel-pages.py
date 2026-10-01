@@ -448,21 +448,24 @@ if itinerary:
     if not all(
         text in day_two.text() if day_two else False
         for text in (
-            "自由城", "ZOU! 600", "Cocteau", "Le Plongeoir",
-            "城堡山", "Juan-les-Pins", "日落",
+            "自由城", "ZOU! 600", "Cocteau", "Le Plongeoir", "埃兹",
+            "Bavastro", "异域花园", "83路", "Juan-les-Pins", "日落",
         )
     ) or any(
         text in day_two_flow
-        for text in ("Café de Turin", "Caprioglio", "萨莱亚", "尼斯老城", "Château de Bellet")
+        for text in (
+            "Café de Turin", "Caprioglio", "萨莱亚", "尼斯老城",
+            "城堡山", "Château de Bellet",
+        )
     ):
         errors.append(
-            "france-itinerary-2026.html: 10.2 must be the Villefranche and "
-            "Nice seafront day ending at Juan-les-Pins, leaving Old Nice for 10.3"
+            "france-itinerary-2026.html: 10.2 must be the Villefranche, "
+            "Le Plongeoir and Èze coast day, leaving Old Nice for 10.3"
         )
-    if not in_order(day_two_flow, "自由城", "Le Plongeoir", "城堡山"):
+    if not in_order(day_two_flow, "自由城", "Le Plongeoir", "埃兹"):
         errors.append(
             "france-itinerary-2026.html: 10.2 must run Villefranche, "
-            "Le Plongeoir lunch, then Castle Hill"
+            "Le Plongeoir lunch, then Èze"
         )
     if not day_three or not all(
         text in day_three.text()
@@ -475,10 +478,10 @@ if itinerary:
             "france-itinerary-2026.html: 10.3 must be an Old Nice morning "
             "with luggage at Nice-Ville, market brunch, oysters and wine"
         )
-    if not in_order(day_three_flow, "萨莱亚市场", "Café de Turin", "Caprioglio"):
+    if not in_order(day_three_flow, "萨莱亚市场", "城堡山", "Café de Turin", "Caprioglio"):
         errors.append(
-            "france-itinerary-2026.html: 10.3 must buy wine last, after "
-            "the market brunch and oysters"
+            "france-itinerary-2026.html: 10.3 must run market brunch, "
+            "Castle Hill, oysters, then wine last"
         )
     oyster_links = [
         child for child in (day_three.descendants() if day_three else [])
