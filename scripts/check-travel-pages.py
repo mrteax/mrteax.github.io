@@ -52,7 +52,7 @@ FRANCE_CONTENT_TARGETS = ["/france-itinerary-2026.html"]
 REQUIRED_MAP_QUERIES = {
     "Van Gogh Museum, Amsterdam",
     "Cours Saleya, Nice",
-    "43.728318,7.364585",
+    "Place du Palais, Monaco",
     "Musée du Louvre, Paris",
     "Palais Garnier, Paris",
     "Eiffel Tower, Paris",
@@ -449,7 +449,8 @@ if itinerary:
         text in day_two.text()
         for text in (
             "城堡山", "Le Plongeoir", "Chez Pipo", "自由城", "ZOU! 600",
-            "Cocteau", "埃兹", "异域花园", "尼采小路", "83路", "Juan-les-Pins",
+            "埃兹", "异域花园", "摩纳哥", "Condamine", "barbagiuan",
+            "21:17", "Juan-les-Pins",
         )
     ) or any(
         text in day_two_flow
@@ -459,10 +460,10 @@ if itinerary:
             "france-itinerary-2026.html: 10.2 must run eastwards from Nice "
             "port to Villefranche and Èze, ending by train from Èze-sur-Mer"
         )
-    if not in_order(day_two_flow, "城堡山", "Le Plongeoir", "自由城", "埃兹", "尼采小路"):
+    if not in_order(day_two_flow, "城堡山", "Le Plongeoir", "自由城", "埃兹", "大教堂", "王宫广场", "Condamine"):
         errors.append(
             "france-itinerary-2026.html: 10.2 must go Castle Hill, lunch, "
-            "Villefranche, Èze, then down the Nietzsche path without backtracking"
+            "Villefranche, Èze, then Monaco's Rock and Condamine dinner"
         )
     if not day_three or not all(
         text in day_three.text()
