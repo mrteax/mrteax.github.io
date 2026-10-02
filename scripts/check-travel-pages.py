@@ -52,7 +52,7 @@ FRANCE_CONTENT_TARGETS = ["/france-itinerary-2026.html"]
 REQUIRED_MAP_QUERIES = {
     "Van Gogh Museum, Amsterdam",
     "Cours Saleya, Nice",
-    "43.545771,7.137223",
+    "43.728318,7.364585",
     "Musée du Louvre, Paris",
     "Palais Garnier, Paris",
     "Eiffel Tower, Paris",
@@ -428,11 +428,11 @@ if itinerary:
         )
     if not day_one or not all(
         text in day_one.text()
-        for text in ("Juan-les-Pins", "Tire-Poil", "Garoupe", "昂蒂布老城", "19:13")
-    ):
+        for text in ("Juan-les-Pins", "莫奈", "昂蒂布老城", "街市")
+    ) or (day_one and "Tire-Poil" in day_one.text()):
         errors.append(
-            "france-itinerary-2026.html: 10.1 must add the Cap d'Antibes "
-            "Tire-Poil walk and Antibes old-town dinner before Juan-les-Pins"
+            "france-itinerary-2026.html: 10.1 must record the actual Monet "
+            "spot and Antibes old-town market dinner"
         )
     def flow_text(row):
         cells = [child for child in row.children if child.tag == "td"] if row else []
@@ -445,43 +445,41 @@ if itinerary:
     day_one_flow = flow_text(day_one)
     day_two_flow = flow_text(day_two)
     day_three_flow = flow_text(day_three)
-    if not all(
-        text in day_two.text() if day_two else False
+    if not day_two or not all(
+        text in day_two.text()
         for text in (
-            "自由城", "ZOU! 600", "Cocteau", "Le Plongeoir", "埃兹",
-            "Bavastro", "异域花园", "83路", "Juan-les-Pins", "日落",
+            "城堡山", "Le Plongeoir", "Chez Pipo", "自由城", "ZOU! 600",
+            "Cocteau", "埃兹", "异域花园", "尼采小路", "83路", "Juan-les-Pins",
         )
     ) or any(
         text in day_two_flow
-        for text in (
-            "Café de Turin", "Caprioglio", "萨莱亚", "尼斯老城",
-            "城堡山", "Château de Bellet",
-        )
+        for text in ("Café de Turin", "Caprioglio", "萨莱亚", "Château de Bellet")
     ):
         errors.append(
-            "france-itinerary-2026.html: 10.2 must be the Villefranche, "
-            "Le Plongeoir and Èze coast day, leaving Old Nice for 10.3"
+            "france-itinerary-2026.html: 10.2 must run eastwards from Nice "
+            "port to Villefranche and Èze, ending by train from Èze-sur-Mer"
         )
-    if not in_order(day_two_flow, "自由城", "Le Plongeoir", "埃兹"):
+    if not in_order(day_two_flow, "城堡山", "Le Plongeoir", "自由城", "埃兹", "尼采小路"):
         errors.append(
-            "france-itinerary-2026.html: 10.2 must run Villefranche, "
-            "Le Plongeoir lunch, then Èze"
+            "france-itinerary-2026.html: 10.2 must go Castle Hill, lunch, "
+            "Villefranche, Èze, then down the Nietzsche path without backtracking"
         )
     if not day_three or not all(
         text in day_three.text()
         for text in (
-            "Bagmobile", "萨莱亚市场", "当场吃", "Café de Turin", "6只生蚝",
-            "无需线上预约", "Caprioglio", "Bellet", "14:27", "14:57",
+            "Bagmobile", "萨莱亚市场", "Chez Thérésa", "socca", "当场吃",
+            "Fenocchio", "Café de Turin", "6只生蚝", "无需线上预约",
+            "pan bagnat", "Caprioglio", "Bellet", "14:27", "14:57",
         )
-    ) or any(text in day_three_flow for text in ("昂蒂布", "毕加索博物馆")):
+    ) or any(text in day_three_flow for text in ("昂蒂布", "城堡山", "毕加索博物馆")):
         errors.append(
-            "france-itinerary-2026.html: 10.3 must be an Old Nice morning "
-            "with luggage at Nice-Ville, market brunch, oysters and wine"
+            "france-itinerary-2026.html: 10.3 must be an Old Nice food walk "
+            "with luggage at Nice-Ville, ending with wine before the train"
         )
-    if not in_order(day_three_flow, "萨莱亚市场", "城堡山", "Café de Turin", "Caprioglio"):
+    if not in_order(day_three_flow, "萨莱亚市场", "Fenocchio", "Café de Turin", "Caprioglio"):
         errors.append(
             "france-itinerary-2026.html: 10.3 must run market brunch, "
-            "Castle Hill, oysters, then wine last"
+            "ice cream, oysters, then wine last"
         )
     oyster_links = [
         child for child in (day_three.descendants() if day_three else [])
