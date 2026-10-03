@@ -18,7 +18,9 @@ RETIRED_PAGES = (
     "france-trip-2026.html",
 )
 TRAVEL_THEME_FILES = HTML_FILES[1:]
+BORDER_ITINERARY = "france-border-itinerary-2026.html"
 PRIVACY_FILES = HTML_FILES + [
+    BORDER_ITINERARY,
     "docs/france-2026-transport-research.md",
     "docs/france-trip-2026-research.md",
     "docs/loire-provence-riviera-research-oct-2026.md",
@@ -663,6 +665,72 @@ for filename in (
 ):
     if filename in texts and "欧洲十日行" in texts[filename]:
         errors.append(f"{filename}: oversized/public trip-duration title remains")
+
+border_path = ROOT / BORDER_ITINERARY
+if not border_path.exists():
+    errors.append(f"missing {BORDER_ITINERARY}")
+else:
+    border_text = border_path.read_text(encoding="utf-8")
+    border = Document()
+    border.feed(border_text)
+    if border.stack or border.errors:
+        errors.append(f"{BORDER_ITINERARY}: HTML balance {border.errors}")
+    html_tags = border.find("html")
+    if not html_tags or html_tags[0].attrs.get("lang") != "en":
+        errors.append(f"{BORDER_ITINERARY}: document language must be English")
+    for required in (
+        '<meta name="robots" content="noindex, nofollow">',
+        "@page",
+        "window.print()",
+        "Purpose of travel",
+        "Tourism",
+        "Amsterdam Airport Schiphol",
+        "Budapest Ferenc Liszt International Airport",
+        "Main destination",
+        "France",
+        "CZ3504", "CZ307", "U2 7953", "OUIGO 7856",
+        "FR4230", "CZ650", "CZ3550",
+        "Tue 29 Sep 2026", "Fri 9 Oct 2026",
+        "Amsterdam", "Juan-les-Pins", "Paris", "Budapest",
+        "booking confirmations are enclosed",
+    ):
+        if required not in border_text:
+            errors.append(f"{BORDER_ITINERARY}: missing {required}")
+    stays = border.with_class("stay-row", "tr")
+    nights = [row.attrs.get("data-nights") for row in stays]
+    if nights != ["1", "2", "4", "1"]:
+        errors.append(
+            f"{BORDER_ITINERARY}: expected stays of 1/2/4/1 nights, found {nights}"
+        )
+    days = border.with_class("day-row", "tr")
+    if len(days) != 11:
+        errors.append(
+            f"{BORDER_ITINERARY}: expected 11 dated plan rows, found {len(days)}"
+        )
+    for personal_field in (
+        "Passport No.", "Full name", "Visa No.", "Booking ref.",
+        "Hotel name", "Policy No.", "Emergency contact", "<td></td>",
+    ):
+        if personal_field in border_text:
+            errors.append(
+                f"{BORDER_ITINERARY}: must not ask for personal details ({personal_field})"
+            )
+    for adult_only in (
+        "De Wallen", "Red Light", "Crazy Horse", "Bar Nouveau",
+        "Little Red Door", "Danico", "Cambridge", "cocktail",
+    ):
+        if adult_only.lower() in border_text.lower():
+            errors.append(f"{BORDER_ITINERARY}: must omit {adult_only}")
+    if re.search(r"[\u4e00-\u9fff]", border_text.split("<body", 1)[-1]):
+        errors.append(f"{BORDER_ITINERARY}: printable body must be English only")
+itinerary_links = {
+    element.attrs.get("href")
+    for element in (itinerary.find("a") if itinerary else [])
+}
+if f"/{BORDER_ITINERARY}" not in itinerary_links:
+    errors.append(
+        f"france-itinerary-2026.html: must link the printable {BORDER_ITINERARY}"
+    )
 
 for filename in RETIRED_PAGES:
     if (ROOT / filename).exists():
