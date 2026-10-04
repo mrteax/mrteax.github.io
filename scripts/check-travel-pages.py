@@ -551,18 +551,19 @@ if itinerary:
                 "巴黎证券交易所",
                 "19:30",
                 "Daroco Bourse",
-                "21:00",
-                "Danico",
             )
         )
         or any(
             text in day_six.text()
-            for text in ("塞纳河游船", "疯马秀", "橘园美术馆", "罗丹博物馆")
+            for text in (
+                "塞纳河游船", "疯马秀", "橘园美术馆", "罗丹博物馆",
+                "Danico", "The Cambridge Public House",
+            )
         )
     ):
         errors.append(
             "france-itinerary-2026.html: 10.6 must contain the Cité, "
-            "Orsay, and relaxed Danico evening without the cruise or show"
+            "Orsay, and Daroco dinner without the cruise, show or bars"
         )
     if day_six:
         notre_dame_links = [
@@ -586,7 +587,6 @@ if itinerary:
     expected_bars = {
         "10.4": ("Bar Nouveau", "Little Red Door"),
         "10.5": ("疯马秀",),
-        "10.6": ("Danico", "The Cambridge Public House"),
     }
     for date, bars in expected_bars.items():
         row = rows_by_date.get(date)
