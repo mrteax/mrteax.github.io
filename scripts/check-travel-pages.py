@@ -550,7 +550,7 @@ if itinerary:
                 "全景廊街",
                 "巴黎证券交易所",
                 "19:30",
-                "Daroco Bourse",
+                "Le Vaudeville",
                 "21:00",
                 "Danico",
             )
