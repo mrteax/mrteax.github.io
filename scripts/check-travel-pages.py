@@ -551,8 +551,6 @@ if itinerary:
                 "巴黎证券交易所",
                 "19:30",
                 "Le Vaudeville",
-                "21:00",
-                "Danico",
             )
         )
         or any(
@@ -586,7 +584,7 @@ if itinerary:
     expected_bars = {
         "10.4": ("Bar Nouveau", "Little Red Door"),
         "10.5": ("疯马秀",),
-        "10.6": ("Danico", "The Cambridge Public House"),
+        "10.6": ("The Cambridge Public House",),
     }
     for date, bars in expected_bars.items():
         row = rows_by_date.get(date)
